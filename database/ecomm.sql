@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2020 at 09:21 PM
+-- Generation Time: Aug 07, 2008 at 08:38 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -43,8 +43,10 @@ CREATE TABLE `assigndelivery` (
 --
 
 INSERT INTO `assigndelivery` (`id`, `product_name`, `assign_to`, `pickup`, `ship_address`, `status`, `order_status`) VALUES
-(85, '2', '6', '4', '2', '1', NULL),
-(86, '1', '6', '4', '1', '1', NULL);
+(91, '1', '2', '3', '1', '1', NULL),
+(92, '1', '2', '3', '1', '1', NULL),
+(93, '1', '2', '4', '1', '1', NULL),
+(94, '1', '6', '3', '1', '1', NULL);
 
 -- --------------------------------------------------------
 
@@ -64,18 +66,51 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `brand_image`, `brand_name`, `category`) VALUES
-(8, 'sksbadah_1582310966.webp', 'ANOUK', '2'),
-(9, 'ksaahsdb_1582309069.webp', 'Forever21', '2'),
-(10, 'H&M.webp', 'H&M', '2'),
-(11, 'libas.webp', 'libas', '2'),
-(12, 'hrx.webp', 'hrx', '1'),
-(13, 'jack&johnes.webp', 'jack&johnes', '1'),
-(14, 'michaelkors.webp', 'michaelkors', '1'),
-(15, 'nike.webp', 'nike', '1'),
-(16, 'roadster.webp', 'roadster', '1'),
-(17, 'unitedcolorofbenetton.webp', 'unitedcolorofbenetton', '1'),
-(18, 'maybelline.webp', 'maybelline', '2'),
-(19, 'veromoda.webp', 'veromoda', '2');
+(20, 'Nike.webp', 'Nike', '1'),
+(21, 'Allen Solly.webp', 'Allen Solly', '1'),
+(22, 'Roadster.webp', 'Roadster', '1'),
+(23, 'Gap.webp', 'Gap', '1'),
+(24, 'Under Armour.webp', 'Under Armour', '1'),
+(25, 'Wrogn.webp', 'Wrogn', '1'),
+(26, 'Here Now.webp', 'Here Now', '1'),
+(27, 'V8.webp', 'V8', '1'),
+(28, 'H and M.webp', 'H and M', '1'),
+(29, 'Mast and Harbour.webp', 'Mast and Harbour', '1'),
+(30, 'Spaykar.webp', 'Spaykar', '1'),
+(31, 'Wildcraft.webp', 'Wildcraft', '1'),
+(32, 'Invictus.webp', 'Invictus', '1'),
+(33, 'Levis.webp', 'Levis', '1'),
+(34, 'Louis Philippie.webp', 'Louis Philippie', '1'),
+(35, 'W.webp', 'W', '2'),
+(36, 'Marks and spencer.webp', 'Marks and spencer', '2'),
+(37, 'Only.webp', 'Only', '2'),
+(38, 'Sangria.webp', 'Sangria', '2'),
+(39, 'Biba.webp', 'Biba', '2'),
+(40, 'Cult-sports.webp', 'Cult-sports', '2'),
+(41, 'The Roadster.webp', 'The Roadster', '2'),
+(42, 'Vishudh.webp', 'Vishudh', '2'),
+(43, 'Caprese.webp', 'Caprese', '2'),
+(44, 'Here Now..webp', 'Here Now.', '2'),
+(45, 'Inddus.webp', 'Inddus', '2'),
+(46, 'Ginni and Joy.webp', 'Ginni and Joy', '2'),
+(47, 'Zaveri Pearls.webp', 'Zaveri Pearls', '2'),
+(48, 'Dressberry.webp', 'Dressberry', '2'),
+(49, 'Rothy Perkins.webp', 'Rothy Perkins', '2'),
+(50, 'Allen Solly..webp', 'Allen Solly.', '3'),
+(51, 'Kittens.webp', 'Kittens', '3'),
+(52, 'Walktrendy.webp', 'Walktrendy', '3'),
+(53, 'Next.webp', 'Next', '3'),
+(54, 'Indian Terrain.webp', 'Indian Terrain', '3'),
+(55, 'ahdbssak_1583053775.webp', 'Nautinati', '3'),
+(56, 'CuteCumber.webp', 'CuteCumber', '3'),
+(57, 'Mini Klub.webp', 'Mini Klub', '3'),
+(58, 'U.S Pollo.webp', 'U.S Pollo', '3'),
+(59, 'ksbdhaas_1583053991.webp', 'H and M.', '3'),
+(60, 'Ginni and Jiny.webp', 'Ginni and Jiny', '3'),
+(61, 'Yk.webp', 'Yk', '3'),
+(62, 'United Color of Beneton.webp', 'United Color of Beneton', '3'),
+(63, 'Gap kids.webp', 'Gap kids', '3'),
+(64, 'Peppermind.webp', 'Peppermind', '3');
 
 -- --------------------------------------------------------
 
@@ -96,12 +131,11 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
 (197, 17, 3, 1),
-(198, 18, 3, 1),
-(199, 18, 4, 1),
-(200, 18, 12, 1),
 (201, 3, 1, 400),
 (202, 3, 2, 11),
-(203, 1, 21, 10);
+(203, 1, 21, 10),
+(205, 14, 4, 1),
+(207, 18, 24, 1);
 
 -- --------------------------------------------------------
 
@@ -121,9 +155,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `cat_slug`, `photo`) VALUES
-(1, 'MEN', 'MEN', '_1582097755.webp'),
-(2, 'WOMEN', 'WOMEN', '_1582103598.webp'),
-(4, 'KIDS', 'KIDS', '.webp');
+(1, 'MEN', 'MEN', '_1583062158.webp'),
+(2, 'WOMEN', 'WOMEN', '_1583062186.webp'),
+(3, 'KIDS', 'KIDS', '_1583062200.webp');
 
 -- --------------------------------------------------------
 
@@ -133,8 +167,8 @@ INSERT INTO `category` (`id`, `name`, `cat_slug`, `photo`) VALUES
 
 CREATE TABLE `category_banner` (
   `id` int(11) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
+  `banner_photo` varchar(255) NOT NULL,
+  `banner_type` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -142,10 +176,57 @@ CREATE TABLE `category_banner` (
 -- Dumping data for table `category_banner`
 --
 
-INSERT INTO `category_banner` (`id`, `photo`, `type`, `url`) VALUES
-(10, '3sbk64as51da_1582263421.jpg', '2', 'local'),
-(11, 'a15bhsk4da63_1582191320.jpg', '1', 'local'),
-(13, 'd2k436ss1hba_1582263407.jpg', '4', 'category.php?category=WOMEN');
+INSERT INTO `category_banner` (`id`, `banner_photo`, `banner_type`, `url`) VALUES
+(10, 'dh23ak14bsa6_1583045038.webp', '2', 'locals'),
+(11, 's61kahsda25b_1582917335.webp', '1', 'locals'),
+(13, 'asbhdk524as6_1583045812.webp', '3', 'category.php?category=WOMEN');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_offer`
+--
+
+CREATE TABLE `category_offer` (
+  `id` int(11) NOT NULL,
+  `offer_photo` varchar(255) NOT NULL,
+  `offer_url` varchar(255) NOT NULL,
+  `offer_type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category_offer`
+--
+
+INSERT INTO `category_offer` (`id`, `offer_photo`, `offer_url`, `offer_type`) VALUES
+(2, 'ifj6ajdgsahb_1583039747.webp', 'H and M', '1'),
+(3, 'jadoj1ddia3j_1582938417.webp', 'Car', '1'),
+(5, 'oi6jduijdja1_1583035221.webp', 'Women', '2'),
+(6, 'jd3iobjaagua_1583064951.webp', 'Df', '2'),
+(7, 'ais12djahsif.jpg', 'Boys Clothing', '3'),
+(8, 'iajssodsaig4.jpg', 'Girls Clothing', '3'),
+(9, 'o3udkjdfhiaa.jpg', 'Infants', '3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `delivery_details`
+--
+
+CREATE TABLE `delivery_details` (
+  `id` int(11) NOT NULL,
+  `sales_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `delivery_details`
+--
+
+INSERT INTO `delivery_details` (`id`, `sales_id`, `product_id`, `quantity`) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -173,7 +254,8 @@ CREATE TABLE `details` (
 
 INSERT INTO `details` (`id`, `sales_id`, `product_id`, `quantity`, `deliver_shipaddress`, `deliver_shipcity`, `deliver_shipstate`, `deliver_shippincode`, `deliver_shiptype`, `deliver_shipmb`, `deliver_status`) VALUES
 (1, 1, 1, 1, 'sayyed manzil', 'thane', 'Maharashtra', '400612', 'HOME', '7021918970', 'N/A'),
-(2, 2, 2, 2, 'sayyed manzil1221', 'thane', 'KANPUR', '400612', 'OFFICE', '7012457885', 'N/A');
+(2, 2, 2, 2, 'sayyed manzil1221', 'thane', 'KANPUR', '400612', 'OFFICE', '7012457885', 'N/A'),
+(3, 3, 2, 1, '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -222,10 +304,10 @@ INSERT INTO `pincode` (`id`, `pincode`, `courier_company`, `city_name`, `state_n
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_code` int(100) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `deals` varchar(100) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `subcategory_id` int(11) DEFAULT NULL,
+  `brand_id` int(11) DEFAULT NULL,
   `color` varchar(100) NOT NULL,
-  `brand` varchar(100) NOT NULL,
   `name` text NOT NULL,
   `size` varchar(100) NOT NULL,
   `description` text NOT NULL,
@@ -242,27 +324,9 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `brand`, `name`, `size`, `description`, `slug`, `old_price`, `price`, `discount`, `photo`, `date_view`, `counter`) VALUES
-(1, 121121, 1, '99', 'Black', 'Hanes ', 'Hanes Men\'s Pullover EcoSmart Fleece Black Hooded Sweatshirt', 'S, M', '<blockquote>\r\n<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n</blockquote>\r\n', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt', '110', 100, '20%', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt.jpg', '2019-12-08', 2),
-(2, 121232, 1, '99', 'GREY', 'BALEAF', 'BALEAF Men\'s UPF 50+ Sun Protection Hoodie', 'S', '<ul>\r\n	<li>100% Polyester; Sun Protection; Fashionable(Mode Size M)</li>\r\n	<li>Imported</li>\r\n	<li>Technical breathable fabric wicks moisture away from your skin, breathes freely and dries quickly for cool comfort</li>\r\n	<li>Low profile thumbholes help keep sleeves in place &amp; trap warmth</li>\r\n</ul>\r\n', 'baleaf-men-s-upf-50-sun-protection-hoodie', '150', 123, '20%', 'baleaf-men-s-upf-50-sun-protection-hoodie-long-sleeve-performance-hiking-fishing-t-shirt_1572846099.jpg', '2019-11-22', 2),
-(3, 455656, 1, '99', 'White', 'SHADABZONE', 'YOUTUBE T-SHIRT FOR MEN', 'S', '<p>YOUTUBE T-SHIRT FOR MEN</p>\r\n', 'youtube-t-shirt-men', '150', 130, '20%', 'youtube-t-shirt-men.jpg', '2019-11-22', 7),
-(4, 532131, 1, '99', 'Black', 'ADIDAS', 'Black T-Shirt with Graphic Printed', 'S, M,', '<p>Hleoo</p>\r\n', 'black-t-shirt-graphic-printed', '126', 123, '24%', 'black-t-shirt-graphic-printed.jpeg', '2019-11-21', 10),
-(5, 1215156, 1, '99', 'White', 'ADIDAS', 'White Adidas White Printed', 'S', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'white-adidas-white-printed', '350', 321, '20%', 'white-adidas-white-printed.jpeg', '2019-11-22', 1),
-(6, 112132, 1, '99', 'GREY', 'ADIDAS', 'Grey Adidas Graphic Printed', 'L,XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'grey-adidas-graphic-printed', '350', 345, '10%', 'grey-adidas-graphic-printed.jpeg', '2019-11-17', 1),
-(7, 254578, 1, '99', 'GREY', 'ADIDAS', 'Grey Adidas Graphic Print', 'L', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'grey-adidas-graphic-print', '450', 400, '24%', 'grey-adidas-graphic-print.jpeg', '2019-11-22', 7),
-(8, 147858, 1, '99', 'Black', 'ADIDAS', 'Black Adidas No print', 'L', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'black-adidas-no-print', '245', 200, '24%', 'black-adidas-no-print.jpeg', '2019-11-17', 1),
-(9, 254569, 1, '99', 'White', 'ADIDAS', 'Adidas White Printed t-shirt  For Men', 'xl', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-white-printed-t-shirt-men', '250', 234, '12%', 'adidas-white-printed-t-shirt-men.jpeg', '2008-08-08', 1),
-(10, 324587, 1, '99', 'Black', 'ADIDAS', 'Black Adidas Graphic Print', 'XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'black-adidas-graphic-print', '299', 234, '20%', 'black-adidas-graphic-print.jpeg', '2019-11-17', 3),
-(11, 215487, 1, '99', 'GREY', 'ADIDAS', 'Adidas Light Grey T-shirt For Men', 'S, X', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-light-grey-t-shirt-men', '150', 120, '24%', 'adidas-light-grey-t-shirt-men.jpeg', '0000-00-00', 0),
-(12, 324568, 1, '99', 'Black', 'ADIDAS', 'Adidas Black Printed t-shirt  For Men', 'XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-black-printed-t-shirt-men', '249', 200, '24%', 'adidas-black-printed-t-shirt-men.jpeg', '0000-00-00', 0),
-(13, 254785, 1, '99', 'Black', 'ADIDAS', 'Adidas Black Print For Men', 'S XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-black-print-men', '256', 200, '24%', 'adidas-black-print-men.jpeg', '2019-11-16', 1),
-(14, 245697, 2, '99', 'Orange', 'Anouk', 'Anouk Orange Dress For Women/Girls Traditional Dresses', 'M XL', '<p><br />\r\n<br />\r\n&nbsp;&nbsp; &nbsp;5% polyester created from recycled plastic bottles&lt;/li&gt;<br />\r\n&nbsp; &nbsp; imported<br />\r\n&nbsp;&nbsp; Pull On closure<br />\r\n&nbsp;&nbsp; Machine Wash<br />\r\n&nbsp;&nbsp; 0.7&amp;quot; high<br />\r\n&nbsp;&nbsp; 14&amp;quot; wide<br />\r\n&nbsp;&nbsp;50% cotton 50% polyester<br />\r\n&lt;/ul&gt;<br />\r\n&lt;/blockquote&gt;</p>\r\n', 'anouk-orange-dress-women-girls-traditional-dresses', '150', 125, '35%', 'anouk-orange-dress-women-girls-traditional-dresses.jpg', '2019-11-22', 8),
-(15, 154878, 1, '99', 'Black', 'Jack and Jones', 'Jack and Jones black graphic Printed', ' S M ', '<p>Ace weekend dressing in this black stripe Polo Neck T-shirt from Jack and Jones</p>\r\n', 'jack-and-jones-black-graphic-printed', '277', 245, '20%', 'jack-and-jones-black-graphic-printed.jpeg', '2019-11-21', 9),
-(16, 214737, 2, '', 'Olive, Green, White', 'Libas', 'Libas Women Olive-Green-White Block Print Kurta with Trouse', 'S M L XL', '<p>Libas Women Olive-Green-White Block Print Kurta with Trouse</p>\r\n\r\n<p>Libas Women Olive-Green-White Block Print Kurta with TrouseLibas Women Olive-Green-White Block Print Kurta with Trousev</p>\r\n\r\n<p>Libas Women Olive-Green-White Block Print Kurta with Trouse</p>\r\n\r\n<p>Libas Women Olive-Green-White Block Print Kurta with Trouse</p>\r\n\r\n<p>Libas Women Olive-Green-White Block Print Kurta with TrouseLibas Women Olive-Green-White Block Print Kurta with Trouse</p>\r\n', 'libas-women-olive-green-white-block-print-kurta-trouse', '245', 200, '30%', 'libas-women-olive-green-white-block-print-kurta-trouse.jpg', '0000-00-00', 0),
-(17, 200123, 3, '21', 'RED', 'Ginni and Joy', 'Ginni and Joy Red T-Shirts ', 'L XL', '<h3 style=\"font-style: italic;\"><small><big>Red self-design sweatshirt, has a kangaroo pocket, a round neck, long sleeves, straight hem</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big>Material &amp; Care</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big>Cotton<br />\r\nMachine-wash</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big><strong>Specifications</strong></big></small></h3>\r\n\r\n<p>Sleeve Length&nbsp;</p>\r\n\r\n<p>Long Sleeves</p>\r\n', 'ginni-and-joy-red-t-shirts', '150', 123, '70%', 'ginni-and-joy-red-t-shirts.jpg', '2019-12-01', 1),
-(18, 0, 3, '22', 'red', 'Ginni and Joy', 'Ginni and joy red T-shirt', 'L', '<p><strong>Ginni and Joy</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n', 'ginni-and-joy-red-t-shirt', '450', 400, '2%', 'ginni-and-joy-red-t-shirt.jpg', '0000-00-00', 0),
-(19, 0, 3, '', 'Sky Blue', 'Indian Terrain', 'Indian Terrain Blue T-Shirts ', 'S', '<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n\r\n<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n\r\n<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n', 'indian-terrain-blue-t-shirts', '50020', 50000, '20%', 'indian-terrain-blue-t-shirts_1575487752.jpg', '0000-00-00', 0),
-(21, 0, 1, '', 'red', 'ks', 'Shadab Khan', 'standard', '<p>as</p>\r\n', 'shadab-khan', '15', 12, '12%', 'shadab-khan.jpeg', '0000-00-00', 0);
+INSERT INTO `products` (`id`, `product_code`, `category_id`, `subcategory_id`, `brand_id`, `color`, `name`, `size`, `description`, `slug`, `old_price`, `price`, `discount`, `photo`, `date_view`, `counter`) VALUES
+(24, 0, NULL, 102, 22, 'Black & Grey', 'Roadster Men Black  & Grey Regular fit and checked shirt', 'X, Xl', '<p>Roadster Men Black &amp; Grey Regular fit and checked shirt&nbsp;</p>\r\n', 'roadster-men-black-grey-regular-fit-and-checked-shirt', '500', 459, '20%', 'roadster-men-black-grey-regular-fit-and-checked-shirt.webp', '0000-00-00', 0),
+(25, 0, NULL, 102, 22, 'Ted', 'Hx', 'Xh', '', 'hx', '267', 266, 'Db', 'hx.webp', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -283,7 +347,8 @@ CREATE TABLE `sales` (
 
 INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`) VALUES
 (1, 2, 'MOJO0218H05N63080432', '2020-02-18'),
-(2, 6, 'MOJO0218T05N63080519', '2020-02-18');
+(2, 6, 'MOJO0218T05N63080519', '2020-02-18'),
+(3, 18, 'MOJO0228T05N09840185', '2020-02-28');
 
 -- --------------------------------------------------------
 
@@ -296,69 +361,40 @@ CREATE TABLE `subcategory` (
   `name` varchar(255) NOT NULL,
   `sub_catslug` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL
+  `subcat_photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `subcategory`
 --
 
-INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`, `photo`) VALUES
-(2, 'Innerwear & Sleepwears', 'Innerwear and Sleepwear', 'men', '_1581970950.jpg'),
-(4, 'Topwear', 'Topwear', 'men', '_1581970976.jpg'),
-(5, 'Sport & Active Wear', 'Sport and Active Wear', 'men', '_1581970993.jpg'),
-(7, 'Beauty & Personal Care', 'Beauty and Personal Care', 'women', '_1581972503.jpg'),
-(8, 'Women Footwear', 'Women Footwear', 'women', '_1581972489.jpg'),
-(9, 'Western Wear', 'Western Wear', 'women', '_1581972468.jpg'),
-(10, 'Boys Clothing', 'Boys Clothing', 'kids', '_1581975114.jpg'),
-(11, 'Girls Clothing', 'Girls Clothing', 'kids', '_1581975146.jpg'),
-(12, 'Boys Footwear', 'Boys Footwear', 'kids', '_1581975165.jpg'),
-(13, 'Girls Footwear', 'Girls Footwear', 'kids', '_1581975175.jpg'),
-(15, 'Jeans', 'Jeans', 'Bottomwear', '_1581974061.jpg'),
-(16, 'Casual Trousers', 'Casual Trousers', 'Bottomwear', '_1581974075.jpg'),
-(17, 'Formal Trousers', 'Formal Trousers', 'Bottomwear', '_1581974087.jpg'),
-(18, 'Shorts', 'Shorts', 'Bottomwear', '_1581975366.jpg'),
-(19, 'Briefs & Trunks', 'Briefs and Trunks', 'Innerwear and Sleepwear', '_1581971217.jpg'),
-(20, 'Boxers', 'Boxers', 'Innerwear and Sleepwear', '_1581971204.jpg'),
-(21, 'Vests', 'Vests', 'Innerwear and Sleepwear', '_1581971185.jpg'),
-(22, 'Thermals', 'Thermals', 'Innerwear and Sleepwear', '_1581971171.jpg'),
-(23, 'Casual Shoes', 'Casual Shoes', 'Footwear', '_1581973158.jpg'),
-(24, 'Sports Shoes', 'Sports Shoes', 'Footwear', '_1581973172.jpg'),
-(25, 'Formal Shirts', 'Formal Shirts', 'Topwear', '_1581973521.jpg'),
-(26, 'Formal Shoes', 'Formal Shoes', 'Footwear', '_1581973201.jpeg'),
-(27, 'Sneakers', 'Sneakers', 'Footwear', '_1581973182.jpeg'),
-(30, 'Socks', 'Socks', 'Footwear', '_1581973139.png'),
-(31, 'T-Shirts', 'T-Shirts', 'Topwear', '_1581973552.jpg'),
-(32, 'Casual Shirts', 'Casual Shirts', 'Topwear', '_1581973571.jpg'),
-(34, 'Sweaters', 'Sweaters', 'Topwear', '_1581973586.jpg'),
-(35, 'Jackets', 'Jackets', 'Topwear', '_1581973599.jpg'),
-(38, 'Sports Shoes', 'Sports Shoes', 'Sport and Active Wear', '_1581973898.jpg'),
-(39, 'Sports Sandals', 'Sports Sandals', 'Sport and Active Wear', '_1581973819.jpeg'),
-(40, 'Active T-Shirts', 'Active T-Shirts', 'Sport and Active Wear', '_1581973808.jpg'),
-(41, 'Track Pants & Shorts', 'Track Pants and Shorts', 'Sport and Active Wear', '_1581973795.jpg'),
-(47, 'Dresses & Jumpsuits', 'Dresses and Jumpsuits', 'Western Wear', '_1581974800.jpg'),
-(48, 'T-Shirts', 'T-Shirts', 'Western Wear', '_1581974820.webp'),
-(49, 'Jeans & Jeggings', 'Jeans and Jeggings', 'Western Wear', '_1581974830.jpg'),
-(50, 'Makeup', 'Makeup', 'Beauty and Personal Care', '_1581974397.webp'),
-(51, 'Skincare', 'Skincare', 'Beauty and Personal Care', '_1581974385.jpg'),
-(52, 'Fragrances', 'Fragrances', 'Beauty and Personal Care', '_1581974373.jpg'),
-(53, 'Casual Shoes', 'Casual Shoes', 'Women Footwear', '_1581974624.jpg'),
-(54, 'Sports Shoes & Floaters', 'Sports', 'Women Footwear', '_1581974580.jpg'),
-(56, 'Sports Accessories', 'Sports and Accessories', 'Women Footwear', '_1581974592.jpg'),
-(58, 'T-Shirts', 'T-Shirts', 'Boys Clothing', '_1581975353.jpg'),
-(59, 'Shorts', 'Shorts', 'Boys Clothing', '_1581975529.jpg'),
-(60, 'Clothing Sets', 'Clothing Sets', 'Boys Clothing', '_1581975381.jpg'),
-(61, 'Jacket, Sweater & Sweatshirt', 'Jacket, Sweater and Sweatshirt', 'Boys Clothing', '_1581975397.jpeg'),
-(62, 'Dresses', 'Dresses', 'Girls Clothing', '_1581975599.jpg'),
-(64, 'Jeans, Trousers & Capris', 'Jeans, Trousers and Capris', 'Girls Clothing', '_1581975686.jpg'),
-(65, 'Casual Shoes', 'Casual Shoes', 'Boys Footwear', '_1581975815.jpg'),
-(66, 'Sports Shoes', 'Sports Shoes', 'Boys Footwear', '_1581975793.jpg'),
-(67, 'Flats', 'Flats', 'Girls Footwear', '_1581975960.jpg'),
-(68, 'Casual Shoes', 'Casual Shoes', 'Girls Footwear', '_1581975972.jpg'),
-(69, 'heels', 'heels', 'Girls Footwear', '_1581975948.jpg'),
-(80, 'Bottomwear', 'Bottomwear', 'men', '_1581971006.webp'),
-(83, 'Footwear', 'Footwear', 'men', '.jpg'),
-(84, 'Casual Wear', 'Casual Wear', 'Topwear', '_1582345364.webp');
+INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`, `subcat_photo`) VALUES
+(91, 'MEN', 'MEN', 'Him', '_1583039922.webp'),
+(92, 'women', 'women', 'Her', '_1583060819.webp'),
+(93, 'Innerwear ', 'Innerwear ', 'men', '_1583040123.webp'),
+(94, 'Blazzer and suits', 'Blazzer and suits', 'men', '_1583040177.webp'),
+(95, 'Watches', 'Watches', 'men', '_1583040586.webp'),
+(96, 'Casual Shoes', 'Casual Shoes', 'men', 'a2jfskjid4bd.webp'),
+(97, 'Trousers and Chinnos', 'Trousers and Chinnos', 'men', '6ufa2jjajds5.webp'),
+(98, 'Kurtas and kurtas sets', 'Kurtas and kurtas sets', 'men', 'buadaj1ds5jh.webp'),
+(99, 'Jeans', 'Jeans', 'men', 'd5asahiaga3s.webp'),
+(101, 'T-shirts', 'T-shirts', 'men', 'j13ssa4bd6ja.webp'),
+(102, 'Shirts', 'Shirts', 'men', 'sif4ud5j3aao.webp'),
+(103, 'Dresses', 'Dresses', 'women', 'hgsafoiijaku.webp'),
+(104, 'Kurtas and kurtas set', 'Kurtas and kurtas set', 'women', 'ujfadi3dj61i.webp'),
+(105, 'Tops', 'Tops', 'women', '36da2oisbisg.webp'),
+(106, 'Women Jeans', 'Women Jeans', 'women ', 'aoiad2db5h4s.webp'),
+(107, 'Flats and heels', 'Flats and heels', 'women ', 'iiafoui3jhgj.webp'),
+(108, 'Sarees', 'Sarees', 'women', 'aioa5k4hiafj.webp'),
+(109, 'Handbags', 'Handbags', 'women', 'hasi6juoaj2d.webp'),
+(110, 'Jewellery ', 'Jewellery ', 'women', 'uaa36i5j4jbj.webp'),
+(111, 'Beauty and Makeup', 'Beauty and Makeup', 'women', 'ias2iji1d6jk.webp'),
+(112, 'brands', 'brands', 'Him', 'sdofd3j4ao12.webp'),
+(113, 'Kids', 'Kids', '', 'ia1odj32a56g.webp'),
+(114, 'Babies (0 - 2 yrs)', 'Babies (0 - 2 yrs)', 'Kids', 'iaaj45dada1f.webp'),
+(115, 'Toddlers (2 - 6 yrs)', 'Toddlers (2 - 6 yrs)', 'Kids', 'sfgi6aj1k3js.webp'),
+(116, 'Kids (6 - 12 yrs)', 'Kids (6 - 12 yrs)', 'Kids', 'a5ahjjasusoi.webp'),
+(117, 'Preteens ( 12 yrs )', 'Preteens ( 12 yrs )', 'Kids', 'jshdjsa4f3ju.webp');
 
 -- --------------------------------------------------------
 
@@ -402,11 +438,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `billing_add`, `billing_state`, `billing_city`, `billing_pincode`, `billing_mb`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `shipping_mb`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
-(1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', 'preview.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
+(1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', 'youtube-t-shirt-men.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
 (2, 'skshadabkhojo@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 2, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', 'as', '', '', 0, '', '', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
 (6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '64555', '', '', 0, 'Home', 'sayeed manzil', 'Maharashtra', 'Thane', 400612, '7021918970', 'Suresh Nagar', 'Maharashtra', 'Thane', '400612', 'Home', '702191860', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10'),
-(14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 1, 'h5k41ss6ab3d', '', '2020-01-21'),
-(18, 'ks615044@gmail.com', '$2y$10$V4YO0Eb.Yvo6a.MWA6bW1eGbDz/7IkEM5kv4tfNFje31J.HzHAjHG', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '.jpg', 1, 'dhkb6a21a34s', '', '2020-02-18');
+(14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'women.webp', 1, 'h5k41ss6ab3d', '', '2020-01-21'),
+(18, 'ks615044@gmail.com', '$2y$10$V4YO0Eb.Yvo6a.MWA6bW1eGbDz/7IkEM5kv4tfNFje31J.HzHAjHG', 0, 'khan', 'shadab', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', '', '', '', 0, '', '', '', '', '', '', '', '', 'youtube-t-shirt-men.jpg', 1, 'dhkb6a21a34s', '', '2020-02-18');
 
 -- --------------------------------------------------------
 
@@ -430,8 +466,7 @@ CREATE TABLE `warehouse` (
 INSERT INTO `warehouse` (`id`, `warehouse_name`, `address`, `city`, `state`, `pincode`) VALUES
 (3, 'Mukesh Dress Market', 'sayeed Manzil', 'Thane', 'Maharashta', 400612),
 (4, 'K.K MARKETS', '', 'MUMBRA', 'MAHARASHTRA', 400612),
-(5, 'Supreme Market ', '', 'kurla', 'MAHARASHTRA', 400612),
-(6, 'K.K MARKETS', '', 'MUMBRA', 'MAHARASHTRA', 400612);
+(5, 'Supreme Market ', '', 'kurla', 'MAHARASHTRA', 400612);
 
 -- --------------------------------------------------------
 
@@ -478,6 +513,18 @@ ALTER TABLE `category`
 -- Indexes for table `category_banner`
 --
 ALTER TABLE `category_banner`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_offer`
+--
+ALTER TABLE `category_offer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `delivery_details`
+--
+ALTER TABLE `delivery_details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -542,25 +589,25 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `assigndelivery`
 --
 ALTER TABLE `assigndelivery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category_banner`
@@ -569,10 +616,22 @@ ALTER TABLE `category_banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `category_offer`
+--
+ALTER TABLE `category_offer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `delivery_details`
+--
+ALTER TABLE `delivery_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pincode`
@@ -584,19 +643,19 @@ ALTER TABLE `pincode`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -608,7 +667,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `warehouse`
 --
 ALTER TABLE `warehouse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

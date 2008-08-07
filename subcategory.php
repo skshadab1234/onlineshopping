@@ -156,18 +156,18 @@ if (isset($_GET['styles'])) {
               $conn = $pdo->open();
               try {
                 $inc = 6;
-                $stmt = $conn->prepare("SELECT * FROM products WHERE brand_id = :catid");
+                $stmt = $conn->prepare("SELECT *, products.id As prodid FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE brand_id = :catid");
                 $stmt->execute(['catid' => $brandid]);
                 foreach ($stmt as $row) {
                   $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
                   $inc = ($inc == 6) ? 1 : $inc + 1;
-                  if ($inc == 6) echo "<div class='row'>";
+                  if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
                 ?>
-                  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2" style='margin:0;padding:0'>
                     <div class="card">
                       <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-fluid\" width='250px' height='250px'></a> "; ?>
                       <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
-                        <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand'] . " " ?></h5>
+                        <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand_name'] . " " ?></h5>
                         <?php echo "<a style=\"color:black\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
                         <h5 class="text-left" style="font-size:16px"><?php echo "₹ " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                       </div>
@@ -175,11 +175,11 @@ if (isset($_GET['styles'])) {
                         <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
                       </div>
                       <div class="card1" style="position: absolute;top: 212px;background: #fff;padding: 10px;">
-                        <button class="btn btn-primary" style="background:#ff3f6c;border:none;text-transform:uppercase;font-weight:bolder" data-toggle="modal" data-target="#<?php echo $row['id'] ?>1">Quick View</button>
+                        <button class="btn btn-primary" style="background:#ff3f6c;border:none;text-transform:uppercase;font-weight:bolder" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
                         <h5>Sizes : <?php echo "" . $row['size'] . "" ?></h5>
                       </div>
                       <!-- Modal -->
-                      <div id="<?php echo $row['id']; ?>1" class="modal fade" role="dialog">
+                      <div id="<?php echo $row['prodid']; ?>1" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                           <!-- Modal content-->
                           <div class="modal-content">

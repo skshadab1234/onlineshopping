@@ -1,4 +1,6 @@
 <?php
+
+// cart total page
 	include 'includes/session.php';
 
 	if(isset($_SESSION['user'])){

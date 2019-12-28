@@ -1,4 +1,4 @@
-					<?php include 'includes/session.php'; ?>	
+﻿					<?php include 'includes/session.php'; ?>	
 					<?php 
 					$link=mysqli_connect("localhost", "root","");
 					mysqli_select_db($link,"ecomm");

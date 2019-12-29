@@ -12,9 +12,7 @@ mysqli_select_db($link,"ecomm");
 <?php include 'includes/navbar.php'; ?>
 <body class="layout-top-nav" >
 
-<div class="wrapper">
 <div class="content-wrapper" >
-<div class="container-fluid" >
 <div class="swiper-container swiper1" style="width: 100%">
 <div class="swiper-wrapper"	> 
 <div class="swiper-slide"><a href=""><img id="grad1"  ></a></div>
@@ -46,10 +44,10 @@ unset($_SESSION['error']);
 
 <div class="swiper-container swiper2" style="margin-top: 40px;">
 <div class="swiper-wrapper">
-<div class="swiper-slide"><a href=""><img src="images/cards/card3.jpg"  class="img-rounded" ></a></div>
-<div class="swiper-slide"><a href=""><img src="images/cards/card4.jpg"class="img-rounded" ></a></div>
-<div class="swiper-slide"><a href=""><img src="images/cards/card5.png" class="img-rounded" ></a></div>
-<div class="swiper-slide"><a href=""><img src="images/cards/card6.jpg" class="img-rounded" ></a></div>
+<div class="swiper-slide"><a href=""><img src="images/cards/card3.jpg"  class="img-rounded" width="250px"></a></div>
+<div class="swiper-slide"><a href=""><img src="images/cards/card4.jpg"class="img-rounded" width="250px"></a></div>
+<div class="swiper-slide"><a href=""><img src="images/cards/card5.png" class="img-rounded" width="250px"></a></div>
+<div class="swiper-slide"><a href=""><img src="images/cards/card6.jpg" class="img-rounded" width="250px"></a></div>
 </div>
 </div>
 
@@ -371,10 +369,10 @@ components: {
 })
 //# sourceURL=pen.js
 </script>				
-<div class="container-fluid my-3" style="padding: 20px;margin-top: 40px;text-align: center;" >
+<div class="my-3" style="padding: 20px;margin-top: 40px;text-align: center;" >
 <h2 class="mens">Monthly Top Sellers</h2>
 <div style="border-bottom: 5px solid #ff3f6c;;margin: -10px auto;width: 100px;border-radius: 50px"></div>
-<div style="margin-top: 40px">
+<div class="container-fluid " style="margin-top: 40px">
 
 <?php
 $month = date('m');
@@ -506,10 +504,6 @@ $pdo->close();
 
 </div>
 </section>
-
-</div>
-</div>
-
 
 <?php include 'includes/footer.php'; ?>
 </div>

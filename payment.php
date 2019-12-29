@@ -854,11 +854,11 @@ $(".contact-form")
 var targetItem = $(this).parent();
 if ($(this).val()) {
 $(targetItem)
-.find("label")
+.find("label1")
 .css({
 top: "-6px"
 , fontSize: "16px"
-, color: "#33cc66"
+, color: "red"
 });
 }
 });
@@ -1014,7 +1014,7 @@ delivery1 = response;
 });
 }	
 </script>
-<!-- Paypal Express -->
+<!-- Paypal Express
 <script>
 paypal.Button.render({
 env: 'sandbox', // change for production if app is live,
@@ -1131,9 +1131,6 @@ $('#card-ccv').on('focus', function(){
 });
 
 
-/*--------------------
-CodePen Tile Preview
---------------------*/
 setTimeout(function(){
   $('#card-ccv').focus().delay(1000).queue(function(){
     $(this).blur().dequeue();
@@ -1254,4 +1251,4 @@ function myFunction7() {
 
     });
     });
-</script>
+</script> -->

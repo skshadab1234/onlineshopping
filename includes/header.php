@@ -1191,7 +1191,7 @@ var x = setInterval(function() {
   }
 }, 1000);
 </script>
-<script>
+<!-- <script>
 var stateObject = {
 "India": { 
 "Delhi": ["new Delhi - 110001", "North Delhi - 110007"],
@@ -1239,3 +1239,4 @@ districtSel.options[districtSel.options.length] = new Option(district[i], distri
 }
 }
 </script>
+ -->

@@ -1,6 +1,6 @@
 <?php
 
-Class Database1{
+Class Database{
  
 	private $server = "mysql:host=localhost;dbname=ecomm";
 	private $username = "root";
@@ -25,6 +25,6 @@ Class Database1{
  
 }
 
-$pdo = new Database1();
+$pdo = new Database();
  
 ?>

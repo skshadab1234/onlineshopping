@@ -123,6 +123,9 @@ height:100px;
   background:#150d2d;
       border-radius: 5px;
      }
+      .modal-header{
+  background:#150d2d;
+     }
 
   html{
     scroll-behavior: smooth;
@@ -1005,52 +1008,40 @@ margin-top: 30px;
 }
 
 .contact-form .input-block {
-background-color: rgba(255, 255, 255, 0.8);
-border: solid 2px #33cc66;
+     /* background: #7f0dff;
+      background-image: linear-gradient(253deg, rgb(89, 9, 179), rgb(127, 13, 255));
+*/
+border-bottom: solid 2px  white;
 width: 100%;
 height: 40px;
 padding: 25px;
 position: relative;
-margin-bottom: 20px;
-
-border-radius: 10px;
 -moz-transition: all 0.3s ease-out;
 -o-transition: all 0.3s ease-out;
 -webkit-transition: all 0.3s ease-out;
 transition: all 0.3s ease-out;
 }
 
-.contact-form .input-block.focus {
-background-color:   #fff;
-border-radius: 10px;
-border: solid 2px #33cc66;
-}
-
-.contact-form .input-block.textarea {
-height: auto;
-margin-top: 20px;
-}
-
 .contact-form .input-block.textarea .form-control {
 height: auto;
-padding: 20px;
 resize: none;
 }
 
 .contact-form .input-block label {
 padding: 0 10px;
-background: #fff;
 position: absolute;
 left: 8px;
 top: 20px;
-color: #33cc66;
+color:  white;
 display: block;
 margin: 0;
 font-weight: 600;
 z-index: 1;
 font-size: 16px;
+margin-top: 10px;
 line-height: 10px;
 }
+
 .contact-form .input-block label:focus{
 color: #33cc66;
 }
@@ -1060,7 +1051,7 @@ background-color: transparent;
 border: medium none;
 border-radius: 0;
 box-shadow: none;
-color: #333;
+color: white;
 font-size: 18px;
 height: 40px;
 padding: 0;
@@ -1104,51 +1095,6 @@ margin: auto;
   color: white;
   padding: 15px;
 }
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: -10;
-  height: 25px;
-  width: 25px;
-  border-radius:10px; 
-  border: 1px solid #33cc66;
-}
-
-/* On mouse-over, add a grey background color */
-.container1:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container1 input:checked ~ .checkmark {
-  background-color: #33cc66;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container1 input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container1 .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}  
 </style>
 
 </head>

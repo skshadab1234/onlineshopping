@@ -20,71 +20,6 @@ include 'includes/header.php';
 margin-top: 30px;
 }
 
-.contact-form .input-block {
-background-color: rgba(255, 255, 255, 0.8);
-border: solid 2px #33cc66;
-width: 100%;
-height: 40px;
-padding: 25px;
-position: relative;
-margin-bottom: 20px;
-
-border-radius: 10px;
--moz-transition: all 0.3s ease-out;
--o-transition: all 0.3s ease-out;
--webkit-transition: all 0.3s ease-out;
-transition: all 0.3s ease-out;
-}
-
-.contact-form .input-block.focus {
-background-color: 	#fff;
-border-radius: 10px;
-border: solid 2px #33cc66;
-}
-
-.contact-form .input-block.textarea {
-height: auto;
-margin-top: 20px;
-}
-
-.contact-form .input-block.textarea .form-control {
-height: auto;
-padding: 20px;
-resize: none;
-}
-
-.contact-form .input-block label {
-padding: 0 10px;
-background: #fff;
-position: absolute;
-left: 8px;
-top: 20px;
-color: #33cc66;
-display: block;
-margin: 0;
-font-weight: 600;
-z-index: 1;
-font-size: 16px;
-line-height: 10px;
-}
-.contact-form .input-block label:focus{
-color: #33cc66;
-}
-
-.contact-form .input-block .form-control {
-background-color: transparent;
-border: medium none;
-border-radius: 0;
-box-shadow: none;
-color: #333;
-font-size: 18px;
-height: 40px;
-padding: 0;
-position: relative;
-top: -20px;
-z-index: 2;
-}
-
 
 @media (min-width: 768px) {
 .contact-wrap {
@@ -98,10 +33,9 @@ margin: auto;
 padding: 30px 0;
 }
 .features.light-brown {
-background-color: #faf8f5;
+  color: white;
 }
 .features h2.section-title {
-color: #333333;
 font-size: 22px;
 text-transform: uppercase;
 margin: 0;
@@ -109,7 +43,7 @@ text-align: center;
 }
 .features .v-tabs .v-tab-head a,
 .features .v-tabs a.v-tab-head {
-color: #292929;
+color: white  ;
 cursor: pointer;
 text-transform: uppercase;
 display: block;
@@ -604,7 +538,6 @@ Credit Card
 <a class="v-tab-head v-tab-link visible-xs active" data-target="#coreFeatures-tab">PAY WITH INSTAMOJO</a>
 <div id="coreFeatures-tab" class="collapse fade in">
 <ul>
-<li><img src="images/instamojo.png" width="200px"> <i data-toggle="popover" data-placement="bottom" data-content="The term &quot;disk space&quot; is the amount of storage space that is available to save files and data." class="fa fa-question-circle" data-original-title="" title=""></i>
 <?php 
 $output = '';
 try{
@@ -651,7 +584,7 @@ $output .= "
 
 
 <div class=\"col-sm-12\">
-<button type=\"submit\" name=\"submit\"  id=\"submit\">Paynow  &#36; ".number_format($delivery1, 2)."</button>
+<button type=\"submit\" name=\"submit\"  style=\"width:100%;align-items:center;margin:20px 120px\"  class=\"btn-success\">Paynow  &#36; ".number_format($delivery1, 2)."</button>
 </div>
 </form>
 
@@ -671,16 +604,10 @@ $pdo->close();
 </ul>
 </div>
 <a class="v-tab-head v-tab-link visible-xs" data-target="#designingBuildingTools-tab">CASH ON DELIVERY</a>
-<div id="designingBuildingTools-tab" class="collapse fade">
+<div id="designingBuildingTools-tab" class="collapse fade"><br>
   <div class="text-title" style="font-weighteight: bolder;">CASH ON DELIVERY</div>
   <p style="font-size: 12px">Pay when product reached at your home</p>
-<form action="pay.php" method="POST">
-<label class="container1">Cash on Delivery 
-  <input type="checkbox" name="paycod" required="">
-  <span class="checkmark"></span>
-</label>
-<input type="submit" name="cod" id="submit" value="CASH ON DELIVERY">
-</form>
+<input type="submit" name="cod" data-toggle="modal" data-target="#cod" class=" btn-success"  style="margin: 40px 120px;font-size: 14px;max-width: 200px" value="CASH ON DELIVERY">
 </div>
 <a class="v-tab-head v-tab-link visible-xs" data-target="#hostingUtilitiesSettings-tab">CREDIT/DEBIT CARD</a>
 <div id="hostingUtilitiesSettings-tab" class="collapse fade">
@@ -801,7 +728,7 @@ $pdo->close();
       <label for="card-ccv">CCV</label>
       <input type="text" id="card-ccv" maxlength="3" />
     </fieldset>
-    <button class="btn"><i class="fa fa-lock"></i> submit</button>
+    <button id="quickview" style="margin: 10px 100px;background: #7f0dff;border: none;"><i class="fa fa-lock"></i> submit</button>
   </form>
 </div>
 
@@ -843,6 +770,8 @@ echo "
 </div> 
   </div>
 <?php  include 'includes/scripts.php'; ?>
+<?php  include 'includes/sidebar_modal.php'; ?>
+
 	<?php  include 'includes/footer.php'; ?>
 
 </body>
@@ -854,11 +783,11 @@ $(".contact-form")
 var targetItem = $(this).parent();
 if ($(this).val()) {
 $(targetItem)
-.find("label1")
+.find("label")
 .css({
 top: "-6px"
 , fontSize: "16px"
-, color: "red"
+, color: "white"
 });
 }
 });
@@ -1014,7 +943,7 @@ delivery1 = response;
 });
 }	
 </script>
-<!-- Paypal Express
+<!-- Paypal Express -->
 <script>
 paypal.Button.render({
 env: 'sandbox', // change for production if app is live,
@@ -1131,6 +1060,9 @@ $('#card-ccv').on('focus', function(){
 });
 
 
+/*--------------------
+CodePen Tile Preview
+--------------------*/
 setTimeout(function(){
   $('#card-ccv').focus().delay(1000).queue(function(){
     $(this).blur().dequeue();
@@ -1251,4 +1183,4 @@ function myFunction7() {
 
     });
     });
-</script> -->
+</script>

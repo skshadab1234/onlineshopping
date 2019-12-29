@@ -522,7 +522,7 @@ Credit Card
   
 
 
-<div class="container">
+<div class="container-fluid">
 <div class="row">
 <div class="col-sm-8" style="padding: 20px">
 <div class="light-brown features" id="features">
@@ -736,7 +736,7 @@ $pdo->close();
 <a class="v-tab-head v-tab-link visible-xs" data-target="#email-tab">Paypal</a>
 <div id="email-tab" class="collapse fade">
 <ul>
-<li>Pay Using Paypal  <i data-toggle="popover" data-placement="bottom" data-content="Payflow Gateway is PayPal's secure and open payment gateway. ... PayPal Payments Pro merchants use PayPal as their credit card processor, while Payflow Gateway merchants can choose to process their online store payments with any major payment processor, bank, or card association. " class="fa fa-question-circle" data-original-title="" title=""></i></li>
+<li style="color: white">Pay Using Paypal  <i data-toggle="popover" data-placement="bottom" data-content="Payflow Gateway is PayPal's secure and open payment gateway. ... PayPal Payments Pro merchants use PayPal as their credit card processor, while Payflow Gateway merchants can choose to process their online store payments with any major payment processor, bank, or card association. " class="fa fa-question-circle" data-original-title="" title=""></i></li>
 <div style="text-align:center;margin-top:40px">
 <div id='paypal-button'></div>
 </div>

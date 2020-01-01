@@ -508,7 +508,8 @@ $shipdate =  date('M d, Y', strtotime($orderdate. '+5 days'));
 echo  "
 <tr>
 <td style=\"border:1px solid #663355\">ORDID".$orderid."</td>
-<td style=\"border:1px solid #663355\"><button class='btn btn-sm btn-flat btn-info transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
+<td style=\"border:1px solid #663355\"><button id=\"quickview\" style=\"color:black;border:1px solid #5909b3;
+\" class='btn btn-sm btn-flat btn-info transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
 <td style=\"border:1px solid #663355\">".$orderdate."</td>
 <td style=\"border:1px solid #663355\">".$shipdate."</td>
 <td style=\"border:1px solid #663355\">Address: ".$user['address']." <br> State:  ".$user['state']." <br> City: ".$user['city']." <br> Pincode: ".$user['pincode']."</td>
@@ -544,8 +545,8 @@ $pdo->close();
 <br>
 <table class="table table-bordered" id="example2" >
 <thead  style="border:1px solid #663355;">
-<th style="border:1px solid #663355;">Date</th>
-<th style="border:1px solid #663355;">Transaction#</th>
+<th>Date</th>
+<th >Transaction#</th>
 <th style="border:1px solid #663355;">Amount</th>
 <th style="border:1px solid #663355;">Full Details</th>
 
@@ -581,7 +582,7 @@ echo "
 <hr style=\"border:1px solid #ddd\">
 <h4 style=\"border:1px solid #663355;padding:10px\"><span style=\"font-weight:700\">Grand Total</span> :
 <span class=\"pull-right\">&#36; ".number_format($delivery1, 2)."</span></h4></td>
-<td style=\"border:1px solid #663355\"><button class='btn btn-sm btn-flat btn-info transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
+<td style=\"border:1px solid #663355\"><button class='btn btn-sm btn-flat btn-success transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
 </tr>
 ";
 }

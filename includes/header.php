@@ -119,6 +119,24 @@ height: 130px;
 height:100px;
 }   
 }
+<<<<<<< HEAD
+=======
+.modal.fade{
+  backdrop-filter:blur(5px);
+  background:rgba(0,0,0,0.5)
+}
+.modal-content, .modal-header {
+background-image: linear-gradient(254deg, #5909b3, #7f0dff);
+border-radius: 5px;
+}
+
+.modal-body p{
+  color:white;
+}
+      .modal-title{
+        padding:10px 20px;
+     }
+>>>>>>> 72762019e86a29f45e8b056633574c2e5755e9a7
 
 .modal.fade{
 backdrop-filter: blur(4px)

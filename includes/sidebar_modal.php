@@ -139,14 +139,11 @@ transition: 0.9s ease all;
 
 		<!-- cod modal -->
 	
-	<div class="modal fade" id="cod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document" style="margin-top: 250px">
+	<div class="modal fade" id="cod"  role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document" style="margin-top: 200px">
 					<div class="modal-content">
 						<div class="modal-header" style="background: #150d2d;">
 							<h5 style="color: white;font-size: 20px">Are You Sure ?</h5>
-						</div>
-						<div class="modal-body">
-							<h5 style="color: grey">when you click on proceed button you will redirected to Order Confirmation Page..</h5>
 						</div>
 							<div class="modal-footer">
 								<form action="cod.php" method="post">

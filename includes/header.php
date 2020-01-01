@@ -119,6 +119,10 @@ height: 130px;
 height:100px;
 }   
 }
+
+.modal.fade{
+  backdrop-filter: blur(4px)
+}
   .modal-content{
   background:#150d2d;
       border-radius: 5px;

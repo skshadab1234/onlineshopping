@@ -85,7 +85,7 @@ background: red;
 }
 
 
-.btn-success, #quickview, .btn-danger, .btn-primaary  {
+.btn-success, #quickview, .btn-danger, .btn-primary, .btn-info  {
 background: #7f0dff;
 background-image: linear-gradient(253deg, rgb(89, 9, 179), rgb(127, 13, 255));
 color: #ffffff;

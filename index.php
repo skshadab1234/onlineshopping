@@ -5,7 +5,7 @@ mysqli_select_db($link,"ecomm");
 ?>				
 <?php include 'includes/header.php'; ?>
 <head>
-<title>Ecomm1- ONLINE SHOPPING Portal</title>
+<title>Ecommerce- ONLINE SHOPPING Portal</title>
 <link rel="stylesheet" href="build/swiper.min.css">
 
 </head>

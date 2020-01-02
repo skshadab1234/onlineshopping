@@ -5,7 +5,7 @@ mysqli_select_db($link,"ecomm");
 ?>				
 <?php include 'includes/header.php'; ?>
 <head>
-<title>Ecomm1- ONLINE SHOPPING Portal</title>
+<title>Ecommerce- ONLINE SHOPPING Portal</title>
 <link rel="stylesheet" href="build/swiper.min.css">
 
 </head>
@@ -62,13 +62,8 @@ $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
 $stmt->execute();
 foreach($stmt as $row){
 echo " 
-
-
 <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/men.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
 <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\" >Men</a></h2></div>
-
-
-
 
 ";}?>
 <?php 
@@ -76,22 +71,16 @@ $stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
 $stmt->execute();
 foreach($stmt as $row){
 echo " 
-
 <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/women.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
 <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Women</a></h2></div>
-
-
 ";}?>
 <?php 
 $stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
 $stmt->execute();
 foreach($stmt as $row){
 echo " 
-
 <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/kids.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
 <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Kids</a></h2></div>
-
-
 ";}?>
 </div>
 </div>
@@ -102,10 +91,8 @@ echo "
 <h2 class="mens">Deal of the Week <br><br>
 <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
 <span style="border: 1px solid white;padding: 10px;line-height: 40px;width: 400px"><i class="fa fa-clock-o" style="color: white;padding: 10px"></i><span id="demo" class="mens"></span></span></h2>
-
 </div>
 </div>
-
 <div id="clock">
 <div id="carousel3d1">
 <carousel-3d :perspective="0" :space="400" :display="10" :controls-visible="true" :controls-prev-html="'❬'" :controls-next-html="'❭'" :controls-width="30"  :controls-height="60" :clickable="true" :autoplay="true" :autoplay-timeout="3000" height="400px">

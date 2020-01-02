@@ -23,10 +23,10 @@ $delivery = 15.00;
 $delivery1 = $order1 + $delivery;
 $output['list'] .= "
 <tr class='prepend_items'>
-<td style=\"border:1px solid #663355;padding:10px\"><a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img\" width='100px'  class=\"img-rounded\" style=\"border-radius:10px;box-shadow: 0px 8px 60px -10px rgba(13, 128, 39, 0.6);\"></a> </td>
-<td style=\"border:1px solid #663355;padding:10px\"><a href='product.php?product=".$row['slug']."' style=\"color:white\">".$row['name']."</a> </td>
-<td style=\"border:1px solid #663355;padding:10px\">".$row['quantity']."</td>
-<td style=\"border:1px solid #663355;width:100%\">
+<td ><a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img\" width='100px'  class=\"img-rounded\" style=\"border-radius:10px;box-shadow: 0px 8px 60px -10px rgba(13, 128, 39, 0.6);\"></a> </td>
+<td ><a href='product.php?product=".$row['slug']."' style=\"color:white\">".$row['name']."</a> </td>
+<td >".$row['quantity']."</td>
+<td >
 <h5 style=\"font-weight:700\">Product Price: &#36; ".number_format($row['price'], 2)." * ".$row['quantity']." = &#36; ".number_format($subtotal, 2)."</span> <br>
 <h5 style=\"font-weight:700\">Bag Discount: <span class=\"pull-right\">&#36; ".number_format($order, 2)."</h5>
 <h5 style=\"font-weight:700\">Bag Total :<span class=\"pull-right\">&#36; ".number_format($order1, 2)."</h5>

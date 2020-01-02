@@ -15,6 +15,8 @@ include('includes/scripts.php');
 
 
 ?>
+
+<head><title>TRANSACTION HISTORY</title></head>
 <body class="layout-top-nav">
 	
 <div class="content-wrapper" style="padding: 50px">

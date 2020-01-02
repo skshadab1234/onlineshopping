@@ -46,10 +46,8 @@
 <!-- Transaction History -->
 <div class="modal fade" id="transaction">
     <div class="modal-dialog">
-        <div class="modal-content"  style="background: rgba(0,0,0,0.8);">
-            <div class="modal-header" style="background: rgba(0,0,0,0.8);" >
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
+        <div class="modal-content"  >
+            <div class="modal-header"  >
               <h4 class="modal-title" style="color: white"><b>Transaction Full Details</b></h4>
             </div>
             <div class="modal-body table-responsive text-nowrap" style="color: white">
@@ -82,10 +80,8 @@
 <!-- Edit Profile -->
 <div class="modal fade" id="edit">
     <div class="modal-dialog">
-        <div class="modal-content" style="background: #0d0620">
-            <div class="modal-header" style="background: #0d0620">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
+        <div class="modal-content">
+            <div class="modal-title" >
               <h4 class="modal-title" style="color: white"><b>Update Account</b></h4>
             </div>
             <div class="modal-body" style="color: white">

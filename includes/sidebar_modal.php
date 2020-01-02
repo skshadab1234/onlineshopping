@@ -139,24 +139,61 @@ transition: 0.9s ease all;
 
 		<!-- cod modal -->
 	
-	<div class="modal fade" id="cod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document" style="margin-top: 250px">
-					<div class="modal-content">
-						<div class="modal-header" style="background: #150d2d;">
-							<h5 style="color: white;font-size: 20px">Are You Sure ?</h5>
-						</div>
-						<div class="modal-body">
-							<h5 style="color: grey">when you click on proceed button you will redirected to Order Confirmation Page..</h5>
-						</div>
-							<div class="modal-footer">
-								<form action="cod.php" method="post">
-								<button id="quickview"  data-dismiss="modal" aria-label="Close">Close</button>
-								<button type="submit" class="btn-success" name="cod" >Proceed</button>
-								</form>
-							</div>
-					</div>
-			</div>
-					</div>
+<div class="modal fade" id="cod" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document" style="margin-top: 250px">
+<div class="modal-content">
+<div class="modal-header" style="background: #150d2d;">
+<h5 style="color: white;font-size: 20px;text-transform:uppercase;letter-spacing:1px;font-weight:700">Cash oN dELIVERY....?</h5>
+</div>
+
+<div class="modal-footer">
+<form action="cod.php" method="post">
+<?php 
+$output = '';
+try{
+$total = 0;
+$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
+$stmt->execute(['user'=>$user['id']]);
+foreach($stmt as $row){
+$image = (!empty($row['photo'])) ? 'images/'.$row['photo'] : 'images/noimage.jpg';
+$product = $row['name'];
+$subtotal = $row['price']*$row['quantity'];
+$total += $subtotal;
+$order = $total * ($row['old_price']-$row['price'])/  100;
+$order1 = $total - $order;
+$delivery = 15.00;
+$delivery1 = $order1 + $delivery;
+$randomNum=substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 11);
+
+$output ="";
+
+$output .= "
+
+<form action=\"pay.php\" class=\"contact-form\" id=\"myForm\" method=\"POST\" >
+<div class=\"col-sm-6\">
+";?>
+<input class="form-control" type="hidden" required="" name="product_name" value="$product">
+<input class="form-control" type="hidden" required="" name="delivery" value="$delivery1">
+
+<button id="quickview"  data-dismiss="modal" aria-label="Close">NO</button>
+<button type="submit" class="btn-success" name="cod" >YES</button>
+<?php 
+
+}
+}
+catch(PDOException $e){
+$output .= $e->getMessage();
+}
+echo($output);
+
+$pdo->close();
+
+?>
+</form>
+</div>
+</div>
+</div>
+</div>
 
 <!-- mobile view sidebar navigation bar -->
 

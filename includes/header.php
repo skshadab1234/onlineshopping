@@ -120,8 +120,8 @@ height:100px;
 }   
 }
 .modal.fade{
-  backdrop-filter:blur(5px);
-  background:rgba(0,0,0,0.5)
+backdrop-filter:blur(5px);
+background:rgba(0,0,0,0.5)
 }
 
 .modal-content, .modal-header {
@@ -130,11 +130,11 @@ border-radius: 5px;
 }
 
 .modal-body p{
-  color:white;
+color:white;
 }
-      .modal-title{
-        padding:10px 20px;
-     }
+.modal-title{
+padding:10px 20px;
+}
 
 .modal.fade{
 backdrop-filter: blur(4px)
@@ -1116,11 +1116,7 @@ padding: 15px;
 
 <script>
 // Set the date we're counting down to
-<<<<<<< HEAD
-var countDownDate = new Date("jan 2, 2020 09:00:00 pm").getTime();
-=======
 var countDownDate = new Date("jan 3, 2020 09:00:00 AM").getTime();
->>>>>>> f5e1b64faae94c4631ed006e42b9bd0a3035f71b
 // Update the count down every 1 second
 var x = setInterval(function() {
 

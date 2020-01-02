@@ -78,8 +78,8 @@
   <div class="modal-dialog" >
 
     <!-- Modal content-->
-    <div class="modal-content" style=" background: #150d2d;">
-      <div class="modal-header" style=" background: #150d2d;">
+    <div class="modal-content" >
+      <div class="modal-header">
         <?php 
 echo " <div class=\"ribbon\">
       <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>

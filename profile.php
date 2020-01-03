@@ -54,6 +54,8 @@ if(isset($_POST['update'])){
 		}
 	}
 	$pdo->close();
+
+
 ?>
 <?php include 'includes/header.php'; ?>
 <head>

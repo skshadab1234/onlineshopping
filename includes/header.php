@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -120,7 +120,7 @@ height:100px;
 }   
 }
 .modal.fade{
-backdrop-filter:blur(2px);
+backdrop-filter:blur(5px);
 background:rgba(0,0,0,0.5)
 }
 
@@ -136,11 +136,12 @@ color:white;
 padding:10px 20px;
 }
 
+.modal.fade{
+backdrop-filter: blur(4px)
+}
 html{
 scroll-behavior: smooth;
-user-select:none;
 }
-
 
 .search-icon {
 position: relative;

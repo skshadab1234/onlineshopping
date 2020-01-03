@@ -312,7 +312,7 @@ echo "
 
 				<div style="margin: 20px">
 					<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-circle-left" style="font-size: 20px;opacity: 2;color: white;margin-top: 7px"></i></span></button>
-					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="cart_view.php" style="color: white;text-transform: uppercase;"><span class="cart_count" ></span>   Product In your cart</a></span>
+					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="cart_view.php" style="color: white;text-transform: uppercase;"><span class="cart_count" style="color: red"></span>   Product In your cart</a></span>
 				</div>
 				<hr style="color: grey">
 				<div class="modal-body">

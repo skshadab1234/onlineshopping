@@ -491,7 +491,6 @@ $pdo->close();
 </div>
 </section>
 
-<<<<<<< HEAD
 <!-- if you want to display modal on page load  -->
 <!-- <div id="myModal" class="modal" style="background-image: linear-gradient(254deg, #5909b3, #7f0dff);">
     <div class="modal-dialog"  style="width: 100%;margin: 0;padding: 0">
@@ -501,8 +500,6 @@ $pdo->close();
     </div>
 </div> -->
 <!-- //end of modal display -->
-=======
->>>>>>> 2495ee6c8f67dd58604917d1a473a6eb94a737a1
 <?php include 'includes/footer.php'; ?>
 </div>
 

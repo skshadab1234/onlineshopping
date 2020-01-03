@@ -129,6 +129,7 @@ background-image: linear-gradient(254deg, #5909b3, #7f0dff);
 border-radius: 5px;
 }
 
+
 .modal-body p{
 color:white;
 }

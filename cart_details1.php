@@ -42,7 +42,7 @@
 	<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>    
 	</div>	
 	<div class=\"col-sm-7 col-xs-7 col-md-7 col-lg-7\">
-	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product.php?product=".$row['slug']."'>".$row['brand']."</a></span><br><a style=\"font-size:12px;color:white;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a><br><span style=\"font-weight:bold;color:grey\">&#36; ".number_format($row['price'], 2)." /- Only</span></p>
+	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:white;\" href='product.php?product=".$row['slug']."'>".$row['brand']."</a></span><br><a style=\"font-size:12px;color:white;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a><br><span style=\"font-weight:bold;color:grey\">&#36; ".number_format($row['price'], 2)." /- Only</span></p>
 	<div class='input-group' >
 	<span class='input-group-btn' >
 	<button type='button' id='minus' class='btn  btn-flat minus' data-id='".$row['cartid']."'><i class='fa fa-minus'></i></button>
@@ -172,5 +172,6 @@
 	echo json_encode($output);
 
 	?>
+
 
 

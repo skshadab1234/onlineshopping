@@ -156,7 +156,7 @@
 	</slide>
 	<slide :index="6">
 	<?php 
-	$res=mysqli_query($link,"select * from products where id = 3");
+	$res=mysqli_query($link,"select * from products where id = 11");
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">

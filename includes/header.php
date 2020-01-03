@@ -141,7 +141,6 @@ scroll-behavior: smooth;
 user-select:none;
 }
 
-
 .search-icon {
 position: relative;
 float: right;

@@ -346,7 +346,6 @@ echo "
 
 <!-- search modal-dialog -->
 
-<!-- Delete -->
 <div class="modal fade modal-fullscreen" id="search" style="padding: 0 !important;background: #0d0620;opacity: 0.9;height: 100vh">
     <div class="modal-dialog" style="width: 100%;margin: 0;padding: 0;">
             <div class="modal-header" style="color: black;position: relative;height: 70px;opacity: 1" >

@@ -9,10 +9,9 @@ mysqli_select_db($link,"ecomm");
 <link rel="stylesheet" href="build/swiper.min.css">
 
 </head>
-<?php include 'includes/navbar.php'; ?>
 <body class="layout-top-nav" >
-
-<div class="content-wrapper" >
+<?php include 'includes/navbar.php'; ?>
+<div class="content-wrapper" id="content" style="position:relative">
 <div class="swiper-container swiper1" style="width: 100%">
 <div class="swiper-wrapper"	> 
 <div class="swiper-slide"><a href=""><img id="grad1"  ></a></div>
@@ -492,8 +491,15 @@ $pdo->close();
 </div>
 </section>
 
-
-
+<!-- if you want to display modal on page load  -->
+<!-- <div id="myModal" class="modal" style="background-image: linear-gradient(254deg, #5909b3, #7f0dff);">
+    <div class="modal-dialog"  style="width: 100%;margin: 0;padding: 0">
+        <div class="modal-content1">
+<h5 class="mens"  style="margin:250px 450px">Welcome to ECOMM</h5>           
+        </div>
+    </div>
+</div> -->
+<!-- //end of modal display -->
 <?php include 'includes/footer.php'; ?>
 </div>
 
@@ -544,7 +550,19 @@ interval: false,
 });
 </script>
 
+<!-- <script>
+   setTimeout(function() {
+       
+    $('#myModal').modal('show');
+}, 0000);
 
+
+setTimeout(function() {
+    $('#myModal').modal('hide');
+}, 5000);
+
+$('#myModal').delay(4000).fadeOut(6000);
+</script> -->
 </body>
 
 </html>

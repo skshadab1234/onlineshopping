@@ -2,8 +2,8 @@
 <!-- Track Order -->
 <div class="modal fade" id="track" >
     <div class="modal-dialog">
-        <div class="modal-content" style="background: #0d0620"> 
-            <div class="modal-header" style="background: #0d0620">
+        <div class="modal-content" > 
+            <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" style="color: white"><b>Track Your Order</b></h4>
@@ -46,7 +46,7 @@
 <!-- Transaction History -->
 <div class="modal fade" id="transaction">
     <div class="modal-dialog">
-        <div class="modal-content"  >
+        <div class="modal-content" style="padding:10px" >
             <div class="modal-header"  >
               <h4 class="modal-title" style="color: white"><b>Transaction Full Details</b></h4>
             </div>
@@ -55,17 +55,17 @@
                 Date: <span id="date"></span>
                 <span class="pull-right">Transaction#: <span id="transid"></span></span> 
               </p>
-              <table class="table table-bordered" style="border:1px solid #663355;padding:10px">
+              <table class="table table-bordered"  style="padding:10px">
                 <thead>
-                  <th style="border:1px solid #663355;padding:10px">Product Image</th>
-                  <th style="border:1px solid #663355;padding:10px">Product</th>
-                  <th style="border:1px solid #663355;padding:10px">Quantity</th>
-                  <th style="border:1px solid #663355;padding:10px">Amount Paid </th>
+                  <th >Product Image</th>
+                  <th>Product</th>
+                  <th >Quantity</th>
+                  <th>Amount Paid </th>
                 </thead>
                 <tbody id="detail">
                   <tr>
-                    <td colspan="3" align="right" style="border:1px solid #663355;s" ><h4 style="color: white;letter-spacing: 1px;"><b>Total</b></h4></td><br>
-                    <td style="border:1px solid #663355;"><h4><span id="total" style="padding: 4px"></span></h4></td>
+                    <td colspan="3" align="right"><h4 style="color: white;letter-spacing: 1px;"><b>Total</b></h4></td><br>
+                    <td ><h4><span id="total" style="padding: 4px"></span></h4></td>
                   </tr>
                 </tbody>
               </table>

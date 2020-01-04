@@ -119,12 +119,20 @@ height: 130px;
 height:100px;
 }   
 }
-  .modal-content{
-  background:#150d2d;
-      border-radius: 5px;
-     }
-      .modal-header{
-  background:#150d2d;
+.modal.fade{
+  backdrop-filter:blur(5px);
+  background:rgba(0,0,0,0.5)
+}
+.modal-content, .modal-header {
+background-image: linear-gradient(254deg, #5909b3, #7f0dff);
+border-radius: 5px;
+}
+
+.modal-body p{
+  color:white;
+}
+      .modal-title{
+        padding:10px 20px;
      }
 
   html{

@@ -102,8 +102,8 @@ echo "
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content" style="background: #0d0620">
-      <div class="modal-header" style="background: #0d0620">
+    <div class="modal-content" >
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:white;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>"; ?></h4>
       </div>

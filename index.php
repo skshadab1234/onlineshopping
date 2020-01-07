@@ -9,8 +9,9 @@ mysqli_select_db($link,"ecomm");
 <link rel="stylesheet" href="build/swiper.min.css">
 
 </head>
-<body class="layout-top-nav" >
 <?php include 'includes/navbar.php'; ?>
+<body class="layout-top-nav" >
+<div class="wrapper">
 <div class="content-wrapper" id="content" style="position:relative">
 <div class="swiper-container swiper1" style="width: 100%">
 <div class="swiper-wrapper"	> 
@@ -488,6 +489,7 @@ $pdo->close();
 </div>
 </div>
 
+</div>
 </div>
 </section>
 

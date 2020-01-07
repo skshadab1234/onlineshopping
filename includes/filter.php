@@ -52,6 +52,72 @@
     background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,252,252,0.08) 5px, rgba(252,252,252,0.08) 10px) !important; 
     }
 
+/* The container */
+.container-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.container-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    BORDER-RADIUS:50%;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
     </style>
 
     <link rel="stylesheet" href="range.css">
@@ -74,7 +140,6 @@
     <hr>
     <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Brand</h5>
 
-    <div class="list-group">
     <?php
 
     $query = "SELECT DISTINCT brand FROM products ORDER BY brand
@@ -85,16 +150,14 @@
     foreach($result as $row)
     {
     ?>
-    <div class="list-group-item checkbox">
-    <label class="container1">  &nbsp;&nbsp;  <?php echo $row['brand']; ?>
-    <input type="checkbox" name="paycod" required="">
-    <span class="checkmark"></span>
-    </div>
+    <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['brand']; ?></span>
+  <input type="checkbox" >
+  <span class="checkmark"></span>
+</label>
     <?php    
     }
 
     ?>
-    </div>
 
     <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Category</h5>
 
@@ -109,11 +172,10 @@
     foreach($result as $row)
     {
     ?>
-    <div class="list-group-item checkbox">
-    <label class="container1" > &nbsp;&nbsp; <?php echo $row['cat_slug']; ?>
-    <input type="checkbox" name="paycod" required="">
-    <span class="checkmark"></span>
-    </div>
+    <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['cat_slug']; ?></span>
+  <input type="checkbox" >
+  <span class="checkmark"></span>
+</label>
     <?php    
     }
 
@@ -134,11 +196,10 @@
     foreach($result as $row)
     {
     ?>
-    <div class="list-group-item checkbox">
-    <label class="container1">  &nbsp;&nbsp;  <?php echo $row['color']; ?> 
-    <input type="checkbox" name="paycod" required="">
-    <span class="checkmark"></span>
-    </div>
+   <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['color']; ?></span>
+  <input type="checkbox" >
+  <span class="checkmark"></span>
+</label>
     <?php    
     }
 
@@ -158,11 +219,10 @@
     foreach($result as $row)
     {
     ?>
-    <div class="list-group-item checkbox">
-    <label class="container1">  &nbsp;&nbsp;  <?php echo $row['discount']; ?> OFF
-    <input type="checkbox" name="paycod" required="">
-    <span class="checkmark"></span>
-    </div>
+   <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['discount']; ?>  OFF</span>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
     <?php    
     }
 

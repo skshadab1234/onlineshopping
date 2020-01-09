@@ -19,7 +19,6 @@
 	<img src='".$image."' class='img-circle' alt='User Image' style=\"width:50px;height:50px;box-shadow: 0px 2px 0px 0px red\">
 							</div>
 							<h4>
-		                        <b>".$row['catname']."</b>
 		                        <small>&times; ".$row['quantity']."</small>
 		                    </h4>
 		                    <p>".$productname."</p>

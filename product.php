@@ -121,13 +121,11 @@
 		<section class="content">
 		<div class="row">
 		<div class="col-sm-12">
-
 		<div class="row">
 		<div class="col-sm-6 sk" >
 		<div class="img-magnifier-container">
 		<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/'.$product['photo'] : 'images/noimage.jpg'; ?>" >
-		
-		<br><br></div>
+		</div>
 		</div>
 		<div class="col-sm-6" style="padding: 20px">
 		<h4 style="font-weight: 600;color: white">Product Code : <span ><?php echo $product['prodid']; ?></span></h4>

@@ -1,21 +1,22 @@
-	<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "ecomm";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);?>
-
-<?php
-//error_reporting(0);
-include('includes/session.php');?>
-
+<?php 
+	include('includes/session.php');
+	if(strlen($_SESSION['user'])==0)
+		{   
+	header('location:index.php');
+	}
+ ?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
 <head>
 <title>
-Profile
+Orders <?php 
+	if(isset($_SESSION['user'])){
+		echo " - ".$user['firstname']." ".$user['lastname']."";
+	}else{
+		echo "";
+	}
+	?>
 </title>
 <body class="hold-transition skin-blue layout-top-nav">
 	<div class="content-wrapper" style="padding: 50px">
@@ -51,7 +52,7 @@ $order = $total * ($row2['old_price']-$row2['price'])/  100;
 $order1 = $total - $order;
 $delivery = 15.00;
 $delivery1 = $order1 + $delivery;
-$orderid = rand(1,1432);
+$orderid = $row['id'];
 $orderdate = date('M d, Y', strtotime($row['sales_date']));
 $shipdate =  date('M d, Y', strtotime($orderdate. '+5 days'));
 }
@@ -101,10 +102,7 @@ url: 'tracking.php',
 data: {id:id},
 dataType: 'json',
 success:function(response){
-// $('#date').html(response.date);
-// $('#transid').html(response.transaction);
-// $('#detail').prepend(response.list);
-// $('#total').html(response.total);
+$('#order').html(response.order);
 }
 });
 });
@@ -114,33 +112,6 @@ $('.prepend_items').remove();
 });
 });
 </script>
-
-<script>
-$(function(){
-$(document).on('click', '.cancel', function(e){
-e.preventDefault();
-$('#cancel').modal('show');
-var id = $(this).data('id');
-$.ajax({
-type: 'POST',
-url: 'cancel.php',
-data: {id:id},
-dataType: 'json',
-success:function(response){
-$('#date').html(response.date);
-$('#transid').html(response.transaction);
-$('#detail').prepend(response.list);
-$('#total').html(response.total);
-}
-});
-});
-
-$("#transaction").on("hidden.bs.modal", function () {
-$('.prepend_items').remove();
-});
-});
-</script>
-
 
 <script>
 $(function(){

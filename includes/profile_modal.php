@@ -4,45 +4,28 @@
     <div class="modal-dialog">
         <div class="modal-content" > 
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" style="color: white"><b>Track Your Order</b></h4>
             </div>
             <div class="modal-body" style="color: white">
-              <?php include './tracking.php'; ?>
-            </div>
+            <span class="pull-right">   Order Id: <span> ORDID<span id="order"></span></span></span>
+              <br><br><br>
+<table class="table table-striped text-center"  width="100%">
+<thead>
+<th>Processed</th>
+<th>Date</th>
+<th>Location</th>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" id="quickview" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
             </div>
         </div>
     </div>
-</div>
-<!-- Delete -->
-<div class="modal fade" id="cancel">
-    <div class="modal-dialog">
-        <div class="modal-content" style="background: #0d0620">
-            <div class="modal-header" style="background: #0d0620">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" style="color: white"><b>Deleting...</b></h4>
-            </div>
-            <div class="modal-body" style="color: white">
-              <form class="form-horizontal" method="POST" action="order_cancel.php">
-                <input type="hidden" class="userid" name="id">
-                <div class="text-center">
-                    <p>Cancel Order</p>
-                    <h2 class="bold fullname"></h2>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-flat pull-left" id="quickview"  data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-              <button type="submit" class="btn btn-danger btn-flat"  id="quickview" name="delete"><i class="fa fa-trash"></i> Delete</button>
-              </form>
-            </div>
-        </div>
-    </div>
-</div>
-
+</div>  
 <!-- Transaction History -->
 <div class="modal fade" id="transaction">
     <div class="modal-dialog">

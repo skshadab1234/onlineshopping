@@ -1,14 +1,10 @@
-	<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "ecomm";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);?>
-
 <?php
 //error_reporting(0);
 include('includes/session.php');
+if(strlen($_SESSION['user'])==0)
+		{   
+	header('location:index.php');
+	}
 include('includes/header.php');
 include('includes/navbar.php');
 include('includes/scripts.php');
@@ -16,7 +12,12 @@ include('includes/scripts.php');
 
 ?>
 
-<head><title>TRANSACTION HISTORY</title></head>
+<head><title>Transaction_Hist <?php 
+	if(isset($_SESSION['user'])){
+		echo " - ".$user['firstname']." ".$user['lastname']."";
+	}else{
+		echo "";
+	}?></title></head>
 <body class="layout-top-nav">
 	
 <div class="content-wrapper" style="padding: 50px">

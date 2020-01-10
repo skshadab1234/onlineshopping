@@ -88,7 +88,10 @@
 		}
 		</script>
 		<style type="text/css">
-
+ 
+		#myimage{
+			width:400px;
+			}
 		.img-magnifier-container {
 		position:relative;
 		}
@@ -123,7 +126,7 @@
 		<div class="col-sm-12">
 		<div class="row">
 		<div class="col-sm-6 sk" >
-		<div class="img-magnifier-container">
+		<div class="img-magnifier-container text-center">
 		<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/'.$product['photo'] : 'images/noimage.jpg'; ?>" >
 		</div>
 		</div>
@@ -154,7 +157,7 @@
 		</span>
 		<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
 		</div>
-		<button type="submit" class="btn btn-primary btn-lg btn-flat" data-toggle="modal" data-target="#cart1" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+		<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" data-toggle="modal" data-target="#cart1" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 		</div>
 		<br><br>
 		<div class="callout" id="callout" style="display:none">

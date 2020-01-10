@@ -1,15 +1,16 @@
-<?php
-if(isset($_SESSION['user'])){
-header('location: index.php');
-}
-?>
+
 <?php 
 include 'includes/session.php';
 
+
+?>
+<?php
+if(!isset($_SESSION['user'])){
+header('location: index.php');
+}
 include 'includes/header.php';
 
 ?>
-
 
 <head>
 <title>Payment</title>
@@ -19,8 +20,6 @@ include 'includes/header.php';
 .contact-form {
 margin-top: 30px;
 }
-
-
 @media (min-width: 768px) {
 .contact-wrap {
 width: 60%;
@@ -518,10 +517,6 @@ Credit Card
     <li  style="display: inline-block;padding: 10px 10px" title="step 3"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;cursor: not-allowed;">Order Confirmation</p></li>
   </ul>
   </div>
-
-  
-
-
 <div class="container-fluid">
 <div class="row">
 <div class="col-sm-8" style="padding: 20px">

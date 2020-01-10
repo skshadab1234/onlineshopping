@@ -15,7 +15,9 @@
 			if($row['numrows'] > 0){
 				if($row['status']){
 					if(password_verify($password, $row['password'])){
-						if($row['type']){
+						if($row['type'] > 1){
+							$_SESSION['deliveryboy'] = $row['id'];
+						}elseif($row['type']){
 							$_SESSION['admin'] = $row['id'];
 						}
 						else{

@@ -8,7 +8,13 @@
 	<?php include 'includes/navbar.php'; ?>
 
 	<head>
-	<title>Shopping Cart</title>
+	<title>Cart <?php 
+	if(isset($_SESSION['user'])){
+		echo " - ".$user['firstname']." ".$user['lastname']."";
+	}else{
+		echo "";
+	}
+	?></title>
 
 	</head>
 	<body class="layout-top-nav">

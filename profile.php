@@ -1,11 +1,3 @@
-	<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "ecomm";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);?>
-
 <?php
 //error_reporting(0);
 include('includes/session.php');
@@ -60,7 +52,13 @@ if(isset($_POST['update'])){
 <?php include 'includes/header.php'; ?>
 <head>
 <title>
-Profile
+Profile <?php 
+	if(isset($_SESSION['user'])){
+		echo " - ".$user['firstname']." ".$user['lastname']."";
+	}else{
+		echo "";
+	}
+	?>
 </title>
 <style type="text/css">
 
@@ -487,49 +485,46 @@ unset($_SESSION['success']);
 $conn = $pdo->open();
 
 try{
-$stmt = $conn->prepare("SELECT * FROM sales WHERE user_id=:user_id ORDER BY sales_date DESC");
-$stmt->execute(['user_id'=>$user['id']]);
-foreach($stmt as $row){
-$stmt2 = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id WHERE sales_id=:id");
-$stmt2->execute(['id'=>$row['id']]);
-$total = 0;
-foreach($stmt2 as $row2){
-$subtotal = $row2['price']*$row2['quantity'];
-$total += $subtotal;
-$order = $total * ($row2['old_price']-$row2['price'])/  100;
-$order1 = $total - $order;
-$delivery = 15.00;
-$delivery1 = $order1 + $delivery;
-$orderid = rand(1,1432);
-$orderdate = date('M d, Y', strtotime($row['sales_date']));
-$shipdate =  date('M d, Y', strtotime($orderdate. '+5 days'));
-}
-
-echo  "
-<tr>
-<td style=\"border:1px solid #663355\">ORDID".$orderid."</td>
-<td style=\"border:1px solid #663355\"><button id=\"quickview\" style=\"color:black;border:1px solid #5909b3;
-\" class='btn btn-sm btn-flat btn-info transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
-<td style=\"border:1px solid #663355\">".$orderdate."</td>
-<td style=\"border:1px solid #663355\">".$shipdate."</td>
-<td style=\"border:1px solid #663355\">Address: ".$user['address']." <br> State:  ".$user['state']." <br> City: ".$user['city']." <br> Pincode: ".$user['pincode']."</td>
-
-<td style=\"border:1px solid #663355\">
-<button class='btn btn-sm btn-flat btn-success track' data-id='".$row['id']."'>
-<i class='fa fa-map-marker' style=\"font-size:14px;font-weight:700\"></i> 
-<span style=\"font-size:14px;font-weight:700\">Track</span></button>
-
-</tr>	
-";
-}
-
-}
-
-catch(PDOException $e){
-echo "There is some problem in connection: " . $e->getMessage();
-}
-
-$pdo->close();
+	$stmt = $conn->prepare("SELECT * FROM sales WHERE user_id=:user_id ORDER BY sales_date DESC");
+	$stmt->execute(['user_id'=>$user['id']]);
+	foreach($stmt as $row){
+	$stmt2 = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id WHERE sales_id=:id");
+	$stmt2->execute(['id'=>$row['id']]);
+	$total = 0;
+	foreach($stmt2 as $row2){
+	$subtotal = $row2['price']*$row2['quantity'];
+	$total += $subtotal;
+	$order = $total * ($row2['old_price']-$row2['price'])/  100;
+	$order1 = $total - $order;
+	$delivery = 15.00;
+	$delivery1 = $order1 + $delivery;
+	$orderid = $row['id'];
+	$orderdate = date('M d, Y', strtotime($row['sales_date']));
+	$shipdate =  date('M d, Y', strtotime($orderdate. '+5 days'));
+	}
+	
+	echo  "
+	<tr>
+	<td style=\"border:1px solid #663355;text-align:center\">ORDID".$orderid."</td>
+	<td style=\"border:1px solid #663355;text-align:center\"><button class='btn btn-sm btn-success  transact'  data-id='".$row['id']."'><i class='fa fa-search' style=\"font-size:14px\"></i> View</button></td>
+	<td style=\"border:1px solid #663355;text-align:center\">".$orderdate."</td>
+	<td style=\"border:1px solid #663355;text-align:center\">".$shipdate."</td>
+	<td style=\"border:1px solid #663355;text-align:center\">Address: ".$user['address']." <br> State:  ".$user['state']." <br> City: ".$user['city']." <br> Pincode: ".$user['pincode']."</td>
+	<td style=\"border:1px solid #663355;text-align:center\">
+	<button class='btn btn-sm btn-flat btn-success track' data-id='".$row['id']."'>
+	<i class='fa fa-map-marker' style=\"font-size:14px;font-weight:700\"></i> 
+	<span style=\"font-size:14px;font-weight:700\">Track</span></button>
+	</tr>	
+	";
+	}
+	
+	}
+	
+	catch(PDOException $e){
+	echo "There is some problem in connection: " . $e->getMessage();
+	}
+	
+	$pdo->close();
 ?>
 </tbody>
 </table>
@@ -545,8 +540,8 @@ $pdo->close();
 <br>
 <table class="table table-bordered" id="example2" >
 <thead  style="border:1px solid #663355;">
-<th>Date</th>
-<th >Transaction#</th>
+<th style="border:1px solid #663355;">Date</th>
+<th style="border:1px solid #663355;" >Transaction#</th>
 <th style="border:1px solid #663355;">Amount</th>
 <th style="border:1px solid #663355;">Full Details</th>
 
@@ -680,10 +675,7 @@ url: 'tracking.php',
 data: {id:id},
 dataType: 'json',
 success:function(response){
-// $('#date').html(response.date);
-// $('#transid').html(response.transaction);
-// $('#detail').prepend(response.list);
-// $('#total').html(response.total);
+$('#order').html(response.order);
 }
 });
 });
@@ -703,32 +695,6 @@ var id = $(this).data('id');
 $.ajax({
 type: 'POST',
 url: 'transaction.php',
-data: {id:id},
-dataType: 'json',
-success:function(response){
-$('#date').html(response.date);
-$('#transid').html(response.transaction);
-$('#detail').prepend(response.list);
-$('#total').html(response.total);
-}
-});
-});
-
-$("#transaction").on("hidden.bs.modal", function () {
-$('.prepend_items').remove();
-});
-});
-</script>
-
-<script>
-$(function(){
-$(document).on('click', '.cancel', function(e){
-e.preventDefault();
-$('#cancel').modal('show');
-var id = $(this).data('id');
-$.ajax({
-type: 'POST',
-url: 'cancel.php',
 data: {id:id},
 dataType: 'json',
 success:function(response){

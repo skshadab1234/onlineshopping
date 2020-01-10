@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 08:01 PM
+-- Generation Time: Jan 10, 2020 at 09:47 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -133,7 +133,11 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `sales_id`, `product_id`, `quantity`) VALUES
-(8, 7, 16, 1);
+(8, 7, 16, 1),
+(9, 8, 14, 1),
+(10, 9, 1, 1),
+(11, 10, 1, 1),
+(12, 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -174,19 +178,12 @@ INSERT INTO `google_users` (`id`, `clint_id`, `name`, `last_name`, `google_email
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
---
--- Error reading structure for table ecomm.orders: #1932 - Table 'ecomm.orders' doesn't exist in engine
--- Error reading data for table ecomm.orders: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `ecomm`.`orders`' at line 1
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ordertrackhistory`
 --
 
 CREATE TABLE `ordertrackhistory` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `orderId` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `remark` mediumtext,
@@ -233,7 +230,7 @@ CREATE TABLE `products` (
   `size` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `slug` varchar(200) NOT NULL,
-  `old price` varchar(10) NOT NULL,
+  `old_price` varchar(10) NOT NULL,
   `price` double NOT NULL,
   `discount` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
@@ -245,7 +242,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `brand`, `name`, `size`, `description`, `slug`, `old price`, `price`, `discount`, `photo`, `date_view`, `counter`) VALUES
+INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `brand`, `name`, `size`, `description`, `slug`, `old_price`, `price`, `discount`, `photo`, `date_view`, `counter`) VALUES
 (1, 121121, 1, '99', 'Black', 'Hanes ', 'Hanes Men\'s Pullover EcoSmart Fleece Black Hooded Sweatshirt', 'S, M', '<blockquote>\r\n<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n</blockquote>\r\n', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt', '120', 100, '20%', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt.jpg', '2019-12-08', 2),
 (2, 121232, 1, '99', 'GREY', 'BALEAF', 'BALEAF Men\'s UPF 50+ Sun Protection Hoodie', 'S', '<ul>\r\n	<li>100% Polyester; Sun Protection; Fashionable(Mode Size M)</li>\r\n	<li>Imported</li>\r\n	<li>Technical breathable fabric wicks moisture away from your skin, breathes freely and dries quickly for cool comfort</li>\r\n	<li>Low profile thumbholes help keep sleeves in place &amp; trap warmth</li>\r\n</ul>\r\n', 'baleaf-men-s-upf-50-sun-protection-hoodie', '150', 123, '20%', 'baleaf-men-s-upf-50-sun-protection-hoodie-long-sleeve-performance-hiking-fishing-t-shirt_1572846099.jpg', '2019-11-22', 2),
 (3, 455656, 1, '99', 'White', 'SHADABZONE', 'YOUTUBE T-SHIRT FOR MEN', 'S', '<p>YOUTUBE T-SHIRT FOR MEN</p>\r\n', 'youtube-t-shirt-men', '150', 130, '20%', 'youtube-t-shirt-men.jpg', '2019-11-22', 7),
@@ -286,7 +283,11 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`, `orderStatus`) VALUES
-(7, 3, 'MOJO9c09305N30100688', '2019-12-09', NULL);
+(7, 3, 'MOJO9c09305N30100688', '2019-12-09', NULL),
+(8, 2, 'MOJO0103Z05N32895679', '2020-01-03', NULL),
+(9, 2, 'MOJO0108S05N06907924', '2020-01-09', NULL),
+(10, 2, 'MOJO0109F05A88597312', '2020-01-09', NULL),
+(11, 3, 'PAYID-LYLL5IY21293431HV278574S', '2020-01-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -324,9 +325,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
-(1, 'admin@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', '', '0', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
+(1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', '', '0', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
 (2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', 'mumbra', 'Mumbai', 'Andheri', '400612', 'Home', '7021918970', '.jpg', 1, '', '', '2019-12-04'),
-(3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09');
+(3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
+(6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10');
 
 -- --------------------------------------------------------
 
@@ -451,7 +453,7 @@ ALTER TABLE `deals`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `google_users`
@@ -475,13 +477,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_order`

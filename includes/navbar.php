@@ -3,33 +3,40 @@
 position: fixed;
 top: 0;
 width: 100%;
-}
-
-.sticky + #myHeader {
-padding-top: 102px;
+background:#312345;
 }
 
 #myHeader{
-	background: #150d2d;
+    transition:0.9s ease all; 
+    padding:5px;    
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  
 }
-
-.navbar-brand{
+.sticky + #myHeader {
+padding-top: 102px;
+}
+.navbar-collapse{
+    margin-left:200px;
+}
+.navbar-brand1{
 	font-size: 25px;
 	width: 300px;
+    color:steelblue;    
+    padding:20px;
+    line-height:50px;
 	letter-spacing: 2px;
 	font-weight: 700;
 }
 .openBtn {
 border: none;
-padding: 10px 15px;
-font-size: 20px;
+padding: 10px;
 background: none;
-color: white;
+color: steelblue;
 cursor: pointer;
 }
 
-	
-
+#myHeader.sticky .navbar-brand1{
+    color:white;
+}
 /*the container must be positioned relative:*/
 .autocomplete {
 position: relative;
@@ -86,17 +93,41 @@ color: #ffffff;
 } 
 
 .fa-bars{
-color: white;
+color: steelblue;
+padding-right:-10px;
+}
+
+.subnavbtn a{
+    color:   steelblue;
+    margin-left:30px;
+    letter-spacing:1px;
+    font-weight:400;    
+}
+
+#myHeader.sticky .subnavbtn a{
+    color:white;
+}
+
+.login{
+    color:steelblue;
+}
+.login:hover{
+    color:steelblue;
+}
+
+#myHeader.sticky .login {
+color:white;
 }
 </style>
-
+<body class="hold-transition layout-top-nav" >
+ 
 <header class="main-header">
-<nav class="navbar navbar-static-top"  id="myHeader" style="padding: 10px;">
+<nav class="navbar navbar-static-top"  id="myHeader">
 		<button type="button" class="navbar-toggle collapsed" id="bars" data-toggle="modal" data-target="#bar">
 	<i class="fa fa-bars"></i>
 </button>
 <div class="navbar-header"> 
-<a href="index.php" class="navbar-brand" >
+<a href="index.php" class="navbar-brand1" >
 ECOMM
 </a>
 </div>
@@ -113,7 +144,7 @@ $stmt->execute();
 foreach($stmt as $row){
 echo "
 <div class=\"subnav\">
-<button id=\"h1\" class=\"subnavbtn\"><a style=\"color:white;margin-left:30px;font-weight:700\" href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
+<button id=\"h1\" class=\"subnavbtn\"><a  href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
 <div class=\"men\"></div>
 <div class=\"subnav-content\">
 <div class=\"container-fluid\" style=\"background:#251e35;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
@@ -193,7 +224,7 @@ $stmt->execute();
 foreach($stmt as $row){
 echo "
 <div class=\"subnav\">
-<button id=\"h2\" class=\"subnavbtn\"><a style=\"color:white;margin-left:30px;font-weight:700\" href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
+<button id=\"h2\" class=\"subnavbtn\"><a  href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
 <div class=\"women\"></div>
 
 <div class=\"subnav-content\">
@@ -274,7 +305,7 @@ $stmt->execute();
 foreach($stmt as $row){
 echo "
 <div class=\"subnav\">
-<button id=\"h3\" class=\"subnavbtn\"><a style=\"color:white;margin-left:30px;font-weight:700\" href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
+<button id=\"h3\" class=\"subnavbtn\"><a  href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
 <div class=\"kids\"></div>
 
 <div class=\"subnav-content\">
@@ -351,7 +382,7 @@ $pdo->close();
 <li class="dropdown messages-menu">
 <!-- Menu toggle button -->
 <a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
-<i class="fa fa-shopping-cart" style="color: orange"></i>
+<i class="fa fa-shopping-bag" style="color: steelblue;font-size:14px"></i>
 <span class="label label-info cart_count" ></span>
 </a>
 <ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
@@ -382,14 +413,19 @@ echo "
 
 ";
 ?>
-<li><a href='login.php'  class='login' style="color: white;font-weight:600;">LOGIN</a></li>
-<li><a href='signup.php' class='login'  style="color: white;font-weight:600;">SIGNUP</a></li>
+<li><a href='login.php'  class='login'>LOGIN</a></li>
+<li><a href='signup.php' class='login'>SIGNUP</a></li>
 
 <?php
 
 }
 ?>
-
+<li class="dropdown messages-menu">
+<!-- Menu toggle button -->
+<a href="wishlist.php"  id="cart" >
+<i class="fa fa-heart-o" style="color: steelblue;font-size:14px"></i>
+<span class="label label-info cart_count" ></span>
+</a>
 
 </ul>
 <button class="openBtn"  data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
@@ -401,7 +437,8 @@ echo "
 </div>
 <?php include 'includes/sidebar_modal.php'; ?>
 <?php include 'includes/profile_modal.php'; ?>
-
+   
+</body>
 <script>
 window.onscroll = function() {myFunction()};
 
@@ -529,4 +566,4 @@ event.preventDefault();
 document.getElementById("myBtn").click();
 }
 });
-</script>
+</script>   

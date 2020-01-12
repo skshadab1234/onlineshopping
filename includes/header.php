@@ -57,68 +57,9 @@ body{
 font-family: 'Alatsi', sans-serif;
 }
 .content-wrapper{
-background:#150d2d;
+    background:#312345
 }
 
-#grad1 {
-background-image:url('images/banner/banner1.jpg');
-width: 100%;
-margin-top: -2px;
-height: 400px;
-background-repeat: no-repeat;
-background-size: contain;
-}
-
-#grad2{
-background-image:url('images/banner/banner2.jpg');
-position: absolute;
-width: 100%;
-margin-top: -2px;
-height: 400px;
-background-repeat: no-repeat;
-background-size: contain;
-}
-#grad3{
-background-image:url('images/banner/banner.gif');
-position: absolute;
-width: 100%;
-height: 400px;
-margin-top: -2px;
-background-repeat: no-repeat;
-background-size: contain;
-}
-#grad4{
-background-image:url('images/banner/banner5.jpg');
-position: absolute;
-width: 100%;
-height: 400px;
-margin-top: -2px;
-background-repeat: no-repeat;
-background-size: contain;
-}
-#grad5{
-background-image:url('images/banner/banner6.jpg');
-position: absolute;
-width: 100%;
-height: 400px;
-margin-top: -2px;
-background-repeat: no-repeat;
-background-size: contain;
-}
-
-.swiper1 .swiper-wrapper{
-height: 300px;
-}   
-
-@media (max-width: 768px){ 
-
-.swiper1 .swiper-wrapper {
-height: 130px;
-}   
-.swiper2 .swiper-wrapper {
-height:100px;
-}   
-}
 .modal.fade{
 backdrop-filter:blur(5px);
 background:rgba(0,0,0,0.5)
@@ -128,7 +69,6 @@ background:rgba(0,0,0,0.5)
 background-image: linear-gradient(254deg, #5909b3, #7f0dff);
 border-radius: 5px;
 }
-
 
 .modal-body p{
 color:white;
@@ -156,7 +96,6 @@ background-color: white;
 border: none;
 font-weight: bolder;
 }
-
 
 .btn-success, #quickview{
 background: #7f0dff;
@@ -255,7 +194,6 @@ line-height: 1;
 margin-bottom: 30px;
 font-family: Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,sans-serif;
 }
-
 
 .flex-centerY-centerX {
 -webkit-box-pack: center;
@@ -595,7 +533,6 @@ letter-spacing: 2px;
 color: orange;
 }
 
-
 #carousel3d .carousel-3d-slide {  
 display: -webkit-box;
 display: -ms-flexbox;
@@ -689,7 +626,6 @@ padding: 10px;
 text-transform: uppercase;  
 } 
 
-
 .subnav {
 float: left;
 overflow: hidden;
@@ -715,9 +651,6 @@ position: absolute;
 width: 100%;
 transition: 0.5s ease-out;
 text-align: center;
-
-
-
 }
 .subnavbtn:hover .fa-caret-down{
 transform: rotate(180deg);
@@ -726,12 +659,10 @@ transition: 0.5s ease;
 .subnav-content .p1{
 color: steelblue;
 }
-
 .subnav-content .p2{
 color: pink;
 font-weight: 700;
 }
-
 
 .subnav:hover .subnav-content {
 display: block;
@@ -1107,6 +1038,12 @@ border: none;
 color: white;
 padding: 15px;
 }
+
+.swiper1 img{
+  background-size: contain;
+  background-repeat:no-repeat;
+}
+
 </style>
 
 </head>
@@ -1116,7 +1053,7 @@ padding: 15px;
 
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("jan 3, 2020 09:00:00 AM").getTime();
+var countDownDate = new Date("jan 12, 2020 09:00:00 AM").getTime();
 // Update the count down every 1 second
 var x = setInterval(function() {
 

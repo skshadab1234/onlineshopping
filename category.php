@@ -21,9 +21,10 @@ $pdo->close();
   <title><?php echo $cat['name']; ?>  </title>
   </head>
 <?php include 'includes/header.php'; ?>
+
+<body class="hold-transition layout-top-nav">
 <?php include 'includes/navbar.php'; ?>
 
-<body class="layout-top-nav">
 <div class="wrapper">
 
 <div class="content-wrapper">

@@ -5,25 +5,21 @@ mysqli_select_db($link,"ecomm");
 ?>				
 <?php include 'includes/header.php'; ?>
 <head>
-<title>Ecommerce- ONLINE SHOPPING Portal</title>
+<title>Ecommerce- ONLINE SHOPPING</title>
 <link rel="stylesheet" href="build/swiper.min.css">
 
 </head>
-<?php include 'includes/navbar.php'; ?>
+<?php include 'includes/navbar.php'; ?>                     
 <body class="layout-top-nav" >
 <div class="wrapper">
-<div class="content-wrapper" id="content" style="position:relative">
-<div class="swiper-container swiper1" style="width: 100%">
-<div class="swiper-wrapper"	> 
-<div class="swiper-slide"><a href=""><img id="grad1"  ></a></div>
-<div class="swiper-slide"><a href=""><img id="grad2" ></a></div>
-<div class="swiper-slide"><a href=""><img id="grad3" ></a></div>
-<div class="swiper-slide"><a href=""><img id="grad4" ></a></div>
-<div class="swiper-slide"><a href=""><img id="grad5" ></a></div>
-
+<div class="content-wrapper">
+<div class="swiper-container" style="background:white" >
+<div class="swiper-wrapper" id="swipe" > 
+<div class="swiper-slide"><a href=""><img src="images/slider1.jpg" alt=""></a></div>
+<div class="swiper-slide"><a href=""><img src="images/slider3.jpg" alt=""></a></div>
+<div class="swiper-slide"><a href=""><img src="images/slider4.jpg" alt=""></a></div>
+<div class="swiper-slide"><a href=""><img src="images/slider.jpg" alt=""></a></div>
 </div>
-<!-- Add Pagination -->
-<div class="swiper-pagination swiper-pagination1"></div>
 </div>
 <!-- Main content -->
 <section class="content">
@@ -41,51 +37,34 @@ unset($_SESSION['error']);
 ?>
 
 
+<div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" >
 
-<!-- Swiper -->
+<!--     
+    <?php 
+    $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
+    $stmt->execute();
+    foreach($stmt as $row){
+    echo " 
+    <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/men.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
+    <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\" >Men</a></h2></div>
 
-<div class="swiper-container swiper2" style="margin-top: 40px;">
-<div class="swiper-wrapper">
-<div class="swiper-slide"><a href=""><img src="images/cards/card3.jpg"  class="img-rounded" width="250px"></a></div>
-<div class="swiper-slide"><a href=""><img src="images/cards/card4.jpg"class="img-rounded" width="250px"></a></div>
-<div class="swiper-slide"><a href=""><img src="images/cards/card5.png" class="img-rounded" width="250px"></a></div>
-<div class="swiper-slide"><a href=""><img src="images/cards/card6.jpg" class="img-rounded" width="250px"></a></div>
-</div>
-</div>
-
-<div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" align="center">
-<h2 class="mens" id="shop" style="margin-top: 100px" align="center" >shop on Shadabzone</h2>
-<div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
-<div class="swiper-container swiper3">
-<div class="swiper-wrapper">
-
-<?php 
-$stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
-$stmt->execute();
-foreach($stmt as $row){
-echo " 
-<div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/men.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
-<h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\" >Men</a></h2></div>
-
-";}?>
-<?php 
-$stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
-$stmt->execute();
-foreach($stmt as $row){
-echo " 
-<div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/women.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
-<h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Women</a></h2></div>
-";}?>
-<?php 
-$stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
-$stmt->execute();
-foreach($stmt as $row){
-echo " 
-<div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/kids.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
-<h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Kids</a></h2></div>
-";}?>
-</div>
-</div>
+    ";}?>
+    <?php 
+    $stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
+    $stmt->execute();
+    foreach($stmt as $row){
+    echo " 
+    <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/women.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
+    <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Women</a></h2></div>
+    ";}?>
+    <?php 
+    $stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
+    $stmt->execute();
+    foreach($stmt as $row){
+    echo " 
+    <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/kids.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
+    <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Kids</a></h2></div>
+    ";}?> -->
 </div>
 <div class="container-fluid"   id="clock1" style="border-radius: 4px;margin-top: -40px" >
 <div class="row" >
@@ -237,7 +216,7 @@ components: {
 
 
 </div>
-<div class="container-fluid" style="margin-top: 40px;">
+<div class="container-fluid" style="margin-top: 20px;">
 <h2 class="mens" align="center">Styles to steal</h2>
 <p align="center" style="margin-top: -30px;margin-bottom: 40px;font-family: sans-serif;letter-spacing: 1px">Inspired by influncers</p>
 <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 40px;width: 100px;border-radius: 50px"></div>
@@ -511,28 +490,12 @@ $pdo->close();
 <script src="build/swiper.min.js"></script>
 
 <script>
-var swiper1 = new Swiper('.swiper1', {
+var swiper= new Swiper('.swiper-container', {
 pagination: {
 el: '.swiper-pagination1',
 clickable: true,
 },
 });
-var swiper2 = new Swiper('.swiper2', {
-slidesPerView: 4,
-spaceBetween: 30,
-pagination: {
-el: '.swiper-pagination2',
-clickable: true,
-},
-}); 
-var swiper3 = new Swiper('.swiper3', {
-slidesPerView: 3,
-spaceBetween: 30,
-pagination: {
-el: '.swiper-pagination3',
-clickable: true,
-},
-}); 
 </script>
 <script type="text/javascript">
 $('.moreless-button').click(function() {
@@ -542,15 +505,6 @@ $(this).text("VIEW MORE")
 } else {
 $(this).text("VIEW LESS")
 }
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-$('#media').carousel({
-pause: true,
-interval: false,
-});
 });
 </script>
 

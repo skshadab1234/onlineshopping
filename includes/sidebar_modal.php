@@ -164,7 +164,7 @@ transition: 0.9s ease all;
 
 				<div style="margin: 20px">
 					<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-bars" style="font-size: 20px;opacity: 2;color: white;margin-top: 7px"></i></span></button>
-					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="index.php" style="color: white;">SKZONE</a></span>
+					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="index.php" class="navbar-brand1" style="color: white;">SKZONE</a></span>
 				</div>
 				<hr style="color: grey">
 				<div class="modal-body">

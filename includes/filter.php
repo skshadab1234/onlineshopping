@@ -118,6 +118,10 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+.text-primary{
+    padding:20px;
+}
     </style>
 
     <link rel="stylesheet" href="range.css">

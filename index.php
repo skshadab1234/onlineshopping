@@ -5,7 +5,7 @@
     ?>				
     <?php include 'includes/header.php'; ?>
     <head>
-    <title>Ecomm- ONLINE SHOPPING</title>
+    <title>Ecomm1- ONLINE SHOPPING</title>
     <link rel="stylesheet" href="build/swiper.min.css">
 
     </head>

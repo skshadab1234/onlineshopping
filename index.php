@@ -5,7 +5,7 @@
     ?>				
     <?php include 'includes/header.php'; ?>
     <head>
-    <title>Ecomm1- ONLINE SHOPPING</title>
+    <title>Ecomm- ONLINE SHOPPING</title>
     <link rel="stylesheet" href="build/swiper.min.css">
 
     </head>
@@ -13,12 +13,23 @@
     <body class="layout-top-nav" >
     <div class="wrapper">
     <div class="content-wrapper">
-    <div class="swiper-container" style="background:white" >
-    <div class="swiper-wrapper" id="swipe" > 
-    <div class="swiper-slide"><a href=""><img src="images/slider1.jpg" alt=""></a></div>
-    <div class="swiper-slide"><a href=""><img src="images/slider3.jpg" alt=""></a></div>
-    <div class="swiper-slide"><a href=""><img src="images/slider4.jpg" alt=""></a></div>
-    <div class="swiper-slide"><a href=""><img src="images/slider.jpg" alt=""></a></div>
+    <div class="swiper-container" >
+    <div class="swiper-wrapper" >       
+    <div class="swiper-slide slide1">
+    <p>Image with Dark Overlay</p>
+    </div>
+    <div class="swiper-slide slide2" >
+    <p>Image with Dark Overlay</p>
+    </div>
+    <div class="swiper-slide slide3" >
+    <p>Image with Dark Overlay</p>
+    </div>
+    <div class="swiper-slide slide4" >
+    <p>Image with Dark Overlay</p>
+    </div>
+    <div class="swiper-slide slide5" >
+    <p>Image with Dark Overlay</p>
+    </div>
     </div>
     </div>
     <!-- Main content -->
@@ -34,7 +45,6 @@
     unset($_SESSION['error']);
     }
     ?>
-
 
     <div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" >
     <!--     

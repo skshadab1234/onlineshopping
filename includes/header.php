@@ -81,7 +81,97 @@ backdrop-filter: blur(4px)
 html{
 scroll-behavior: smooth;
 }
-
+.slide1 {
+  max-width: 100%;
+  height: 100vh;
+  line-height: 100vh;
+  background-size: cover;
+  background-image:radial-gradient(red 5%,  rgba(0,0,0,0.5) 10%), url('images/slider.jpg');
+  position: absolute;
+  text-align: center; 
+}
+.slide1 p {
+  font-size: 23px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;     
+}
+.slide2 {
+  height: 100vh;
+  line-height: 100vh;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider1.jpg');
+  position: absolute;
+  text-align: center; 
+}
+.slide2 p {
+  font-size: 23px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;     
+}
+.slide3 {
+  height: 100vh;
+  line-height: 100vh;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider2.jpg');
+  position: absolute;
+  text-align: center; 
+}
+.slide3 p {
+  font-size: 23px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;     
+}
+.slide4 {
+  height: 100vh;
+  line-height: 100vh;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider3.jpg');
+  position: absolute;
+  text-align: center; 
+}
+.slide4 p {
+  font-size: 23px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;     
+}
+.slide5 {
+  height: 100vh;
+  line-height: 100vh;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider4.jpg');
+  position: absolute;
+  text-align: center; 
+}
+.slide5 p {
+  font-size: 23px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;     
+}
 .search-icon {
 position: relative;
 float: right;
@@ -121,6 +211,13 @@ transition-timing-function: linear;
 
 
 /* Small devices (tablets, 768px and up) */
+@media (max-width: 768px){ 
+  .swiper-slide {
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position: right center;
+  }
+}
 @media (min-width: 768px){ 
 
 #navbar-search-input{ 

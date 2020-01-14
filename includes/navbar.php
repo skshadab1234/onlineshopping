@@ -3,7 +3,7 @@
 position: fixed;
 top: 0;
 width: 100%;
-background:#312345;
+background:#323232;
 }
 
 #myHeader{
@@ -11,16 +11,14 @@ background:#312345;
     padding:5px;    
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  
 }
-.sticky + #myHeader {
-padding-top: 102px;
-}
+
 .navbar-collapse{
     margin-left:200px;
 }
 .navbar-brand1{
 	font-size: 25px;
 	width: 300px;
-    color:steelblue;    
+    color:black;    
     padding:20px;
     line-height:50px;
 	letter-spacing: 2px;
@@ -30,8 +28,12 @@ padding-top: 102px;
 border: none;
 padding: 10px;
 background: none;
-color: steelblue;
+color: black;
 cursor: pointer;
+}
+
+#myHeader.sticky .openBtn{
+    color: white;
 }
 
 #myHeader.sticky .navbar-brand1{
@@ -92,13 +94,21 @@ background-color: DodgerBlue !important;
 color: #ffffff; 
 } 
 
-.fa-bars{
-color: steelblue;
+#myHeader.sticky .fa-bars{
+color: white;
 padding-right:-10px;
+}
+.fa-bars{
+color: black;
+opacity:0.5;
+padding-right:-10px;
+}
+#myHeader.sticky .fa-shopping-bag{
+    color:white;
 }
 
 .subnavbtn a{
-    color:   steelblue;
+    color:   black;
     margin-left:30px;
     letter-spacing:1px;
     font-weight:400;    
@@ -109,14 +119,26 @@ padding-right:-10px;
 }
 
 .login{
-    color:steelblue;
+    color:black;
 }
 .login:hover{
-    color:steelblue;
+    color:black;
 }
 
 #myHeader.sticky .login {
 color:white;
+}
+.fa-shopping-bag{
+    color:black;
+    font-size:14px;
+}
+.fa-heart-o{
+    color:black;
+    font-size:14px;
+}
+#myHeader.sticky .fa-heart-o{
+    color:white;
+
 }
 </style>
 <body class="hold-transition layout-top-nav" >
@@ -382,7 +404,7 @@ $pdo->close();
 <li class="dropdown messages-menu">
 <!-- Menu toggle button -->
 <a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
-<i class="fa fa-shopping-bag" style="color: steelblue;font-size:14px"></i>
+<i class="fa fa-shopping-bag"></i>
 <span class="label label-info cart_count" ></span>
 </a>
 <ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
@@ -423,7 +445,7 @@ echo "
 <li class="dropdown messages-menu">
 <!-- Menu toggle button -->
 <a href="wishlist.php"  id="cart" >
-<i class="fa fa-heart-o" style="color: steelblue;font-size:14px"></i>
+<i class="fa fa-heart-o" ></i>
 <span class="label label-info cart_count" ></span>
 </a>
 

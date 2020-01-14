@@ -52,14 +52,12 @@ box-shadow: inset 0 0 5px grey;
 background: grey;
 border-radius: 10px;
 }
-
 body{
 font-family: 'Alatsi', sans-serif;
 }
 .content-wrapper{
-    background:#312345
+    background: #323232
 }
-
 .modal.fade{
 backdrop-filter:blur(5px);
 background:rgba(0,0,0,0.5)
@@ -180,7 +178,6 @@ color: orange;
 color: red;
 font-weight: bolder;
 }
-
 
 .mens{
 color: white;
@@ -471,7 +468,7 @@ left: 60%;
 -ms-transform: translate(-70%, -70%);
 -o-transform: translate(-70%, -70%);
 font-size: 16px;
-color: white;
+color: black;
 }
 
 .cart .add-to-cart {
@@ -501,7 +498,7 @@ transform: translate(-70%, -70%);
 
 .cart .add-to-cart .txt {
 font-size: 12px;
-color: #fff;
+color: black;
 margin-left: 80px;
 letter-spacing: 0.045em;
 text-transform: uppercase;
@@ -621,7 +618,7 @@ font-weight: 500;
 #demo{
 font-family: sans-serif;
 font-size: 20px;  
-color: white;
+color: lightcoral;
 padding: 10px;
 text-transform: uppercase;  
 } 
@@ -1053,7 +1050,7 @@ padding: 15px;
 
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("jan 12, 2020 09:00:00 AM").getTime();
+var countDownDate = new Date("jan 21, 2020 09:00:00 AM").getTime();
 // Update the count down every 1 second
 var x = setInterval(function() {
 

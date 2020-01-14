@@ -104,9 +104,8 @@ color: #6ac7cc;
 body {
  background:url(images/login-bg.jpg); /* fallback for old browsers */
   background-repeat: no-repeat;
-
   /* Full height */
-  height: 100%;
+  overflow:hidden;
   /* Center and scale the image nicely */
   font-family: "Roboto", sans-serif;   
 }

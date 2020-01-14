@@ -10,6 +10,9 @@
 
   <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+body{
+  overflow:hidden
+}
 
 .login-page {
   width: 360px;
@@ -24,7 +27,7 @@
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.9), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -112,10 +115,8 @@ color: #6ac7cc;
 body {
   background:url(images/login-bg.jpg); /* fallback for old browsers */
   background-repeat: no-repeat;
-
   /* Full height */
   height: 80%;
-
   /* Center and scale the image nicely */
   background-position: center;
   background-size: cover;

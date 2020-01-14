@@ -22,7 +22,6 @@
     </div>
     </div>
     <!-- Main content -->
-    <section class="content">
     <div class="row">
     <div class="col-sm-12">
     <?php
@@ -38,7 +37,6 @@
 
 
     <div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" >
-
     <!--     
     <?php 
     $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
@@ -66,12 +64,13 @@
     <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Kids</a></h2></div>
     ";}?> -->
     </div>
+    
     <div class="container-fluid"   id="clock1" style="border-radius: 4px;margin-top: -40px" >
     <div class="row" >
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="clock2" align="center">
     <h2 class="mens">Deal of the Week <br><br>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
-    <span style="border: 1px solid white;padding: 10px;line-height: 40px;width: 400px"><i class="fa fa-clock-o" style="color: white;padding: 10px"></i><span id="demo" class="mens"></span></span></h2>
+    <span style="border: 1px solid lightcoral;padding: 10px;line-height: 40px;width: 400px"><i class="fa fa-clock-o" style="color: lightcoral;padding: 10px"></i><span id="demo" class="mens"></span></span></h2>
     </div>
     </div>
     <div id="clock">
@@ -269,8 +268,7 @@
     <button class="moreless-button">VIEW ALL</button>
     </div>
     </div>
-
-    <div id="carousel3d"  style="height: 600px;margin-top: 40px">
+    <div id="carousel3d" style="height: 600px;margin-top: 40px;background:rgb(0,0,0,0.3)">
     <h2 class="mens" align="center" style="padding: 20px">Top Brands</h2>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 30px;width: 100px;border-radius: 50px"></div>
 

@@ -1,14 +1,12 @@
 <head><title>Signup</title></head>
 <style type="text/css">
-  
-    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+ @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 #login-page {
   width: 360px;
   padding: 1% 0 0;
   background: rgb(0,0,0,0.5);
   margin: 40px auto;
-  color: #6ac7cc;
+  color: #c2c2c2;
 }
 .form {
   position: relative;
@@ -17,18 +15,18 @@
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.9), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   width: 100%;
   background: none;
-  border-bottom: 1px solid #6ac7cc;
+  border-bottom: 1px solid #c2c2c2;
   border-top: none;
   border-left: none;
   border-right: none;
-  color: #6ac7cc;
+  color: #c2c2c2;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -54,7 +52,7 @@ color: #6ac7cc;
 .form button:hover{
   background: none;
   color: #6ac7cc;
-    border: 1px solid #6ac7cc;
+  border: 1px solid #6ac7cc;
 }
 
 .form .message {
@@ -129,7 +127,7 @@ body {
 <?php include 'includes/header.php'; ?>
 <body>
 <div class="register-box" id="login-page">
-  <h4 style="color: #6ac7cc;font-size: 30px;padding: 7px 10px;text-transform: uppercase;letter-spacing: 2px;font-weight: 700;margin: auto;">Register</h4>
+  <h4 style="color: #c2c2c2;font-size: 30px;padding: 7px 10px;text-transform: uppercase;letter-spacing: 2px;font-weight: 700;margin: auto;">Register</h4>
   	<?php
       if(isset($_SESSION['error'])){
         echo "

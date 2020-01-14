@@ -169,7 +169,7 @@ echo "
 <button id=\"h1\" class=\"subnavbtn\"><a  href='category.php?category=".$row['cat_slug']."'>".$row['name']."</a> </button>
 <div class=\"men\"></div>
 <div class=\"subnav-content\">
-<div class=\"container-fluid\" style=\"background:#251e35;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+<div class=\"container-fluid\" style=\"background:#323232;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
  \">
 <div class=\"row\">
 <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
@@ -250,7 +250,7 @@ echo "
 <div class=\"women\"></div>
 
 <div class=\"subnav-content\">
-<div class=\"container-fluid\" style=\"background:#251e35;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+<div class=\"container-fluid\" style=\"background:#323232;;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
  \">
 <div class=\"row\">
 <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
@@ -331,7 +331,7 @@ echo "
 <div class=\"kids\"></div>
 
 <div class=\"subnav-content\">
-<div class=\"container-fluid\" style=\"background:#251e35;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12); \">
+<div class=\"container-fluid\" style=\"background:#323232;;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12); \">
 <div class=\"row\">
 <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
 <li><h5><a href=\"\" class=\"p3\">Boys Clothing</a></h5></li>
@@ -446,7 +446,6 @@ echo "
 <!-- Menu toggle button -->
 <a href="wishlist.php"  id="cart" >
 <i class="fa fa-heart-o" ></i>
-<span class="label label-info cart_count" ></span>
 </a>
 
 </ul>

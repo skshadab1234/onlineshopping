@@ -627,7 +627,6 @@ text-transform: uppercase;
 float: left;
 overflow: hidden;
 transition: 0.9s ease;
-
 }
 
 .subnav .subnavbtn {

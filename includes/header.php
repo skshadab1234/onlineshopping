@@ -81,97 +81,220 @@ backdrop-filter: blur(4px)
 html{
 scroll-behavior: smooth;
 }
-.slide1 {
-  max-width: 100%;
-  height: 100vh;
-  line-height: 100vh;
-  background-size: cover;
-  background-image:radial-gradient(red 5%,  rgba(0,0,0,0.5) 10%), url('images/slider.jpg');
-  position: absolute;
-  text-align: center; 
+/* slider css code */
+.slider, 
+.slider > div {
+    /* Images default to Center Center. Maybe try 'center top'? */
+    background-position: center center;
+    display: block;
+    width: 100%;
+    height: 500px;
+    /* height: 100vh; *//* If you want fullscreen */
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #000;
+    -moz-transition: transform .4s;
+    -o-transition: transform .4s;
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
 }
-.slide1 p {
-  font-size: 23px;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;     
+
+.slider > div {
+    position: absolute;
 }
-.slide2 {
-  height: 100vh;
-  line-height: 100vh;
-  background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider1.jpg');
-  position: absolute;
-  text-align: center; 
+
+.slider > i {
+    color: #5bbd72;
+    position: absolute;
+    font-size: 60px;
+    margin: 20px;
+    top: 40%;
+    text-shadow: 0 10px 2px #223422;
+    transition: .3s;
+    width: 30px;
+    padding: 10px 13px;
+    background: #fff;
+    background: rgba(255, 255, 255, .3);
+    cursor: pointer;
+    line-height: 0;
+    box-sizing: content-box;
+    border-radius: 3px;
+    z-index: 4;
 }
-.slide2 p {
-  font-size: 23px;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;     
+
+.slider > i svg {
+    margin-top: 3px;
 }
-.slide3 {
-  height: 100vh;
-  line-height: 100vh;
-  background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider2.jpg');
-  position: absolute;
-  text-align: center; 
+
+.slider > .left {
+    left: -100px;
 }
-.slide3 p {
-  font-size: 23px;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;     
+.slider > .right {
+    right: -100px;
 }
-.slide4 {
-  height: 100vh;
-  line-height: 100vh;
-  background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider3.jpg');
-  position: absolute;
-  text-align: center; 
+.slider:hover > .left {
+    left: 0;
 }
-.slide4 p {
-  font-size: 23px;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;     
+.slider:hover > .right {
+    right: 0;
 }
-.slide5 {
-  height: 100vh;
-  line-height: 100vh;
-  background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/slider4.jpg');
-  position: absolute;
-  text-align: center; 
+
+.slider > i:hover {
+    background:#fff;
+    background: rgba(255, 255, 255, .8);
+    transform: translateX(-2px);
 }
-.slide5 p {
-  font-size: 23px;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal;     
+
+.slider > i.right:hover {
+    transform: translateX(2px);
 }
+
+.slider > i.right:active,
+.slider > i.left:active {
+    transform: translateY(1px);
+}
+
+.slider:hover > div {
+    transform: scale(1.01);
+}
+
+.hoverZoomOff:hover > div {
+    transform: scale(1);
+}
+
+.slider > ul {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 4;
+    padding: 0;
+    margin: 0;
+    transform: translateX(-50%);
+}
+
+.slider > ul > li {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    list-style: none;
+    float: left;
+    margin: 10px 10px 0;
+    cursor: pointer;
+    border: 1px solid #fff;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.slider > ul > .showli {
+    background-color: #7EC03D;
+    -moz-animation: boing .5s forwards;
+    -o-animation: boing .5s forwards;
+    -webkit-animation: boing .5s forwards;
+    animation: boing .5s forwards;
+}
+
+.slider > ul > li:hover {
+    background-color: #7EC03D;
+}
+
+.slider > .show {
+    z-index: 1;
+}
+
+.hideDots > ul {
+    display: none;
+}
+
+.showArrows > .left {
+    left: 0;
+}
+
+.showArrows > .right {
+    right: 0;
+}
+
+.titleBar {
+    z-index: 2;
+    display: inline-block;
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    transform: translateY(100%);
+    padding: 20px 30px;
+    transition: .3s;
+    color: #fff;
+}
+
+.titleBar * {
+    transform: translate(-20px, 30px);
+    transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
+    opacity: 0;
+}
+
+.titleBarTop .titleBar * {
+    transform: translate(-20px, -30px);
+}
+
+.slider:hover .titleBar,
+.slider:hover .titleBar * {
+    transform: translate(0);
+    opacity: 1;
+}
+
+.titleBarTop .titleBar {
+    top: 0;
+    bottom: initial;
+    transform: translateY(-100%);
+}
+
+.slider > div span {
+    display: block;
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+}
+
+
+@keyframes boing {
+    0% {
+        transform: scale(1.2);
+    }
+    40% {
+        transform: scale(.6);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    80% {
+        transform: scale(.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* -------------------------------------- */
+
+#slider2 {
+    max-width: 30%;
+    margin-right: 20px;
+}
+
+.row2Wrap {
+    display: flex;
+}
+
+
+
 .search-icon {
 position: relative;
 float: right;
@@ -215,7 +338,7 @@ transition-timing-function: linear;
   .swiper-slide {
     background-size:contain;
     background-repeat:no-repeat;
-    background-position: right center;
+    background-position: right bottom;
   }
 }
 @media (min-width: 768px){ 

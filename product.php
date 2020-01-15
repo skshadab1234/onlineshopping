@@ -131,12 +131,12 @@
 		</div>
 		</div>
 		<div class="col-sm-6" style="padding: 20px">
-		<h4 style="font-weight: 600;color: white">Product Code : <span ><?php echo $product['prodid']; ?></span></h4>
+		<h4 style="font-weight: 600;color: #323232">Product Code : <span ><?php echo $product['prodid']; ?></span></h4>
 		<h5 style="font-size: 14px;color: grey"><?php echo $product['brand']; ?></h5>
-		<h5 style="font-size: 20px;color: white"><?php echo $product['prodname']; ?></h5>
-		<h3 style="color: white"><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small><span style="color: orange">  (<?php echo$product['discount'];?> off)</span></b></h3>
+		<h5 style="font-size: 20px;color: #323232"><?php echo $product['prodname']; ?></h5>
+		<h3 style="color: #323232"><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small><span style="color: orange">  (<?php echo$product['discount'];?> off)</span></b></h3>
 		<br>
-		<h4 style="font-size: 14px;margin-bottom: 20px;color: white;letter-spacing: 2px">DELIVERY OPTIONS  &nbsp;<i class="fa fa-truck"></i></h4>
+		<h4 style="font-size: 14px;margin-bottom: 20px;color: #323232;letter-spacing: 2px">DELIVERY OPTIONS  &nbsp;<i class="fa fa-truck"></i></h4>
 		<form method="POST">
 		<input type="number" name="zip" style="border: 1px solid #ddd"><span style="margin-left: -60px;font-stretch: 12px;color: blue;"><a href="" style="font-size: 14px;font-weight: 600">Check</a></span></i>
 		<h6 style="color: grey">Please enter PIN code to check delivery time & Cash/Card on Delivery Availability</h6>
@@ -176,7 +176,7 @@
 		<div class="tab-content" style="height: 400px">
 		<div id="home" class="tab-pane fade in active" style="width: 500px">
 		<br>
-		<h4 style="color: white;font-size: 14px"><?php echo $product['description']; ?></h4>	
+		<h4 style="color: #323232;font-size: 14px"><?php echo $product['description']; ?></h4>	
 		</div>
 		<div id="menu2" class="tab-pane fade">
 		<br><br>

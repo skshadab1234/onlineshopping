@@ -16,12 +16,29 @@
     <!-- Slider 1 -->
 <div class="slider" id="slider1">
     <!-- Slides -->
-    <div style="background:url(images/banner/banner.gif)"></div>
-    <div style="background:url(images/banner/banner1.jpg)"></div>
-    <div style=""></div>
-    <div style=""></div>
-    <div style=""></div>
-    <!-- The Arrows -->
+    <div>
+    <section class="section">
+    <h2 align="right">Big Offer</h2>
+    <h1>Big Sale</h1>
+    <h5>Men's Clothing</h5>
+    <a href="#">SHOP NOW</a>
+    </section>
+    </div>
+    <div >
+    <section class="section1">
+    <h2>New Summer Arrivals <br> From RS. 1200</h2>
+    <h5>woMen's Clothing</h5>
+    <a href="#">SHOP NOW</a>
+    </section>
+    </div>
+    <div>
+    <section class="section2">
+    <h2 align="right">Big Offer</h2>
+    <h1>Big Sale</h1>
+    <h5>Men's Clothing</h5>
+    <a href="#">SHOP NOW</a>
+    </section>
+    </div>    <!-- The Arrows -->
     <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg></i>
     <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></i>
 </div>
@@ -271,7 +288,7 @@
     <button class="moreless-button">VIEW ALL</button>
     </div>
     </div>
-    <div id="carousel3d" style="height: 600px;margin-top: 40px;background:rgb(0,0,0,0.3)">
+    <div id="carousel3d" style="height: auto;margin-top: 20px;background:#fbd3e9">
     <h2 class="mens" align="center" style="padding: 20px">Top Brands</h2>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 30px;width: 100px;border-radius: 50px"></div>
 
@@ -338,7 +355,7 @@
     })
     //# sourceURL=pen.js
     </script>				
-    <div class="my-3" style="padding: 20px;margin-top: 40px;text-align: center;" >
+    <div class="my-3" style="padding: 20px;margin-top: 20px;text-align: center;" >
     <h2 class="mens">Monthly Top Sellers</h2>
     <div style="border-bottom: 5px solid #ff3f6c;;margin: -10px auto;width: 100px;border-radius: 50px"></div>
     <div class="container-fluid " style="margin-top: 40px">

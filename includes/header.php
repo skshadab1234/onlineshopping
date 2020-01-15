@@ -16,8 +16,7 @@
 <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
 folder instead of downloading all of them to reduce the load. -->
-<link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
 <!-- Magnify -->
 <link rel="stylesheet" href="magnify/magnify.min.css">
 <link rel="stylesheet" type="text/css" href="includes/mediaquery.css">
@@ -56,7 +55,7 @@ body{
 font-family: 'Alatsi', sans-serif;
 }
 .content-wrapper{
-    background: #323232
+    background: #f1f1f1;
 }
 .modal.fade{
 backdrop-filter:blur(5px);
@@ -88,16 +87,16 @@ scroll-behavior: smooth;
     background-position: center center;
     display: block;
     width: 100%;
-    height: 500px;
-    /* height: 100vh; *//* If you want fullscreen */
+    height:500px;
+    /* /* height: 100vh; */
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #000;
-    -moz-transition: transform .4s;
-    -o-transition: transform .4s;
-    -webkit-transition: transform .4s;
-    transition: transform .4s;
+    -moz-transition: transform .9s;
+    -o-transition: transform .9s;
+    -webkit-transition: transform .9s;
+    transition: transform .9s;
 }
 
 .slider > div {
@@ -139,7 +138,169 @@ scroll-behavior: smooth;
 .slider:hover > .right {
     right: 0;
 }
+.slider div:nth-child(1){
+  max-width:100%;
+  height:100%;
+  background:#3a7bd5 no-repeat;
+  background-position:bottom left;
+  background-size:contain;
+  background-image: url(images/banner/men1.png);
+}
+.slider div:nth-child(2){
+  max-width:100%;
+  height:100%;
+  background:#BA5370 no-repeat center right;
+  background-size:contain;
+  background-image:url(images/banner/women1.png);
+}
+.slider div:nth-child(3){
+  max-width:100%;
+  height:100%;
+  background:#8e9eab no-repeat center right;
+  background-size:contain;
+  background-image:url(images/banner/kid.png);
+}
 
+.section{
+    color:white;
+    width:400px;
+    position:absolute;
+    right:200px;
+    text-align:center;
+    top:100px;
+}
+
+.section1{
+    color:#d6ae7b;
+    display:block;
+    position:absolute;
+    left:200px;
+    text-align:center;
+    top:100px;
+}
+
+.section2{
+    color:#d6ae7b;
+    display:block;
+    position:absolute;
+    left:200px;
+    text-align:center;
+    top:100px;
+}
+.section1 h2{
+    font-size:3rem;
+    letter-spacing:4px;
+    line-height:30px;
+    text-transform:uppercase;
+    font-family: 'Fjalla One', sans-serif;
+}
+.section1 > h5{
+    font-size:3rem;
+    letter-spacing:4px;
+    text-align:center;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.section1 a{
+    width:200px;
+    background:transparent;
+    border:1px solid #000;
+    color: #000;
+    text-transform:uppercase;
+    padding:10px;
+    margin:20px;
+    position:absolute;
+    left:100px;
+    display:inline-block;
+    border-radius:5px;
+    transition:0.9s ease all;
+}
+.section1 a:hover{
+    background: #000;
+    color:#fff;
+    transition:0.9s ease all;
+}
+
+
+.section2 h2{
+    font-size:3rem;
+    letter-spacing:4px;
+    line-height:30px;
+    text-transform:uppercase;
+    font-family: 'Fjalla One', sans-serif;
+}
+.section2 > h5{
+    font-size:3rem;
+    letter-spacing:4px;
+    text-align:center;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.section2 a{
+    width:200px;
+    background:transparent;
+    border:1px solid #000;
+    color: #000;
+    text-transform:uppercase;
+    padding:10px;
+    margin:20px;
+    position:absolute;
+    left:100px;
+    display:inline-block;
+    border-radius:5px;
+    transition:0.9s ease all;
+}
+.section2 a:hover{
+    background: #000;
+    color:#fff;
+    transition:0.9s ease all;
+}
+/* for 1 st slide */
+.section h2{
+    font-size:26px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-family: 'Anton', sans-serif;
+}
+.section > h1{
+    font-size:8rem;
+    letter-spacing:4px;
+    text-align:right;
+    font-family: 'Anton', sans-serif;
+    text-transform:uppercase;
+    font-weight:700;
+}
+.section > h5{
+    font-size:2rem;
+    letter-spacing:4px;
+    text-align:right;
+    font-family: 'Anton', sans-serif;
+    text-transform:uppercase;
+}
+
+.section a{
+    width:200px;
+    background:transparent;
+    border:1px solid #000;
+    color: #000;
+    text-transform:uppercase;
+    padding:10px;
+    margin:20px;
+    position:absolute;
+    left:200px;
+    display:inline-block;
+    border-radius:5px;
+    transition:0.9s ease all;
+}
+.section a:hover{
+    background: #000;
+    color:#fff;
+    transition:0.9s ease all;
+}
 .slider > i:hover {
     background:#fff;
     background: rgba(255, 255, 255, .8);
@@ -175,14 +336,14 @@ scroll-behavior: smooth;
 
 .slider > ul > li {
     padding: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width:20px;
+    height:5px;    
+    border-radius: 30%;
     list-style: none;
     float: left;
     margin: 10px 10px 0;
     cursor: pointer;
-    border: 1px solid #fff;
+    background:#fff;
     -moz-transition: .3s;
     -o-transition: .3s;
     -webkit-transition: .3s;
@@ -190,7 +351,7 @@ scroll-behavior: smooth;
 }
 
 .slider > ul > .showli {
-    background-color: #7EC03D;
+    background-color: #000;
     -moz-animation: boing .5s forwards;
     -o-animation: boing .5s forwards;
     -webkit-animation: boing .5s forwards;
@@ -198,7 +359,8 @@ scroll-behavior: smooth;
 }
 
 .slider > ul > li:hover {
-    background-color: #7EC03D;
+    transition:0.9s ease-in;
+    border: 1px solid #000;
 }
 
 .slider > .show {
@@ -215,29 +377,6 @@ scroll-behavior: smooth;
 
 .showArrows > .right {
     right: 0;
-}
-
-.titleBar {
-    z-index: 2;
-    display: inline-block;
-    background: rgba(0,0,0,.5);
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    transform: translateY(100%);
-    padding: 20px 30px;
-    transition: .3s;
-    color: #fff;
-}
-
-.titleBar * {
-    transform: translate(-20px, 30px);
-    transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
-    opacity: 0;
-}
-
-.titleBarTop .titleBar * {
-    transform: translate(-20px, -30px);
 }
 
 .slider:hover .titleBar,
@@ -400,7 +539,7 @@ font-weight: bolder;
 }
 
 .mens{
-color: white;
+color: #323232;
 font-size: 2.9rem;
 font-weight: bolder;
 letter-spacing: 1px;  
@@ -730,14 +869,14 @@ display: none;
 }
 .moreless-button{
 background-color: transparent;
-border: 1px solid white;
-color: white;
+border: 1px solid #323232;
+color: #323232;
 font-weight: 700;
 letter-spacing: 2px;
 padding: 10px;  
 }
 .moreless-button:hover{
-color: white;
+color: #323232      ;
 }
 .cat{
 color: white;

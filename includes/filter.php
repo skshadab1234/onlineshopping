@@ -134,14 +134,6 @@
     </head>
     <body>
     <div class="container-fluid" style="background-color: #251e35">
-    <h5 style="font-size: 14px;padding: 0px;font-size: 16px;font-weight: 600;color: white">Filter</h5>
-    <hr>
-    <h5 style="margin-bottom: 12px;color: white">Price <span class="pull-right" ><a href="" style="color:white">Clear</a></span></h5> 
-
-    <div class="slider-wrapper slider-warning slider-strips">
-    <input class="input-range" type="text" data-slider-step="1" data-slider-value="14, 75" data-slider-min="0" data-slider-max="100" data-slider-range="true" data-slider-tooltip_split="true" />
-    </div>
-    <hr>
     <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Brand</h5>
 
     <?php

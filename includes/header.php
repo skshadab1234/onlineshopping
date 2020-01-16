@@ -1307,64 +1307,6 @@ font-size: 14px;
 color: black;
 }
 
-.contact-form {
-margin-top: 30px;
-}
-
-.contact-form .input-block {
-/* background: #7f0dff;
-background-image: linear-gradient(253deg, rgb(89, 9, 179), rgb(127, 13, 255));
-*/
-border-bottom: solid 2px  white;
-width: 100%;
-height: 40px;
-padding: 25px;
-position: relative;
--moz-transition: all 0.3s ease-out;
--o-transition: all 0.3s ease-out;
--webkit-transition: all 0.3s ease-out;
-transition: all 0.3s ease-out;
-}
-
-.contact-form .input-block.textarea .form-control {
-height: auto;
-resize: none;
-}
-
-.contact-form .input-block label {
-padding: 0 10px;
-position: absolute;
-left: 8px;
-top: 20px;
-color:  white;
-display: block;
-margin: 0;
-font-weight: 600;
-z-index: 1;
-font-size: 16px;
-margin-top: 10px;
-line-height: 10px;
-}
-
-.contact-form .input-block label:focus{
-color: #33cc66;
-}
-
-.contact-form .input-block .form-control {
-background-color: transparent;
-border: medium none;
-border-radius: 0;
-box-shadow: none;
-color: white;
-font-size: 18px;
-height: 40px;
-padding: 0;
-position: relative;
-top: -20px;
-z-index: 2;
-}
-
-
 @media (min-width: 768px) {
 .contact-wrap {
 width: 60%;
@@ -1404,7 +1346,6 @@ padding: 15px;
   background-size: contain;
   background-repeat:no-repeat;
 }
-
 </style>
 
 </head>

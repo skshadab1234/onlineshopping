@@ -2,6 +2,7 @@
 	$conn = $pdo->open();
 
 	$output = '';
+echo "	<h5 class=\"mens\" style=\"color:grey;font-size:16px\">Product Overview</h5>";
 
 	if(isset($_SESSION['user'])){
 	if(isset($_SESSION['cart'])){
@@ -33,18 +34,17 @@
 	$delivery = 15.00;
 	$delivery1 = $order1 + $delivery;
 	$output .= "
-   <div style=\"padding:10px;border:1px solid #ddd\" class=\"pull-center\">
+   <div style=\"padding:10px;border:1px solid #ddd;background:#fff;box-shadow: 0px 8px 20px -10px rgba(13, 28, 39, 0.6);margin:10px;outline:none\" class=\"pull-center\">
 	<div class=\"row\">
 		<div class=\"col-sm-12\">
-<h5 class=\"mens\" style=\"color:grey;font-size:16px\">Product Overview</h5>
 
 <table class=\"table table-borderless\" style=\"color:grey\">
 <thead>
 <tr>
-<td><div style=\"background:red;width:60px;\"><a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-responsive\" width='60px'  class=\"thumbnail\"></a></div><td>
+<td><div style=\"box-sizing:border-box\"><a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-responsive\" width=\"60px\"></a></div><td>
 <td>
-<span style=\"font-weight:bold;\">".$row['brand']."</span><br><a href='product.php?product=".$row['slug']."' style=\"color:white;font-size:12px\">".$row['name']."</a><span style=\"color:white\"><br>&#36; ".number_format($row['price'], 2)."</span> &nbsp;<span><s>&#36; ".number_format($row['old_price'], 2)."</s></span>
-<span style=\"color:white\"><br>Qty: ".$row['quantity']."</span>
+<span style=\"font-weight:bold;\">".$row['brand']."</span><br><a href='product.php?product=".$row['slug']."' style=\"color:#323232;font-size:12px\">".$row['name']."</a><span style=\"color:#323232\"><br>&#36; ".number_format($row['price'], 2)."</span> &nbsp;<span style=\"color:#323232;opacity:0.5\"><s>&#36; ".number_format($row['old_price'], 2)."</s></span>
+<span style=\"color:#323232\"><br>Qty: ".$row['quantity']."</span>
 </td></tr>
 </thead>
 </table>
@@ -54,7 +54,7 @@
 	";
 	}
 	$output .= "
-<div style=\"padding:20px;border:1px solid #ddd\" class=\"pull-center\">
+<div style=\"padding:20px;background:#fff;border:1px solid #ddd;box-shadow: 0px 8px 20px -10px rgba(13, 28, 39, 0.6);margin:10px 0px\" class=\"pull-center\">
 	<div class=\"row\">
 
 	<div class=\"col-sm-12\">
@@ -63,7 +63,7 @@
 <input type=\"button\" class=\"button-base-button pull-right\" value=\"UPDATE\" onClick=\"document.location.reload(true)\"></h5></span>
 
 
-<table class=\"table table-borderless\" style=\"color:white\">
+<table class=\"table table-borderless\" style=\"color:#323232\">
 <thead>
 <tr>
 <td>Bag total</td>
@@ -71,7 +71,7 @@
 </tr>
 <tr>
 <td>Bag Discount</td>
-<td  style=\"color:white\"> <span class=\"pull-right\">&#36;".number_format($order, 2)."</span>
+<td  style=\"color:green\"> <span class=\"pull-right\">&#36;".number_format($order, 2)."</span>
  <td>
 </tr>
 <tr>
@@ -81,21 +81,18 @@
 </tr>
 <tr>
 <td>Delivery Charges</td>
-<td  style=\"color:white\"><span class=\"pull-right\">&#36;".number_format($delivery, 2)."</span>
+<td  style=\"color:green\"><span class=\"pull-right\">&#36;".number_format($delivery, 2)."</span>
  <td>
 </tr>
 <tr>
-<td style=\"font-weight:600;font-size:16px;color:white;letter-spacing:1px\">Grand Total</td>
-<td  style=\"font-weight:600;font-size:16px;color:white;letter-spacing:1px\"><span class=\"pull-right\">&#36;".number_format($delivery1, 2)."</span>
+<td style=\"font-weight:600;font-size:16px;letter-spacing:1px\">Grand Total</td>
+<td  style=\"font-weight:600;font-size:16px;letter-spacing:1px\"><span class=\"pull-right\">&#36;".number_format($delivery1, 2)."</span>
  <td>
 </tr>
 </thead>
 </table>
 </div>
 </div>	
-<h2> ".@$_GET['blank']." </h2>
-        <div id=\"disp\"></div>
-
 	";
 
 	}
@@ -113,28 +110,5 @@ $pdo->close();
 
 ?>
 
-<script type="text/javascript">
-$(document).ready(function(){
-$("#check").click(function() {
-var name = $('#name').val();
-if(name=="")
-{
-$("#disp").html("");
-}
-else
-{
-$.ajax({
-type: "POST",
-url: "pin_check.php",
-data: "pincode="+ name ,
-success: function(html){
-$("#disp").html(html);
-}
-});
-return false;
-}
-});
-});
-</script>
 
 

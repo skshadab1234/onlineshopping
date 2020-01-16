@@ -42,7 +42,7 @@ text-align: center;
 }
 .features .v-tabs .v-tab-head a,
 .features .v-tabs a.v-tab-head {
-color: white  ;
+color: #323232;
 cursor: pointer;
 text-transform: uppercase;
 display: block;
@@ -167,7 +167,6 @@ margin: 10px 5% 0;
 max-width: none;
 width: 90%;
 }
-
 }
 
 #submit{
@@ -185,9 +184,6 @@ width: 90%;
 	border: 2px solid #33cc66;
 	border-radius: 2px;
 }
-
-
-
 /*--------------------
 Buttons
 --------------------*/

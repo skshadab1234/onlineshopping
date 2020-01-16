@@ -40,7 +40,7 @@ $pdo->close();
 <div class="col-sm-9" >
   <section class="content-header">
       <h1 style="color: #85837f;font-size: 20px;font-weight: 600;letter-spacing: 2px">
-        <span style="color: white"><?php echo $cat['name']; ?></span>
+        <span style="color: #323232"><?php echo $cat['name']; ?></span>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#" style="color: #85837f"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -104,10 +104,7 @@ echo "
 
     <!-- Modal content-->
     <div class="modal-content" >
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:white;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>"; ?></h4>
-      </div>
       <div class="modal-body">
         <div class="container-fluid" style="color: #544a82">
           <div class="row">
@@ -115,7 +112,7 @@ echo "
               <?php echo "<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-rounded\"></a>"; ?>
             </div>
             <div class="col-sm-6">
-              <?php echo "".$row['brand'].""; ?>
+  <span style="color:steelblue"><?php echo "".$row['brand'].""; ?></span>
               <?php echo "<br>"; ?>
               <?php echo " <span class=\"p-name\"><a style=\"font-size:14px;color:white;font-weight:600\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>"; ?>
               <br>

@@ -30,8 +30,6 @@
 	$order1 = 0;
 	$delivery1 = 0;
 	$delivery = 0;
-
-
 	$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
 	$stmt->execute(['user'=>$user['id']]);
 	foreach($stmt as $row){
@@ -47,15 +45,14 @@
 ";
 }
 $output .= "
-<div style=\"padding:20px;border:1px solid #ddd\" class=\"pull-center\">
+<div style=\"padding:20px;border:1px solid #ddd;margin-top:80px;width:100%;display:block;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);\" class=\"pull-center\">
 	<div class=\"row\">
 	<div class=\"col-sm-12\">
 <div class=\"container\" style=\"padding: 10px;width: 100%;\">
 <span><h5 style=\"text-transform: uppercase;font-weight:600;font-family: 'Alata', sans-serif;letter-spacing: 1px;font-size: 16px;color:grey\">PRICE DETAIL
-<input type=\"button\" class=\"button-base-button pull-right\" value=\"UPDATE\" onClick=\"document.location.reload(true)\"></h5></span>
-
-
-<table class=\"table table-hover\" style=\"width:100%;color:white;padding:4px\">
+<div style=\"position:relative\"><input type=\"button\" class=\"button-base-button pull-right\" style=\"position:absolute;right:-10px;top:-40px\" value=\"UPDATE\" style=\"margin:-10px\" onClick=\"document.location.reload(true)\"></h5></span>
+</div>
+<table class=\"table table-bordered\" style=\"width:100%;color:black;padding:4px\">
 <thead>
 <tr>
 <td>Bag total</td>

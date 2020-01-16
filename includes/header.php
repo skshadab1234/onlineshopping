@@ -51,6 +51,11 @@ box-shadow: inset 0 0 5px grey;
 background: grey;
 border-radius: 10px;
 }
+
+::selection{
+    background:#323232;
+    color:white;
+}
 body{
 font-family: 'Alatsi', sans-serif;
 }
@@ -1218,15 +1223,16 @@ border-radius: 20%;
 }
 
 .button-base-button {
-color: #fff;
+color: white;
 font-size: 14px;
 font-weight: 600;
-padding: 10px;
-background: none;
+padding: 20px;
+background: #e381c1;
 cursor: pointer;
 text-align: center;
-border: 1px solid white;
-line-height: 20px;
+border:none;
+box-shadow: 0 9px 8px rgba(0,0,0,0.30), 0 5px 112px rgba(0,0,0,0.22);
+line-height: 6px;
 border-radius: 3px;
 text-transform: uppercase;
 letter-spacing: 1px;

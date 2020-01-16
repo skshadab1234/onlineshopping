@@ -288,7 +288,7 @@
     <button class="moreless-button">VIEW ALL</button>
     </div>
     </div>
-    <div id="carousel3d" style="height: auto;margin-top: 20px;background:#fbd3e9">
+    <div id="carousel3d" style="height: auto;padding:10px;background:#fbd3e9">
     <h2 class="mens" align="center" style="padding: 20px">Top Brands</h2>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 30px;width: 100px;border-radius: 50px"></div>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2020 at 09:47 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Jan 16, 2020 at 05:18 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,7 +68,11 @@ INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
 (147, 13, 2, 1),
 (148, 13, 3, 1),
 (150, 20, 19, 11),
-(155, 4, 16, 1);
+(155, 4, 16, 1),
+(156, 2, 2, 1),
+(157, 2, 16, 1),
+(158, 2, 18, 1),
+(159, 2, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,9 @@ INSERT INTO `details` (`id`, `sales_id`, `product_id`, `quantity`) VALUES
 (9, 8, 14, 1),
 (10, 9, 1, 1),
 (11, 10, 1, 1),
-(12, 11, 1, 1);
+(12, 11, 1, 1),
+(13, 12, 16, 4),
+(14, 12, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -287,7 +293,8 @@ INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`, `orderStatus`) VAL
 (8, 2, 'MOJO0103Z05N32895679', '2020-01-03', NULL),
 (9, 2, 'MOJO0108S05N06907924', '2020-01-09', NULL),
 (10, 2, 'MOJO0109F05A88597312', '2020-01-09', NULL),
-(11, 3, 'PAYID-LYLL5IY21293431HV278574S', '2020-01-09', NULL);
+(11, 3, 'PAYID-LYLL5IY21293431HV278574S', '2020-01-09', NULL),
+(12, 2, 'PAYID-LYPWBNY2CS17825GN909193B', '2020-01-15', NULL);
 
 -- --------------------------------------------------------
 
@@ -307,11 +314,17 @@ CREATE TABLE `users` (
   `state` varchar(12) NOT NULL,
   `pincode` int(6) NOT NULL,
   `billingad_type` varchar(255) NOT NULL,
+  `billing_add` varchar(255) NOT NULL,
+  `billing_state` varchar(255) NOT NULL,
+  `billing_city` varchar(255) NOT NULL,
+  `billing_pincode` int(6) NOT NULL,
+  `billing_mb` varchar(255) NOT NULL,
   `shippingaddress` varchar(255) NOT NULL,
   `shippingstate` varchar(255) NOT NULL,
   `shippingcity` varchar(255) NOT NULL,
   `shippingpincode` varchar(255) NOT NULL,
   `shippingad_type` varchar(11) NOT NULL,
+  `shipping_mb` varchar(255) NOT NULL,
   `contact_info` varchar(100) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `status` int(1) NOT NULL,
@@ -324,11 +337,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
-(1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', '', '0', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
-(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', 'mumbra', 'Mumbai', 'Andheri', '400612', 'Home', '7021918970', '.jpg', 1, '', '', '2019-12-04'),
-(3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
-(6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10');
+INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `billing_add`, `billing_state`, `billing_city`, `billing_pincode`, `billing_mb`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `shipping_mb`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
+(1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
+(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', 'Sayeed Manzil, Room no : 104, Opp. Irani Petrol Pump Mumbra', 'Maharshtra', 'Thane', 400612, '7021918970', 'mumbra', 'Mumbai', 'Andheri', '4006121212121', 'Home', '9167263576', '7021918970', '.jpg', 1, '', '', '2019-12-04'),
+(3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', 0, '', '', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
+(6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10');
 
 -- --------------------------------------------------------
 
@@ -435,7 +448,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -453,7 +466,7 @@ ALTER TABLE `deals`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `google_users`
@@ -477,7 +490,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

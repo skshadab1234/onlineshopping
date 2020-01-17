@@ -32,7 +32,7 @@ include 'includes/header.php';
 <div class="row">
 <div class="col-sm-8" style="padding: 20px">
 <div class="col-sm-6">
-<div class="box" style="height:300px;position:relative">
+<div  style="height:300px;position:relative;border:1px solid #323232;border-radius:5px">
 <div class="box-header">
 <h3>Shipping Address</h3>
 <hr>
@@ -55,7 +55,7 @@ if(isset($_SESSION['user'])){
 </div>
 <!-- Billing Address -->
 <div class="col-sm-6">
-<div class="box" style="width:100%;height:300px">
+<div  style="width:100%;height:300px;border:1px solid #323232;border-radius:5px">
 <div class="box-header">
 <h3 >Billing Address</h3>
 <hr>
@@ -253,7 +253,7 @@ value = $input.val(),
 length = value.length,
 inputCharacter = parseInt(value.slice(-1));
 
-if (!((length > 1 && inputCharacter >= 0 && inputCharacter <= 9) || (length === 1 && inputCharacter >= 7 && inputCharacter <= 9))) {
+if (!((length > 1 && in putCharacter >= 0 && inputCharacter <= 9) || (length === 1 && inputCharacter >= 7 && inputCharacter <= 9))) {
 $input.val(value.substring(0, length - 1));
 }
 }); 

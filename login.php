@@ -54,7 +54,6 @@ body{
   width: 200px;
   padding: 10px;
     border: 1px solid #6ac7cc;
-
 color: #6ac7cc;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;

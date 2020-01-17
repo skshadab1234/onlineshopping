@@ -4,16 +4,20 @@ position: fixed;
 top: 0;
 width: 100%;
 background:#323232;
+box-shadow: 0 9px 18px rgba(0,0,0,0.1),
+                inset 0 1px 12px rgba(0,0,0,0.2);  
 }
 
 #myHeader{
     transition:0.9s ease all; 
     padding:5px;    
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  
+    box-shadow: 0 9px 18px rgba(0,0,0,0.11),
+                inset 0 1px 12px rgba(0,0,0,0.2);  
 }
 
 .navbar-collapse{
-    margin-left:200px;
+    position:absolute;
+    right:250px;
 }
 .navbar-brand1{
 	font-size: 25px;

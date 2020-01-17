@@ -35,7 +35,7 @@
 	$delivery = 15.00;
 	$delivery1 = $order1 + $delivery;
 	$output .= "
-	<div style=\"padding:40px;border:1px solid #ddd;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);\" class=\"pull-center\">
+	<div style=\"padding:40px;border:1px solid #ddd;box-shadow: 0 9px 38px rgba(0,0,0,0.3), 0 5px 2px rgba(0,0,0,0.2);\" class=\"pull-center\">
 	<div class=\"row\">
 	<div class=\"col-sm-12\">
 	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\">

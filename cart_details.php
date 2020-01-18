@@ -35,9 +35,9 @@
 	$delivery = 15.00;
 	$delivery1 = $order1 + $delivery;
 	$output .= "
-	<div style=\"padding:40px;border:1px solid #ddd;box-shadow: 0 9px 38px rgba(0,0,0,0.3), 0 5px 2px rgba(0,0,0,0.2);\" class=\"pull-center\">
+	<div class=\"container-fluid\"  style=\"background:#fff; box-shadow: 0 2px 18px rgba(0,0,0,0.11),inset 0 1px 12px rgba(0,0,0,0.2);padding:10px;margin:20px auto;overflow:hidden\" >
 	<div class=\"row\">
-	<div class=\"col-sm-12\">
+	<div class=\"col-sm-12\" >
 	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\">
 	<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>    
 	</div>	
@@ -70,14 +70,12 @@
 	<button type='button''  style=\"background:none;border:none;color:black;font-weight:300;letter-spacing:2px\" class=' btn-flat 	cart_delete'>Move to Wishlist</button>
 
 	</div>
-	<br>
 	</div>
-	
 	";
 	}
 	$output .= "
 <a href=\"wishlist.php\">
-	<div style=\"border:1px solid #ddd;padding:20px;box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);\">
+	<div style=\"margin:20px\" class=\"container\">
 	<h5 style=\"font-size:20px;color:black;font-weight:500;margin-left:20px\"><span><i class=\"fa fa-bookmark-o\"></i>&nbsp;&nbsp;&nbsp;Add More From Wishlist</span></h5>
 	</div>
 	</a>

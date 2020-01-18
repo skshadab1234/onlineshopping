@@ -11,14 +11,13 @@ box-shadow: 0 9px 18px rgba(0,0,0,0.1),
 #myHeader{
     transition:0.9s ease all; 
     padding:5px;    
-    box-shadow: 0 9px 18px rgba(0,0,0,0.11),
-                inset 0 1px 12px rgba(0,0,0,0.2);  
+    box-shadow: 0 9px 18px rgba(0,0,0,0.11),    
+                0 1px 12px rgba(0,0,0,0.2);  
 }
 
 .navbar-collapse{
-    position:absolute;
-    right:250px;
-}
+    margin-left:200px;
+    }
 .navbar-brand1{
 	font-size: 25px;
 	width: 300px;
@@ -29,7 +28,7 @@ box-shadow: 0 9px 18px rgba(0,0,0,0.1),
 	font-weight: 700;
 }
 .openBtn {
-border: none;
+border: none;   
 padding: 10px;
 background: none;
 color: black;

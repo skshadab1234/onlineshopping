@@ -38,15 +38,14 @@
 		</ul>
 	</div>
 
-	<div class="container-fluid">
+	<div class="container-fluid" >
 	<div id="tbody" style="padding: 30px;">
 
 	</div>
 	</div>
 	</div>
-<div class="col-sm-4" >
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
 <?php require 'place_o.php'; ?>
-
 </div>
 
 	</div>

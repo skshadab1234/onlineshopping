@@ -1,13 +1,17 @@
 <?php include 'includes/session.php'; ?>
+
 <?php
 	$output = '';
 	if(!isset($_GET['code']) OR !isset($_GET['user'])){
 		$output .= '
-			<div class="alert alert-danger">
-                <h4><i class="icon fa fa-warning"></i> Error!</h4>
-                Code to activate account not found.
-            </div>
-            <h4>You may <a href="signup.php">Signup</a> or back to <a href="index.php">Homepage</a>.</h4>
+		<div class="container-fluid text-center" style="display:flex;justify-content:center">
+<div class="row">
+<div class="col-xs-12 col-sm-12 text-center" style="padding:20px;margin-top:20%;box-shadow: 0 9px 8px rgba(0,0,0,0.30), 0 5px 112px rgba(0,0,0,0.22);background:#dd4b39 !important;width:100%;">
+<h2 class="mens" style="color:#f1f1f1;"><i class="fa fa-warning"></i> Code to activate account not found.</h2>
+<h4 style="font-size:24px;line-height:60px;color:#f2f2f2">You may <a href="signup.php" class="btn" id="quickview" style="margin:10px"> Signup</a> or back to <a href="index.php" style="margin:10px" class="btn" id="quickview"> Homepage</a>.</h4>
+</div>
+</div>
+</div>
 		'; 
 	}
 	else{
@@ -20,11 +24,14 @@
 		if($row['numrows'] > 0){
 			if($row['status']){
 				$output .= '
-					<div class="alert alert-danger">
-		                <h4><i class="icon fa fa-warning"></i> Error!</h4>
-		                Account already activated.
-		            </div>
-		            <h4>You may <a href="login.php">Login</a> or back to <a href="index.php">Homepage</a>.</h4>
+<div class="container-fluid text-center" style="display:flex;justify-content:center">
+<div class="row">
+<div class="col-xs-12 col-sm-12 text-center" style="padding:20px;margin-top:20%;box-shadow: 0 9px 8px rgba(0,0,0,0.30), 0 2px 10px 0px rgba(0,0,0,0.22);background:#dd4b39 !important;width:100%;">
+<h2 class="mens" style="color:#f1f1f1;"><i class="fa fa-warning"></i> Errror! Account already activated.</h2>
+<h4 style="font-size:24px;line-height:60px;color:#f2f2f2">You may <a href="login.php" class="btn" id="quickview" style="margin:10px"> Login</a> or back to <a href="index.php" style="margin:10px" class="btn" id="quickview"> Homepage</a>.</h4>
+</div>
+</div>
+</div>
 				';
 			}
 			else{
@@ -32,20 +39,28 @@
 					$stmt = $conn->prepare("UPDATE users SET status=:status WHERE id=:id");
 					$stmt->execute(['status'=>1, 'id'=>$row['id']]);
 					$output .= '
-						<div class="alert alert-success">
-			                <h4><i class="icon fa fa-check"></i> Success!</h4>
-			                Account activated - Email: <b>'.$row['email'].'</b>.
-			            </div>
-			            <h4>You may <a href="login.php">Login</a> or back to <a href="index.php">Homepage</a>.</h4>
+						
+					<div class="container-fluid text-center" style="display:flex;justify-content:center">
+<div class="row">
+<div class="col-xs-12 col-sm-12 text-center" style="padding:20px;margin-top:20%;box-shadow: 0 9px 8px rgba(0,0,0,0.30), 0 2px 10px 0px rgba(0,0,0,0.22);background:#00a65a !important;width:100%;">
+<h2 class="mens" style="color:#f1f1f1;"><i class="fa fa-check"></i> Account activated - Email: <b>'.$row['email'].'.</h2>
+<h4 style="font-size:24px;line-height:60px;color:#f2f2f2">You may <a href="login.php" class="btn" id="quickview" style="margin:10px"> Login</a> or back to <a href="index.php" style="margin:10px" class="btn" id="quickview"> Homepage</a>.</h4>
+</div>
+</div>
+</div>
 					';
 				}
 				catch(PDOException $e){
 					$output .= '
-						<div class="alert alert-danger">
-			                <h4><i class="icon fa fa-warning"></i> Error!</h4>
-			                '.$e->getMessage().'
-			            </div>
-			            <h4>You may <a href="signup.php">Signup</a> or back to <a href="index.php">Homepage</a>.</h4>
+						
+					<div class="container-fluid text-center" style="display:flex;justify-content:center">
+<div class="row">
+<div class="col-xs-12 col-sm-12 text-center" style="padding:20px;margin-top:20%;box-shadow: 0 9px 8px rgba(0,0,0,0.30), 0 2px 10px 0px rgba(0,0,0,0.22);background:#00a65a !important;width:100%;">
+<h2 class="mens" style="color:#f1f1f1;"><i class="fa fa-warning"></i> Error! '.$e->getMessage().' </h2>
+<h4 style="font-size:24px;line-height:60px;color:#f2f2f2">You may <a href="signup.php" class="btn" id="quickview" style="margin:10px"> Signup</a> or back to <a href="index.php" style="margin:10px" class="btn" id="quickview"> Homepage</a>.</h4>
+</div>
+</div>
+</div>
 					';
 				}
 
@@ -54,44 +69,48 @@
 		}
 		else{
 			$output .= '
-				<div class="alert alert-danger">
-	                <h4><i class="icon fa fa-warning"></i> Error!</h4>
-	                Cannot activate account. Wrong code.
-	            </div>
-	            <h4>You may <a href="signup.php">Signup</a> or back to <a href="index.php">Homepage</a>.</h4>
+
+			<div class="container-fluid text-center" style="display:flex;justify-content:center">
+			<div class="row">
+			<div class="col-xs-12 col-sm-12 text-center" style="padding:20px;margin-top:20%;box-shadow: 0 9px 8px rgba(0,0,0,0.30), 0 2px 10px 0px rgba(0,0,0,0.22);background:#dd4b39 !important;width:100%;">
+			<h2 class="mens" style="color:#f1f1f1;"><i class="fa fa-warning"></i> Error! Cannot activate account. Wrong code." </h2>
+			<h4 style="font-size:24px;line-height:60px;color:#f2f2f2">You may <a href="signup.php" class="btn" id="quickview" style="margin:10px"> Signup</a> or back to <a href="index.php" style="margin:10px" class="btn" id="quickview"> Homepage</a>.</h4>
+			</div>
+			</div>
+			</div>
 			';
 		}
 
 		$pdo->close();
 	}
 ?>
+
+<style>
+body{
+	overflow:hidden;
+	height:100vh;
+}
+</style>
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition skin-blue layout-top-nav">
-<div class="wrapper">
+<?php  include 'includes/navbar.php'; ?>
 
-	<?php include 'includes/navbar.php'; ?>
-	 
-	  <div class="content-wrapper">
-	    <div class="container">
+	  <div class="content-wrapper" style="background:rgb(0,0,0,0.15)">
+	    <div class="container-fluid">
 
 	      <!-- Main content -->
 	      <section class="content">
 	        <div class="row">
-	        	<div class="col-sm-9">
+	        	<div class="col-sm-12">
 	        		<?php echo $output; ?>
 	        	</div>
 	        	<div class="col-sm-3">
-	        		<?php include 'includes/sidebar.php'; ?>
 	        	</div>
 	        </div>
 	      </section>
 	     
 	    </div>
 	  </div>
-  
-  	<?php include 'includes/footer.php'; ?>
-</div>
-
 <?php include 'includes/scripts.php'; ?>
 </body>
 </html>

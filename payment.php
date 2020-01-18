@@ -85,6 +85,8 @@ if(isset($_SESSION['user'])){
 </div>
 </div> 
   </div>
+
+
 <?php  include 'includes/scripts.php'; ?>
 <?php  include 'includes/sidebar_modal.php'; ?>
 

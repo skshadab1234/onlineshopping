@@ -133,7 +133,6 @@ div#shop{
   
   }
 
-
 @media (max-width: 500px){ 
    .navbar-custom-menu .login{
      display: none;
@@ -141,4 +140,4 @@ div#shop{
   .navbar-custom-menu .navbar-nav {
     margin-right: 15px;
   }
-  
+}

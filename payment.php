@@ -18,9 +18,17 @@ include 'includes/header.php';
 <link href="images/favicon.jpg" rel="icon">
 </head>
 <body class="hold-transition skin-blue layout-top-nav">
-<?php include 'includes/navbar.php' ?>	
-      <div class="content-wrapper" >
-   <div class="container-fluid" align="center" style="user-select: none;">
+<?php include 'includes/navbar.php' ?>
+
+<div class="wrapper" >
+
+	<div class="content-wrapper"> 
+
+	<div class="container-fluid text-center" >
+
+	<div class="content">
+
+	<div class="row">
   <ul style="margin:25px;">
   <li  style="display: inline-block;padding: 10px 10px" title="step 1"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;"><a href="cart_view.php" style="color: grey">Bag</a></p></li>----------------
   
@@ -28,7 +36,6 @@ include 'includes/header.php';
     <li  style="display: inline-block;padding: 10px 10px" title="step 3"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;cursor: not-allowed;">Order Confirmation</p></li>
   </ul>
   </div>
-<div class="container-fluid">
 <div class="row">
 <div class="col-sm-8" style="padding: 20px">
 <div class="col-sm-6">
@@ -85,8 +92,7 @@ if(isset($_SESSION['user'])){
 </div>
 </div> 
   </div>
-
-
+  </div>
 <?php  include 'includes/scripts.php'; ?>
 <?php  include 'includes/sidebar_modal.php'; ?>
 

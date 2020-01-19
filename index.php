@@ -7,42 +7,48 @@
     <head>
     <title>Ecomm- ONLINE SHOPPING</title>
     <link rel="stylesheet" href="build/swiper.min.css">
-
+    <style>
+    .container-fluid{
+      border-radius:3px;
+      margin-bottom:20px;
+    }
+    </style>
     </head>
-    <?php include 'includes/navbar.php'; ?>                     
     <body class="layout-top-nav" >
+    <?php include 'includes/navbar.php'; ?>                     
     <div class="wrapper">
     <div class="content-wrapper">
     <!-- Slider 1 -->
-<div class="slider" id="slider1">
+    <div class="slider" id="slider1">
     <!-- Slides -->
     <div>
-    <section class="section">
-    <h2 align="right">Big Offer</h2>
-    <h1>Big Sale</h1>
-    <h5>Men's Clothing</h5>
-    <a href="#">SHOP NOW</a>
-    </section>
-    </div>
-    <div >
-    <section class="section1">
-    <h2>New Summer Arrivals <br> From RS. 1200</h2>
-    <h5>woMen's Clothing</h5>
-    <a href="#">SHOP NOW</a>
-    </section>
+    <a href=""><img src="images/banner/men2.jpg" alt="slider"></a>
     </div>
     <div>
-    <section class="section2">
-    <h2 align="right">Big Offer</h2>
-    <h1>Big Sale</h1>
-    <h5>Men's Clothing</h5>
-    <a href="#">SHOP NOW</a>
-    </section>
-    </div>    <!-- The Arrows -->
+    <a href=""><img src="images/banner/men.jpg" alt="slider"></a>
+    </div>
+    <div>
+    <a href=""><img src="images/banner/women1.jpg" alt="slider"></a>
+    </div>
+    <div>
+    <a href=""><img src="images/banner/adidas.jpg" alt="slider"></a>
+    </div>
+    <div>
+    <a href=""><img src="images/banner/women2.jpg" alt="slider"></a>
+    </div>
+    <div>
+    <a href=""><img src="images/banner/men.webp" alt="slider"></a>
+    </div>
+    <div>
+    <a href=""><img src="images/banner/men1.jpg" alt="slider"></a>
+    </div>
+     <!-- The Arrows -->
     <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg></i>
     <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></i>
 </div>
     <!-- Main content -->
+
+    
     <div class="row">
     <div class="col-sm-12">
     <?php
@@ -56,8 +62,8 @@
     }
     ?>
 
-    <div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" >
-    <!--     
+    <!--<div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" >
+         
     <?php 
     $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
     $stmt->execute();
@@ -82,13 +88,12 @@
     echo " 
     <div class=\"swiper-slide\"><a href=\"category.php?category=".$row['cat_slug']."\"><img src=\"images/category/kids.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
     <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Kids</a></h2></div>
-    ";}?> -->
-    </div>
-    
-    <div class="container-fluid"   id="clock1" style="border-radius: 4px;margin-top: -40px" >
-    <div class="row" >
+    ";}?> 
+    </div>-->
+<!--     
+    <div class="container-fluid"   id="clock1" style="border-radius: 4px;background:#fff;width:97%;" >
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="clock2" align="center">
-    <h2 class="mens">Deal of the Week <br><br>
+    <h2 class="mens">Deal of the Week </h2>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
     <span style="border: 1px solid lightcoral;padding: 10px;line-height: 40px;width: 400px"><i class="fa fa-clock-o" style="color: lightcoral;padding: 10px"></i><span id="demo" class="mens"></span></span></h2>
     </div>
@@ -234,8 +239,8 @@
     </script>		
 
 
-    </div>
-    <div class="container-fluid" style="margin-top: 20px;">
+    </div>-->
+    <div class="container-fluid" style="margin-top:10px;background:#fff;width:97%">
     <h2 class="mens" align="center">Styles to steal</h2>
     <p align="center" style="margin-top: -30px;margin-bottom: 40px;font-family: sans-serif;letter-spacing: 1px">Inspired by influncers</p>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 40px;width: 100px;border-radius: 50px"></div>
@@ -288,8 +293,8 @@
     <button class="moreless-button">VIEW ALL</button>
     </div>
     </div>
-    <div id="carousel3d" style="height: auto;padding:10px;background:#fbd3e9">
-    <h2 class="mens" align="center" style="padding: 20px">Top Brands</h2>
+    <div id="carousel3d" class="container-fluid" style="margin-top:10px;height: auto;padding:20px;background:#fff;width:97%">
+    <h2 class="mens" align="center" >Top Brands</h2>
     <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 30px;width: 100px;border-radius: 50px"></div>
 
     <carousel-3d :perspective="0" :space="600" :display="5" :controls-visible="true" :controls-prev-html="'❬'" :controls-next-html="'❭'" :controls-width="30"  :controls-height="60" :clickable="true" :autoplay="true" :autoplay-timeout="5000" height="500px">
@@ -355,7 +360,7 @@
     })
     //# sourceURL=pen.js
     </script>				
-    <div class="my-3" style="padding: 20px;margin-top: 20px;text-align: center;" >
+    <div class="container-fluid" style="padding: 20px;margin-top: 10px;text-align: center;background:#fff;width:97%" >
     <h2 class="mens">Monthly Top Sellers</h2>
     <div style="border-bottom: 5px solid #ff3f6c;;margin: -10px auto;width: 100px;border-radius: 50px"></div>
     <div class="container-fluid " style="margin-top: 40px">
@@ -365,15 +370,15 @@
     $conn = $pdo->open();
 
     try{
-    $inc = 4;	
+    $inc = 6;	
     $stmt = $conn->prepare("SELECT *, SUM(quantity) AS total_qty FROM details LEFT JOIN sales ON sales.id=details.sales_id LEFT JOIN products ON products.id=details.product_id WHERE MONTH(sales_date) = '$month' GROUP BY details.product_id ORDER BY total_qty DESC LIMIT 6");
     $stmt->execute();
     foreach ($stmt as $row) {
     $image = (!empty($row['photo'])) ? 'images/'.$row['photo'] : 'images/noimage.jpg';
-    $inc = ($inc == 4) ? 1 : $inc + 1;
-    if($inc == 4) echo "<div class='row'>";
+    $inc = ($inc == 6) ? 1 : $inc + 1;
+    if($inc == 6) echo "<div class='row'>";
     echo "
-    <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-3 \">
+    <div class=\"col-xs-6 col-sm-6 col-md-2 col-lg-2 \">
 
     <div class=\"row\" >
     <div class=\"el-wrapper\">
@@ -471,10 +476,10 @@
     </div>
 
     ";
-    if($inc == 4) echo "</div>";
+    if($inc == 6) echo "</div>";
     }
-    if($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>"; 
-    if($inc == 4) echo "<div class='col-sm-3'></div></div>";
+    if($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>"; 
+    if($inc == 6) echo "<div class='col-sm-3'></div></div>";
     }
     catch(PDOException $e){
     echo "There is some problem in connection: " . $e->getMessage();

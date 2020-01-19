@@ -1,46 +1,49 @@
 <style type="text/css">
 .sticky {
 position: fixed;
+padding:5px;
 top: 0;
 width: 100%;
-background:#323232;
+background: #fff;  /* fallback for old browsers */
 box-shadow: 0 9px 18px rgba(0,0,0,0.1),
-                inset 0 1px 12px rgba(0,0,0,0.2);  
+inset 0 1px 12px rgba(0,0,0,0.2);  
 }
 
 #myHeader{
-    transition:0.9s ease all; 
-    padding:5px;    
-    box-shadow: 0 9px 18px rgba(0,0,0,0.11),    
-                0 1px 12px rgba(0,0,0,0.2);  
+transition:0.9s ease all; 
+width:100%;
+padding:10px;
+position:fixed;
 }
 
 .navbar-collapse{
-    margin-left:200px;
-    }
+margin-left:5%;
+}
 .navbar-brand1{
-	font-size: 25px;
-	width: 300px;
-    color:black;    
-    padding:20px;
-    line-height:50px;
-	letter-spacing: 2px;
-	font-weight: 700;
+font-size: 25px;
+width: 300px;
+color:#4b6cb7;    
+padding:20px;
+line-height:50px;
+letter-spacing: 2px;
+font-weight: 700;
 }
 .openBtn {
 border: none;   
 padding: 10px;
 background: none;
-color: black;
+color: #2b5876;
+opacity:0.5;
+font-size:20px;
 cursor: pointer;
 }
 
 #myHeader.sticky .openBtn{
-    color: white;
+color: #2b5876;
 }
 
 #myHeader.sticky .navbar-brand1{
-    color:white;
+color:#4b6cb7;
 }
 /*the container must be positioned relative:*/
 .autocomplete {
@@ -98,58 +101,56 @@ color: #ffffff;
 } 
 
 #myHeader.sticky .fa-bars{
-color: white;
+color: #232526;
 padding-right:-10px;
 }
 .fa-bars{
-color: black;
+color: #232526;
 opacity:0.5;
 padding-right:-10px;
 }
 #myHeader.sticky .fa-shopping-bag{
-    color:white;
+color:#232526;
 }
 
 .subnavbtn a{
-    color:   black;
-    margin-left:30px;
-    letter-spacing:1px;
-    font-weight:400;    
+color: #323232;
+margin-left:30px;
+letter-spacing:1px;
+font-weight:400;    
 }
 
 #myHeader.sticky .subnavbtn a{
-    color:white;
+color:#232526;
 }
 
 .login{
-    color:black;
+color:#232526;
 }
 .login:hover{
-    color:black;
+color:#232526;
 }
 
 #myHeader.sticky .login {
-color:white;
+color:#232526;
 }
 .fa-shopping-bag{
-    color:black;
-    font-size:14px;
+color:#232526;
+font-size:14px;
 }
 .fa-heart-o{
-    color:black;
-    font-size:14px;
+color:#232526;
+font-size:14px;
 }
 #myHeader.sticky .fa-heart-o{
-    color:white;
-
+color:#232526;
 }
 </style>
 <body class="hold-transition layout-top-nav" >
- 
-<header class="main-header">
+<header class="main-header" style="background:transparent">
 <nav class="navbar navbar-static-top"  id="myHeader">
-		<button type="button" class="navbar-toggle collapsed" id="bars" data-toggle="modal" data-target="#bar">
-	<i class="fa fa-bars"></i>
+<button type="button" class="navbar-toggle collapsed" id="bars" data-toggle="modal" data-target="#bar">
+<i class="fa fa-bars"></i>
 </button>
 <div class="navbar-header"> 
 <a href="index.php" class="navbar-brand1" >
@@ -173,7 +174,7 @@ echo "
 <div class=\"men\"></div>
 <div class=\"subnav-content\">
 <div class=\"container-fluid\" style=\"background:#323232;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
- \">
+\">
 <div class=\"row\">
 <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
 <li><h5><a href=\"category.php?category=".$row['cat_slug']."\" class=\"p1\">Bottomwear</a></h5></li>
@@ -254,7 +255,7 @@ echo "
 
 <div class=\"subnav-content\">
 <div class=\"container-fluid\" style=\"background:#323232;;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
- \">
+\">
 <div class=\"row\">
 <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
 <li><h5><a href=\"\" class=\"p2\">Indian & Fusion Wear</a></h5></li>
@@ -401,12 +402,12 @@ $pdo->close();
 ?>
 </ul>
 
-</div>
-<div class="navbar-custom-menu" >
+ </div>
+<!--<div class="navbar-custom-menu" style="background:red" >
 <ul class="nav navbar-nav">
-<li class="dropdown messages-menu">
+<li class="dropdown messages-menu"> -->
 <!-- Menu toggle button -->
-<a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
+<!-- <a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
 <i class="fa fa-shopping-bag"></i>
 <span class="label label-info cart_count" ></span>
 </a>
@@ -445,15 +446,68 @@ echo "
 
 }
 ?>
-<li class="dropdown messages-menu">
+<li class="dropdown messages-menu"> -->
 <!-- Menu toggle button -->
-<a href="wishlist.php"  id="cart" >
+<!-- <a href="wishlist.php"  id="cart" >
 <i class="fa fa-heart-o" ></i>
 </a>
 
 </ul>
 <button class="openBtn"  data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
+</div> -->
+
+<div class="navbar-custom-menu" style="position:absolute;right:10px">
+<ul class="nav navbar-nav">
+<li class="dropdown messages-menu">
+<!-- Menu toggle button -->
+<a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
+<i class="fa fa-shopping-bag"></i>
+<span class="label label-info cart_count" ></span>
+</a>
+<ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
+<li class="header" style="background: #2a2440;color: white">You have <span class="cart_count" style="color: red"></span> item(s) in cart</li>
+<li>
+<ul class="menu" id="cart_menu">
+</ul>
+</li>
+<li class="pull-center"><a href="cart_view.php"  style="background-color:#2a2440;color: #fff;font-weight: bolder;text-align: center;font-size: 16px;padding: 20px">View Cart</a></li>
+</ul>
+
+<li class="dropdown messages-menu">
+<!-- Menu toggle button -->
+<a href="wishlist.php"  id="cart" >
+<i class="fa fa-heart-o" ></i>
+</a>
+</li>
+<li>
+<?php
+if(isset($_SESSION['user'])){
+$image = (!empty($user['photo'])) ? 'images/'.$user['photo'] : 'images/profile.jpg';
+echo '
+<li class="dropdown user user-menu">
+<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#profile">
+<img src="'.$image.'" class="user-image" alt="User Image">
+</a>
+</li>
+';
+}
+else{
+echo "
+";
+?>
+<li><a href='login.php'  class='login'>LOGIN</a></li>
+<li><a href='signup.php' class='login'>SIGNUP</a></li>
+<?php
+}
+?>
+</li>
+<li>
+<button class="openBtn"  data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
+</li>
+</ul>
+
 </div>
+
 </nav>
 </header>
 
@@ -461,7 +515,7 @@ echo "
 </div>
 <?php include 'includes/sidebar_modal.php'; ?>
 <?php include 'includes/profile_modal.php'; ?>
-   
+
 </body>
 <script>
 window.onscroll = function() {myFunction()};

@@ -52,7 +52,7 @@ $now = date('Y-m-d');
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 //generate code
-$set='shadab1265456465412156214265465adsadasd231123!@@!32!#!#$214#$$@$3';
+$set='skshadab123456';
 $code=substr(str_shuffle($set), 0, 12);
 
 try{
@@ -62,22 +62,40 @@ $userid = $conn->lastInsertId();
 
 
 $message = "
-<div class=\"container\" style=\"padding:20px;border-radius:20px;border:1px solid grey;margin:100px auto;align-items:center \" >
-<h2 class=\"mens\">Welcome to Ecomm,</h2>
-<h3>".$firstname." ".$lastname."</h3>
-<div style=\"width:100%;margin:20px auto\" class=\"container-fluid text-center\" >
+<div style=\"width:100%;background:#f2f2f1;padding:10px\">
+<div style=\"max-width:70%;text-align:center;margin:100px auto;background:#fff;padding:20px;position:relative\">
+<div style=\"position:absolute;top:-75px;left:0;\">
+<h3 style=\"font-weight:700;font-size:35px;text-transform:uppercase;padding:10px;color:#001200;font-family:cursive\">Ecomm</h3>
+</div>
+<div style=\"position:absolute;right:0;top:-70px\">
+<p><span style=\"position:absolute;right:0\">24/7 Support: 9167263576</span><br>
+Ecomm Customer — Customer Number: 7021918970
+</p>
+</div>
+<h2 class=\"mens\">Welcome,<span style=\"color:red\"> ".$firstname." ".$lastname."</h2>
+<div style=\"width:400px;margin:20px auto\" >
 <p>First, please confirm your email address. If you're ever locked out of your account, this will help us get you back in.
 </p>
 </div>
-<a href='http://localhost/ecomm/activate.php?code=".$code."&user=".$userid."'><border class=\"btn btn-success\" >confirm your email address</border></a>
+  <a href='http://localhost/ecomm/activate.php?code=".$code."&user=".$userid."' style=\"text-decoration: none;
+  background-color: #00a63f;
+  border-top: 10px solid #00a63f;
+  border-bottom: 10px solid #00a63f;
+  border-left: 10px solid #00a63f;
+  border-right: 10px solid #00a63f;
+  display: inline-block;
+  border-radius: 3px;
+  padding:10px;
+  font-family:sans-serif;
+  font-size:1.9rem;
+  color: #ffffff;\">Verify ".$email."</a>
+</div>
 </div>
 ";
 
 
 require_once "vendor/autoload.php";
-
 $mail = new PHPMailer;
-
 //Enable SMTP debugging. 
 $mail->SMTPDebug = 3;                               
 //Set PHPMailer to use SMTP.
@@ -98,7 +116,6 @@ $mail->From = "ks615044@gmail.com";
 $mail->FromName = "Shadabzone";
 
 $mail->addAddress($email, $firstname, $lastname);
-
 $mail->isHTML(true);
 
 $mail->Subject = "Verify Your Email-id";

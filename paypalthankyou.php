@@ -66,7 +66,14 @@
 </style>
 <body class="hold-transition skin-blue layout-top-nav">
 
-<div class="content-wrapper">
+<div class="wrapper" >
+
+<div class="content-wrapper"> 
+  
+<div class="container-fluid" >
+
+<div class="content">
+
 		<div class="text-center" style="margin-top: -20px">
 		<h1 class="mens" style="padding: 20px">Thank You So Much For Purchasing</h1>
 	
@@ -112,10 +119,9 @@
 </div>
 	</div>
 </div>
-
-
-
-
+</div>
+</div>
+</div>
 
 				<?php include 'includes/footer.php'; ?>
 

@@ -10,61 +10,62 @@
 	<head>
 	<title>Cart <?php 
 	if(isset($_SESSION['user'])){
-		echo " - ".$user['firstname']." ".$user['lastname']."";
+	echo " - ".$user['firstname']." ".$user['lastname']."";
 	}else{
-		echo "";
+	echo "";
 	}
 	?></title>
 
 	</head>
-	<body class="layout-top-nav">
+	<body class="hold-transition layout-top-nav">
 
-	<div class="content-wrapper">
+	<div class="wrapper" >
+
+	<div class="content-wrapper"> 
 
 	<div class="container-fluid" >
+
+	<div class="content">
+
 	<div class="row">
-	<div class="col-sm-12 col-xs-12">
 	<!-- Main content -->
 	<h1 class="page-header"  style="font-weight: bolder;color: grey;padding: 20px">My Shopping Bag ( <span class="cart_count"></span> items)	</h1>
 	<div class="col-sm-12 col-xs-12 col-lg-8 col-md-8">
-		<div class="container-fluid" align="center" style="user-select: none;">
-			<ul>
-			<li  style="display: inline-block;padding: 10px 10px" title="step 1"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;color: #20bd99;
-    border-bottom: 2px solid #20bd99;letter-spacing: 3px;text-transform: uppercase;">Bag</p></li>----------------
-			
-			<li style="display: inline-block;padding: 10px 10px" title="step 2"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;cursor: not-allowed;">Payment</p></li>
-------------------
-			<li style="display: inline-block;padding: 10px 10px" title="step 3"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;cursor: not-allowed;">Order Confirmation</p></li>
-		</ul>
+	<div class="container-fluid" align="center" style="user-select: none;">
+	<ul>
+	<li  style="display: inline-block;padding: 10px 10px" title="step 1"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;color: #20bd99;
+	border-bottom: 2px solid #20bd99;letter-spacing: 3px;text-transform: uppercase;">Bag</p></li>----------------
+
+	<li style="display: inline-block;padding: 10px 10px" title="step 2"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;cursor: not-allowed;">Payment</p></li>
+	------------------
+	<li style="display: inline-block;padding: 10px 10px" title="step 3"><p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;cursor: not-allowed;">Order Confirmation</p></li>
+	</ul>
 	</div>
 
-	<div class="container-fluid" >
+	<div >
 	<div id="tbody" style="padding: 30px;">
+	</div>
+	</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+	<?php require 'place_o.php'; ?>
+	</div>
 
-	</div>
-	</div>
-	</div>
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
-<?php require 'place_o.php'; ?>
-</div>
-
-	</div>
-	</div>
 	</div>
 	<hr>	 
-	<div class="container">
+	<div class="container-fluid">
 	<h2 class="mens" align="center">You May Also Like:</h2>
-<div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
+	<div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
 	<div id="carousel3d2"> 
-	<carousel-3d :perspective="1" :space="300" :display="20" :controls-visible="true" :controls-prev-html="'❬'" :controls-next-html="'❭'" :controls-width="30"  :controls-height="60"  :clickable="true" :autoplay="true" :autoplay-timeout="3000" height="400px">
+	<carousel-3d :perspective="1" :space="500" :display="5" :controls-visible="true" :controls-prev-html="'❬'" :controls-next-html="'❭'" :controls-width="30"  :controls-height="60"  :clickable="true" :autoplay="true" :autoplay-timeout="3000" height="400px">
 	<slide :index="0">
 	<?php 
 	$res=mysqli_query($link,"select * from products where id = 1");
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -80,8 +81,8 @@
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -97,8 +98,8 @@
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -114,8 +115,8 @@
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -131,8 +132,8 @@
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -148,8 +149,8 @@
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -165,8 +166,8 @@
 	while ($row=mysqli_fetch_array($res)) {
 	echo "<a href='product.php?product=".$row['slug']."'><img src='images/".$row['photo']."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a> ";
 	echo "<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div></h1>
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div></h1>
 	";
 	echo "<br>";
 	echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; ".number_format($row['price'], 0)." &nbsp;</span>";
@@ -195,9 +196,9 @@
 	</script>
 	<?php $pdo->close(); ?>
 
-	<div class="container-fluid my-3" style="padding: 20px;margin-top: 20px" >
+	<div class="container-fluid" style="margin-top: 20px" >
 	<h2 class="mens" align="center">Monthly Top Sellers</h2>
-<div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
+	<div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 40px;"></div>
 	<?php
 	$month = date('m');
 	$conn = $pdo->open();
@@ -217,9 +218,9 @@
 	<div class=\"el-wrapper\">
 	<div class=\"box-up\">
 	<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a>    
-<div class=\"ribbon\">
-      <span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
-    </div>  
+	<div class=\"ribbon\">
+	<span class=\"ribbon1\"><span>".$row['discount']." OFF </span></span>
+	</div>  
 
 	<div class=\"img-info\">
 
@@ -241,61 +242,61 @@
 
 	<p class=\"cart\">
 	<span class=\"price\">&#36; ".number_format($row['price'], 2)."</span>
-	            <span class=\"add-to-cart\">
-              <span class=\"txt\">
-";?> 
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-primary btn-sm" id="quickview" data-toggle="modal" data-target="#<?php echo $row['id']; ?>"> Quick View </button>
+	<span class=\"add-to-cart\">
+	<span class=\"txt\">
+	";?> 
+	<!-- Trigger the modal with a button -->
+	<button type="button" class="btn btn-primary btn-sm" id="quickview" data-toggle="modal" data-target="#<?php echo $row['id']; ?>"> Quick View </button>
 
-<!-- Modal -->
-<div id="<?php echo $row['id']; ?>" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+	<!-- Modal -->
+	<div id="<?php echo $row['id']; ?>" class="modal fade" role="dialog">
+	<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:black;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>
-"; ?></h4>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              <?php echo "<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-rounded\"></a>"; ?>
-            </div>
-            <div class="col-sm-6">
-              <?php echo "".$row['brand'].""; ?>
-              <?php echo "<br>"; ?>
-              <?php echo " <span class=\"p-name\"><a style=\"font-size:14px;color:black;font-weight:600\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>"; ?>
-              <br>
-              <br>
-              <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-               <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-              <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-              <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-              <i class="fa fa-star-o" style="color: orange;font-size: 14px"></i>
-              <br><br>
-                          <span class="price" style="color: black;font-size: 20px"><?php echo "&#36; ".number_format($row['price'], 2).""; ?></span>&nbsp;
-                          <small style="font-size: 14px;"><s><?php echo "&#36; ".number_format($row['old_price'], 2).""; ?></s></small>
-                            <br>
-                          <br>
+	<!-- Modal content-->
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:black;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>
+	"; ?></h4>
+	</div>
+	<div class="modal-body">
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-6">
+	<?php echo "<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-rounded\"></a>"; ?>
+	</div>
+	<div class="col-sm-6">
+	<?php echo "".$row['brand'].""; ?>
+	<?php echo "<br>"; ?>
+	<?php echo " <span class=\"p-name\"><a style=\"font-size:14px;color:black;font-weight:600\" href='product.php?product=".$row['slug']."'>".$row['name']."</a></span>"; ?>
+	<br>
+	<br>
+	<i class="fa fa-star" style="color: orange;font-size: 14px"></i>
+	<i class="fa fa-star" style="color: orange;font-size: 14px"></i>
+	<i class="fa fa-star" style="color: orange;font-size: 14px"></i>
+	<i class="fa fa-star" style="color: orange;font-size: 14px"></i>
+	<i class="fa fa-star-o" style="color: orange;font-size: 14px"></i>
+	<br><br>
+	<span class="price" style="color: black;font-size: 20px"><?php echo "&#36; ".number_format($row['price'], 2).""; ?></span>&nbsp;
+	<small style="font-size: 14px;"><s><?php echo "&#36; ".number_format($row['old_price'], 2).""; ?></s></small>
+	<br>
+	<br>
 
-              <button class="btn btn-info" style="background-color: orange;border: orange"><?php echo "<a href='product.php?product=".$row['slug']."' style=\"font-size:14px;color:white;font-weight:600\">See Product Details</a>"; ?></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+	<button class="btn btn-info" style="background-color: orange;border: orange"><?php echo "<a href='product.php?product=".$row['slug']."' style=\"font-size:14px;color:white;font-weight:600\">See Product Details</a>"; ?></button>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="modal-footer">
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+	</div>
 
-  </div>
-</div>
+	</div>
+	</div>
 
-<?php  echo "
-              
+	<?php  echo "
+
 	</span>
 	</span>
 	</p>
@@ -318,7 +319,7 @@
 	?> 
 	</div>
 	</div>
-
+	</div>
 	<?php include 'includes/footer.php'; ?>
 
 	<?php include 'includes/scripts.php'; ?>
@@ -423,8 +424,8 @@
 	});
 	}	
 	</script>
-	
-    
-    <script src="js/main.js"></script>
+
+
+	<script src="js/main.js"></script>
 	</body>
 	</html>

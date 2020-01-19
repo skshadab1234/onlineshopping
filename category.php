@@ -21,18 +21,18 @@ $pdo->close();
   <title><?php echo $cat['name']; ?>  </title>
   </head>
 <?php include 'includes/header.php'; ?>
-
-<body class="hold-transition layout-top-nav">
 <?php include 'includes/navbar.php'; ?>
 
-<div class="wrapper">
+<body class="hold-transition layout-top-nav">
 
-<div class="content-wrapper">
+<div class="wrapper" >
+
+<div class="content-wrapper"> 
   
 <div class="container-fluid" >
 
 <!-- Main content -->
-<section class="content" >
+<section class="content"  >
 <div class="row">
 <div class="col-sm-3 col-lg-3"  >
 <?php include 'includes/filter.php'; ?>

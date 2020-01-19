@@ -59,8 +59,12 @@ border-radius: 10px;
 body{
 font-family: 'Alatsi', sans-serif;
 }
-.content-wrapper{
-    background: #f1f1f1;
+.content-wrapper
+{
+background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .modal.fade{
 backdrop-filter:blur(5px);
@@ -68,7 +72,9 @@ background:rgba(0,0,0,0.5)
 }
 
 .modal-content, .modal-header {
-background-image: linear-gradient(254deg, #5909b3, #7f0dff);
+background: #7474BF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 border-radius: 5px;
 }
 
@@ -78,22 +84,21 @@ color:white;
 .modal-title{
 padding:10px 20px;
 }
-
-.modal.fade{
-backdrop-filter: blur(4px)
-}
 html{
 scroll-behavior: smooth;
 }
+.content{
+    margin-top:80px;
+}
+
 /* slider css code */
 .slider, 
 .slider > div {
     /* Images default to Center Center. Maybe try 'center top'? */
-    background-position: center center;
+    background-position: center top;
     display: block;
     width: 100%;
-    height:500px;
-    /* /* height: 100vh; */
+    height:100vh;
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
@@ -102,10 +107,16 @@ scroll-behavior: smooth;
     -o-transition: transform .9s;
     -webkit-transition: transform .9s;
     transition: transform .9s;
+    overflow:hidden
 }
 
 .slider > div {
     position: absolute;
+}
+
+.slider img{
+    width:100%;
+    height:100vh;
 }
 
 .slider > i {
@@ -143,169 +154,7 @@ scroll-behavior: smooth;
 .slider:hover > .right {
     right: 0;
 }
-.slider div:nth-child(1){
-  max-width:100%;
-  height:100%;
-  background:#3a7bd5 no-repeat;
-  background-position:bottom left;
-  background-size:contain;
-  background-image: url(images/banner/men1.png);
-}
-.slider div:nth-child(2){
-  max-width:100%;
-  height:100%;
-  background:#BA5370 no-repeat center right;
-  background-size:contain;
-  background-image:url(images/banner/women1.png);
-}
-.slider div:nth-child(3){
-  max-width:100%;
-  height:100%;
-  background:#8e9eab no-repeat center right;
-  background-size:contain;
-  background-image:url(images/banner/kid.png);
-}
 
-.section{
-    color:white;
-    width:400px;
-    position:absolute;
-    right:200px;
-    text-align:center;
-    top:100px;
-}
-
-.section1{
-    color:#d6ae7b;
-    display:block;
-    position:absolute;
-    left:200px;
-    text-align:center;
-    top:100px;
-}
-
-.section2{
-    color:#d6ae7b;
-    display:block;
-    position:absolute;
-    left:200px;
-    text-align:center;
-    top:100px;
-}
-.section1 h2{
-    font-size:3rem;
-    letter-spacing:4px;
-    line-height:30px;
-    text-transform:uppercase;
-    font-family: 'Fjalla One', sans-serif;
-}
-.section1 > h5{
-    font-size:3rem;
-    letter-spacing:4px;
-    text-align:center;
-    font-family: 'Fjalla One', sans-serif;
-    text-transform:uppercase;
-    font-weight:700;
-}
-
-.section1 a{
-    width:200px;
-    background:transparent;
-    border:1px solid #000;
-    color: #000;
-    text-transform:uppercase;
-    padding:10px;
-    margin:20px;
-    position:absolute;
-    left:100px;
-    display:inline-block;
-    border-radius:5px;
-    transition:0.9s ease all;
-}
-.section1 a:hover{
-    background: #000;
-    color:#fff;
-    transition:0.9s ease all;
-}
-
-
-.section2 h2{
-    font-size:3rem;
-    letter-spacing:4px;
-    line-height:30px;
-    text-transform:uppercase;
-    font-family: 'Fjalla One', sans-serif;
-}
-.section2 > h5{
-    font-size:3rem;
-    letter-spacing:4px;
-    text-align:center;
-    font-family: 'Fjalla One', sans-serif;
-    text-transform:uppercase;
-    font-weight:700;
-}
-
-.section2 a{
-    width:200px;
-    background:transparent;
-    border:1px solid #000;
-    color: #000;
-    text-transform:uppercase;
-    padding:10px;
-    margin:20px;
-    position:absolute;
-    left:100px;
-    display:inline-block;
-    border-radius:5px;
-    transition:0.9s ease all;
-}
-.section2 a:hover{
-    background: #000;
-    color:#fff;
-    transition:0.9s ease all;
-}
-/* for 1 st slide */
-.section h2{
-    font-size:26px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-family: 'Anton', sans-serif;
-}
-.section > h1{
-    font-size:8rem;
-    letter-spacing:4px;
-    text-align:right;
-    font-family: 'Anton', sans-serif;
-    text-transform:uppercase;
-    font-weight:700;
-}
-.section > h5{
-    font-size:2rem;
-    letter-spacing:4px;
-    text-align:right;
-    font-family: 'Anton', sans-serif;
-    text-transform:uppercase;
-}
-
-.section a{
-    width:200px;
-    background:transparent;
-    border:1px solid #000;
-    color: #000;
-    text-transform:uppercase;
-    padding:10px;
-    margin:20px;
-    position:absolute;
-    left:200px;
-    display:inline-block;
-    border-radius:5px;
-    transition:0.9s ease all;
-}
-.section a:hover{
-    background: #000;
-    color:#fff;
-    transition:0.9s ease all;
-}
 .slider > i:hover {
     background:#fff;
     background: rgba(255, 255, 255, .8);
@@ -437,8 +286,6 @@ scroll-behavior: smooth;
     display: flex;
 }
 
-
-
 .search-icon {
 position: relative;
 float: right;
@@ -545,7 +392,7 @@ font-weight: bolder;
 }
 
 .mens{
-color: #323232;
+    color: #1F1C2C;  /* fallback for old browsers */
 font-size: 2.9rem;
 font-weight: bolder;
 letter-spacing: 1px;  
@@ -1347,6 +1194,8 @@ padding: 15px;
   background-size: contain;
   background-repeat:no-repeat;
 }
+
+
 </style>
 
 </head>

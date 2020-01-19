@@ -2,20 +2,24 @@
 <style type="text/css">
  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 #login-page {
-  width: 360px;
+  width: 460px;
   padding: 1% 0 0;
-  background: rgb(0,0,0,0.5);
+  background: #fff;  /* fallback for old browsers */
   margin: 40px auto;
   color: #c2c2c2;
+  font-size:16px;
+  text-align:center;
+  border-radius:20px;
+  box-shadow: 0 0 20px 0 #4389a2, 0 5px 5px 0   #5c258d;
+
 }
 .form {
   position: relative;
   z-index: 1;
-  max-width: 360px;
+  max-width: 100%;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.9), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -100,9 +104,11 @@ color: #6ac7cc;
   color: #EF3B3A;
 }
 body {
- background:url(images/login-bg.jpg); /* fallback for old browsers */
-  background-repeat: no-repeat;
+  background: #5f2c82;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* Full height */
+  height:100%;
   overflow:hidden;
   /* Center and scale the image nicely */
   font-family: "Roboto", sans-serif;   
@@ -127,7 +133,7 @@ body {
 <?php include 'includes/header.php'; ?>
 <body>
 <div class="register-box" id="login-page">
-  <h4 style="color: #c2c2c2;font-size: 30px;padding: 7px 10px;text-transform: uppercase;letter-spacing: 2px;font-weight: 700;margin: auto;">Register</h4>
+  <h4 style="color: #000;font-size: 30px;padding: 7px 10px;text-transform: uppercase;letter-spacing: 2px;font-weight:bolder;margin: auto;">Create Account</h4>
   	<?php
       if(isset($_SESSION['error'])){
         echo "

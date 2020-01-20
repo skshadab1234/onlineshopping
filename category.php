@@ -54,15 +54,15 @@ $pdo->close();
 $conn = $pdo->open();
 
 try{
-$inc = 4; 
+$inc = 6; 
 $stmt = $conn->prepare("SELECT * FROM products WHERE category_id = :catid");
 $stmt->execute(['catid' => $catid]);
 foreach ($stmt as $row) {
 $image = (!empty($row['photo'])) ? 'images/'.$row['photo'] : 'images/noimage.jpg';
-$inc = ($inc == 4) ? 1 : $inc + 1;
-if($inc == 4) echo "<div class='row'>";
+$inc = ($inc == 6) ? 1 : $inc + 1;
+if($inc == 6) echo "<div class='row'>";
 echo "
-<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-3\" >
+<div class=\"col-xs-12 col-sm-6 col-md-2 col-lg-2\" >
 
     <div class=\"row\" >
       <div class=\"el-wrapper\">
@@ -151,10 +151,10 @@ echo "
   </div>
 
   ";
-if($inc == 4) echo "</div>";
+if($inc == 6) echo "</div>";
 }
-if($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>"; 
-if($inc == 4) echo "<div class='col-sm-3'></div></div>";
+if($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>"; 
+if($inc == 6) echo "<div class='col-sm-3'></div></div>";
 }
 catch(PDOException $e){
 echo "There is some problem in connection: " . $e->getMessage();

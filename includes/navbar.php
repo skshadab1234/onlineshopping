@@ -401,61 +401,7 @@ $pdo->close();
 
 ?>
 </ul>
-
- </div>
-<!--<div class="navbar-custom-menu" style="background:red" >
-<ul class="nav navbar-nav">
-<li class="dropdown messages-menu"> -->
-<!-- Menu toggle button -->
-<!-- <a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
-<i class="fa fa-shopping-bag"></i>
-<span class="label label-info cart_count" ></span>
-</a>
-<ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
-<li class="header" style="background: #2a2440;color: white">You have <span class="cart_count" style="color: red"></span> item(s) in cart</li>
-<li>
-<ul class="menu" id="cart_menu">
-</ul>
-</li>
-<li class="pull-center"><a href="cart_view.php"  style="background-color:#2a2440;color: #fff;font-weight: bolder;text-align: center;font-size: 16px;padding: 20px">View Cart</a></li>
-</ul>
-</li>
-
-<?php
-if(isset($_SESSION['user'])){
-$image = (!empty($user['photo'])) ? 'images/'.$user['photo'] : 'images/profile.jpg';
-echo '
-
-
-<li class="dropdown user user-menu">
-<a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#profile">
-<img src="'.$image.'" class="user-image" alt="User Image">
-</a>
-</li>
-';
-}
-else{
-echo "
-
-";
-?>
-<li><a href='login.php'  class='login'>LOGIN</a></li>
-<li><a href='signup.php' class='login'>SIGNUP</a></li>
-
-<?php
-
-}
-?>
-<li class="dropdown messages-menu"> -->
-<!-- Menu toggle button -->
-<!-- <a href="wishlist.php"  id="cart" >
-<i class="fa fa-heart-o" ></i>
-</a>
-
-</ul>
-<button class="openBtn"  data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
-</div> -->
-
+</div>
 <div class="navbar-custom-menu" style="position:absolute;right:10px">
 <ul class="nav navbar-nav">
 <li class="dropdown messages-menu">

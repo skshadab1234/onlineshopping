@@ -25,10 +25,10 @@
     <a href=""><img src="images/banner/men2.jpg" alt="slider"></a>
     </div>
     <div>
-    <a href=""><img src="images/banner/men.jpg" alt="slider"></a>
+    <a href=""><img src="images/banner/couple.webp" alt="slider"></a>
     </div>
     <div>
-    <a href=""><img src="images/banner/women1.jpg" alt="slider"></a>
+    <a href=""><img src="images/banner/women3.jpg" alt="slider"></a>
     </div>
     <div>
     <a href=""><img src="images/banner/adidas.jpg" alt="slider"></a>

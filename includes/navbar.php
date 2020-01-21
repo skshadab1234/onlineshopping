@@ -1,6 +1,5 @@
 <style type="text/css">
 .sticky {
-position: fixed;
 padding:5px;
 top: 0;
 width: 100%;
@@ -33,7 +32,6 @@ border: none;
 padding: 10px;
 background: none;
 color: #2b5876;
-opacity:0.5;
 font-size:20px;
 cursor: pointer;
 }
@@ -106,7 +104,6 @@ padding-right:-10px;
 }
 .fa-bars{
 color: #232526;
-opacity:0.5;
 padding-right:-10px;
 }
 #myHeader.sticky .fa-shopping-bag{
@@ -451,13 +448,25 @@ echo "
 <button class="openBtn"  data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
 </li>
 </ul>
-
 </div>
-
 </nav>
 </header>
+</div>
 
-
+<div class="mobile-view-header" id="mobileview">
+<div class="container">
+<div class="row">
+<div class="col-sm-4 col-xs-4">
+<button type="button" id="bars" data-toggle="modal" data-target="#bar" style="background:none;border:none;padding:0;outline:none;position:absolute;left:0;top:-2px">
+<i class="fa fa-bars"></i>
+</button>
+</div>
+<div class="col-sm-4 col-xs-4">
+<a href="" class="mens" style="color:white;font-size:2rem;position:absolute;left:0;top:7px">Ecomm</a>
+</div>
+<div class="col-sm-4 col-xs-4"></div>
+</div>
+</div>
 </div>
 <?php include 'includes/sidebar_modal.php'; ?>
 <?php include 'includes/profile_modal.php'; ?>

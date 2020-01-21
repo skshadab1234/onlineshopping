@@ -64,7 +64,7 @@ font-family: 'Alatsi', sans-serif;
 background: #C9D6FF;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+position:relative
 }
 .modal.fade{
 backdrop-filter:blur(5px);
@@ -486,11 +486,59 @@ width: 345px;
 
 @media (max-width: 767px) {
 .el-wrapper {
-width: 290px;
+width: 100%;
 margin: 30px auto;
 }
+.slider, .slider > div{
+    width:100%;
+    max-height:300px;
+}
+.slider img{
+    width:100%;
+    max-height:100%;
+}
+.slider > .left {
+    left: 0px;
+}
+.slider > .right {
+    right: 0px;
 }
 
+.slider > ul > li {
+width:10px;
+}
+#brands img{
+    margin-bottom:10px;
+}
+#myHeader{
+    display:none;
+}
+.mobile-view-header{
+    width:100%;
+    height:40px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity:1;
+    position: fixed;
+    box-shadow: none;
+    background: #0d0620;
+    transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+.mobile-view-header i{
+    color:white;
+    padding:10px;
+}
+#index{
+    font-size:2rem;
+    color:#fff;
+    padding:10px;
+    box-sizing:border-box;
+    line-height:40px;
+    font-weight:700
+}
+}
 .el-wrapper:hover .h-bg {
 left: 0px;
 }
@@ -576,7 +624,7 @@ transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
 -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
 transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
 /* ease-out */
-width: 660px;
+width: 100%;
 height: 100%;
 background-color: steelblue;
 position: absolute;
@@ -584,7 +632,7 @@ left: -659px;
 }
 
 .h-bg .h-bg-inner {
-width: 70%;
+width: 100%%;
 height: 100%;
 background-color: #464646;
 }
@@ -977,10 +1025,6 @@ color: white;
 .side, .middle {
 width: 100%;
 }
-/* Hide the right column on small screens */
-.right {
-display: none;
-}
 }
 
 /* Style the tab */
@@ -1159,6 +1203,9 @@ color: black;
 .contact-wrap {
 width: 60%;
 margin: auto;
+}
+.mobile-view-header{
+    display:none;
 }
 }
 

@@ -38,8 +38,8 @@
 			        $mail->isSMTP();                                     
 			        $mail->Host = 'smtp.gmail.com';                      
 			        $mail->SMTPAuth = true;                               
-			        $mail->Username = 'testsourcecodester@gmail.com';     
-			        $mail->Password = 'mysourcepass';                    
+			        $mail->Username = 'ks615044@gmail.com';     
+			        $mail->Password = '1@adsenseaccount';                    
 			        $mail->SMTPOptions = array(
 			            'ssl' => array(
 			            'verify_peer' => false,
@@ -47,18 +47,16 @@
 			            'allow_self_signed' => true
 			            )
 			        );                         
-			        $mail->SMTPSecure = 'ssl';                           
-			        $mail->Port = 465;                                   
+			        $mail->SMTPSecure = 'tls';                           
+			        $mail->Port = 587;                                   
 
-			        $mail->setFrom('testsourcecodester@gmail.com');
-			        
-			        //Recipients
-			        $mail->addAddress($email);              
-			        $mail->addReplyTo('testsourcecodester@gmail.com');
-			       
-			        //Content
-			        $mail->isHTML(true);                                  
-			        $mail->Subject = 'ECommerce Site Password Reset';
+					
+					$mail->From = "ks615044@gmail.com";
+					$mail->FromName = "Shadabzone";
+
+					$mail->addAddress($email, $firstname, $lastname);
+					$mail->isHTML(true);			                                  
+			        $mail->Subject = 'Recover Password ? ';
 			        $mail->Body    = $message;
 
 			        $mail->send();

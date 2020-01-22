@@ -40,7 +40,7 @@
   padding: 10px;
   border: 1px solid #000;
   color: #fff;
-  border-radius:20px;
+  border-radius:2px;
   background:#000;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
@@ -182,6 +182,8 @@ background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, F
               ';
             }
           ?>
+        
+
       		<div class="row">
     			<div class="col-xs-12">
           			<button type="submit" class="form-group" name="signup"><i class="fa fa-pencil"></i> Sign Up</button>

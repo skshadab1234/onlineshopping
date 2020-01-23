@@ -12,8 +12,8 @@
 .form {
   position: relative;
   z-index: 1;
-  background: rgb(0,0,0,0.4);
-    max-width: 360px;
+  background: #fff;
+  max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -24,11 +24,11 @@
   outline: 0;
   width: 100%;
   background: none;
-  border-bottom: 1px solid #6ac7cc;
+  border-bottom: 1px solid #000;
   border-top: none;
   border-left: none;
   border-right: none;
-  color: #6ac7cc;
+  color: #000;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -38,14 +38,12 @@
  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: none;
-  border: 1px solid red;
+  background: #000;
   margin: 20px auto;
   width: 200px;
   padding: 10px;
-    border: 1px solid #6ac7cc;
-
-color: #6ac7cc;
+  border: 1px solid #000;
+  color: #fff;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
@@ -53,18 +51,16 @@ color: #6ac7cc;
 }
 
 .form button:hover{
-  background: none;
-  color: #6ac7cc;
-    border: 1px solid #6ac7cc;
+  background: #000;
 }
 
 .form .message {
   margin: 15px 0 0;
-  color: #b3b3b3;
+  color: #000;
   font-size: 12px;
 }
 .form .message a {
-  color: #6ac7cc;
+  color: #000;
   text-decoration: none;
 }
 .form .register-form {
@@ -103,17 +99,26 @@ color: #6ac7cc;
 .container .info span .fa {
   color: #EF3B3A;
 }
+
 body {
-  background:url(images/login-bg.jpg); /* fallback for old browsers */
-  background-repeat: no-repeat;
+  background: #3a7bd5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   /* Full height */
-  height: 80%;
-
+height: 80%;
   /* Center and scale the image nicely */
-  background-position: center;
-  font-family: "Roboto", sans-serif;
-}    </style>
+background-position: center;
+background-size: cover;
+font-family: "Roboto", sans-serif;
+}
+
+@media(max-width:500px){
+  .login-page {
+    width: 100%;
+  }
+}
+
 </style>
 <body>
 <div id="login-page" style="margin-top: 10%;">
@@ -136,13 +141,14 @@ body {
         unset($_SESSION['success']);
       }
     ?>
+  <h4 style="color: #000;font-size: 25px;padding: 7px 10px;text-transform: uppercase;letter-spacing: 2px;font-weight: 700;margin: 0px 10px;">Forgot Password</h4>
+
     <div class="login-box-body" style="background: none;  color: #6ac7cc;">
-      <p class="login-box-msg">Enter email associated with account</p>
 
       <form action="reset.php" method="POST">
           <div class="form-group has-feedback">
             <input type="email" class="form-control" name="email" placeholder="Email" required>
-            <span class="glyphicon glyphicon-envelope form-control-feedback" style="color: #6ac7cc;"></span>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="row">
           <div class="col-xs-12">

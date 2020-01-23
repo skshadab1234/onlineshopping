@@ -468,6 +468,10 @@ echo "
 </div>
 </div>
 </div>
+
+<div class="mobile-header">
+
+asa</div>
 <?php include 'includes/sidebar_modal.php'; ?>
 <?php include 'includes/profile_modal.php'; ?>
 

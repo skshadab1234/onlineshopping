@@ -136,6 +136,8 @@ font-family: "Roboto", sans-serif;
     width: 100%;
   }
 }
+
+
   </style>
   <body>
     
@@ -166,10 +168,11 @@ font-family: "Roboto", sans-serif;
       <input type="email" class="form-control" name="email" placeholder="Email *" required>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
-<div class="form-group has-feedback" data-validate = "Password is required">
+    <div class="form-group has-feedback" data-validate = "Password is required">
             <input type="password" class="form-control" name="password" placeholder="Password *" required>
             <span class="glyphicon glyphicon-lock form-control-feedback" ></span>
-          </div>
+     </div>
+
   <div class="row">
           <div class="col-xs-12">
                 <button type="submit"   name="login" ><i class="fa fa-sign-in"></i> Sign In</button>
@@ -178,9 +181,8 @@ font-family: "Roboto", sans-serif;
           <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
            <p class="message"><a href="password_forgot.php">Forgot password</a></p>
           <p class="message"><a href="index.php"> SKIP Login</a></p>
-
     </form>
   </div>
-</div>
+  </div>
   </body>
   <?php include 'includes/scripts.php' ?>

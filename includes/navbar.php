@@ -452,26 +452,37 @@ echo "
 </nav>
 </header>
 </div>
-
+<!-- mobile view -->
 <div class="mobile-view-header" id="mobileview">
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-<div class="col-sm-4 col-xs-4">
+<div class="col-sm-3 col-xs-3">
 <button type="button" id="bars" data-toggle="modal" data-target="#bar" style="background:none;border:none;padding:0;outline:none;position:absolute;left:0;top:-2px">
 <i class="fa fa-bars"></i>
 </button>
 </div>
-<div class="col-sm-4 col-xs-4">
-<a href="" class="mens" style="color:white;font-size:2rem;position:absolute;left:0;top:7px">Ecomm</a>
+<div class="col-sm-9 col-xs-9" id="brand">
+<a href=""  id="index">Ecomm</a>
+<a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
+<i class="fa fa-shopping-cart" style="position:absolute;right:20px;font-size:15px;margin:10px;"></i>
+<span class="label label-info cart_count" style="position:absolute;right:10px;font-size:10px;margin-top:10px;"></span>
+</a>
+<ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
+<li class="header" style="background: #2a2440;color: white">You have <span class="cart_count" style="color: red"></span> item(s) in cart</li>
+<li>
+<ul class="menu" id="cart_menu">
+</ul>
+</li>
+<li class="pull-center"><a href="cart_view.php"  style="background-color:#2a2440;color: #fff;font-weight: bolder;text-align: center;font-size: 16px;padding: 20px">View Cart</a></li>
+</ul>
 </div>
-<div class="col-sm-4 col-xs-4"></div>
 </div>
 </div>
 </div>
 
 <div class="mobile-header">
 
-asa</div>
+</div>
 <?php include 'includes/sidebar_modal.php'; ?>
 <?php include 'includes/profile_modal.php'; ?>
 

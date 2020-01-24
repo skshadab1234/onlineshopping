@@ -493,6 +493,7 @@ margin: 30px auto;
 .slider, .slider > div{
     width:100%;
     max-height:300px;
+    margin-top:20px;
 }
 .slider img{
     width:100%;
@@ -508,17 +509,13 @@ margin: 30px auto;
 .slider > ul > li {
 width:10px;
 }
-#brands img{
-    margin-bottom:10px;
-}
+
 #myHeader{
     display:none;
 }
 .mobile-view-header{
     width:100%;
     height:40px;
-    top: 0;
-    left: 0;
     z-index: 1000;
     opacity:1;
     position: fixed;
@@ -527,19 +524,29 @@ width:10px;
     transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
-.mobile-view-header i{
-    color:white;
-    padding:10px;
-}
-#index{
-    font-size:2rem;
+
+
+.mobile-view-header i {
     color:#fff;
-    padding:10px;
-    box-sizing:border-box;
-    line-height:40px;
-    font-weight:700
+    font-size:20px;
+    margin-top:10px;    
+    
+}
+.mobile-view-header .fa-bars::before{
+    margin:10px 20px; 
+}
+.mobile-view-header #brand{
+    line-height: 35px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.mobile-view-header #index{
+    color:#fff;
+    font-size:20px;
 }
 }
+
 .el-wrapper:hover .h-bg {
 left: 0px;
 }

@@ -35,13 +35,12 @@
 	$delivery = 15.00;
 	$delivery1 = $order1 + $delivery;
 	$output .= "
-	<div style=\"padding:20px;border:1px solid #ddd\" class=\"pull-center\">
+	<div class=\"pull-center\">
 	<div class=\"row\">
-	<div class=\"col-sm-12\">
-	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\">
+	<div class=\"col-sm-12 col-xs-12 col-md-2 col-lg-2\">
 	<a href='product.php?product=".$row['slug']."'><img src='".$image."' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>    
 	</div>	
-	<div class=\"col-sm-7 col-xs-7 col-md-7 col-lg-7\">
+	<div class=\"col-sm-12 col-xs-12 col-md-7 col-lg-7\">
 	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product.php?product=".$row['slug']."'>".$row['brand']."</a></span><br><a style=\"font-size:12px;color:white;\" href='product.php?product=".$row['slug']."'>".$row['name']."</a><br><span style=\"font-weight:bold;color:grey\">&#36; ".number_format($row['price'], 2)." /- Only</span></p>
 	<div class='input-group' >
 	<span class='input-group-btn' >
@@ -54,16 +53,12 @@
 	</span>
 	</div>
 	</div>
-	<div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">
+	<div class=\"col-sm-12 col-xs-12 col-md-3 col-lg-3\">
 	<p style=\"font-size:16px;font-weight:bold\" class=\"pull-right\">&#36; ".number_format($subtotal, 2)."</p>
 	<br>
 	</div>	
 	<p> <span style=\"font-size:14px\"><s> &#36; ".number_format($row['old_price'], 2)."</s><span class=\"pull-right\" style=\"font-size:16px;color:orange;font-weight:200\"> -".$row['discount']." OFF </span></span></p>
-
-
 	</div>
-	</div> 
-
 	<hr>	
 	<button type='button' data-id='".$row['cartid']."' style=\"background:none;border:none;color:white;font-weight:300;letter-spacing:2px\"  class='btn-flat cart_delete'>Remove</button>
 	<span class=\"vl\" style=\"border-left: 1px solid #ddd;padding:10px;margin-left:10px\"></span>
@@ -108,9 +103,8 @@
 	$total += $subtotal;
 	$output .= "
 
-	<div  style=\"padding:20px;border:1px solid #ddd\">	
+	<div>	
 	<div class=\"row\">
-	<div>
 	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\" >	
 <a href='product.php?product=".$product['slug']."'><img src='".$image."' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>   	
 	</div>
@@ -146,7 +140,6 @@
 
 	</div>
 	<br>
-	</div>
 	";
 
 	}

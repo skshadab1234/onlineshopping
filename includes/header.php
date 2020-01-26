@@ -73,9 +73,9 @@ background:rgba(0,0,0,0.5)
 }
 
 .modal-content, .modal-header {
-background: #7474BF;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 border-radius: 5px;
 }
 
@@ -491,7 +491,7 @@ width: 100%;
 margin: 30px auto;
 }
 .slider, .slider > div{
-    width:100%;
+    max-width:100%;
     max-height:300px;
     margin-top:20px;
 }
@@ -500,7 +500,7 @@ margin: 30px auto;
     max-height:100%;
 }
 .slider > .left {
-    left: 0px;
+left:0;
 }
 .slider > .right {
     right: 0px;
@@ -525,7 +525,6 @@ width:10px;
     -o-transition: all .3s ease-in-out;
 }
 
-
 .mobile-view-header i {
     color:#fff;
     font-size:20px;
@@ -544,6 +543,87 @@ width:10px;
 .mobile-view-header #index{
     color:#fff;
     font-size:20px;
+}
+#brands img{
+    margin-bottom:20px;
+}
+
+#drop-mobile::before{
+    content: " ";
+  position: absolute;
+  right: 0;
+  top: -10px;
+  border-top: none;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid #fff;
+}
+#drop-mobile{
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+#drop-mobile i{
+    color:steelblue;
+    margin:10px;
+    font-size:20px;
+    box-sizing:border-box
+}
+#drop-mobile li{
+   padding:10px;   
+}
+#drop-mobile a{
+    color:#000;
+    font-size:2vh;
+    font-weight:lighter;
+    letter-spacing:1px;
+}
+.signups{
+    padding:20px;
+    border-bottom:1px solid grey;
+}
+.signups a{
+    border:1px solid #000;
+    padding:10px;
+    margin:10px;    
+}
+.signups1{
+    padding:10px;
+    border-bottom:1px solid grey;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 }
 

@@ -135,6 +135,112 @@ transition: 0.9s ease all;
     stroke-dashoffset: 437;
 }
 
+
+.panel {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #fff;
+  background: none;
+  box-shadow: none;
+}
+
+.panel:last-child {
+  border-bottom: none;
+}
+
+.panel-group > .panel:first-child .panel-heading {
+  border-radius: 4px 4px 0 0;
+}
+
+.panel-group .panel {
+  border-radius: 0;
+}
+
+.panel-group .panel + .panel {
+  margin-top: 0;
+}
+
+.panel-heading {
+  background-color: red;
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  padding: 0;
+}
+
+.panel-title a {
+  display: block;
+  color: #fff;
+  padding: 15px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.panel-body {
+  background: #fff;
+}
+
+.panel:last-child .panel-body {
+  border-radius: 0 0 4px 4px;
+}
+
+.panel:last-child .panel-heading {
+  border-radius: 0 0 4px 4px;
+  transition: border-radius 0.3s linear 0.2s;
+}
+
+.panel:last-child .panel-heading.active {
+  border-radius: 0;
+  transition: border-radius linear 0s;
+}
+/* #bs-collapse icon scale option */
+
+.panel-heading a:before {
+  content: '\e146';
+  position: absolute;
+  font-family: 'Material Icons';
+  right: 5px;
+  top: 10px;
+  font-size: 24px;
+  transition: all 0.5s;
+  transform: scale(1);
+}
+
+.panel-heading.active a:before {
+  content: ' ';
+  transition: all 0.5s;
+  transform: scale(0);
+}
+
+#bs-collapse .panel-heading a:after {
+  content: ' ';
+  font-size: 24px;
+  position: absolute;
+  font-family: 'Material Icons';
+  right: 5px;
+  top: 10px;
+  transform: scale(0);
+  transition: all 0.5s;
+}
+
+#bs-collapse .panel-heading.active a:after {
+  content: '\e909';
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+@media(min-width:767px){
+	#mobilecart{
+		width:80%;
+	}
+}
+
+@media(max-width:767px){
+	#mobilecart{
+		width:100%;
+	}
+}
 	</style>
 
 		<!-- cod modal -->
@@ -160,97 +266,90 @@ transition: 0.9s ease all;
 <!-- Modal -->
 	<div class="modal left fade" id="bar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
+			<div class="modal-header" style="padding:0px;margin:0px">
+					<button type="button" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-left" style="font-size: 20px;opacity: 2;color: white;line-height:40px;margin-left:10px;"></i></span></button>
+					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="index.php" class="navbar-brand1" style="color: white;">ECOMM</a></span>
+			</div>
 			<div class="modal-content">
+						<?php
+						$conn = $pdo->open();
+						try{
+						$stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
+						$stmt->execute();
+						foreach($stmt as $row){
+						echo "
+						<button class=\"accordion\"><a href=\"category.php?category=".$row['cat_slug']."\">".$row['name']."</a></button>
+						<div class=\"panel\">
+						</div>
+						";
+						}
+						}
+						catch(PDOException $e){
+						echo "There is some problem in connection: " . $e->getMessage();
+						}
 
-				<div style="margin: 20px">
-					<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-bars" style="font-size: 20px;opacity: 2;color: white;margin-top: 7px"></i></span></button>
-					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="index.php" class="navbar-brand1" style="color: white;">SKZONE</a></span>
-				</div>
-				<hr style="color: grey">
-				<div class="modal-body">
-				
-					<div>
-<?php
+						$pdo->close();
 
-$conn = $pdo->open();
-try{
-$stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
-$stmt->execute();
-foreach($stmt as $row){
-echo "<a href=\"category.php?category=".$row['cat_slug']."\"><div class=\"mendiv\" ><img src=\"images/category/men.webp\" width=\"50px\" style=\"border-radius: 50%\"><span class=\"men\">".$row['name']."</span></div>
-</a>
-";
-}
-}
-catch(PDOException $e){
-echo "There is some problem in connection: " . $e->getMessage();
-}
+						?>			
+						<?php
 
-$pdo->close();
+						$conn = $pdo->open();
+						try{
+						$stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
+						$stmt->execute();
+						foreach($stmt as $row){
+						echo "<button class=\"accordion\"><a href=\"category.php?category=".$row['cat_slug']."\">".$row['name']."</a></button>
+						<div class=\"panel\">
+						</div>";
+						}
+						}
+						catch(PDOException $e){
+						echo "There is some problem in connection: " . $e->getMessage();
+						}
 
-?>			
-<br>
+						$pdo->close();
 
-<?php
+						?>	
+						<?php
 
-$conn = $pdo->open();
-try{
-$stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
-$stmt->execute();
-foreach($stmt as $row){
-echo "<a href=\"category.php?category=".$row['cat_slug']."\"><div class=\"mendiv\"><img src=\"images/category/women.webp\" width=\"50px\" style=\"border-radius: 50%\"><span class=\"men\">".$row['name']."</span></div></a>";
-}
-}
-catch(PDOException $e){
-echo "There is some problem in connection: " . $e->getMessage();
-}
+						$conn = $pdo->open();
+						try{
+						$stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
+						$stmt->execute();
+						foreach($stmt as $row){
+						echo "<button class=\"accordion\"><a href=\"category.php?category=".$row['cat_slug']."\">".$row['name']."</a></button>
+						<div class=\"panel\">
+						</div>";
+						}
+						}
+						catch(PDOException $e){
+						echo "There is some problem in connection: " . $e->getMessage();
+						}
 
-$pdo->close();
+						$pdo->close();
 
-?>	
-<br>
-<?php
+						?>			
+						<?php
+						if(isset($_SESSION['user'])){
+						$image = (!empty($user['photo'])) ? 'images/'.$user['photo'] : 'images/profile.jpg';
+						echo '
 
-$conn = $pdo->open();
-try{
-$stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
-$stmt->execute();
-foreach($stmt as $row){
-echo "<a href=\"category.php?category=".$row['cat_slug']."\"><div class=\"mendiv\"><img src=\"images/category/kids.webp\" width=\"50px\" style=\"border-radius: 50%\"><span class=\"men\">".$row['name']."</span></div></a>";
-}
-}
-catch(PDOException $e){
-echo "There is some problem in connection: " . $e->getMessage();
-}
+						<h5 class="men" style="margin-left:-8px">Thank You For Becomming a User</h5>
+						';
+						}
+						else{
+						echo "
+						<h5 class=\"text-center\" style=\"color: white;letter-spacing:1px;line-height:15px\">Sign in to get all product updates on your registered mail</h5>
 
-$pdo->close();
+						<li  style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='login.php' style=\"color: #4285f4;font-weight:600;\"><i class=\"fa fa-sign-in\" style=\"font-size:14px\"></i> &nbsp;LOGIN</a></li>
+						<li style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='signup.php' style=\"color:  #4285f4;font-weight:600;\"><i class=\"fa fa-user-plus\" style=\"font-size:14px\"></i> &nbsp;Sign Up</a></li>
+						";
+						}
+						?>
 
-?>			
-<hr>
-					
-<?php
-if(isset($_SESSION['user'])){
-$image = (!empty($user['photo'])) ? 'images/'.$user['photo'] : 'images/profile.jpg';
-echo '
-
-<h5 class="men" style="margin-left:-8px">Thank You For Becomming a User</h5>
-';
-}
-else{
-echo "
-<h5 class=\"text-center\" style=\"color: white;letter-spacing:1px;line-height:15px\">Sign in to get all product updates on your registered mail</h5>
-
-<li  style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='login.php' style=\"color: #4285f4;font-weight:600;\"><i class=\"fa fa-sign-in\" style=\"font-size:14px\"></i> &nbsp;LOGIN</a></li>
-<li style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='signup.php' style=\"color:  #4285f4;font-weight:600;\"><i class=\"fa fa-user-plus\" style=\"font-size:14px\"></i> &nbsp;Sign Up</a></li>
-";
-}
-?>
-
-					</div>
-				</div>
-			</div><!-- modal-content -->
-		</div><!-- modal-dialog -->
-	</div><!-- modal -->
+				</div><!-- modal-content -->
+			</div><!-- modal-dialog -->
+		</div><!-- modal -->
 
 
 
@@ -261,7 +360,7 @@ echo "
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 
-				<div style="margin: 20px">
+				<div>
 					<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-circle-left" style="font-size: 20px;opacity: 2;color: white;margin-top: 7px"></i></span></button>
 					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="profile.php" style="color: white;text-transform: uppercase;">profile</a></span>
 				</div>
@@ -307,42 +406,24 @@ echo "
 
 <!-- Modal -->
 	<div class="modal right fade"   id="cart1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" style="width: 620px" role="document">
+		<div class="modal-dialog" id="mobilecart" role="document">
+			<div class="modal-header" style="margin:0;padding:10px">
+					<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-left" style="font-size: 2vm;opacity: 2;color: white;margin-top: 7px"></i></span></button>
+					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;position:absolute;left:40px;top:12px;" ><a href="cart_view.php" style="color: white;"><span  class="cart_count"></span> Product in Cart</a></span>
+			</div>
 			<div class="modal-content" >
-
-				<div style="margin: 20px">
-					<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-circle-left" style="font-size: 20px;opacity: 2;color: white;margin-top: 7px"></i></span></button>
-					<span  style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;" ><a href="cart_view.php" style="color: white;text-transform: uppercase;"><span class="cart_count"></span>   Product In your cart</a></span>
-				</div>
-				<hr style="color: grey">
 				<div class="modal-body">
 				
 					<div id="tbody1" style="padding: 30px;">
 
-	</div>
-<div class="container3">
-	<a href="cart_view.php" class="btnsk">
-  <svg width="277" height="62">
-    <defs>
-        <linearGradient id="grad1">
-            <stop offset="0%" stop-color="#FF8282"/>
-            <stop offset="100%" stop-color="#E178ED" />
-        </linearGradient>
-    </defs>
-     <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-  </svg>
-  <!--<span>Voir mes réalisations</span>-->
-    <span>View cart</span>
-</a>
-</div>
+			</div>	
+			</div>	
 
-				</div>
+			</div>
 				
 			</div><!-- modal-content -->
 		</div><!-- modal-dialog -->
 	</div><!-- modal -->
-
-
 
 <!-- search modal-dialog -->
 
@@ -497,6 +578,18 @@ $pdo->close();
 
 </div>
 </div>
-            </div>
+         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+  $('.collapse.in').prev('.panel-heading').addClass('active');
+  $('#accordion, #bs-collapse')
+    .on('show.bs.collapse', function(a) {
+      $(a.target).prev('.panel-heading').addClass('active');
+    })
+    .on('hide.bs.collapse', function(a) {
+      $(a.target).prev('.panel-heading').removeClass('active');
+    });
+});
+</script>

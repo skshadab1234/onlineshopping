@@ -234,9 +234,8 @@
     })
     //# sourceURL=pen.js
     </script>		
-
-
     </div>-->
+
     <div class="container-fluid" id="brands" style="margin-top:10px;background:#fff;width:97%">
     <h2 class="mens" align="center">Styles to steal</h2>
     <p align="center" style="margin-top: -30px;margin-bottom: 40px;font-family: sans-serif;letter-spacing: 1px">Inspired by influncers</p>

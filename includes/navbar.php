@@ -410,7 +410,7 @@ $pdo->close();
 <ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
 <li class="header" style="background: #2a2440;color: white">You have <span class="cart_count" style="color: red"></span> item(s) in cart</li>
 <li>
-<ul class="menu" id="cart_menu">
+<ul class="menu" id="cart_menu" >
 </ul>
 </li>
 <li class="pull-center"><a href="cart_view.php"  style="background-color:#2a2440;color: #fff;font-weight: bolder;text-align: center;font-size: 16px;padding: 20px">View Cart</a></li>
@@ -452,6 +452,7 @@ echo "
 </nav>
 </header>
 </div>
+
 <!-- mobile view -->
 <div class="mobile-view-header" id="mobileview">
 <div class="container-fluid">
@@ -463,25 +464,56 @@ echo "
 </div>
 <div class="col-sm-9 col-xs-9" id="brand">
 <a href=""  id="index">Ecomm</a>
-<a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
-<i class="fa fa-shopping-cart" style="position:absolute;right:20px;font-size:15px;margin:10px;"></i>
-<span class="label label-info cart_count" style="position:absolute;right:10px;font-size:10px;margin-top:10px;"></span>
+<a href="#" data-toggle="modal" data-target="#search"><i class="fa fa-search" style="position:absolute;right:75px;font-size:15px;margin:10px;"></i></a>
+
+<a href="#" data-toggle="modal" data-target="#cart1">
+<i class="fa fa-shopping-cart" style="position:absolute;right:45px;font-size:15px;margin:10px;"></i>
+<span class="label label-info cart_count" style="position:absolute;right:35px;font-size:10px;margin-top:10px;"></span>
 </a>
-<ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
-<li class="header" style="background: #2a2440;color: white">You have <span class="cart_count" style="color: red"></span> item(s) in cart</li>
-<li>
-<ul class="menu" id="cart_menu">
-</ul>
-</li>
-<li class="pull-center"><a href="cart_view.php"  style="background-color:#2a2440;color: #fff;font-weight: bolder;text-align: center;font-size: 16px;padding: 20px">View Cart</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
 
-<div class="mobile-header">
+<!-- Menu toggle button -->
+<a href="#"  class="dropdown-toggle pull-right"  data-toggle="dropdown" id="cart" >
+<i class="fa fa-ellipsis-v" ></i>
+</a>
 
+<ul class="dropdown-menu pull-right" id="drop-mobile" >
+<?php
+if(isset($_SESSION['user'])){
+  echo '
+<a href="orders.php"><li><i class="fa fa-credit-card"></i> Orders</li></a>
+<a href="transaction_history.php"><li><i class="fa fa-line-chart"></i> Transactions</li></a>
+<a href="wishlist.php"><li><i class="fa fa-heart-o"></i> Wishlists</li></a>
+<a href="chat.php"><li><i class="fa fa-commenting-o"></i> Chats</li></a>
+<a href="Notification.php"><li><i class="fa fa-bell-o"></i> Notifications</li></a>
+<a href="logout.php"><li><i class="fa fa-power-off"></i> Logout</li></a>
+  ';  
+}
+else{
+  echo ' 
+  
+  <div class="signups">
+  <p></p>
+  <a href="login.php">Login</a><span><a href="signup.php"> Signup</a></span>
+  </div>
+
+    <div class="signups1" >
+    <a href="help.php"><li><i class="fa fa-info-circle" style="font-size:22px"></i> Help</li></a>
+    </div>
+    
+   <div class="signups1">
+   <a href="notification.php"><li><i class="fa fa-bell-o"></i> Notification</li></a>
+   </div>
+   
+   <div class="signups1" style="border:none ">
+   <a href="download.php"><li><i class="fa fa-download"></i> Download App</li></a>
+   </div>
+    ';
+}
+?>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <?php include 'includes/sidebar_modal.php'; ?>
 <?php include 'includes/profile_modal.php'; ?>

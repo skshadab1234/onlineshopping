@@ -43,11 +43,11 @@
 	</div>
 
 	<div >
-	<div id="tbody" style="padding: 30px;">
+	<div id="tbody">
 	</div>
 	</div>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4" >
 	<?php require 'place_o.php'; ?>
 	</div>
 
@@ -411,6 +411,7 @@
 	});
 	}
 
+	
 
 	function getTotal(){
 	$.ajax({

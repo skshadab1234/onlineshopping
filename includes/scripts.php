@@ -80,7 +80,146 @@ function getCart(){
 		success: function(response){
 			$('#cart_menu').html(response.list);
 			$('.cart_count').html(response.count);
+
 		}
 	});
 }
+
 </script>
+	<script>
+		$(function(){
+		$('#add').click(function(e){
+		e.preventDefault();
+		var quantity = $('#quantity').val();
+		quantity++;
+		$('#quantity').val(quantity);
+		});
+		$('#minus').click(function(e){
+		e.preventDefault();
+		var quantity = $('#quantity').val();
+		if(quantity > 1){
+		quantity--;
+		}
+		$('#quantity').val(quantity);
+		});
+
+		});
+		</script>
+<script>
+	var total = 0;
+	$(function(){
+	$(document).on('click', '.cart_delete', function(e){
+	e.preventDefault();
+	var id = $(this).data('id');
+	$.ajax({
+	type: 'POST',
+	url: 'cart_delete.php',
+	data: {id:id},
+	dataType: 'json',
+	success: function(response){
+	if(!response.error){
+	getDetails();
+	getCart();
+	getTotal();
+	}
+	}
+	});
+	});
+
+	$(document).on('click', '.minus', function(e){
+	e.preventDefault();
+	var id = $(this).data('id');
+	var qty = $('#qty_'+id).val();
+	if(qty>1){
+	qty--;
+	}
+	$('#qty_'+id).val(qty);
+	$.ajax({
+	type: 'POST',
+	url: 'cart_update.php',
+	data: {
+	id: id,
+	qty: qty,
+	},
+	dataType: 'json',
+	success: function(response){
+	if(!response.error){
+	getDetails();
+	getCart();
+	getTotal();
+	}
+	}
+	});
+	});
+
+	$(document).on('click', '.add', function(e){
+	e.preventDefault();
+	var id = $(this).data('id');
+	var qty = $('#qty_'+id).val();
+	qty++;
+	$('#qty_'+id).val(qty);
+	$.ajax({
+	type: 'POST',
+	url: 'cart_update.php',
+	data: {
+	id: id,
+	qty: qty,
+	},
+	dataType: 'json',
+	success: function(response){
+	if(!response.error){
+	getDetails();
+	getCart();
+	getTotal();
+	}
+	}
+	});
+	});
+
+	getDetails();
+	getTotal();
+
+	});
+
+	function getDetails(){
+	$.ajax({
+	type: 'POST',
+	url: 'cart_details1.php',
+	dataType: 'json',
+	success: function(response){
+	$('#tbody1').html(response);
+	getCart();
+	}
+	});
+	}
+
+	function getTotal(){
+	$.ajax({
+	type: 'POST',
+	url: 'cart_total.php',
+	dataType: 'json	',
+	success:function(response){
+	delivery1 = response;
+
+	}
+	});
+	}
+	
+	var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+	
+	</script>
+	
+	

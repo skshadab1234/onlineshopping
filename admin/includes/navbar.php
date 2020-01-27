@@ -18,11 +18,11 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="<?php echo (!empty($admin['photo'])) ? '../images/'.$admin['photo'] : '../images/profile.jpg'; ?>" class="user-image" alt="User Image">
-            <span class="hidden-xs"><?php echo $admin['firstname'].' '.$admin['lastname']; ?></span>
+            <img src="<?php echo (!empty($admin['photo'])) ? '../images/' . $admin['photo'] : '../images/profile.jpg'; ?>" class="user-image" alt="User Image">
+            <span class="hidden-xs"><?php echo $admin['firstname'] . ' ' . $admin['lastname']; ?></span>
           </a>
           <style type="text/css">
-            .dropdown-menu li a:hover{
+            .dropdown-menu li a:hover {
               background: none;
               color: grey;
             }
@@ -32,13 +32,14 @@
           ">
             <!-- User image -->
             <li style="padding: 10px 20px">
-               <img src="<?php echo (!empty($admin['photo'])) ? '../images/'.$admin['photo'] : '../images/profile.jpg'; ?>" class="img-circle" alt="User Image" width="40px">
-                <span style="color: white;margin-left: 20px">
-                  <?php echo $admin['firstname'].' '.$admin['lastname']; ?><br>
-               </span>
-             </li>            
-<hr style="padding: 0px;margin: 10px auto;width: 80%">
-            <li style="padding: 10px"><a href="#profile" data-toggle="modal"  style="color: white;text-transform: all;letter-spacing: 1px" >Update</a></li><hr style="padding: 0px;margin: 10px auto;width: 80%">
+              <img src="<?php echo (!empty($admin['photo'])) ? '../images/' . $admin['photo'] : '../images/profile.jpg'; ?>" class="img-circle" alt="User Image" width="40px">
+              <span style="color: white;margin-left: 20px">
+                <?php echo $admin['firstname'] . ' ' . $admin['lastname']; ?><br>
+              </span>
+            </li>
+            <hr style="padding: 0px;margin: 10px auto;width: 80%">
+            <li style="padding: 10px"><a href="#profile" data-toggle="modal" style="color: white;text-transform: all;letter-spacing: 1px">Update</a></li>
+            <hr style="padding: 0px;margin: 10px auto;width: 80%">
             <li style="padding: 10px"><a href="../logout.php" style="color: white;text-transform: all;letter-spacing: 1px">Log out</a></li>
           </ul>
         </li>

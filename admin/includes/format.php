@@ -1,6 +1,7 @@
 <?php
 
-function number_format_short( $n, $precision = 1 ) {
+function number_format_short($n, $precision = 1)
+{
 	if ($n < 900) {
 		// 0 - 900
 		$n_format = number_format($n, $precision);
@@ -22,13 +23,11 @@ function number_format_short( $n, $precision = 1 ) {
 		$n_format = number_format($n / 1000000000000, $precision);
 		$suffix = 'T';
 	}
-  // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
-  // Intentionally does not affect partials, eg "1.50" -> "1.50"
-	if ( $precision > 0 ) {
-		$dotzero = '.' . str_repeat( '0', $precision );
-		$n_format = str_replace( $dotzero, '', $n_format );
+	// Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
+	// Intentionally does not affect partials, eg "1.50" -> "1.50"
+	if ($precision > 0) {
+		$dotzero = '.' . str_repeat('0', $precision);
+		$n_format = str_replace($dotzero, '', $n_format);
 	}
 	return $n_format . $suffix;
 }
-
-?>

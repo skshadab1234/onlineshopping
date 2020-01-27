@@ -11,6 +11,3 @@ if(isset($_POST['submit'])){
 	$query = mysqli_query($con,$q);
 	header('Location:pay.php');
 }
-
-
- ?>

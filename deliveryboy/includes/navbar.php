@@ -18,11 +18,11 @@
 
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="<?php echo (!empty($deliveryboy['photo'])) ? '../images/'.$deliveryboy['photo'] : '../images/profile.jpg'; ?>" class="user-image" alt="User Image">
-            <span class="hidden-xs"><?php echo $deliveryboy['firstname'].' '.$deliveryboy['lastname']; ?></span>
+            <img src="<?php echo (!empty($deliveryboy['photo'])) ? '../images/' . $deliveryboy['photo'] : '../images/profile.jpg'; ?>" class="user-image" alt="User Image">
+            <span class="hidden-xs"><?php echo $deliveryboy['firstname'] . ' ' . $deliveryboy['lastname']; ?></span>
           </a>
           <style type="text/css">
-            .dropdown-menu li a:hover{
+            .dropdown-menu li a:hover {
               background: none;
               color: grey;
             }
@@ -32,13 +32,14 @@
           ">
             <!-- User image -->
             <li style="padding: 10px 20px" class="text-center">
-               <img src="<?php echo (!empty($deliveryboy['photo'])) ? '../images/'.$deliveryboy['photo'] : '../images/profile.jpg'; ?>" class="user-image pull-right" alt="User Image">
-                <span style="color: white;margin-left: 20px">
-                  <?php echo $deliveryboy['firstname'].' '.$deliveryboy['lastname']; ?><br>
-               </span>
-             </li>            
-<hr style="padding: 0px;margin: 10px auto;width: 80%">
-            <li style="padding: 10px"><a href="#profile" data-toggle="modal"  style="color: white;text-transform: all;letter-spacing: 1px" >Update</a></li><hr style="padding: 0px;margin: 10px auto;width: 80%">
+              <img src="<?php echo (!empty($deliveryboy['photo'])) ? '../images/' . $deliveryboy['photo'] : '../images/profile.jpg'; ?>" class="user-image pull-right" alt="User Image">
+              <span style="color: white;margin-left: 20px">
+                <?php echo $deliveryboy['firstname'] . ' ' . $deliveryboy['lastname']; ?><br>
+              </span>
+            </li>
+            <hr style="padding: 0px;margin: 10px auto;width: 80%">
+            <li style="padding: 10px"><a href="#profile" data-toggle="modal" style="color: white;text-transform: all;letter-spacing: 1px">Update</a></li>
+            <hr style="padding: 0px;margin: 10px auto;width: 80%">
             <li style="padding: 10px"><a href="../logout.php" style="color: white;text-transform: all;letter-spacing: 1px">Log out</a></li>
           </ul>
         </li>

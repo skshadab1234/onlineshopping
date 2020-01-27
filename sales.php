@@ -1,43 +1,37 @@
 <?php
-	include 'includes/session.php';
+include 'includes/session.php';
 
-	if(isset($_GET['pay'])){
-		$payid = $_GET['pay'];
-		$date = date('Y-m-d');
+if (isset($_GET['pay'])) {
+	$payid = $_GET['pay'];
+	$date = date('Y-m-d');
 
-		$conn = $pdo->open();
+	$conn = $pdo->open();
 
-		try{
-			
-			$stmt = $conn->prepare("INSERT INTO sales (user_id, pay_id, sales_date) VALUES (:user_id, :pay_id, :sales_date)");
-			$stmt->execute(['user_id'=>$user['id'], 'pay_id'=>$payid, 'sales_date'=>$date]);
-			$salesid = $conn->lastInsertId();
-			
-			try{
-				$stmt = $conn->prepare("SELECT * FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
-				$stmt->execute(['user_id'=>$user['id']]);
+	try {
 
-foreach($stmt as $row){
-$stmt = $conn->prepare("INSERT INTO details (sales_id, product_id, quantity) VALUES (:sales_id, :product_id, :quantity)");
-$stmt->execute(['sales_id'=>$salesid, 'product_id'=>$row['product_id'], 'quantity'=>$row['quantity']]);
-}
+		$stmt = $conn->prepare("INSERT INTO sales (user_id, pay_id, sales_date) VALUES (:user_id, :pay_id, :sales_date)");
+		$stmt->execute(['user_id' => $user['id'], 'pay_id' => $payid, 'sales_date' => $date]);
+		$salesid = $conn->lastInsertId();
 
-				$stmt = $conn->prepare("DELETE FROM cart WHERE user_id=:user_id");
-				$stmt->execute(['user_id'=>$user['id']]);
+		try {
+			$stmt = $conn->prepare("SELECT * FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
+			$stmt->execute(['user_id' => $user['id']]);
 
-			}
-			catch(PDOException $e){
-				$_SESSION['error'] = $e->getMessage();
+			foreach ($stmt as $row) {
+				$stmt = $conn->prepare("INSERT INTO details (sales_id, product_id, quantity) VALUES (:sales_id, :product_id, :quantity)");
+				$stmt->execute(['sales_id' => $salesid, 'product_id' => $row['product_id'], 'quantity' => $row['quantity']]);
 			}
 
-		}
-		catch(PDOException $e){
+			$stmt = $conn->prepare("DELETE FROM cart WHERE user_id=:user_id");
+			$stmt->execute(['user_id' => $user['id']]);
+		} catch (PDOException $e) {
 			$_SESSION['error'] = $e->getMessage();
 		}
-
-		$pdo->close();
+	} catch (PDOException $e) {
+		$_SESSION['error'] = $e->getMessage();
 	}
-	
-	header('location: paypalthankyou.php');
-	
-?>
+
+	$pdo->close();
+}
+
+header('location: paypalthankyou.php');

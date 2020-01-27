@@ -4,14 +4,14 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo (!empty($deliveryboy['photo'])) ? '../images/'.$deliveryboy['photo'] : '../images/profile.jpg'; ?>" class="img-rounded" width="50px" alt="User Image">
+        <img src="<?php echo (!empty($deliveryboy['photo'])) ? '../images/' . $deliveryboy['photo'] : '../images/profile.jpg'; ?>" class="img-rounded" width="50px" alt="User Image">
       </div>
       <div class="pull-left info" style="line-height:30px">
-        <p><?php echo $deliveryboy['firstname'].' '.$deliveryboy['lastname']; ?></p>
+        <p><?php echo $deliveryboy['firstname'] . ' ' . $deliveryboy['lastname']; ?></p>
       </div>
     </div>
 
-    <?php 
+    <?php
     $conn = $pdo->open();
 
     $stmt = $conn->prepare("SELECT COUNT(*)
@@ -19,9 +19,9 @@
     WHERE status = 'pending';");
     $stmt->execute();
 
-    
 
-    
+
+
     ?>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">

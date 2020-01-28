@@ -89,101 +89,6 @@
 		position: absolute;
 	}
 
-	.panel {
-		border-width: 0 0 1px 0;
-		border-style: solid;
-		border-color: #fff;
-		background: none;
-		box-shadow: none;
-	}
-
-	.panel:last-child {
-		border-bottom: none;
-	}
-
-	.panel-group>.panel:first-child .panel-heading {
-		border-radius: 4px 4px 0 0;
-	}
-
-	.panel-group .panel {
-		border-radius: 0;
-	}
-
-	.panel-group .panel+.panel {
-		margin-top: 0;
-	}
-
-	.panel-heading {
-		background-color: red;
-		border-radius: 0;
-		border: none;
-		color: #fff;
-		padding: 0;
-	}
-
-	.panel-title a {
-		display: block;
-		color: #fff;
-		padding: 15px;
-		position: relative;
-		font-size: 16px;
-		font-weight: 400;
-	}
-
-	.panel-body {
-		background: #fff;
-	}
-
-	.panel:last-child .panel-body {
-		border-radius: 0 0 4px 4px;
-	}
-
-	.panel:last-child .panel-heading {
-		border-radius: 0 0 4px 4px;
-		transition: border-radius 0.3s linear 0.2s;
-	}
-
-	.panel:last-child .panel-heading.active {
-		border-radius: 0;
-		transition: border-radius linear 0s;
-	}
-
-	/* #bs-collapse icon scale option */
-
-	.panel-heading a:before {
-		content: '\e146';
-		position: absolute;
-		font-family: 'Material Icons';
-		right: 5px;
-		top: 10px;
-		font-size: 24px;
-		transition: all 0.5s;
-		transform: scale(1);
-	}
-
-	.panel-heading.active a:before {
-		content: ' ';
-		transition: all 0.5s;
-		transform: scale(0);
-	}
-
-	#bs-collapse .panel-heading a:after {
-		content: ' ';
-		font-size: 24px;
-		position: absolute;
-		font-family: 'Material Icons';
-		right: 5px;
-		top: 10px;
-		transform: scale(0);
-		transition: all 0.5s;
-	}
-
-	#bs-collapse .panel-heading.active a:after {
-		content: '\e909';
-		transform: scale(1);
-		transition: all 0.5s;
-	}
-
 	@media(min-width:767px) {
 		#mobilecart {
 			width: 80%;
@@ -220,9 +125,14 @@
 <!-- Modal -->
 <div class="modal left fade" id="bar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
-		<div class="modal-header" style="padding:0px;margin:0px">
-			<button type="button" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-left" style="font-size: 20px;opacity: 2;color: white;line-height:40px;margin-left:10px;"></i></span></button>
-			<span style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;"><a href="index.php" class="navbar-brand1" style="color: white;">ECOMM</a></span>
+		<div class="modal-header" style="height:200px;position:relative;padding:20px">
+			<div class="profile-card__img text-center" style="position: absolute;top: 100px;left: 100px;width: 100px;height: 100px;padding: 0px;">
+				<img src="<?php echo (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg'; ?>" width="100px" height="300px">
+			</div>
+			<div style="position: absolute;top: 135px;left:77px;">
+				<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<b><?php echo $user['firstname'] . ' ' . $user['lastname']; ?></b></h4>
+				<p style="font-size: 12px;position: absolute;top: 15px;left: 10px"><?php echo $user['email'] ?></p>
+			</div>
 		</div>
 		<div class="modal-content">
 			<?php
@@ -232,9 +142,7 @@
 				$stmt->execute();
 				foreach ($stmt as $row) {
 					echo "
-						<button class=\"accordion\"><a href=\"category.php?category=" . $row['cat_slug'] . "\">" . $row['name'] . "</a></button>
-						<div class=\"panel\">
-						</div>
+						
 						";
 				}
 			} catch (PDOException $e) {
@@ -251,9 +159,7 @@
 				$stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
 				$stmt->execute();
 				foreach ($stmt as $row) {
-					echo "<button class=\"accordion\"><a href=\"category.php?category=" . $row['cat_slug'] . "\">" . $row['name'] . "</a></button>
-						<div class=\"panel\">
-						</div>";
+					echo "";
 				}
 			} catch (PDOException $e) {
 				echo "There is some problem in connection: " . $e->getMessage();
@@ -269,9 +175,17 @@
 				$stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
 				$stmt->execute();
 				foreach ($stmt as $row) {
-					echo "<button class=\"accordion\"><a href=\"category.php?category=" . $row['cat_slug'] . "\">" . $row['name'] . "</a></button>
-						<div class=\"panel\">
-						</div>";
+					$stmt2 = $conn->prepare("SELECT * FROM subcategory WHERE type='men'");
+					$stmt2->execute();
+					foreach ($stmt2 as $row2) {
+						echo "
+						<div>	
+						<ul>
+							<li><a href=\"\">" . $row2["name"] . "</a>
+							</ul>  
+							</div>
+						";
+					}
 				}
 			} catch (PDOException $e) {
 				echo "There is some problem in connection: " . $e->getMessage();

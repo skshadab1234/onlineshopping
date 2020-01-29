@@ -371,59 +371,38 @@
               <div class="container-fluid" style="padding: 20px;margin-top: 10px;text-align: center;background:#fff;width:97%">
                 <h2 class="mens">Monthly Top Sellers</h2>
                 <div style="border-bottom: 5px solid #ff3f6c;;margin: -10px auto;width: 100px;border-radius: 50px"></div>
-                <div class="container-fluid " style="margin-top: 40px">
-
+                <div style="margin-top: 40px">
                   <?php
                   $month = date('m');
                   $conn = $pdo->open();
 
                   try {
-                    $inc = 6;
+                    $inc = 4;
                     $stmt = $conn->prepare("SELECT *, SUM(quantity) AS total_qty FROM details LEFT JOIN sales ON sales.id=details.sales_id LEFT JOIN products ON products.id=details.product_id WHERE MONTH(sales_date) = '$month' GROUP BY details.product_id ORDER BY total_qty DESC LIMIT 6");
                     $stmt->execute();
                     foreach ($stmt as $row) {
                       $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
-                      $inc = ($inc == 6) ? 1 : $inc + 1;
-                      if ($inc == 6) echo "<div class='row'>";
-                      echo "
-    <div class=\"col-xs-6 col-sm-6 col-md-2 col-lg-2 \">
+                      $inc = ($inc == 4) ? 1 : $inc + 1;
+                      if ($inc == 4) echo "<div class='row'>";
+                   ?>
+                   <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" style="padding:10px">
+                     
+                   <div class="card">
+                   <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-fluid\" width='250px' height='250px'></a> ";?>   
+                  <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
+                     <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand'] . " " ?></h5> 
+                  <?php echo "<a style=\"color:black\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>";?>
+                <h5 class="text-left" style="font-size:16px"><?php echo "&#36; " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " &#36; " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                </div>
+                <div class="fav" style="position:absolute;top:20px;right:20px;">
+                  <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
+                </div>
+                <div class="card1" style="position: absolute;top: 212px;background: #fff;padding: 10px;">
+                  <button class="btn btn-primary" style="background:#ff3f6c;border:none;text-transform:uppercase;font-weight:bolder" data-toggle="modal" data-target="#<?php echo $row['id'] ?>5">Quick View</button>
+                  <h5>Sizes : <?php echo "" . $row['size'] . "" ?></h5>
+              </div>
 
-    <div class=\"row\" >
-    <div class=\"el-wrapper\">
-    <div class=\"box-up\">
-    <a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\" width='250px' height='250px' class=\"thumbnail\"></a>    
-    <div class=\"ribbon\">
-    <span class=\"ribbon1\"><span>" . $row['discount'] . " OFF </span></span>
-    </div>
-
-    <div class=\"img-info\">
-
-    <div class=\"info-inner\">
-
-    <span class=\"p-company\">Brand : " . $row['brand'] . "</span>
-
-    <span class=\"p-name\"><a style=\"font-size:12px;color:white;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>
-    </div>
-    <div class=\"a-size\">Available sizes : <span class=\"size\" style=\"color:white\">" . $row['size'] . "</span></div>
-    </div>
-
-    </div>
-
-    <div class=\"box-down\">
-    <div class=\"h-bg\">
-    <div class=\"h-bg-inner\"></div>
-    </div>
-
-    <p class=\"cart\">
-    <span class=\"price\">&#36; " . number_format($row['price'], 2) . "</span>
-    <span class=\"add-to-cart\">
-    <span class=\"txt\">
-    "; ?>
-                      <!-- Trigger the modal with a button -->
-                      <button type="button" class="btn btn-primary btn-sm" id="quickview" data-toggle="modal" data-target="#<?php echo $row['id'] ?>1"> Quick View </button>
-
-                      <!-- Modal -->
-                      <div id="<?php echo $row['id']; ?>1" class="modal fade" role="dialog">
+                      <div id="<?php echo $row['id']; ?>5" class="modal fade" role="dialog">
                         <div class="modal-dialog">
 
                           <!-- Modal content-->
@@ -475,19 +454,14 @@
                       </div>
 
                   <?php echo "
-    </span>
-    </span>
-    </p>
-    </div>
-    </div>
     </div>
     </div>
 
     ";
-                      if ($inc == 6) echo "</div>";
+                      if ($inc == 4) echo "</div>";
                     }
-                    if ($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
-                    if ($inc == 6) echo "<div class='col-sm-3'></div></div>";
+                    if ($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
+                    if ($inc == 4) echo "<div class='col-sm-3'></div></div>";
                   } catch (PDOException $e) {
                     echo "There is some problem in connection: " . $e->getMessage();
                   }
@@ -503,6 +477,8 @@
           </div>
         </div>
         </section>
+
+
 
         <!-- if you want to display modal on page load  -->
         <!-- <div id="myModal" class="modal" style="background-image: linear-gradient(254deg, #5909b3, #7f0dff);">

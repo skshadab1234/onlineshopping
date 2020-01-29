@@ -142,8 +142,7 @@
     </head>
 
     <body>
-        <div class="container-fluid" style="background-color: #251e35">
-            <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Brand</h5>
+            <h5 style="text-transform: uppercase;font-weight: bolder;" class="text-primary">Brand</h5>
 
             <?php
 
@@ -154,7 +153,7 @@
             $result = $statement->fetchAll();
             foreach ($result as $row) {
             ?>
-                <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['brand']; ?></span>
+                <label class="container-checkbox"> <span style="font-size:14px;"><?php echo $row['brand']; ?></span>
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
@@ -163,7 +162,7 @@
 
             ?>
 
-            <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Category</h5>
+            <h5 style="text-transform: uppercase;font-weight: bolder;" class="text-primary">Category</h5>
 
             <div class="list-group">
                 <?php
@@ -175,7 +174,7 @@
                 $result = $statement->fetchAll();
                 foreach ($result as $row) {
                 ?>
-                    <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['cat_slug']; ?></span>
+                    <label class="container-checkbox"> <span style="font-size:14px;"><?php echo $row['cat_slug']; ?></span>
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
@@ -186,7 +185,7 @@
             </div>
 
 
-            <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Color</h5>
+            <h5 style="text-transform: uppercase;font-weight: bolder;" class="text-primary">Color</h5>
 
             <div class="list-group">
                 <?php
@@ -198,7 +197,7 @@
                 $result = $statement->fetchAll();
                 foreach ($result as $row) {
                 ?>
-                    <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['color']; ?></span>
+                    <label class="container-checkbox"> <span style="font-size:14px;"><?php echo $row['color']; ?></span>
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
@@ -208,7 +207,7 @@
                 ?>
             </div>
 
-            <h5 style="text-transform: uppercase;font-weight: bolder;color:white" class="text-primary">Discount</h5>
+            <h5 style="text-transform: uppercase;font-weight: bolder;" class="text-primary">Discount</h5>
 
             <div class="list-group">
                 <?php
@@ -220,7 +219,7 @@
                 $result = $statement->fetchAll();
                 foreach ($result as $row) {
                 ?>
-                    <label class="container-checkbox"> <span style="font-size:14px;color:white"><?php echo $row['discount']; ?> OFF</span>
+                    <label class="container-checkbox"> <span style="font-size:14px;"><?php echo $row['discount']; ?> OFF</span>
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
@@ -231,7 +230,6 @@
             </div>
 
 
-        </div>
         <script type="text/javascript">
             (function($) {
                 $(document).ready(function() {

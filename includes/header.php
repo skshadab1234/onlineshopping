@@ -445,76 +445,6 @@ folder instead of downloading all of them to reduce the load. -->
                 align-items: center;
             }
 
-            .p-name {
-                font-family: Roboto, -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI, sans-serif;
-            }
-
-            .page-wrapper {
-                display: grid;
-            }
-
-            .page-wrapper .page-inner {
-                display: inline-grid;
-            }
-
-            .ribbon1 {
-                position: absolute;
-                top: -6.1px;
-                right: 10px;
-            }
-
-            .ribbon1:after {
-                position: absolute;
-                content: "";
-                width: 0;
-                height: 0;
-                border-left: 53px solid transparent;
-                border-right: 53px solid transparent;
-                border-top: 10px solid #F8463F;
-            }
-
-            .ribbon1 span {
-                position: relative;
-                display: block;
-                color: white;
-                text-align: center;
-                background: #F8463F;
-                font-size: 14px;
-                line-height: 1;
-                padding: 12px 8px 10px;
-                border-top-right-radius: 8px;
-                width: 90px;
-            }
-
-            .ribbon1 span:before,
-            .ribbon1 span:after {
-                position: absolute;
-                content: "";
-            }
-
-            .ribbon1 span:before {
-                height: 6px;
-                width: 6px;
-                color: white;
-                left: -6px;
-                top: 0;
-                background: #F8463F;
-            }
-
-            .ribbon1 span:after {
-                height: 6px;
-                width: 8px;
-                left: -8px;
-                color: white;
-                 top: 0;
-                border-radius: 8px 8px 0 0;
-                background: #C02031;
-            }
-
-            .el-wrapper {
-                width: 100%;
-            }
-
             .container-fluid {
                 width: 98%;
             }
@@ -526,11 +456,44 @@ folder instead of downloading all of them to reduce the load. -->
             }
 
             @media (max-width: 767px) {
-                .el-wrapper {
-                    width: 100%;
-                    margin: 30px auto;
-                }
+                .filter1200px{
+                   display:none
+               }
+               #mobilefilter{
+                   display: block;
+                   width:100%;
+                   height:50px;
+                   background:#fff;
+                    padding: 20px;
+                    position:fixed;
+                   left:0;
+                   bottom:-1px;
+                   line-height:10px;
+               }
+               #mobilefilter a{
+                font-size:16px;
+                position:absolute;
+                right:66px;
+                letter-spacing:1px;
+                color:#000;
+                top:10px;
+               }
+               #mobilefilter #sort{ 
+                font-size:16px;
+                position:absolute;
+                left:63px;
+                letter-spacing:1px;
+                color:#000;
+                top:10px;
+               }
 
+               
+      footer{
+        display:none;
+      }
+                .content{
+                    margin-top:20px
+                }
                 .slider,
                 .slider>div {
                     max-width: 100%;
@@ -558,7 +521,9 @@ folder instead of downloading all of them to reduce the load. -->
                 #myHeader {
                     display: none;
                 }
-
+                #mobilefilter{
+                    display:block
+                }
                 .mobile-view-header {
                     width: 100%;
                     height: 40px;
@@ -629,7 +594,13 @@ folder instead of downloading all of them to reduce the load. -->
                     font-weight: lighter;
                     letter-spacing: 1px;
                 }
+                .card1{
+                    display:none;
+                }
 
+                .card:hover .card1{
+                    display:none
+                }
                 .signups {
                     padding: 20px;
                     border-bottom: 1px solid grey;
@@ -683,235 +654,6 @@ folder instead of downloading all of them to reduce the load. -->
                     overflow: hidden;
                     transition: max-height 0.2s ease-out;
                 }
-            }
-
-            .el-wrapper:hover .h-bg {
-                left: 0px;
-            }
-
-            .el-wrapper:hover .price {
-                left: 20px;
-                -webkit-transform: translateY(-70%);
-                -ms-transform: translateY(-70%);
-                -o-transform: translateY(-70%);
-                transform: translateY(-70%);
-                color: white;
-            }
-
-            .el-wrapper:hover .add-to-cart {
-                left: 70%;
-            }
-
-            .el-wrapper:hover .img {
-                -webkit-filter: blur(7px);
-                -o-filter: blur(7px);
-                -ms-filter: blur(7px);
-                filter: blur(7px);
-                filter: progid:DXImageTransform.Microsoft.Blur(pixelradius='7', shadowopacity='0.0');
-                opacity: 0.4;
-            }
-
-            .el-wrapper:hover .info-inner {
-                bottom: 155px;
-            }
-
-            .el-wrapper:hover .a-size {
-                -webkit-transition-delay: 300ms;
-                -o-transition-delay: 300ms;
-                transition-delay: 300ms;
-                bottom: 50px;
-                opacity: 1;
-            }
-
-            #quickview {
-                background: none;
-                margin-left: 50px;
-                line-height: 40px;
-                border: 1px solid white;
-                color: white;
-            }
-
-            .el-wrapper .box-down {
-                width: 100%;
-                height: 60px;
-                margin-bottom: 20px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .el-wrapper .box-up {
-                width: 100%;
-                height: 300px;
-                position: relative;
-                overflow: hidden;
-                text-align: center;
-            }
-
-            .el-wrapper .img {
-                padding: 20px 0;
-                -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-            }
-
-            .h-bg {
-                -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                width: 100%;
-                height: 100%;
-                background-color: steelblue;
-                position: absolute;
-                left: -659px;
-            }
-
-            .h-bg .h-bg-inner {
-                width: 100%;
-                height: 100%;
-                background-color: #464646;
-            }
-
-            .info-inner {
-                -webkit-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-                -o-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-                transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                position: absolute;
-                width: 100%;
-                bottom: 15px;
-            }
-
-            .info-inner .p-name,
-            .info-inner .p-company {
-                display: block;
-            }
-
-            .info-inner .p-name {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                font-family: 'PT Sans', sans-serif;
-                font-size: 18px;
-                color: white;
-            }
-
-            .info-inner .p-company {
-                font-family: 'Lato', sans-serif;
-                font-size: 12px;
-                text-transform: uppercase;
-                color: #8c8c8c;
-            }
-
-            .a-size {
-                -webkit-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-                -o-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-                transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                position: absolute;
-                width: 100%;
-                bottom: -20px;
-                font-family: 'PT Sans', sans-serif;
-                color: #828282;
-                opacity: 0;
-            }
-
-            .a-size .size {
-                color: white;
-            }
-
-            .cart {
-                display: block;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                font-family: 'Lato', sans-serif;
-                font-weight: 700;
-            }
-
-            .cart .price {
-                -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-delay: 100ms;
-                -o-transition-delay: 100ms;
-                transition-delay: 100ms;
-                display: block;
-                position: absolute;
-                top: 70%;
-                left: 60%;
-                transform: translate(-70%, -70%);
-                -webkit-transform: translate(-70%, -70%);
-                -ms-transform: translate(-70%, -70%);
-                -o-transform: translate(-70%, -70%);
-                font-size: 16px;
-                color: black;
-            }
-
-            .cart .add-to-cart {
-                -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-                /* ease-out */
-                -webkit-transition-delay: 100ms;
-                -o-transition-delay: 100ms;
-                transition-delay: 100ms;
-                display: block;
-                position: absolute;
-                top: 70%;
-                left: 130%;
-                padding: 10px;
-                -webkit-transform: translate(-70%, -70%);
-                -ms-transform: translate(-70%, -70%);
-                -o-transform: translate(-70%, -70%);
-                transform: translate(-70%, -70%);
-            }
-
-            .cart .add-to-cart .txt {
-                font-size: 12px;
-                color: black;
-                margin-left: 80px;
-                letter-spacing: 0.045em;
-                text-transform: uppercase;
-                white-space: nowrap;
             }
 
             .moretext {
@@ -1296,8 +1038,18 @@ folder instead of downloading all of them to reduce the load. -->
                 z-index: 4;
                 box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
             }
-
+            @media screen and (max-width: 500px) {
+                .discountoffer{
+                    display: none
+                }
+            }
             @media screen and (max-width: 576px) {
+                .discountoffer{
+                    position:absolute;
+                    top:21px;
+                    right:15px;
+                }
+                
                 .profile-card__img {
                     width: 120px;
                     height: 120px;
@@ -1404,6 +1156,9 @@ folder instead of downloading all of them to reduce the load. -->
             }
 
             @media (min-width: 768px) {
+                #mobilefilter{
+                   display:none
+               }
                 .contact-wrap {
                     width: 60%;
                     margin: auto;
@@ -1412,6 +1167,23 @@ folder instead of downloading all of them to reduce the load. -->
                 .mobile-view-header {
                     display: none;
                 }
+                .card1{
+                  display: none;
+                  width:92%;
+                }
+              .card:hover > .card1 {
+                display:block;
+              }
+              .card:hover .card3{
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.14)
+              }
+
+            .card{
+                margin-bottom: 10px;
+            }
+            .card:hover{
+                box-shadow:0px 0px 2px rgba(0, 0, 0, 0.22)
+            }
             }
 
             /* The container */
@@ -1447,6 +1219,7 @@ folder instead of downloading all of them to reduce the load. -->
                 background-size: contain;
                 background-repeat: no-repeat;
             }
+            
         </style>
 
     </head>

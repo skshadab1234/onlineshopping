@@ -7,6 +7,7 @@
                 /* fallback for old browsers */
                 box-shadow: 0 9px 18px rgba(0, 0, 0, 0.1),
                         inset 0 1px 12px rgba(0, 0, 0, 0.2);
+                z-index:0;        
         }
 
         #myHeader {

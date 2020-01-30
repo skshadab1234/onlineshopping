@@ -456,44 +456,49 @@ folder instead of downloading all of them to reduce the load. -->
             }
 
             @media (max-width: 767px) {
-                .filter1200px{
-                   display:none
-               }
-               #mobilefilter{
-                   display: block;
-                   width:100%;
-                   height:50px;
-                   background:#fff;
-                    padding: 20px;
-                    position:fixed;
-                   left:0;
-                   bottom:-1px;
-                   line-height:10px;
-               }
-               #mobilefilter a{
-                font-size:16px;
-                position:absolute;
-                right:66px;
-                letter-spacing:1px;
-                color:#000;
-                top:10px;
-               }
-               #mobilefilter #sort{ 
-                font-size:16px;
-                position:absolute;
-                left:63px;
-                letter-spacing:1px;
-                color:#000;
-                top:10px;
-               }
-
-               
-      footer{
-        display:none;
-      }
-                .content{
-                    margin-top:20px
+                .filter1200px {
+                    display: none
                 }
+
+                #mobilefilter {
+                    display: block;
+                    width: 100%;
+                    height: 50px;
+                    background: #fff;
+                    padding: 20px;
+                    position: fixed;
+                    left: 0;
+                    bottom: -1px;
+                    line-height: 10px;
+                }
+
+                #mobilefilter a {
+                    font-size: 16px;
+                    position: absolute;
+                    right: 66px;
+                    letter-spacing: 1px;
+                    color: #000;
+                    top: 10px;
+                }
+
+                #mobilefilter #sort {
+                    font-size: 16px;
+                    position: absolute;
+                    left: 63px;
+                    letter-spacing: 1px;
+                    color: #000;
+                    top: 10px;
+                }
+
+
+                footer {
+                    display: none;
+                }
+
+                .content {
+                    margin-top: 20px
+                }
+
                 .slider,
                 .slider>div {
                     max-width: 100%;
@@ -521,9 +526,11 @@ folder instead of downloading all of them to reduce the load. -->
                 #myHeader {
                     display: none;
                 }
-                #mobilefilter{
-                    display:block
+
+                #mobilefilter {
+                    display: block
                 }
+
                 .mobile-view-header {
                     width: 100%;
                     height: 40px;
@@ -594,13 +601,15 @@ folder instead of downloading all of them to reduce the load. -->
                     font-weight: lighter;
                     letter-spacing: 1px;
                 }
-                .card1{
-                    display:none;
+
+                .card1 {
+                    display: none;
                 }
 
-                .card:hover .card1{
-                    display:none
+                .card:hover .card1 {
+                    display: none
                 }
+
                 .signups {
                     padding: 20px;
                     border-bottom: 1px solid grey;
@@ -1038,18 +1047,20 @@ folder instead of downloading all of them to reduce the load. -->
                 z-index: 4;
                 box-shadow: 0px 5px 50px 0px #6c44fc, 0px 0px 0px 7px rgba(107, 74, 255, 0.5);
             }
+
             @media screen and (max-width: 500px) {
-                .discountoffer{
+                .discountoffer {
                     display: none
                 }
             }
+
             @media screen and (max-width: 576px) {
-                .discountoffer{
-                    position:absolute;
-                    top:21px;
-                    right:15px;
+                .discountoffer {
+                    position: absolute;
+                    top: 21px;
+                    right: 15px;
                 }
-                
+
                 .profile-card__img {
                     width: 120px;
                     height: 120px;
@@ -1156,9 +1167,10 @@ folder instead of downloading all of them to reduce the load. -->
             }
 
             @media (min-width: 768px) {
-                #mobilefilter{
-                   display:none
-               }
+                #mobilefilter {
+                    display: none
+                }
+
                 .contact-wrap {
                     width: 60%;
                     margin: auto;
@@ -1167,23 +1179,27 @@ folder instead of downloading all of them to reduce the load. -->
                 .mobile-view-header {
                     display: none;
                 }
-                .card1{
-                  display: none;
-                  width:92%;
-                }
-              .card:hover > .card1 {
-                display:block;
-              }
-              .card:hover .card3{
-                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.14)
-              }
 
-            .card{
-                margin-bottom: 10px;
-            }
-            .card:hover{
-                box-shadow:0px 0px 2px rgba(0, 0, 0, 0.22)
-            }
+                .card1 {
+                    display: none;
+                    width: 92%;
+                }
+
+                .card:hover>.card1 {
+                    display: block;
+                }
+
+                .card:hover .card3 {
+                    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.14)
+                }
+
+                .card {
+                    margin-bottom: 10px;
+                }
+
+                .card:hover {
+                    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.22)
+                }
             }
 
             /* The container */
@@ -1219,7 +1235,6 @@ folder instead of downloading all of them to reduce the load. -->
                 background-size: contain;
                 background-repeat: no-repeat;
             }
-            
         </style>
 
     </head>

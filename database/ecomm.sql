@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2020 at 05:18 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Jan 30, 2020 at 09:23 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -69,10 +69,11 @@ INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
 (148, 13, 3, 1),
 (150, 20, 19, 11),
 (155, 4, 16, 1),
-(156, 2, 2, 1),
+(156, 2, 2, 3),
 (157, 2, 16, 1),
 (158, 2, 18, 1),
-(159, 2, 6, 1);
+(159, 2, 6, 1),
+(160, 3, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -148,42 +149,6 @@ INSERT INTO `details` (`id`, `sales_id`, `product_id`, `quantity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `google_users`
---
-
-CREATE TABLE `google_users` (
-  `id` int(11) NOT NULL,
-  `clint_id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `google_email` varchar(60) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  `picture_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `google_users`
---
-
-INSERT INTO `google_users` (`id`, `clint_id`, `name`, `last_name`, `google_email`, `gender`, `picture_link`) VALUES
-(1, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg'),
-(2, '111390966180740256479', 'skshadabkhojo', '', 'skshadabkhojo@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mDxEkAArCFENNBQ0QjMdgWOiXdgvyN4B6_qNsYu'),
-(3, '117994331249149974133', 'hey mr', 'ak', 'flameboyak01@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mAjk-v8wS0floIr3ayq901k7Lj2vRSmK0mynhVvkA'),
-(4, '117994331249149974133', 'hey mr', 'ak', 'flameboyak01@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mAjk-v8wS0floIr3ayq901k7Lj2vRSmK0mynhVvkA'),
-(5, '117994331249149974133', 'hey mr', 'ak', 'flameboyak01@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mAjk-v8wS0floIr3ayq901k7Lj2vRSmK0mynhVvkA'),
-(6, '101969078836697452946', 'all in', 'one video', 'ks579265@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mAyIv5IITttgKJqHSTVJphAwqeJOxSemXKzpLFz'),
-(7, '101969078836697452946', 'all in', 'one video', 'ks579265@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mAyIv5IITttgKJqHSTVJphAwqeJOxSemXKzpLFz'),
-(8, '101969078836697452946', 'all in', 'one video', 'ks579265@gmail.com', '', 'https://lh3.googleusercontent.com/a-/AAuE7mAyIv5IITttgKJqHSTVJphAwqeJOxSemXKzpLFz'),
-(9, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg'),
-(10, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg'),
-(11, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg'),
-(12, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg'),
-(13, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg'),
-(14, '112819622979604715234', 'SHADABZONE', '', 'ks615044@gmail.com', '', 'https://lh6.googleusercontent.com/-I0A6Csu0O1U/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rccz18RPpf9b92bG_icF5DeUiLlKQ/photo.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ordertrackhistory`
 --
 
@@ -192,8 +157,8 @@ CREATE TABLE `ordertrackhistory` (
   `user_id` int(11) NOT NULL,
   `orderId` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `remark` mediumtext,
-  `postingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `remark` mediumtext DEFAULT NULL,
+  `postingDate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -268,7 +233,8 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `
 (17, 200123, 3, '21', 'RED', 'Ginni and Joy', 'Ginni and Joy Red T-Shirts ', 'L XL', '<h3 style=\"font-style: italic;\"><small><big>Red self-design sweatshirt, has a kangaroo pocket, a round neck, long sleeves, straight hem</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big>Material &amp; Care</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big>Cotton<br />\r\nMachine-wash</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big><strong>Specifications</strong></big></small></h3>\r\n\r\n<p>Sleeve Length&nbsp;</p>\r\n\r\n<p>Long Sleeves</p>\r\n', 'ginni-and-joy-red-t-shirts', '150', 123, '70%', 'ginni-and-joy-red-t-shirts.jpg', '2019-12-01', 1),
 (18, 0, 3, '22', 'red', 'Ginni and Joy', 'Ginni and joy red T-shirt', 'L', '<p><strong>Ginni and Joy</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n', 'ginni-and-joy-red-t-shirt', '450', 400, '2%', 'ginni-and-joy-red-t-shirt.jpg', '0000-00-00', 0),
 (19, 0, 3, '', 'Sky Blue', 'Indian Terrain', 'Indian Terrain Blue T-Shirts ', 'S', '<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n\r\n<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n\r\n<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n', 'indian-terrain-blue-t-shirts', '50020', 50000, '20%', 'indian-terrain-blue-t-shirts_1575487752.jpg', '0000-00-00', 0),
-(20, 0, 1, '', 'White', 'SHADABZONE', 'khan Shadab', '', '', 'khan-shadab', '', 400, '20%', 'khan-shadab_1575833070.jpg', '0000-00-00', 0);
+(20, 0, 1, '', 'White', 'SHADABZONE', 'khan Shadab', '', '', 'khan-shadab', '', 400, '20%', 'khan-shadab_1575833070.jpg', '0000-00-00', 0),
+(21, 0, 1, '', 'red', 'ks', 'Shadab Khan', 'standard', '<p>as</p>\r\n', 'shadab-khan', '15', 12, '12%', 'shadab-khan.jpeg', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -295,6 +261,105 @@ INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`, `orderStatus`) VAL
 (10, 2, 'MOJO0109F05A88597312', '2020-01-09', NULL),
 (11, 3, 'PAYID-LYLL5IY21293431HV278574S', '2020-01-09', NULL),
 (12, 2, 'PAYID-LYPWBNY2CS17825GN909193B', '2020-01-15', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategory`
+--
+
+CREATE TABLE `subcategory` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `sub_catslug` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subcategory`
+--
+
+INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`) VALUES
+(1, 'Bottomwear', 'Bottomwear', 'men'),
+(2, 'Innerwear & Sleepwear', 'Innerwear & Sleepwear', 'men'),
+(3, 'Footwear', 'Footwear', 'men'),
+(4, 'Topwear', 'Topwear', 'men'),
+(5, 'Personal Care & Grooming', 'Personal Care & Grooming', 'men'),
+(6, 'Sunglasses & Frames', 'Sunglasses & Frames', 'men'),
+(7, 'Watches', 'Watches', 'men'),
+(8, 'Sports & Active Wear', 'Sports & Active Wear', 'men'),
+(9, 'Indian & Fusion Wear', 'Indian & Fusion Wear', 'women'),
+(10, 'Belts, Scarves & More', 'Belts, Scarves & More', 'women'),
+(11, 'Watches & Wearables', 'Watches & Wearables', 'women'),
+(12, 'Beauty & Personal Care', 'Beauty & Personal Care', 'women'),
+(13, 'Gadgets', 'Gadgets', 'women'),
+(14, 'Footwear', 'Footwear', 'women'),
+(15, 'Western Wear', 'Western Wear', 'women'),
+(16, 'Boys Clothing', 'Boys Clothing', 'kids'),
+(17, 'Girls Clothing', 'Girls Clothing', 'kids'),
+(18, 'Boys Footwear', 'Boys Footwear', 'kids'),
+(19, 'Girls Footwear', 'Girls Footwear', 'kids'),
+(20, 'Kids Accessories', 'Kids Accessories', 'kids'),
+(22, 'Jeans', 'Jeans', 'men_bottom'),
+(23, 'Casual Trousers', 'Casual Trousers', 'men_bottom'),
+(24, 'Formal Trousers', 'Formal Trousers', 'men_bottom'),
+(25, 'Shorts', 'Shorts', 'men_bottom'),
+(26, 'Briefs & Trunks', 'Briefs & Trunks', 'men_innerwear'),
+(27, 'Boxers', 'Boxers', 'men_innerwear'),
+(28, 'Vests', 'Vests', 'men_innerwear'),
+(29, 'Thermals', 'Thermals', 'men_innerwear'),
+(30, 'Casual Shoes', 'Casual Shoes', 'men_footwear'),
+(31, 'Sports Shoes', 'Sports Shoes', 'men_footwear'),
+(32, 'Formal Shirts', 'Formal Shirts', 'men_footwear'),
+(33, 'Formal Shoes', 'Formal Shoes', 'men_footwear'),
+(34, 'Sneakers', 'Sneakers', 'men_footwear'),
+(35, 'Sandals & Floaters', 'Sandals & Floaters', 'men_footwear'),
+(36, 'Flip Flops', 'Flip Flops', 'men_footwear'),
+(37, 'Socks', 'Socks', 'men_footwear'),
+(38, 'T-Shirts', 'T-Shirts', 'men_topwear'),
+(39, 'Casual Shirts', 'Casual Shirts', 'men_topwear'),
+(40, 'Sweatshirts', 'Sweatshirts', 'men_topwear'),
+(41, 'Sweaters', 'Sweaters', 'men_topwear'),
+(42, 'Jackets', 'Jackets', 'men_topwear'),
+(43, 'Blazers & Coats', 'Blazers & Coats', 'men_topwear'),
+(44, 'Suits', 'Suits', 'men_topwear'),
+(45, 'Sports Shoes', 'Sports Shoes', 'men_sports'),
+(46, 'Sports Sandals', 'Sports Sandals', 'men_sports'),
+(47, 'Active T-Shirts', 'Active T-Shirts', 'men_sports'),
+(48, 'Track Pants & Shorts', 'Track Pants & Shorts', 'men_sports'),
+(49, 'Kurtas & Suits', 'Kurtas & Suits', 'women_fusionwear'),
+(50, 'Kurtis, Tunics & Tops', 'Kurtis, Tunics & Tops', 'women_fusionwear'),
+(51, 'Ethnic Dresses', 'Ethnic Dresses', 'women_fusionwear'),
+(52, 'Leggings, Salwars & Churidars', 'Leggings, Salwars & Churidars', 'women_fusionwear'),
+(53, 'Sarees', 'Sarees', 'women_fusionwear'),
+(54, 'Dresses & Jumpsuits', 'Dresses & Jumpsuits', 'women_westernwear'),
+(55, 'T-Shirts', 'T-Shirts', 'women_westernwear'),
+(56, 'Jeans & Jeggings', 'Jeans & Jeggings', 'women_westernwear'),
+(57, 'Makeup', 'Makeup', 'women_makeup'),
+(58, 'Skincare', 'Skincare', 'women_makeup'),
+(59, 'Fragrances', 'Fragrances', 'women_makeup'),
+(60, 'Smart Wearables', 'Smart Wearables', 'women_gadgets'),
+(61, 'Fitness Gadgets', 'Fitness Gadgets', 'women_gadgets'),
+(62, 'Casual Shoes', 'Casual Shoes', 'women_footwear'),
+(63, 'Sports Shoes & Floaters', 'Sports Shoes & Floaters', 'women_footwear'),
+(64, 'Clothing', 'Clothing', 'women_activewear'),
+(65, 'Sports Accessories', 'Sports Accessories', 'women_activewear'),
+(66, 'Sports Equipment', 'Sports Equipment', 'women_activewear'),
+(67, 'T-Shirts', 'T-Shirts', 'kids_boy'),
+(68, 'Shorts', 'Shorts', 'kids_boy'),
+(69, 'Clothing Sets', 'Clothing Sets', 'kids_boy'),
+(70, 'Jacket, Sweater & Sweatshirt', 'Jacket, Sweater & Sweatshirt', 'kids_boy'),
+(71, 'Dresses', 'Dresses', 'kids_girl'),
+(72, 'Clothing Sets', 'Clothing Sets', 'kids_girl'),
+(73, 'Jeans, Trousers & Capris', 'Jeans, Trousers & Capris', 'kids_girl'),
+(74, 'Casual Shoes', 'Casual Shoes', 'kids_boyfoot'),
+(75, 'Sports Shoes', 'Sports Shoes', 'kids_boyfoot'),
+(76, 'Flats', 'Flats', 'kidS_girlfoot'),
+(77, 'Casual Shoes', 'Casual Shoes', 'kidS_girlfoot'),
+(78, 'heels', 'heels', 'kidS_girlfoot'),
+(79, 'Watches', 'Watches', 'kids_accessories'),
+(80, 'Eyewear', 'Eyewear', 'kids_accessories'),
+(81, 'Bags & Backpacks', 'Bags & Backpacks', 'kids_accessories');
 
 -- --------------------------------------------------------
 
@@ -339,24 +404,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `billing_add`, `billing_state`, `billing_city`, `billing_pincode`, `billing_mb`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `shipping_mb`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
 (1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
-(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', 'Sayeed Manzil, Room no : 104, Opp. Irani Petrol Pump Mumbra', 'Maharshtra', 'Thane', 400612, '7021918970', 'mumbra', 'Mumbai', 'Andheri', '4006121212121', 'Home', '9167263576', '7021918970', '.jpg', 1, '', '', '2019-12-04'),
+(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', 'Sayeed Manzil, Room no : 104, Opp. Irani Petrol Pump Mumbra', 'Maharshtra', 'Thane', 400612, '7021918970', 'mumbra', 'Mumbai', 'Andheri', '4006121212121', 'Home', '9167263576', '7021918970', '.jpg', 1, '', 'cKD5fzqJMwRP7kZ', '2019-12-04'),
 (3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', 0, '', '', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
-(6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_order`
---
-
-CREATE TABLE `user_order` (
-  `id` int(11) NOT NULL,
-  `country` varchar(20) NOT NULL,
-  `state` varchar(20) NOT NULL,
-  `district` varchar(20) NOT NULL,
-  `streetaddress` varchar(20) NOT NULL,
-  `addresstype` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10'),
+(12, 'anasshaikh1@gmail.com', '$2y$10$wnBRXFARTOq1alMxC.RUwOaaQR58sWmnK3dmLy9lQZO.rXXXvi/VS', 0, 'anas122', 'Shaikh', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'ka2shb461as5', '', '2020-01-21'),
+(13, 'skshadabkhojo@gmail.com', '$2y$10$l43uP/7Hx3hCho6xWsZ95eBRFF2IO1mtp6lZg7v8uIdn5fMQs7r8q', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, '2bhsa31465ad', '', '2020-01-21'),
+(14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'h5k41ss6ab3d', '', '2020-01-21');
 
 --
 -- Indexes for dumped tables
@@ -393,12 +446,6 @@ ALTER TABLE `details`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `google_users`
---
-ALTER TABLE `google_users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `ordertrackhistory`
 --
 ALTER TABLE `ordertrackhistory`
@@ -423,15 +470,15 @@ ALTER TABLE `sales`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `subcategory`
 --
-ALTER TABLE `users`
+ALTER TABLE `subcategory`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_order`
+-- Indexes for table `users`
 --
-ALTER TABLE `user_order`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -448,7 +495,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -469,12 +516,6 @@ ALTER TABLE `details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `google_users`
---
-ALTER TABLE `google_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
 -- AUTO_INCREMENT for table `pincode`
 --
 ALTER TABLE `pincode`
@@ -484,7 +525,7 @@ ALTER TABLE `pincode`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `sales`
@@ -496,13 +537,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `user_order`
---
-ALTER TABLE `user_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -103,7 +103,7 @@ Ecomm Customer — Customer Number: 7021918970
         $mail->SMTPAuth = true;
         //Provide username and password     
         $mail->Username = "ks615044@gmail.com";
-        $mail->Password = "1@adsenseaccount";
+        $mail->Password = "**************";
         //If SMTP requires TLS encryption then set it
         $mail->SMTPSecure = "tls";
         //Set TCP port to connect to 

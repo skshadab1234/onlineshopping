@@ -40,7 +40,7 @@ if (isset($_POST['reset'])) {
 				$mail->Host = 'smtp.gmail.com';
 				$mail->SMTPAuth = true;
 				$mail->Username = 'ks615044@gmail.com';
-				$mail->Password = '1@adsenseaccount';
+				$mail->Password = '********';
 				$mail->SMTPOptions = array(
 					'ssl' => array(
 						'verify_peer' => false,

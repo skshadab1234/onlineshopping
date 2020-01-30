@@ -63,7 +63,7 @@ $pdo->close();
 
 		.features .v-tabs .v-tab-head a,
 		.features .v-tabs a.v-tab-head {
-			color: white;
+			color: #000;
 			cursor: pointer;
 			text-transform: uppercase;
 			display: block;
@@ -221,7 +221,7 @@ $pdo->close();
 
 <body class="hold-transition skin-blue layout-top-nav">
 	<div class="wrapper">
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="background:#fff">
 
 			<?php
 			if (isset($_SESSION['error'])) {
@@ -242,7 +242,7 @@ $pdo->close();
 				unset($_SESSION['success']);
 			}
 			?>
-			<div class="row">
+			<div class="row" style="margin-top:60px">
 				<div class="col-sm-12" style="padding: 20px">
 					<div class="light-brown features" id="features">
 						<section class="container-fluid">

@@ -107,6 +107,7 @@
 
 				.img-magnifier-container {
 					position: relative;
+					overflow: hidden
 				}
 
 				.img-magnifier-glass {
@@ -124,159 +125,163 @@
 					display: block;
 					z-index: 999999999;
 				}
+
+				.content-wrapper {
+					background: #fff;
+				}
+
+				@media(max-width:767px) {
+					.desktop {
+						display: none
+					}
+
+					#code {
+						display: none
+					}
+
+					.title {
+						font-size: 14px;
+						color: #323232;
+						font-weight: 700;
+					}
+
+
+					.img-magnifier-glass {
+						display: none;
+						border: none;
+						width: 0px;
+						border-radius: 10%;
+						cursor: none;
+					}
+
+					#details {
+						border-top: 1px solid rgb(0, 0, 0, 0.26);
+					}
+
+				}
+
+				#mobileview {
+					background: #fff;
+					color: #000;
+					height: 50px;
+					margin-top: -10px;
+					padding: 2px;
+					line-height: 20px;
+				}
+
+				#mobileview i {
+					color: #000
+				}
+
+				.sk {
+					margin-top: 20px;
+				}
+
+				#arrow {
+					position: relative;
+					top: 20px;
+					left: 20px;
+				}
+
+				.mobile-view-header #brand {
+					line-height: 35px;
+					font-weight: 900;
+					text-transform: uppercase;
+					position: absolute;
+					top: 10px;
+					right: 0;
+				}
+
+				#brand h5 {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					position: absolute;
+					width: 182px;
+					left: -30px;
+					top: 2px;
+				}
 			</style>
-			<?php include 'includes/navbar.php'; ?>
+			<div class="desktop"><?php include 'includes/navbar.php' ?></div>
+			<!-- mobile view -->
+			<div class="mobile-view-header" id="mobileview">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-3 col-xs-3">
+							<button type="button" id="bars" onclick="history.back(-1)" style="background:none;border:none;padding:0;outline:none;position:absolute;left:0;top:-2px">
+								<img src="images/arrow.png" width="20px" id="arrow" height="20px" alt="">
+							</button>
+						</div>
+
+						<div class="col-sm-9 col-xs-9" id="brand">
+							<h5><?php echo $product['prodname']; ?></h5>
+							<a href="#" data-toggle="modal" data-target="#search"><i class="fa fa-search" style="position:absolute;right:75px;font-size:15px;margin:10px;"></i></a>
+
+							<a href="#" data-toggle="modal" data-target="#cart1">
+								<i class="fa fa-shopping-cart" style="position:absolute;right:45px;font-size:15px;margin:10px;"></i>
+								<span class="label label-info cart_count" style="position:absolute;right:35px;font-size:10px;margin-top:10px;"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
 
 			<div class="wrapper">
 
 
 				<div class="content-wrapper">
-					<div class="container">
-
-						<!-- Main content -->
-						<section class="content">
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="row">
-										<div class="col-sm-6 sk">
-											<div class="img-magnifier-container text-center">
-												<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg'; ?>">
-											</div>
-										</div>
-										<div class="col-sm-6" style="padding: 20px">
-											<h4 style="font-weight: 600;color: #323232">Product Code : <span><?php echo $product['prodid']; ?></span></h4>
-											<h5 style="font-size: 14px;color: grey"><?php echo $product['brand']; ?></h5>
-											<h5 style="font-size: 20px;color: #323232"><?php echo $product['prodname']; ?></h5>
-											<h3 style="color: #323232"><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small><span style="color: orange"> (<?php echo $product['discount']; ?> off)</span></b></h3>
-											<br>
-											<h4 style="font-size: 14px;margin-bottom: 20px;color: #323232;letter-spacing: 2px">DELIVERY OPTIONS &nbsp;<i class="fa fa-truck"></i></h4>
-											<form method="POST">
-												<input type="number" name="zip" style="border: 1px solid #ddd"><span style="margin-left: -60px;font-stretch: 12px;color: blue;"><a href="" style="font-size: 14px;font-weight: 600">Check</a></span></i>
-												<h6 style="color: grey">Please enter PIN code to check delivery time & Cash/Card on Delivery Availability</h6>
-												<h4 style="font-size: 14px;font-weight: 400;line-height: 30px;color: grey">100% Original Products <br>Free Delivery on order above Rs. 1199 <br>Cash on delivery might be available <br>Easy 30 days returns and exchanges <br>Try & Buy might be available</h4>
-											</form>
-											<hr>
-											<form class="form-inline" id="productForm">
-												<div class="form-group">
-													<div class="input-group col-sm-5">
-
-														<span class="input-group-btn">
-															<button type="button" id="minus" class="btn btn-info btn-flat btn-lg"><i class="fa fa-minus"></i></button>
-														</span>
-														<input type="text" name="quantity" id="quantity" align="center" class="form-control input-lg" value="1">
-														<span class="input-group-btn">
-															<button type="button" id="add" class="btn btn-info btn-flat btn-lg"><i class="fa fa-plus"></i>
-															</button>
-														</span>
-														<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
-													</div>
-													<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" data-toggle="modal" data-target="#cart1" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-												</div>
-												<br><br>
-												<div class="callout" id="callout" style="display:none">
-													<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
-													<span class="message"></span>
-												</div>
-											</form>
+					<!-- Main content -->
+					<section class="content">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="row">
+									<div class="col-sm-6 sk">
+										<div class="img-magnifier-container text-center">
+											<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg'; ?>">
 										</div>
 									</div>
-									<br>
-									<ul class="nav nav-tabs">
-										<li class="active"><a data-toggle="tab" href="#home" style="color: black;font-weight: 600">Description</a></li>
-										<li><a data-toggle="tab" href="#menu2" style="color: black;font-weight: 600">Reviews</a></li>
-									</ul>
+									<div class="col-sm-6" id="details" style="padding: 20px">
+										<h4 id="code" style="font-weight: 600;color: #323232">Product Code : <span><?php echo $product['prodid']; ?></span></h4>
+										<h5 style="font-size: 14px;color: grey"><?php echo $product['brand']; ?></h5>
+										<h5 id="title"><?php echo $product['prodname']; ?></h5>
+										<h3 style="color: #323232"><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small><span style="color: orange"> (<?php echo $product['discount']; ?> off)</span></b></h3>
+										<br>
+										<form class="form-inline" id="productForm">
+											<div class="form-group">
+												<div class="input-group col-sm-5">
 
-									<div class="tab-content" style="height: 400px">
-										<div id="home" class="tab-pane fade in active" style="width: 500px">
-											<br>
-											<h4 style="color: #323232;font-size: 14px"><?php echo $product['description']; ?></h4>
-										</div>
-										<div id="menu2" class="tab-pane fade">
+													<span class="input-group-btn">
+														<button type="button" id="minus" class="btn btn-info btn-flat btn-lg"><i class="fa fa-minus"></i></button>
+													</span>
+													<input type="text" name="quantity" id="quantity" align="center" class="form-control input-lg" value="1">
+													<span class="input-group-btn">
+														<button type="button" id="add" class="btn btn-info btn-flat btn-lg"><i class="fa fa-plus"></i>
+														</button>
+													</span>
+													<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
+												</div>
+												<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" data-toggle="modal" data-target="#cart1" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+											</div>
 											<br><br>
-											<div class="container" style="width: 80%;color: grey">
-												<span class="heading">User Rating</span>
-												<span class="fa fa-star checked"></span>
-												<span class="fa fa-star checked"></span>
-												<span class="fa fa-star checked"></span>
-												<span class="fa fa-star checked"></span>
-												<span class="fa fa-star"></span>
-												<p>4.1 average based on 254 reviews.</p>
-												<hr style="border:3px solid #f1f1f1">
-
-												<div class="row">
-													<div class="side">
-														<div>5 star</div>
-													</div>
-													<div class="middle">
-														<div class="bar-container">
-															<div class="bar-5"></div>
-														</div>
-													</div>
-													<div class="side right">
-														<div>150</div>
-													</div>
-													<div class="side">
-														<div>4 star</div>
-													</div>
-													<div class="middle">
-														<div class="bar-container">
-															<div class="bar-4"></div>
-														</div>
-													</div>
-													<div class="side right">
-														<div>63</div>
-													</div>
-													<div class="side">
-														<div>3 star</div>
-													</div>
-													<div class="middle">
-														<div class="bar-container">
-															<div class="bar-3"></div>
-														</div>
-													</div>
-													<div class="side right">
-														<div>15</div>
-													</div>
-													<div class="side">
-														<div>2 star</div>
-													</div>
-													<div class="middle">
-														<div class="bar-container">
-															<div class="bar-2"></div>
-														</div>
-													</div>
-													<div class="side right">
-														<div>6</div>
-													</div>
-													<div class="side">
-														<div>1 star</div>
-													</div>
-													<div class="middle">
-														<div class="bar-container">
-															<div class="bar-1"></div>
-														</div>
-													</div>
-													<div class="side right">
-														<div>20</div>
-													</div>
-												</div>
-
+											<div class="callout" id="callout" style="display:none">
+												<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+												<span class="message"></span>
 											</div>
-										</div>
+										</form>
 									</div>
-
-									<hr style="border: 1px solid black">
-									<div class="fb-comments" data-href="http://localhost/ecommerce/product.php?product=<?php echo $slug; ?>" data-numposts="10" width="100%"></div>
 								</div>
+								<br>
+
+								<div class="fb-comments" data-href="http://localhost/ecommerce/product.php?product=<?php echo $slug; ?>" data-numposts="10" width="100%"></div>
 							</div>
-						</section>
-
-					</div>
+					</section>
 				</div>
-				<?php $pdo->close(); ?>
-				<?php include 'includes/footer.php'; ?>
 			</div>
-
+			<?php $pdo->close(); ?>
+			<?php include 'includes/footer.php'; ?>
+			</div>
+			<?php include 'includes/sidebar_modal.php'; ?>
 			<?php include 'includes/scripts.php'; ?>
 			<script>
 				/* Initiate Magnify Function

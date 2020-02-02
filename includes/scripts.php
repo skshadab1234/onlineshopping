@@ -65,11 +65,32 @@
 			});
 		});
 
+		$('#productForm1').submit(function(e) {
+			e.preventDefault();
+			var product1 = $(this).serialize();
+			$.ajax({
+				type: 'POST',
+				url: 'cart_add.php',
+				data: product1,
+				dataType: 'json',
+				success: function(response) {
+					$('#callout').show();
+					$('.message').html(response.message);
+					if (response.error) {
+						$('#callout').removeClass('callout-success').addClass('callout-danger');
+					} else {
+						$('#callout').removeClass('callout-danger').addClass('callout-success');
+						getCart();
+					}
+				}
+			});
+		});
 		$(document).on('click', '.close', function() {
 			$('#callout').hide();
 		});
 
 	});
+
 
 	function getCart() {
 		$.ajax({
@@ -201,21 +222,6 @@
 			success: function(response) {
 				delivery1 = response;
 
-			}
-		});
-	}
-
-	var acc = document.getElementsByClassName("accordion");
-	var i;
-
-	for (i = 0; i < acc.length; i++) {
-		acc[i].addEventListener("click", function() {
-			this.classList.toggle("active");
-			var panel = this.nextElementSibling;
-			if (panel.style.maxHeight) {
-				panel.style.maxHeight = null;
-			} else {
-				panel.style.maxHeight = panel.scrollHeight + "px";
 			}
 		});
 	}

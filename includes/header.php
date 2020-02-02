@@ -1171,6 +1171,10 @@ folder instead of downloading all of them to reduce the load. -->
                     display: none
                 }
 
+                .s3 {
+                    display: none;
+                }
+
                 .contact-wrap {
                     width: 60%;
                     margin: auto;

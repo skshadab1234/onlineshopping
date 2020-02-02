@@ -130,20 +130,19 @@
 				<img src="<?php echo (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg'; ?>" width="100px" height="300px">
 			</div>
 			<div style="position: absolute;top: 148px;left:84px;">
-				<?php 
-				if(isset($_SESSION['user'])){
-					?>
-			<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<b><?php echo $user['firstname'] . ' ' . $user['lastname'] ?></b></h4>
-				<p style="font-size: 12px;position: absolute;top: 15px;left: 10px"><?php echo $user['email'] ?></p>
-					<?php
-				}
-				else{
-?>
-			<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<a href="login.php">Login</a></h4>
+				<?php
+				if (isset($_SESSION['user'])) {
+				?>
+					<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<b><?php echo $user['firstname'] . ' ' . $user['lastname'] ?></b></h4>
+					<p style="font-size: 12px;position: absolute;top: 15px;left: 10px"><?php echo $user['email'] ?></p>
+				<?php
+				} else {
+				?>
+					<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<a href="login.php">Login</a></h4>
 
-<?php
+				<?php
 				}
-				
+
 				?>
 			</div>
 		</div>
@@ -278,16 +277,14 @@
 </div><!-- modal -->
 
 <div class="modal left fade" id="filter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog"  role="document" style="width:100%">
+	<div class="modal-dialog" role="document" style="width:100%">
 		<div class="modal-content" style="background:#fff">
 			<div class="modal-body">
-
-
 			</div>
-<div class="modal-footer" style="position:fixed;left:0;bottom:0;width:100%">
-<button style="background:none;color:gray;border:none" data-dismiss="modal">Cancel</button>
-			<button id="quickview">Apply</button>
-</div>
+			<div class="modal-footer" style="position:fixed;left:0;bottom:0;width:100%">
+				<button style="background:none;color:gray;border:none" data-dismiss="modal">Cancel</button>
+				<button id="quickview">Apply</button>
+			</div>
 		</div>
 
 	</div><!-- modal-content -->

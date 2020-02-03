@@ -125,20 +125,23 @@
 <!-- Modal -->
 <div class="modal left fade" id="bar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
-		<div class="modal-header" style="height:200px;position:relative;padding:20px">
-			<div class="profile-card__img text-center" style="position: absolute;top: 100px;left: 100px;width: 100px;height: 100px;padding: 0px;">
-				<img src="<?php echo (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg'; ?>" width="100px" height="300px">
+		<div class="modal-header" style="background: #2c3e50;position: relative;width: 100%;height:160px">
+			<div style="position: relative;top: 11px;">
+				<span data-dismiss="modal" aria-label="Close" style="color: #fff;font-size: 31px;position: absolute;right: 5px;top: -11px;">&times;</span>
+				<img src="<?php echo (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg'; ?>" width="50px" style="border-radius:5px">
 			</div>
-			<div style="position: absolute;top: 148px;left:84px;">
+			<div>
 				<?php
 				if (isset($_SESSION['user'])) {
 				?>
-					<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<b><?php echo $user['firstname'] . ' ' . $user['lastname'] ?></b></h4>
-					<p style="font-size: 12px;position: absolute;top: 15px;left: 10px"><?php echo $user['email'] ?></p>
+					<a href="profile.php">
+						<div>
+							<h4 style="max-width:100%;color: #fff;position: absolute;font-size:17px;bottom: 20px;left: 10px;font-weight: 600;letter-spacing: 0.3px;font-family: inherit;" align="center"><?php echo $user['firstname'] . ' ' . $user['lastname'] ?><span style="position: relative;left: 171px;font-size: 27px;"><i class="fa fa-angle-right"></i></span></h4>
+						</div>
+					</a>
 				<?php
 				} else {
 				?>
-					<h4 class="box-title" style="color: white;text-transform: uppercase;" align="center">&nbsp;<a href="login.php">Login</a></h4>
 
 				<?php
 				}
@@ -154,7 +157,10 @@
 				$stmt->execute();
 				foreach ($stmt as $row) {
 					echo "
-						
+					<a href\"  data-toggle=\"modal\" data-target=\"#men\">
+					<div style=\"padding-left:15px;margin-top: 19px;\">	
+					<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;\">" . $row["name"] . "<span style=\"position: relative;left: 240px;font-size: 27px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+					</div></a>
 						";
 				}
 			} catch (PDOException $e) {
@@ -171,7 +177,12 @@
 				$stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
 				$stmt->execute();
 				foreach ($stmt as $row) {
-					echo "";
+					echo "
+					<a href\" data-toggle=\"modal\" data-target=\"#women\">
+					<div style=\"padding-left:15px;margin-top: 19px;\">	
+					<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;\">" . $row["name"] . "<span style=\"position: relative;left: 217px;font-size: 27px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+					</div></a>
+					";
 				}
 			} catch (PDOException $e) {
 				echo "There is some problem in connection: " . $e->getMessage();
@@ -187,17 +198,12 @@
 				$stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
 				$stmt->execute();
 				foreach ($stmt as $row) {
-					$stmt2 = $conn->prepare("SELECT * FROM subcategory WHERE type='men'");
-					$stmt2->execute();
-					foreach ($stmt2 as $row2) {
-						echo "
-						<div>	
-						<ul>
-							<li><a href=\"\">" . $row2["name"] . "</a>
-							</ul>  
-							</div>
+					echo "
+					<a href\" data-toggle=\"modal\" data-target=\"#kids\">
+					<div style=\"padding-left:15px;margin-top: 19px;\">	
+					<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;\">" . $row["name"] . "<span style=\"position: relative;left: 240px;font-size: 27px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+					</div></a>
 						";
-					}
 				}
 			} catch (PDOException $e) {
 				echo "There is some problem in connection: " . $e->getMessage();
@@ -211,11 +217,11 @@
 				$image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
 				echo '
 
-						<h5 class="men" style="margin-left:-8px">Thank You For Becomming a User</h5>
+						<h5 class="men" style="color:#000">Thank You For Becomming a User</h5>
 						';
 			} else {
 				echo "
-						<h5 class=\"text-center\" style=\"color: white;letter-spacing:1px;line-height:15px\">Sign in to get all product updates on your registered mail</h5>
+						<h5 class=\"text-center\" style=\"color: #000;letter-spacing:1px;line-height:15px\">Sign in to get all product updates on your registered mail</h5>
 
 						<li  style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='login.php' style=\"color: #4285f4;font-weight:600;\"><i class=\"fa fa-sign-in\" style=\"font-size:14px\"></i> &nbsp;LOGIN</a></li>
 						<li style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='signup.php' style=\"color:  #4285f4;font-weight:600;\"><i class=\"fa fa-user-plus\" style=\"font-size:14px\"></i> &nbsp;Sign Up</a></li>
@@ -467,6 +473,118 @@
 
 				</div>
 			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- men drop -->
+<!-- Modal -->
+<div class="modal left fade" id="men" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<span style="position: absolute;top: 36px;left: 63px;font-size: 18px;">Men</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+
+<!--women drop -->
+<!-- Modal -->
+<div class="modal left fade" id="women" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<span style="position: absolute;top: 36px;left: 63px;font-size: 18px;">Women</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--Kids drop -->
+<!-- Modal -->
+<div class="modal left fade" id="kids" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<span style="position: absolute;top: 36px;left: 63px;font-size: 18px;">KIDS</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kids'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
 		</div>
 	</div>
 </div>

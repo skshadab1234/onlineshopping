@@ -102,6 +102,8 @@
 	}
 </style>
 
+
+
 <!-- cod modal -->
 
 <div class="modal fade" id="cod" role="dialog" aria-labelledby="myModalLabel">
@@ -492,17 +494,58 @@
 
 			$conn = $pdo->open();
 			try {
-				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men'");
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=1");
 				$stmt->execute();
 				foreach ($stmt as $row) {
-					echo "
+					$stmt2 = $conn->prepare("SELECT * FROM subcategory WHERE id=2");
+					$stmt2->execute();
+					foreach ($stmt2 as $row2) {
+						$stmt3 = $conn->prepare("SELECT * FROM subcategory WHERE id=3");
+						$stmt3->execute();
+						foreach ($stmt3 as $row3) {
+							$stmt4 = $conn->prepare("SELECT * FROM subcategory WHERE id=4");
+							$stmt4->execute();
+							foreach ($stmt4 as $row4) {
+								$stmt8 = $conn->prepare("SELECT * FROM subcategory WHERE id=8");
+								$stmt8->execute();
+								foreach ($stmt8 as $row8) {
+
+									echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#mensub\">
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
 			</div></a>
 					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#mensub1\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row2["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#mensub2\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row3["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#mensub3\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row4["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#mensub7\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row8["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
 			";
+								}
+							}
+						}
+					}
 				}
 			} catch (PDOException $e) {
 				echo "There is some problem in connection: " . $e->getMessage();
@@ -530,17 +573,57 @@
 
 			$conn = $pdo->open();
 			try {
-				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women'");
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=9");
 				$stmt->execute();
 				foreach ($stmt as $row) {
-					echo "
+					$stmt2 = $conn->prepare("SELECT * FROM subcategory WHERE id=10");
+					$stmt2->execute();
+					foreach ($stmt2 as $row2) {
+						$stmt3 = $conn->prepare("SELECT * FROM subcategory WHERE id=12");
+						$stmt3->execute();
+						foreach ($stmt3 as $row3) {
+							$stmt4 = $conn->prepare("SELECT * FROM subcategory WHERE id=14");
+							$stmt4->execute();
+							foreach ($stmt4 as $row4) {
+								$stmt5 = $conn->prepare("SELECT * FROM subcategory WHERE id=15");
+								$stmt5->execute();
+								foreach ($stmt5 as $row5) {
+									echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#womensub1\">
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
 			</div></a>
 					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#womensub2\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row2["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#womensub4\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row3["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#womensub6\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row4["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#womensub7\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row5["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
 			";
+								}
+							}
+						}
+					}
 				}
 			} catch (PDOException $e) {
 				echo "There is some problem in connection: " . $e->getMessage();
@@ -566,14 +649,837 @@
 
 			$conn = $pdo->open();
 			try {
-				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kids'");
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=16");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					$stmt2 = $conn->prepare("SELECT * FROM subcategory WHERE id=17");
+					$stmt2->execute();
+					foreach ($stmt2 as $row2) {
+						$stmt3 = $conn->prepare("SELECT * FROM subcategory WHERE id=18");
+						$stmt3->execute();
+						foreach ($stmt3 as $row3) {
+							$stmt4 = $conn->prepare("SELECT * FROM subcategory WHERE id=19");
+							$stmt4->execute();
+							foreach ($stmt4 as $row4) {
+								$stmt5 = $conn->prepare("SELECT * FROM subcategory WHERE id=20");
+								$stmt5->execute();
+								foreach ($stmt5 as $row5) {
+
+									echo "
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub1\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row2["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row3["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row4["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+					<div class=\"container-fluid\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row5["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			</div></a>
+					</div>
+			";
+								}
+							}
+						}
+					}
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--men sub subcategory for bottomwear-->
+<!-- Modal -->
+<div class="modal left fade" id="mensub" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=1");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men_bottom'");
 				$stmt->execute();
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
 						<a href=\"\">
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
-			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--men sub subcategory for innerwear and sleepwear-->
+<!-- Modal -->
+<div class="modal left fade" id="mensub1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=2");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men_innerwear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--men sub subcategory for Footwear-->
+<!-- Modal -->
+<div class="modal left fade" id="mensub2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=3");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men_footwear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--men sub subcategory for topwear-->
+<!-- Modal -->
+<div class="modal left fade" id="mensub3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=4");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men_topwear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+
+<!--men sub subcategory for sports-->
+<!-- Modal -->
+<div class="modal left fade" id="mensub7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=8");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='men_sports'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--women sub subcategory for Fusionwear-->
+<!-- Modal -->
+<div class="modal left fade" id="womensub1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=9");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women_fusionwear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--women sub subcategory for Belts and more-->
+<!-- Modal -->
+<div class="modal left fade" id="womensub2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=10");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women_westernwear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--women sub subcategory for Makeup-->
+<!-- Modal -->
+<div class="modal left fade" id="womensub4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=12");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women_makeup'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--women sub subcategory for Footwear-->
+<!-- Modal -->
+<div class="modal left fade" id="womensub6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=14");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women_footwear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--women sub subcategory for Western Wear-->
+<!-- Modal -->
+<div class="modal left fade" id="womensub7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=15");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='women_activewear'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+
+<!--kids sub subcategory for Girls-->
+<!-- Modal -->
+<div class="modal left fade" id="kidsub2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=17");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kids_girl'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--kids sub subcategory for Boy Clothing-->
+<!-- Modal -->
+<div class="modal left fade" id="kidsub1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=16");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kids_boy'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--Kids sub subcategory for Boys Footwear-->
+<!-- Modal -->
+<div class="modal left fade" id="kidsub3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=18");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kids_boyfoot'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+
+<!--kids sub subcategory for girl Footwear-->
+<!-- Modal -->
+<div class="modal left fade" id="kidsub4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=19");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kidS_girlfoot'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
+			</div></a>
+					</div>
+			";
+				}
+			} catch (PDOException $e) {
+				echo "There is some problem in connection: " . $e->getMessage();
+			}
+
+			$pdo->close();
+
+			?>
+		</div>
+	</div>
+</div>
+
+<!--kids sub subcategory for Accessories-->
+<!-- Modal -->
+<div class="modal left fade" id="kidsub5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+				<?php
+
+				$conn = $pdo->open();
+				try {
+					$stmt = $conn->prepare("SELECT * FROM subcategory WHERE id=20");
+					$stmt->execute();
+					foreach ($stmt as $row) {
+						echo "<span style=\"position: absolute;top: 36px;left: 63px;font-size: 18px;\">" . $row["name"] . "</span>";
+					}
+				} catch (PDOException $e) {
+					echo "There is some problem in connection: " . $e->getMessage();
+				}
+
+				$pdo->close();
+
+				?>
+				</span>
+			</div>
+			<?php
+
+			$conn = $pdo->open();
+			try {
+				$stmt = $conn->prepare("SELECT * FROM subcategory WHERE type='kids_accessories'");
+				$stmt->execute();
+				foreach ($stmt as $row) {
+					echo "
+					<div class=\"container-fluid\">
+						<a href=\"\">
+			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
 					</div>
 			";

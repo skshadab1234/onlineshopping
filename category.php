@@ -52,7 +52,7 @@
                     $inc = ($inc == 4) ? 1 : $inc + 1;
                     if ($inc == 4) echo "<div class='row'>";
                 ?>
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3" style="padding:10px">
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 container" style="background:red">
                       <div class="card">
                         <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-fluid\" width='250px' height='250px'></a> "; ?>
                         <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
@@ -143,7 +143,7 @@
         </div>
       </div>
       <?php include 'includes/footer.php'; ?>
-    </div>      
+    </div>
 
     <?php include 'includes/scripts.php'; ?>
     <script>

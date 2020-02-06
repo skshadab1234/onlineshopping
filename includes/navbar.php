@@ -4,10 +4,7 @@
                 top: 0;
                 width: 100%;
                 background: #fff;
-                /* fallback for old browsers */
-                box-shadow: 0 9px 18px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 12px rgba(0, 0, 0, 0.2);
-                z-index:0;        
+                z-index: 0;
         }
 
         #myHeader {
@@ -152,6 +149,10 @@
 
         #myHeader.sticky .fa-heart-o {
                 color: #232526;
+        }
+
+        .modal-backdrop.in {
+                z-index: 0;
         }
 </style>
 
@@ -471,16 +472,15 @@
         <div class="mobile-view-header" id="mobileview">
                 <div class="container-fluid">
                         <div class="row">
-                                <div class="col-sm-3 col-xs-3">
-                                        <button type="button" id="bars" data-toggle="modal" data-target="#bar" style="background:none;border:none;padding:0;outline:none;position:absolute;left:0;top:-2px">
-                                                <i class="fa fa-bars"></i>
+                                <div class="col-sm-2 col-xs-2">
+                                        <button type="button" id="bars" data-toggle="modal" data-target="#bar" style="background: none;border: none;padding: 0;outline: none;">
+                                                <img src="images/hamburg.png" style="position:absolute" alt="">
                                         </button>
                                 </div>
 
-                                <div class="col-sm-9 col-xs-9" id="brand">
+                                <div class="col-sm-10 col-xs-10" id="brand">
                                         <a href="" id="index">Ecomm</a>
                                         <a href="#" data-toggle="modal" data-target="#search"><i class="fa fa-search" style="position:absolute;right:75px;font-size:15px;margin:10px;"></i></a>
-
                                         <a href="#" data-toggle="modal" data-target="#cart1">
                                                 <i class="fa fa-shopping-cart" style="position:absolute;right:45px;font-size:15px;margin:10px;"></i>
                                                 <span class="label label-info cart_count" style="position:absolute;right:35px;font-size:10px;margin-top:10px;"></span>

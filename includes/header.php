@@ -495,9 +495,9 @@ folder instead of downloading all of them to reduce the load. -->
 
                 .slider,
                 .slider>div {
-                    max-width: 100%;
-                    max-height: 300px;
-                    margin-top: 20px;
+                    max-height: 320px;
+                    margin-top: 24px;
+
                 }
 
                 .slider img {
@@ -527,20 +527,22 @@ folder instead of downloading all of them to reduce the load. -->
 
                 .mobile-view-header {
                     width: 100%;
-                    height: 40px;
                     z-index: 1000;
                     opacity: 1;
+                    background: #fff;
+                    padding: 5px;
                     position: fixed;
                     box-shadow: none;
-                    background: #0d0620;
                     transition: all .3s ease-in-out;
                     -o-transition: all .3s ease-in-out;
                 }
 
-                .mobile-view-header i {
-                    color: #fff;
-                    font-size: 20px;
-                    margin-top: 10px;
+                .mobile-view-header img {
+                    position: relative;
+                    top: 16px;
+                    /* line-height: 34px; */
+                    height: 23px;
+                    left: 12px;
 
                 }
 

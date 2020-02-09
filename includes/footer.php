@@ -1,6 +1,14 @@
   <style type="text/css">
     @import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700);
 
+    #downloadapp {
+      width: 200px;
+      display: flex;
+      margin: 0;
+      flex-direction: row-reverse;
+      padding: 0
+    }
+
     ul {
       padding: 0;
       margin: 0
@@ -72,7 +80,7 @@
     }
 
     .footer-big {
-      padding: 105px 0 65px 0
+      padding: 20px;
     }
 
     .footer-big .footer-widget {
@@ -199,11 +207,14 @@
       opacity: 2;
     }
 
+    .container-fluid:first-child {
+      margin-top: 0;
+    }
   </style>
 
 
   <footer class="footer-area footer--light ">
-    <div class="container-fluid">
+    <div class="container-fluid" style="background: #0d0620;height:auto">
       <div class="row">
         <div class="col-sm-8  shadab">
           <ul>
@@ -229,7 +240,7 @@
     </div>
     <div class="footer-big">
       <!-- start .container -->
-      <div class="container" style="margin-top: -70px">
+      <div>
         <div class="row">
           <div class="col-md-3 col-sm-12">
             <div class="footer-widget">
@@ -267,7 +278,7 @@
                 </ul>
 
               </div>
-              <div class="container">
+              <div class="container" id="downloadapp">
                 <a href="#"><img src="./images/android.jpg" width="150px" height="150px"></a>
                 <a href="#"><img src="./images/appstore.png" width="150px" height="150px"></a>
 

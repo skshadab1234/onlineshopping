@@ -12,8 +12,6 @@ try {
 } catch (PDOException $e) {
 	echo "There is some problem in connection: " . $e->getMessage();
 }
-
-
 ?>
 <?php include 'includes/header.php'; ?>
 <title><?php echo $product['prodname']; ?> </title>
@@ -131,10 +129,6 @@ try {
 		}
 
 		@media(max-width:767px) {
-			.desktop {
-				display: none
-			}
-
 			#code {
 				display: none
 			}
@@ -212,66 +206,29 @@ try {
 				display: none;
 			}
 		}
-
-		#mobileview {
-			background: #fff;
-			color: #000;
-			height: 60px;
-			line-height: 20px;
-		}
-
-		#mobileview i {
-			color: #000;
-		}
-
-		.sk {
-			margin-top: 20px;
-		}
-
-		#arrow {
-			width: 46px;
-			position: fixed;
-			top: 6px;
-		}
-
-
-		#brand span {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			position: absolute;
-			width: 100%;
-			left: -30px;
-			font-size: 18px;
-			top: 10px;
-			font-weight: 500;
-			letter-spacing: 1px;
-		}
 	</style>
-	<div class="desktop"><?php include 'includes/navbar.php' ?></div>
-	<!-- mobile view -->
-	<div class="mobile-view-header" id="mobileview">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-3 col-sm-3">
-					<button type="button" id="bars" onclick="history.back(-1)" style="background:none;border:none;padding:0;outline:none;position:absolute;left:0;top:-2px">
-						<img src="images/arrow1.png" width="40px" id="arrow" alt="">
-					</button>
-				</div>
-
-				<div class="col-xs-6 col-sm-6" id="brand">
-					<span><?php echo $product['prodname']; ?></span>
-				</div>
-				<div class="col-xs-3 col-sm-3" style="position: absolute;right: -25px;top: 4px;">
-					<a href="#"><i class="fa fa-heart-o" style="position:absolute;right:85px;"></i></a>
-					<a href="#" data-toggle="modal" data-target="#cart1">
-						<i class="fa fa-shopping-cart" style="position:absolute;right:45px;margin:10px;"></i>
-						<span class="label label-info cart_count" style="position:absolute;right:35px;font-size:10px;margin-top:10px;"></span>
-					</a>
-				</div>
-			</div>
-		</div>
+	<div class="desktop">
+		<?php include 'includes/navbar.php' ?>
 	</div>
+	<!-- mobile view -->
+	<div class="container-fluid1" id="mobileview">
+		<img src="images/arrow1.png" onclick="history.back(-1)" width="40px" id="arrow" alt="">
+
+		<div id="brand">
+			<?php echo $product['prodname']; ?>
+		</div>
+		<div class="rightsection pull-right">
+			<ul>
+				<li>
+					<a href="#"><i class="fa fa-heart-o"></i></a>
+				</li>
+				<a href="#" data-toggle="modal" data-target="#cart1">
+					<img src="images/cart.png" alt="Cart" style="width: 30px;height: 30px;position: relative;top:-4px;">
+					<span class="cart_count" style="position: relative;left: -18px;top: -9px;color: red;border-radius: 50%;font-size: 14px;"></span>
+				</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 

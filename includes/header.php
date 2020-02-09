@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="./images/favicon.jpg" rel="icon">
-        <link rel="stylesheet" href="navbar.css">
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -16,19 +15,9 @@
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-folder instead of downloading all of them to reduce the load. -->
         <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
         <!-- Magnify -->
         <link rel="stylesheet" href="magnify/magnify.min.css">
-        <link rel="stylesheet" type="text/css" href="includes/mediaquery.css">
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
         <!-- Paypal Express -->
@@ -63,6 +52,7 @@ folder instead of downloading all of them to reduce the load. -->
                 font-family: 'Alatsi', sans-serif;
             }
 
+
             .content-wrapper {
                 background: #C9D6FF;
                 /* fallback for old browsers */
@@ -78,9 +68,8 @@ folder instead of downloading all of them to reduce the load. -->
                 background: rgba(0, 0, 0, 0.5)
             }
 
-            .modal-content,
             .modal-header {
-                background: #fff;
+                background: #2c3e50;
             }
 
             .modal-body p {
@@ -341,17 +330,7 @@ folder instead of downloading all of them to reduce the load. -->
             }
 
 
-            /* Small devices (tablets, 768px and up) */
             @media (max-width: 768px) {
-                .swiper-slide {
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    background-position: right bottom;
-                }
-            }
-
-            @media (min-width: 768px) {
-
                 #navbar-search-input {
                     width: 100px;
                 }
@@ -419,7 +398,7 @@ folder instead of downloading all of them to reduce the load. -->
             .mens {
                 color: #1F1C2C;
                 /* fallback for old browsers */
-                font-size: 2.9rem;
+                font-size: 3vh;
                 font-weight: bolder;
                 letter-spacing: 1px;
                 font-family: 'Kanit', sans-serif;
@@ -439,19 +418,20 @@ folder instead of downloading all of them to reduce the load. -->
                 align-items: center;
             }
 
-            .container-fluid {
-                width: 98%;
+            #mobileview {
+                display: none;
             }
 
-            @media (max-width: 991px) {
-                .el-wrapper {
-                    width: 345px;
-                }
-            }
+            @media (max-width: 768px) {
 
-            @media (max-width: 767px) {
                 .filter1200px {
                     display: none
+                }
+
+                .swiper-slide {
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: right bottom;
                 }
 
                 #mobilefilter {
@@ -484,25 +464,19 @@ folder instead of downloading all of them to reduce the load. -->
                     top: 10px;
                 }
 
-
                 footer {
                     display: none;
                 }
 
-                .content {
-                    margin-top: 20px
-                }
-
                 .slider,
                 .slider>div {
-                    max-height: 320px;
-                    margin-top: 24px;
-
+                    max-height: 300px;
+                    margin-top: 29px;
                 }
 
                 .slider img {
                     width: 100%;
-                    max-height: 100%;
+                    height: 100%;
                 }
 
                 .slider>.left {
@@ -577,6 +551,7 @@ folder instead of downloading all of them to reduce the load. -->
                 }
 
                 #drop-mobile {
+                    width: 200px;
                     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
                 }
 
@@ -609,6 +584,7 @@ folder instead of downloading all of them to reduce the load. -->
                 .signups {
                     padding: 20px;
                     border-bottom: 1px solid grey;
+                    display: table;
                 }
 
                 .signups a {
@@ -1163,8 +1139,8 @@ folder instead of downloading all of them to reduce the load. -->
             }
 
             @media (min-width: 768px) {
-                #mobilefilter {
-                    display: none
+                #mobileview {
+                    display: none;
                 }
 
                 .s3 {
@@ -1235,6 +1211,55 @@ folder instead of downloading all of them to reduce the load. -->
                 background-size: contain;
                 background-repeat: no-repeat;
             }
+
+            .imgfluid {
+                position: relative;
+                padding: 10px;
+                width: 100%;
+            }
+
+            #images {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: 100%;
+                transition: .5s ease;
+                backface-visibility: hidden;
+            }
+
+            .middle {
+                transition: .5s ease;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .imgfluid:hover #images {
+                opacity: 0.3;
+            }
+
+            .imgfluid:hover .middle {
+                opacity: 1;
+            }
+
+            .text {
+                color: #fff;
+                background: #dd4b39;
+                padding: 10px;
+                font-family: calibri;
+                line-height: 15px;
+                letter-spacing: 3px;
+                width: 100%;
+            }
+
+            .text a {
+                color: #fff;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            }
         </style>
 
     </head>
@@ -1245,7 +1270,7 @@ folder instead of downloading all of them to reduce the load. -->
 
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("jan 21, 2020 09:00:00 AM").getTime();
+        var countDownDate = new Date("feb 15, 2020 12:00:00 pm").getTime();
         // Update the count down every 1 second
         var x = setInterval(function() {
 
@@ -1269,7 +1294,7 @@ folder instead of downloading all of them to reduce the load. -->
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("clock").style.display = "none";
-                document.getElementById("clock1").style.display = "none";
+                document.getElementById("clock2").style.display = "none";
                 document.getElementById("clock3").style.display = "none";
                 document.getElementById("demo").innerHTML = "Deals are Expire Next Deals are coming Soon";
             }

@@ -1,3 +1,6 @@
+<?php
+error_reporting(0);
+?>
 <style type="text/css">
         .sticky {
                 padding: 5px;
@@ -151,8 +154,67 @@
                 color: #232526;
         }
 
-        .modal-backdrop.in {
-                z-index: 0;
+        @media(max-width:768px) {
+                .desktop {
+                        display: none;
+                }
+
+                .modal-backdrop.in {
+                        z-index: 0;
+                }
+
+                #mobileview {
+                        width: 100%;
+                        display: flex;
+                        position: fixed;
+                        z-index: 999;
+                        background: #fff;
+                        padding: 10px
+                }
+
+                #mobileview img {
+                        width: 24px;
+                        height: 26px;
+                        position: relative;
+                        top: 6px;
+                }
+
+                #mobileview i {
+                        color: #000;
+                        font-size: 20px;
+                }
+
+                .sk {
+                        margin-top: 20px;
+                }
+
+                #brand {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        width: 232px;
+                        line-height: 39px;
+                        font-size: 17px;
+                        FONT-WEIGHT: bold;
+                        font-family: sans-serif;
+                        letter-spacing: 1px;
+                        position: relative;
+                        left: 20px;
+                }
+
+                .rightsection {
+                        position: absolute;
+                        right: 5px;
+                        line-height: 39px;
+                }
+
+                .rightsection li {
+                        display: inline-block;
+                }
+
+                .rightsection li i {
+                        font-size: 20px;
+                }
         }
 </style>
 
@@ -464,37 +526,51 @@
                                 </li>
                                 </ul>
                         </div>
-
                 </nav>
         </header>
 
+
         <!-- mobile view -->
+
         <div class="mobile-view-header" id="mobileview">
-                <div class="container-fluid">
-                        <div class="row">
-                                <div class="col-sm-2 col-xs-2">
-                                        <button type="button" id="bars" data-toggle="modal" data-target="#bar" style="background: none;border: none;padding: 0;outline: none;">
-                                                <img src="images/hamburg.png" style="position:absolute" alt="">
-                                        </button>
-                                </div>
+                <?php
+                if ($cat) {
+                        echo '<img src="images/arrow1.png" onclick="history.back(-1)" alt="">';
+                } else {
+                        echo '<img src="images/hamburg.png" data-toggle="modal" data-target="#bar" alt="">';
+                }
 
-                                <div class="col-sm-10 col-xs-10" id="brand">
-                                        <a href="" id="index">Ecomm</a>
-                                        <a href="#" data-toggle="modal" data-target="#search"><i class="fa fa-search" style="position:absolute;right:75px;font-size:15px;margin:10px;"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#cart1">
-                                                <i class="fa fa-shopping-cart" style="position:absolute;right:45px;font-size:15px;margin:10px;"></i>
-                                                <span class="label label-info cart_count" style="position:absolute;right:35px;font-size:10px;margin-top:10px;"></span>
-                                        </a>
+                ?>
+                <div id="brand">
+                        <?php
+                        if ($cat) {
+                                echo $cat['name'];
+                        } else {
+                                echo '
+                        <a href="index.php" style="color:#010101;font-size:26px;text-transform:uppercase;letter-spacing:1px;font-family:calibri">Ecomm</a>
+                        ';
+                        }
+                        ?>
+                </div>
+                <div class="rightsection pull-right">
+                        <ul>
+                                <li>
+                                        <a href="wishlist.php"><i class="fa fa-heart-o"></i></a>
+                                </li>
+                                </li>
+                                <a href="#" data-toggle="modal" data-target="#cart1">
+                                        <img src="images/cart.png" alt="Cart" style="width: 30px;height: 30px;position: relative;top:-4px;">
+                                        <span class="cart_count" style="position: relative;left: -8px;top: -9px;color: red;border-radius: 50%;font-size: 14px;"></span>
+                                </a>
+                                </li>
 
-                                        <!-- Menu toggle button -->
-                                        <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" id="cart">
-                                                <i class="fa fa-ellipsis-v"></i>
-                                        </a>
-
-                                        <ul class="dropdown-menu pull-right" id="drop-mobile">
-                                                <?php
-                                                if (isset($_SESSION['user'])) {
-                                                        echo '
+                                <a href="#" data-toggle="dropdown" id="cart" style="margin-left: 10px;margin-right: 6px;margin-top:8px;">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right" id="drop-mobile">
+                                        <?php
+                                        if (isset($_SESSION['user'])) {
+                                                echo '
                                         <a href="orders.php"><li><i class="fa fa-credit-card"></i> Orders</li></a>
                                         <a href="transaction_history.php"><li><i class="fa fa-line-chart"></i> Transactions</li></a>
                                         <a href="wishlist.php"><li><i class="fa fa-heart-o"></i> Wishlists</li></a>
@@ -502,11 +578,11 @@
                                         <a href="Notification.php"><li><i class="fa fa-bell-o"></i> Notifications</li></a>
                                         <a href="logout.php"><li><i class="fa fa-power-off"></i> Logout</li></a>
                                         ';
-                                                } else {
-                                                        echo ' 
+                                        } else {
+                                                echo ' 
                                         
                                         <div class="signups">
-                                                <a href="login.php">Login</a><span><a href="signup.php"> Signup</a></span>
+                                                <a href="login.php">Login</a><a href="signup.php"> Signup</a>
                                         </div>
 
                                         <div class="signups1" >
@@ -521,12 +597,14 @@
                                                 <a href="download.php"><li><i class="fa fa-download"></i> Download App</li></a>
                                         </div>
                                         ';
-                                                }
-                                                ?>
-                                        </ul>
-                                </div>
-                        </div>
+                                        }
+                                        ?>
+                                </ul>
+                        </ul>
                 </div>
+        </div>
+
+        </ul>
         </div>
 
         <!-- all modal -->

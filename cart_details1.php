@@ -36,7 +36,7 @@
 				$output .= "
 	<div class=\"pull-center\">
 	<div class=\"row\">
-	<div class=\"col-sm-12 col-xs-12 col-md-2 col-lg-2\">
+	<div class=\"col-sm-6 col-xs-6	 col-md-2 col-lg-2\">
 	<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>    
 	</div>	
 	<div class=\"col-sm-12 col-xs-12 col-md-7 col-lg-7\">
@@ -77,7 +77,7 @@
 	</a>
 
 	<div class=\"pull-right\">
-	<h5 style=\"padding:10px;border:1px solid #ddd;color:white;letter-spacing:1px\"><b>Grand Total : &#36; " . number_format($delivery1, 2) . "</b></h5>
+	<h5 style=\"padding:10px;border:1px solid #ddd;color:white;letter-spacing:1px\"><b>Grand Total : RS " . number_format($delivery1 * 71.50, 2) . "</b></h5>
 	</div>
 
 	";
@@ -92,56 +92,30 @@
 				$stmt->execute(['id' => $row['productid']]);
 				$product = $stmt->fetch();
 				$image = (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg';
-				$subtotal = $product['price'] * $row['quantity'];
-				$total += $subtotal;
 				$output .= "
 
-	<div>	
-	<div class=\"row\">
-	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\" >	
-<a href='product.php?product=" . $product['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>   	
-	</div>
-
-	<div class=\"col-sm-7 col-xs-7 col-md-7 col-lg-7\">
-	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand'] . "</a></span><br><a style=\"font-size:12px;color:white;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a><br><span style=\"font-weight:bold;color:grey\">&#36; " . number_format($product['price'], 2) . " /- Only</span> <span style=\"font-size:14px\"><s> &#36; " . number_format($product['old price'], 2) . "</s></sapn></p>
-
-	<div class='input-group'>
-	<span class='input-group-btn'>
-	<button type='button' id='minus' class='btn btn-default btn-flat minus' data-id='" . $row['productid'] . "'><i class='fa fa-minus'></i></button>
-	</span>
-	<input type='text' class='form-control' value='" . $row['quantity'] . "' id='qty_" . $row['productid'] . "'>
-	<span class='input-group-btn'>
-	<button type='button' id='add' class='btn btn-default btn-flat add' data-id='" . $row['productid'] . "'><i class='fa fa-plus'></i>
-	</button>
-	</span>
-	</div>
-	</div>
-	<div class=\"col-sm-3 col-xs-3 col-md-3 col-lg-3\">
-	<p style=\"font-size:16px;font-weight:bold\" class=\"pull-right\">&#36; " . number_format($subtotal, 2) . "</p>
-	<br>
-	</div>	
-	<p><span class=\"pull-right\" style=\"font-size:16px;color:orange;font-weight:200\"> -" . $product['discount'] . " OFF </span></p>
-
-
-	</div>
-	</div> 
-
-	<hr>	
-	<button type='button' data-id='" . $row['productid'] . "' style=\"background:none;border:none;color:white;font-weight:300;letter-spacing:2px\"  class='btn-flat cart_delete'>Remove</button>
-	<span class=\"vl\" style=\"border-left: 1px solid #ddd;padding:10px;margin-left:10px\"></span>
-	<button type='button''  style=\"background:none;border:none;color:white;font-weight:300;letter-spacing:2px\" class=' btn-flat 	cart_delete'>Move to Wishlist</button>
-
-	</div>
-	<br>
-	";
+				<div class=\"container-fluid\" style='margin:10px;'>
+					<div class='row'>
+						<div class='col-xs-4  col-lg-6'>
+							<img src='" . $image . "' class=\"img-responsive\">
+						</div>
+							<div class='col-xs-8 col-lg-8'>
+								<div>
+									<p>
+									<span style=\"font-weight:bold;\">
+									<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand'] . "</a>
+									</span>
+									<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
+									<h5>Quantity : " . $row['quantity'] . "</h5>
+									<span style=\"font-weight:bold;color:grey\">Rs. " . number_format($product['price'] * 71.50, 2) . " /- Only</span>
+									</p>
+								</div>
+						</div>
+					
+					</div>
+				</div>
+";
 			}
-
-			$output .= "
-	
-	<div class=\"pull-right\">
-	<h5 style=\"padding:10px;border:1px solid #ddd;color:white;letter-spacing:1px\"><b>Grand Total : &#36; " . number_format($total, 2) . "</b></h5>
-	</div>
-	";
 		} else {
 			$output .= "
 	<div class=\"container-fluid\" align=\"center\"><img src=\"images/cartempty.png\" class=\"img-responsive\" width='550px' height='500px'>
@@ -149,7 +123,6 @@
 	";
 		}
 	}
-
 	$pdo->close();
 	echo json_encode($output);
 

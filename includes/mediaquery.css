@@ -14,7 +14,6 @@
     width: 400px;
     font-size: 18px;
     line-height: 20px;
-    margin-top: 100px;
   }
 
   #clock2 h2 span {
@@ -93,9 +92,6 @@
     background: none;
   }
 
-  div#clock2 {
-    margin-top: 90px;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -111,13 +107,7 @@
   div#shop {
     margin-top: -100px;
   }
-  div#clock1 {
-    margin-top: 100px;
-  }
 
-  div#clock2 {
-    margin-top: 100px;
-  }
 }
 
 @media (max-width: 630px) {

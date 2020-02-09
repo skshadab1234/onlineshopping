@@ -52,7 +52,7 @@
                     $inc = ($inc == 4) ? 1 : $inc + 1;
                     if ($inc == 4) echo "<div class='row'>";
                 ?>
-                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 container" style="background:red">
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                       <div class="card">
                         <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-fluid\" width='250px' height='250px'></a> "; ?>
                         <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
@@ -70,7 +70,6 @@
                         <!-- Modal -->
                         <div id="<?php echo $row['id']; ?>1" class="modal fade" role="dialog">
                           <div class="modal-dialog">
-
                             <!-- Modal content-->
                             <div class="modal-content">
                               <h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:white;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>"; ?></h4>
@@ -109,10 +108,11 @@
 
                           </div>
                         </div>
+                      </div>
+                    </div>
 
-                    <?php echo "
-    </div>
-  </div>
+                <?php echo "
+    
 
   ";
                     if ($inc == 4) echo "</div>";
@@ -125,13 +125,13 @@
 
                 $pdo->close();
 
-                    ?>
+                ?>
 
-                      </div>
+              </div>
 
 
 
-                    </div>
+            </div>
           </section>
 
 

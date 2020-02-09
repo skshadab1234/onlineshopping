@@ -159,7 +159,7 @@
 				$stmt->execute();
 				foreach ($stmt as $row) {
 					echo "
-					<a href\"  data-toggle=\"modal\" data-target=\"#men\">
+					<a href=\"\"  data-toggle=\"modal\" data-target=\"#men\">
 					<div style=\"padding-left:15px;margin-top: 19px;\">	
 					<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;\">" . $row["name"] . "<span style=\"position: relative;left: 240px;font-size: 27px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
 					</div></a>
@@ -214,20 +214,19 @@
 			$pdo->close();
 
 			?>
+
 			<?php
-			if (isset($_SESSION['user'])) {
+			if (!isset($_SESSION['user'])) {
 				$image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
-				echo '
-
-						<h5 class="men" style="color:#000">Thank You For Becomming a User</h5>
-						';
-			} else {
-				echo "
-						<h5 class=\"text-center\" style=\"color: #000;letter-spacing:1px;line-height:15px\">Sign in to get all product updates on your registered mail</h5>
-
-						<li  style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='login.php' style=\"color: #4285f4;font-weight:600;\"><i class=\"fa fa-sign-in\" style=\"font-size:14px\"></i> &nbsp;LOGIN</a></li>
-						<li style=\"display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px\"><a href='signup.php' style=\"color:  #4285f4;font-weight:600;\"><i class=\"fa fa-user-plus\" style=\"font-size:14px\"></i> &nbsp;Sign Up</a></li>
-						";
+			?>
+				<div class="container-fluid" style="padding:10px;">
+					<h5 class="text-center" style="color: #000;letter-spacing:1px;line-height:15px">Sign in to get all product updates on your registered mail</h5>
+					<ul align="center">
+						<li style="display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px"><a href='login.php' style="color: #4285f4;font-weight:600;"><i class="fa fa-sign-in" style="font-size:14px"></i> &nbsp;LOGIN</a></li>
+						<li style="display:inline-block;padding:10px;color:steelblue;border:1px solid #4285f4;margin-left:10px"><a href='signup.php' style="color:  #4285f4;font-weight:600;"><i class="fa fa-user-plus" style="font-size:14px"></i> &nbsp;Sign Up</a></li>
+					</ul>
+				</div>
+			<?php
 			}
 			?>
 
@@ -301,19 +300,20 @@
 </div>
 
 <!-- user cart modal-dialog -->
-
 <!-- Modal -->
 <div class="modal right fade" id="cart1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" id="mobilecart" role="document">
-		<div class="modal-header" style="margin:0;padding:10px">
-			<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-left" style="font-size: 2vm;opacity: 2;color: white;margin-top: 7px"></i></span></button>
-			<span style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;position:absolute;left:40px;top:12px;"><a href="cart_view.php" style="color: white;"><span class="cart_count"></span> Product in Cart</a></span>
+		<div class="modal-header" style="background:#2c3e50">
+			<span style="display: flex;">
+				<img src="images/arrow1.png" alt="Cart" data-dismiss="modal" style="width: 41px;height: 40px;filter: invert();">
+				<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Product in Cart</a></span>
 		</div>
 		<div class="modal-content">
 			<div class="modal-body">
-
-				<div id="tbody1" style="padding: 30px;">
-
+				<div id="tbody1" style="display: flex;flex-direction: column-reverse;margin-bottom:50px;">
+				</div>
+				<div class="container-fluid" style="position:fixed;left: 0;bottom: 0;padding: 10px;background: #fff;width: 100%;">
+					<a href="cart_view.php"><button class="btn btn-success" style="width: 100%;padding: 6px;background: deeppink;font-size: 3vh;text-transform: uppercase;opacity: 0.8;">Go to Bag</button></a>
 				</div>
 			</div>
 
@@ -679,19 +679,19 @@
 			</div></a>
 					</div>
 					<div class=\"container-fluid\">
-						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub3\">
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row3["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
 			</div></a>
 					</div>
 					<div class=\"container-fluid\">
-						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub4\">
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row4["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
 			</div></a>
 					</div>
 					<div class=\"container-fluid\">
-						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub2\">
+						<a href=\"\" data-toggle=\"modal\" data-target=\"#kidsub5\">
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;font-weight: 600;letter-spacing: 0.3px;font-size: 14px;width: 100%;position: relative;right: 0px;\">" . $row5["name"] . "<span style=\"    position: absolute;font-size: 27px;right: 0px;\"><i class=\"fa fa-angle-right\"></i></span></h5>
 			</div></a>
@@ -747,7 +747,7 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+						<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -771,6 +771,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -798,8 +800,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
-			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+					<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
 					</div>
@@ -823,6 +825,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -850,8 +854,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
-			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+					<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
 					</div>
@@ -874,6 +878,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -901,8 +907,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
-			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+					<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
 					</div>
@@ -927,6 +933,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -954,8 +962,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
-			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+					<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
 					</div>
@@ -979,6 +987,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -1006,8 +1016,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
-			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+					<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
 					</div>
@@ -1031,6 +1041,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -1058,7 +1070,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1083,6 +1096,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -1110,7 +1125,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1134,6 +1150,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -1161,7 +1179,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1186,6 +1205,8 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header" style="height: 73px;background: lightslategray;line-height: 6px;border: none;color: #ffff;">
+				<i class="fa fa-angle-left" data-dismiss="modal" style="font-size: 28px;position: relative;top: 8px;left: 20px"></i>
+
 				<?php
 
 				$conn = $pdo->open();
@@ -1213,7 +1234,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1267,7 +1289,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1319,7 +1342,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1372,7 +1396,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1425,7 +1450,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1477,7 +1503,8 @@
 				foreach ($stmt as $row) {
 					echo "
 					<div class=\"container-fluid\">
-						<a href=\"\">
+					<a href='subcategory.php?subcategory=" . $row['sub_catslug'] . "'>
+
 			<div style=\"padding-left:15px;margin-top: 19px;width:100%\">	
 			<h5 style=\"color: #000;letter-spacing: 0.3px;font-size: 18px;width: 100%;position: relative;right: 0px;\">" . $row["name"] . "</h5>
 			</div></a>
@@ -1494,15 +1521,3 @@
 		</div>
 	</div>
 </div>
-<script>
-	$(document).ready(function() {
-		$('.collapse.in').prev('.panel-heading').addClass('active');
-		$('#accordion, #bs-collapse')
-			.on('show.bs.collapse', function(a) {
-				$(a.target).prev('.panel-heading').addClass('active');
-			})
-			.on('hide.bs.collapse', function(a) {
-				$(a.target).prev('.panel-heading').removeClass('active');
-			});
-	});
-</script>

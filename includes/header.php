@@ -85,7 +85,7 @@
             }
 
             .content {
-                margin-top: 80px;
+                margin-top: 50px;
             }
 
             /* slider css code */
@@ -582,9 +582,9 @@
                 }
 
                 .signups {
-                    padding: 20px;
+                    padding: 10px;
                     border-bottom: 1px solid grey;
-                    display: table;
+                    display: flex;
                 }
 
                 .signups a {

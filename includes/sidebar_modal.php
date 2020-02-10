@@ -307,16 +307,12 @@
 			<span style="display: flex;">
 				<img src="images/arrow1.png" alt="Cart" data-dismiss="modal" style="width: 41px;height: 40px;filter: invert();">
 				<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Product in Cart</a></span>
+			<a href="cart_view.php"><button class="btn btn-success" style="background: deeppink;text-transform: uppercase;opacity: 0.8;">Go to Bag</button></a>
+
 		</div>
 		<div class="modal-content">
-			<div class="modal-body">
-				<div id="tbody1" style="display: flex;flex-direction: column-reverse;margin-bottom:50px;">
-				</div>
-				<div class="container-fluid" style="position:fixed;left: 0;bottom: 0;padding: 10px;background: #fff;width: 100%;">
-					<a href="cart_view.php"><button class="btn btn-success" style="width: 100%;padding: 6px;background: deeppink;font-size: 3vh;text-transform: uppercase;opacity: 0.8;">Go to Bag</button></a>
-				</div>
+			<div id="tbody1" style="display: flex;flex-direction: column-reverse;">
 			</div>
-
 		</div>
 
 	</div><!-- modal-content -->

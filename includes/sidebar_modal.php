@@ -14,6 +14,7 @@
 	.modal.left .modal-content,
 	.modal.right .modal-content {
 		height: 100%;
+		width: 100%;
 		overflow-y: auto;
 	}
 
@@ -242,7 +243,6 @@
 <div class="modal right fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-
 			<div>
 				<button type="button" class="pull-left" data-dismiss="modal" aria-label="Close" style="color: grey;background: transparent;border: none;"><span aria-hidden="true"><i class="fa fa-arrow-circle-left" style="font-size: 20px;opacity: 2;color: white;margin-top: 7px"></i></span></button>
 				<span style="margin-left: 20px;font-size: 25px;font-weight: 700;letter-spacing: 3px;width: 100%;"><a href="profile.php" style="color: white;text-transform: uppercase;">profile</a></span>
@@ -303,15 +303,20 @@
 <!-- Modal -->
 <div class="modal right fade" id="cart1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" id="mobilecart" role="document">
-		<div class="modal-header" style="background:#2c3e50">
-			<span style="display: flex;">
-				<img src="images/arrow1.png" alt="Cart" data-dismiss="modal" style="width: 41px;height: 40px;filter: invert();">
-				<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Product in Cart</a></span>
-			<a href="cart_view.php"><button class="btn btn-success" style="background: deeppink;text-transform: uppercase;opacity: 0.8;">Go to Bag</button></a>
-
-		</div>
 		<div class="modal-content">
-			<div id="tbody1" style="display: flex;flex-direction: column-reverse;">
+			<div style="background: #2c3e50;padding: 19px 1px 20px 30px">
+				<span style="display: flex;">
+					<img src="images/arrow1.png" alt="Cart" data-dismiss="modal" style="width: 41px;height: 40px;filter: invert();position: relative;left: -15px;">
+					<?php
+					if ($_SESSION['cart'] <= 1) {
+						echo '<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Product in Cart</a></span>';
+					} else {
+						echo '<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Products in Cart</a></span>';
+					}
+
+					?>
+			</div>
+			<div id="tbody1" style="display: flex;flex-direction: column-reverse;margin:10px;">
 			</div>
 		</div>
 

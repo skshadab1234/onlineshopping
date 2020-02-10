@@ -29,11 +29,8 @@
 				$image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
 				$subtotal = $row['price'] * $row['quantity'];
 				$total += $subtotal;
-				$order = $total * ($row['old_price'] - $row['price']) /  100;
-				$order1 = $total - $order;
-				$delivery = 15.00;
-				$delivery1 = $order1 + $delivery;
 				$output .= "
+				<div class='container-fluid' style='margin-top:10px;'>
 				<div class='row'>
 					<div class='col-xs-4  col-lg-6'>
 						<img src='" . $image . "' class=\"img-responsive\">
@@ -46,26 +43,34 @@
 								</span>
 								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
 								<h5>Quantity : " . $row['quantity'] . "</h5>
-								<span style=\"font-weight:bold;color:grey\">Rs. " . number_format($row['price'] * 71.50, 2) . " /- Only</span>
+								<span style=\"font-weight:bold;color:grey\">Rs. " . number_format($subtotal * 71.50, 2) . " /- Only</span>
 								</p>
 							</div>
 					</div>
 				</div>
-	
+				<div>
+					<div class='row' style='padding: 10px;text-align: center;border-top: 1px solid lightgrey;'>
+						<div class='col-xs-6'>
+							<a href='' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;'>Remove</a>
+						</div>
+						<div class='col-xs-6'>
+							<a href='' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;'>Wishlist</a>
+						</div>
+					</div>
+				</div>
+				</div>
 	";
 			}
-			$output .= "
-	<div class='container-fluid' style='position: relative;margin: 0;top: 0;padding: 20px;right: -10px;'>
-	<h5 style='color: #000;font-weight: bold;font-family: calibri;font-size: 18px;text-align: right;width: 100%;'>Grand Total : RS " . number_format($delivery1 * 71.50, 2) . "</h5>
-	</div>
-
-	";
+			if ($total * 71.50 >= 350) {
+				$output .= "Yay!Free Delivery On This Order";
+			} else {
+				$output .= "
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : Rs. " . number_format($total * 71.50, 2) . "</h5>";
+			}
 		} catch (PDOException $e) {
 			$output .= $e->getMessage();
 		}
 	} else {
-
-		$output = '';
 		if (count($_SESSION['cart']) != 0) {
 			$total = 0;
 			foreach ($_SESSION['cart'] as $row) {
@@ -106,5 +111,3 @@
 	echo json_encode($output);
 
 	?>
-
-

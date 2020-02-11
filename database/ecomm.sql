@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2020 at 07:08 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Feb 11, 2020 at 11:23 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,23 +59,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
-(130, 9, 3, 111),
-(131, 17, 2, 1121),
-(137, 19, 1, 2),
-(141, 15, 3, 121213),
-(142, 15, 6, 1),
-(146, 13, 14, 1),
-(147, 13, 2, 1),
-(148, 13, 3, 1),
-(150, 20, 19, 11),
-(155, 4, 16, 1),
-(156, 2, 2, 15),
-(157, 2, 16, 1),
-(158, 2, 18, 1),
-(159, 2, 6, 1),
-(160, 3, 4, 5),
-(161, 2, 1, 3),
-(162, 2, 14, 1);
+(181, 2, 14, 1),
+(183, 2, 1, 1),
+(184, 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -159,8 +145,8 @@ CREATE TABLE `ordertrackhistory` (
   `user_id` int(11) NOT NULL,
   `orderId` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `remark` mediumtext,
-  `postingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `remark` mediumtext DEFAULT NULL,
+  `postingDate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -401,12 +387,25 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `billing_add`, `billing_state`, `billing_city`, `billing_pincode`, `billing_mb`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `shipping_mb`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
 (1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
-(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE', 'MAHARASHTRA', 400613, 'Office', 'Sayeed Manzil, Room no : 104, Opp. Irani Petrol Pump Mumbra', 'Maharshtra', 'Thane', 400612, '7021918970', 'mumbra', 'Mumbai', 'Andheri', '4006121212121', 'Home', '9167263576', '7021918970', '.jpg', 1, '', 'cKD5fzqJMwRP7kZ', '2019-12-04'),
+(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE  ', 'MAHARASHTRA ', 400613, 'Office', 'Sayeed Manzil, Room no : 104, Opp. Irani Petrol Pump Mumbra', 'Maharshtra', 'Thane', 400612, '7021918970', 'mumbra', 'Mumbai', 'Andheri', '4006121212121', 'Home', '9167263576', '7021918970', 'khan-shadab_1575833070.jpg', 1, '', 'cKD5fzqJMwRP7kZ', '2019-12-04'),
 (3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', 0, '', '', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
 (6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10'),
 (12, 'anasshaikh1@gmail.com', '$2y$10$wnBRXFARTOq1alMxC.RUwOaaQR58sWmnK3dmLy9lQZO.rXXXvi/VS', 0, 'anas122', 'Shaikh', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'ka2shb461as5', '', '2020-01-21'),
 (13, 'skshadabkhojo@gmail.com', '$2y$10$l43uP/7Hx3hCho6xWsZ95eBRFF2IO1mtp6lZg7v8uIdn5fMQs7r8q', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, '2bhsa31465ad', '', '2020-01-21'),
 (14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'h5k41ss6ab3d', '', '2020-01-21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `product_id` varchar(255) NOT NULL,
+  `quantity` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -479,6 +478,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -492,7 +497,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -535,6 +540,12 @@ ALTER TABLE `sales`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

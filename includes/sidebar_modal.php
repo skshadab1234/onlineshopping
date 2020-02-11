@@ -308,7 +308,7 @@
 				<span style="display: flex;">
 					<img src="images/arrow1.png" alt="Cart" data-dismiss="modal" style="width: 41px;height: 40px;filter: invert();position: relative;left: -15px;">
 					<?php
-					if ($_SESSION['cart'] <= 1) {
+					if (count($_SESSION['cart']) > 1) {
 						echo '<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Product in Cart</a></span>';
 					} else {
 						echo '<a href="cart_view.php" style="color: white;font-size: 29px;line-height: 38px;letter-spacing: 2px;font-family: calibri;"><span class="cart_count"></span> Products in Cart</a></span>';

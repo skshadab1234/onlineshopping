@@ -192,7 +192,6 @@ error_reporting(0);
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        width: 232px;
                         line-height: 39px;
                         font-size: 17px;
                         FONT-WEIGHT: bold;

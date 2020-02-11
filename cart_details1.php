@@ -49,24 +49,35 @@
 					</div>
 				</div>
 				<div>
-					<div class='row' style='padding: 10px;text-align: center;border-top: 1px solid lightgrey;'>
+					<div class='row' style='padding: 10px;text-align: center;border-top: 1px solid grey;width: 100%;margin: 10px;'>
 						<div class='col-xs-6'>
-							<a href='' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;'>Remove</a>
+							<button type='button' data-id='" . $row['cartid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>Remove</a>
 						</div>
 						<div class='col-xs-6'>
-							<a href='' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;'>Wishlist</a>
+						<button type='button' data-id='" . $row['cartid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>WISHLIST</a>
 						</div>
 					</div>
+	</div>
 				</div>
 				</div>
 	";
 			}
-			if ($total * 71.50 >= 350) {
-				$output .= "Yay!Free Delivery On This Order";
-			} else {
+			if ($total * 71.50 >= 10000) {
 				$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : Rs. " . number_format($total * 71.50, 2) . "</h5>";
+				<h5>Free Delivery</h5>				
+				";
 			}
+
+			if ($total == 0) {
+				$output .= "	
+				<div style='margin: 50% auto;'>
+				<a href='index.php'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
+			</div>";
+			}
+
+
+			$output .= "
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : Rs. " . number_format($total * 71.50, 2) . "</h5>";
 		} catch (PDOException $e) {
 			$output .= $e->getMessage();
 		}
@@ -97,9 +108,21 @@
 								</p>
 							</div>
 					</div>
+					<div>
+					<div class='row' style='padding: 10px;text-align: center;border-top: 1px solid grey;'>
+						<div class='col-xs-6'>
+							<button type='button' data-id='" . $row['productid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>Remove</a>
+						</div>
+						<div class='col-xs-6'>
+						<button type='button' data-id='" . $row['productid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>WISHLIST</a>
+						</div>
+					</div>
 				</div>
-			</div>";
+			</div>
+		</div>";
 			}
+			$output .= "
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : Rs. " . number_format($total * 71.50, 2) . "</h5>";
 		} else {
 			$output .= "
 	<div class=\"container-fluid\" align=\"center\"><img src=\"images/cartempty.png\" class=\"img-responsive\" width='550px' height='500px'>
@@ -107,7 +130,10 @@
 	";
 		}
 	}
+
 	$pdo->close();
 	echo json_encode($output);
 
 	?>
+
+	

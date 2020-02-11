@@ -517,7 +517,6 @@
                     /* line-height: 34px; */
                     height: 23px;
                     left: 12px;
-
                 }
 
                 .mobile-view-header .fa-bars::before {

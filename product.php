@@ -197,13 +197,26 @@ try {
 			}
 		}
 
-		@media only screen and (max-width:340px) {
+		@media (max-width:340px) {
 			.s3 {
 				width: 100%;
 			}
 
 			.s3 ul li:last-child {
 				display: none;
+			}
+		}
+
+		@media(min-width: 320px) {
+			#brand {
+				width: 200px;
+			}
+
+		}
+
+		@media(max-width: 319px) {
+			#brand {
+				width: 80px;
 			}
 		}
 	</style>

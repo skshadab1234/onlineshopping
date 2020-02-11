@@ -112,8 +112,6 @@
                     </div>
 
                 <?php echo "
-    
-
   ";
                     if ($inc == 4) echo "</div>";
                   }

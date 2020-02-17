@@ -34,9 +34,7 @@
           <section class="content">
             <div class="row">
               <div class="col-sm-3 col-lg-3" s>
-                <div class="filter1200px">
-                  <?php include 'includes/filter.php'; ?>
-                </div>
+                <!-- filter -->
               </div>
               <div class="col-sm-9" style="padding:0px">
                 <?php

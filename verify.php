@@ -9,10 +9,11 @@ if (isset($_POST['login'])) {
 
 	try {
 
-		$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users WHERE email = :email");
+		$stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
 		$stmt->execute(['email' => $email]);
+		$count = $stmt->rowCount();
 		$row = $stmt->fetch();
-		if ($row['numrows'] > 0) {
+		if ($count > 0) {
 			if ($row['status']) {
 				if (password_verify($password, $row['password'])) {
 					if ($row['type'] > 1) {

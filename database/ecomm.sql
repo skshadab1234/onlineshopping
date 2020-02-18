@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2020 at 11:23 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Generation Time: Feb 18, 2020 at 08:14 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,9 +59,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
-(181, 2, 14, 1),
-(183, 2, 1, 1),
-(184, 2, 2, 1);
+(197, 17, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -71,18 +69,19 @@ INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `cat_slug` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `name` varchar(255) NOT NULL,
+  `cat_slug` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `cat_slug`) VALUES
-(1, 'MEN', 'MEN'),
-(2, 'WOMEN', 'WOMEN'),
-(3, 'KIDS', 'KIDS');
+INSERT INTO `category` (`id`, `name`, `cat_slug`, `photo`) VALUES
+(1, 'MEN', 'MEN', '_1581969439.webp'),
+(2, 'WOMEN', 'WOMEN', '_1581969457.webp'),
+(3, 'KIDS', 'KIDS', '_1581969477.webp');
 
 -- --------------------------------------------------------
 
@@ -126,13 +125,11 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `sales_id`, `product_id`, `quantity`) VALUES
-(8, 7, 16, 1),
-(9, 8, 14, 1),
-(10, 9, 1, 1),
-(11, 10, 1, 1),
-(12, 11, 1, 1),
-(13, 12, 16, 4),
-(14, 12, 14, 1);
+(23, 36, 2, 1),
+(24, 38, 4, 1),
+(25, 40, 1, 1),
+(26, 41, 2, 1),
+(27, 41, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +199,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `brand`, `name`, `size`, `description`, `slug`, `old_price`, `price`, `discount`, `photo`, `date_view`, `counter`) VALUES
-(1, 121121, 1, '99', 'Black', 'Hanes ', 'Hanes Men\'s Pullover EcoSmart Fleece Black Hooded Sweatshirt', 'S, M', '<blockquote>\r\n<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n</blockquote>\r\n', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt', '120', 100, '20%', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt.jpg', '2019-12-08', 2),
+(1, 121121, 1, '99', 'Black', 'Hanes ', 'Hanes Men\'s Pullover EcoSmart Fleece Black Hooded Sweatshirt', 'S, M', '<blockquote>\r\n<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n</blockquote>\r\n', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt', '110', 100, '20%', 'hanes-men-s-pullover-ecosmart-fleece-black-hooded-sweatshirt.jpg', '2019-12-08', 2),
 (2, 121232, 1, '99', 'GREY', 'BALEAF', 'BALEAF Men\'s UPF 50+ Sun Protection Hoodie', 'S', '<ul>\r\n	<li>100% Polyester; Sun Protection; Fashionable(Mode Size M)</li>\r\n	<li>Imported</li>\r\n	<li>Technical breathable fabric wicks moisture away from your skin, breathes freely and dries quickly for cool comfort</li>\r\n	<li>Low profile thumbholes help keep sleeves in place &amp; trap warmth</li>\r\n</ul>\r\n', 'baleaf-men-s-upf-50-sun-protection-hoodie', '150', 123, '20%', 'baleaf-men-s-upf-50-sun-protection-hoodie-long-sleeve-performance-hiking-fishing-t-shirt_1572846099.jpg', '2019-11-22', 2),
 (3, 455656, 1, '99', 'White', 'SHADABZONE', 'YOUTUBE T-SHIRT FOR MEN', 'S', '<p>YOUTUBE T-SHIRT FOR MEN</p>\r\n', 'youtube-t-shirt-men', '150', 130, '20%', 'youtube-t-shirt-men.jpg', '2019-11-22', 7),
 (4, 532131, 1, '99', 'Black', 'ADIDAS', 'Black T-Shirt with Graphic Printed', 'S, M,', '<p>Hleoo</p>\r\n', 'black-t-shirt-graphic-printed', '126', 123, '24%', 'black-t-shirt-graphic-printed.jpeg', '2019-11-21', 10),
@@ -234,21 +231,19 @@ CREATE TABLE `sales` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `pay_id` varchar(50) NOT NULL,
-  `sales_date` date NOT NULL,
-  `orderStatus` varchar(55) DEFAULT NULL
+  `sales_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`, `orderStatus`) VALUES
-(7, 3, 'MOJO9c09305N30100688', '2019-12-09', NULL),
-(8, 2, 'MOJO0103Z05N32895679', '2020-01-03', NULL),
-(9, 2, 'MOJO0108S05N06907924', '2020-01-09', NULL),
-(10, 2, 'MOJO0109F05A88597312', '2020-01-09', NULL),
-(11, 3, 'PAYID-LYLL5IY21293431HV278574S', '2020-01-09', NULL),
-(12, 2, 'PAYID-LYPWBNY2CS17825GN909193B', '2020-01-15', NULL);
+INSERT INTO `sales` (`id`, `user_id`, `pay_id`, `sales_date`) VALUES
+(36, 2, 'MOJO0218H05N63080432', '2020-02-18'),
+(38, 2, 'MOJO0218W05A63080477', '2020-02-18'),
+(39, 2, 'MOJO0218W05A63080477', '2020-02-18'),
+(40, 18, 'MOJO0218T05N63080519', '2020-02-18'),
+(41, 18, 'MOJO0218Q05A63080540', '2020-02-18');
 
 -- --------------------------------------------------------
 
@@ -260,89 +255,73 @@ CREATE TABLE `subcategory` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `sub_catslug` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL
+  `type` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `subcategory`
 --
 
-INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`) VALUES
-(1, 'Bottomwear', 'Bottomwear', 'men'),
-(2, 'Innerwear & Sleepwear', 'Innerwear and Sleepwear', 'men'),
-(3, 'Footwear', 'Footwear', 'men'),
-(4, 'Topwear', 'Topwear', 'men'),
-(8, 'Sport & Active Wear', 'Sport and Active Wear', 'men'),
-(9, 'Indian & Fusion Wear', 'Indian and Fusion Wear', 'women'),
-(10, 'Belts, Scarves & More', 'Belts, Scarves and More', 'women'),
-(12, 'Beauty & Personal Care', 'Beauty and Personal Care', 'women'),
-(14, 'Footwear', 'Footwear', 'women'),
-(15, 'Western Wear', 'Western Wear', 'women'),
-(16, 'Boys Clothing', 'Boys Clothing', 'kids'),
-(17, 'Girls Clothing', 'Girls Clothing', 'kids'),
-(18, 'Boys Footwear', 'Boys Footwear', 'kids'),
-(19, 'Girls Footwear', 'Girls Footwear', 'kids'),
-(20, 'Kids Accessories', 'Kids Accessories', 'kids'),
-(22, 'Jeans', 'Jeans', 'men_bottom'),
-(23, 'Casual Trousers', 'Casual Trousers', 'men_bottom'),
-(24, 'Formal Trousers', 'Formal Trousers', 'men_bottom'),
-(25, 'Shorts', 'Shorts', 'men_bottom'),
-(26, 'Briefs & Trunks', 'Briefs and Trunks', 'men_innerwear'),
-(27, 'Boxers', 'Boxers', 'men_innerwear'),
-(28, 'Vests', 'Vests', 'men_innerwear'),
-(29, 'Thermals', 'Thermals', 'men_innerwear'),
-(30, 'Casual Shoes', 'Casual Shoes', 'men_footwear'),
-(31, 'Sports Shoes', 'Sports Shoes', 'men_footwear'),
-(32, 'Formal Shirts', 'Formal Shirts', 'men_footwear'),
-(33, 'Formal Shoes', 'Formal Shoes', 'men_footwear'),
-(34, 'Sneakers', 'Sneakers', 'men_footwear'),
-(35, 'Sandals & Floaters', 'Sandals and Floaters', 'men_footwear'),
-(36, 'Flip Flops', 'Flip Flops', 'men_footwear'),
-(37, 'Socks', 'Socks', 'men_footwear'),
-(38, 'T-Shirts', 'T-Shirts', 'men_topwear'),
-(39, 'Casual Shirts', 'Casual Shirts', 'men_topwear'),
-(40, 'Sweatshirts', 'Sweatshirts', 'men_topwear'),
-(41, 'Sweaters', 'Sweaters', 'men_topwear'),
-(42, 'Jackets', 'Jackets', 'men_topwear'),
-(43, 'Blazers & Coats', 'Blazers and Coats', 'men_topwear'),
-(44, 'Suits', 'Suits', 'men_topwear'),
-(45, 'Sports Shoes', 'Sports Shoes', 'men_sports'),
-(46, 'Sports Sandals', 'Sports Sandals', 'men_sports'),
-(47, 'Active T-Shirts', 'Active T-Shirts', 'men_sports'),
-(48, 'Track Pants & Shorts', 'Track Pants and Shorts', 'men_sports'),
-(49, 'Kurtas & Suits', 'Kurtas and Suits', 'women_fusionwear'),
-(50, 'Kurtis, Tunics & Tops', 'Kurtis,_Tunics_and_Tops', 'women_fusionwear'),
-(51, 'Ethnic Dresses', 'Ethnic Dresses', 'women_fusionwear'),
-(52, 'Leggings, Salwars & Churidars', 'Leggings, Salwars and Churidars', 'women_fusionwear'),
-(53, 'Sarees', 'Sarees', 'women_fusionwear'),
-(54, 'Dresses & Jumpsuits', 'Dresses and Jumpsuits', 'women_westernwear'),
-(55, 'T-Shirts', 'T-Shirts', 'women_westernwear'),
-(56, 'Jeans & Jeggings', 'Jeans and Jeggings', 'women_westernwear'),
-(57, 'Makeup', 'Makeup', 'women_makeup'),
-(58, 'Skincare', 'Skincare', 'women_makeup'),
-(59, 'Fragrances', 'Fragrances', 'women_makeup'),
-(60, 'Smart Wearables', 'Smart Wearables', 'women_gadgets'),
-(61, 'Fitness Gadgets', 'Fitness Gadgets', 'women_gadgets'),
-(62, 'Casual Shoes', 'Casual Shoes', 'women_footwear'),
-(63, 'Sports Shoes & Floaters', 'Sports', 'women_footwear'),
-(64, 'Clothing', 'Clothing', 'women_activewear'),
-(65, 'Sports Accessories', 'Sports and Accessories', 'women_activewear'),
-(66, 'Sports Equipment', 'Sports Equipment', 'women_activewear'),
-(67, 'T-Shirts', 'T-Shirts', 'kids_boy'),
-(68, 'Shorts', 'Shorts', 'kids_boy'),
-(69, 'Clothing Sets', 'Clothing Sets', 'kids_boy'),
-(70, 'Jacket, Sweater & Sweatshirt', 'Jacket, Sweater and Sweatshirt', 'kids_boy'),
-(71, 'Dresses', 'Dresses', 'kids_girl'),
-(72, 'Clothing Sets', 'Clothing Sets', 'kids_girl'),
-(73, 'Jeans, Trousers & Capris', 'Jeans, Trousers and Capris', 'kids_girl'),
-(74, 'Casual Shoes', 'Casual Shoes', 'kids_boyfoot'),
-(75, 'Sports Shoes', 'Sports Shoes', 'kids_boyfoot'),
-(76, 'Flats', 'Flats', 'kidS_girlfoot'),
-(77, 'Casual Shoes', 'Casual Shoes', 'kidS_girlfoot'),
-(78, 'heels', 'heels', 'kidS_girlfoot'),
-(79, 'Watches', 'Watches', 'kids_accessories'),
-(80, 'Eyewear', 'Eyewear', 'kids_accessories'),
-(81, 'Bags & Backpacks', 'Bags and Backpacks', 'kids_accessories');
+INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`, `photo`) VALUES
+(2, 'Innerwear & Sleepwears', 'Innerwear and Sleepwear', 'men', '_1581970950.jpg'),
+(3, 'Footwear', 'Footwear', 'men', '_1581970959.jpg'),
+(4, 'Topwear', 'Topwear', 'men', '_1581970976.jpg'),
+(5, 'Sport & Active Wear', 'Sport and Active Wear', 'men', '_1581970993.jpg'),
+(7, 'Beauty & Personal Care', 'Beauty and Personal Care', 'women', '_1581972503.jpg'),
+(8, 'Women Footwear', 'Women Footwear', 'women', '_1581972489.jpg'),
+(9, 'Western Wear', 'Western Wear', 'women', '_1581972468.jpg'),
+(10, 'Boys Clothing', 'Boys Clothing', 'kids', '_1581975114.jpg'),
+(11, 'Girls Clothing', 'Girls Clothing', 'kids', '_1581975146.jpg'),
+(12, 'Boys Footwear', 'Boys Footwear', 'kids', '_1581975165.jpg'),
+(13, 'Girls Footwear', 'Girls Footwear', 'kids', '_1581975175.jpg'),
+(15, 'Jeans', 'Jeans', 'Bottomwear', '_1581974061.jpg'),
+(16, 'Casual Trousers', 'Casual Trousers', 'Bottomwear', '_1581974075.jpg'),
+(17, 'Formal Trousers', 'Formal Trousers', 'Bottomwear', '_1581974087.jpg'),
+(18, 'Shorts', 'Shorts', 'Bottomwear', '_1581975366.jpg'),
+(19, 'Briefs & Trunks', 'Briefs and Trunks', 'Innerwear and Sleepwear', '_1581971217.jpg'),
+(20, 'Boxers', 'Boxers', 'Innerwear and Sleepwear', '_1581971204.jpg'),
+(21, 'Vests', 'Vests', 'Innerwear and Sleepwear', '_1581971185.jpg'),
+(22, 'Thermals', 'Thermals', 'Innerwear and Sleepwear', '_1581971171.jpg'),
+(23, 'Casual Shoes', 'Casual Shoes', 'Footwear', '_1581973158.jpg'),
+(24, 'Sports Shoes', 'Sports Shoes', 'Footwear', '_1581973172.jpg'),
+(25, 'Formal Shirts', 'Formal Shirts', 'Topwear', '_1581973521.jpg'),
+(26, 'Formal Shoes', 'Formal Shoes', 'Footwear', '_1581973201.jpeg'),
+(27, 'Sneakers', 'Sneakers', 'Footwear', '_1581973182.jpeg'),
+(30, 'Socks', 'Socks', 'Footwear', '_1581973139.png'),
+(31, 'T-Shirts', 'T-Shirts', 'Topwear', '_1581973552.jpg'),
+(32, 'Casual Shirts', 'Casual Shirts', 'Topwear', '_1581973571.jpg'),
+(34, 'Sweaters', 'Sweaters', 'Topwear', '_1581973586.jpg'),
+(35, 'Jackets', 'Jackets', 'Topwear', '_1581973599.jpg'),
+(38, 'Sports Shoes', 'Sports Shoes', 'Sport and Active Wear', '_1581973898.jpg'),
+(39, 'Sports Sandals', 'Sports Sandals', 'Sport and Active Wear', '_1581973819.jpeg'),
+(40, 'Active T-Shirts', 'Active T-Shirts', 'Sport and Active Wear', '_1581973808.jpg'),
+(41, 'Track Pants & Shorts', 'Track Pants and Shorts', 'Sport and Active Wear', '_1581973795.jpg'),
+(47, 'Dresses & Jumpsuits', 'Dresses and Jumpsuits', 'Western Wear', '_1581974800.jpg'),
+(48, 'T-Shirts', 'T-Shirts', 'Western Wear', '_1581974820.webp'),
+(49, 'Jeans & Jeggings', 'Jeans and Jeggings', 'Western Wear', '_1581974830.jpg'),
+(50, 'Makeup', 'Makeup', 'Beauty and Personal Care', '_1581974397.webp'),
+(51, 'Skincare', 'Skincare', 'Beauty and Personal Care', '_1581974385.jpg'),
+(52, 'Fragrances', 'Fragrances', 'Beauty and Personal Care', '_1581974373.jpg'),
+(53, 'Casual Shoes', 'Casual Shoes', 'Women Footwear', '_1581974624.jpg'),
+(54, 'Sports Shoes & Floaters', 'Sports', 'Women Footwear', '_1581974580.jpg'),
+(56, 'Sports Accessories', 'Sports and Accessories', 'Women Footwear', '_1581974592.jpg'),
+(58, 'T-Shirts', 'T-Shirts', 'Boys Clothing', '_1581975353.jpg'),
+(59, 'Shorts', 'Shorts', 'Boys Clothing', '_1581975529.jpg'),
+(60, 'Clothing Sets', 'Clothing Sets', 'Boys Clothing', '_1581975381.jpg'),
+(61, 'Jacket, Sweater & Sweatshirt', 'Jacket, Sweater and Sweatshirt', 'Boys Clothing', '_1581975397.jpeg'),
+(62, 'Dresses', 'Dresses', 'Girls Clothing', '_1581975599.jpg'),
+(64, 'Jeans, Trousers & Capris', 'Jeans, Trousers and Capris', 'Girls Clothing', '_1581975686.jpg'),
+(65, 'Casual Shoes', 'Casual Shoes', 'Boys Footwear', '_1581975815.jpg'),
+(66, 'Sports Shoes', 'Sports Shoes', 'Boys Footwear', '_1581975793.jpg'),
+(67, 'Flats', 'Flats', 'Girls Footwear', '_1581975960.jpg'),
+(68, 'Casual Shoes', 'Casual Shoes', 'Girls Footwear', '_1581975972.jpg'),
+(69, 'heels', 'heels', 'Girls Footwear', '_1581975948.jpg'),
+(74, 'shadab', '', 'shadab', ''),
+(75, 'ssk', '', 'ssk', ''),
+(76, 'meh', '', 'meh', ''),
+(79, 'aa', 'aa', 'AA', 'aa.jpg'),
+(80, 'Bottomwear', 'Bottomwear', 'men', '_1581971006.webp');
 
 -- --------------------------------------------------------
 
@@ -387,12 +366,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`, `address`, `city`, `state`, `pincode`, `billingad_type`, `billing_add`, `billing_state`, `billing_city`, `billing_pincode`, `billing_mb`, `shippingaddress`, `shippingstate`, `shippingcity`, `shippingpincode`, `shippingad_type`, `shipping_mb`, `contact_info`, `photo`, `status`, `activate_code`, `reset_code`, `created_on`) VALUES
 (1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
-(2, 'ks615044@gmail.com', '$2y$10$UL2lKQlEbQfram1oI3bd/ui7vKgBRtQfiHUB3A5ZBxirIdIRdKsku', 0, 'Shadab ', 'Khan', 'sayeed manzil12111', 'THANE  ', 'MAHARASHTRA ', 400613, 'Office', 'Sayeed Manzil, Room no : 104, Opp. Irani Petrol Pump Mumbra', 'Maharshtra', 'Thane', 400612, '7021918970', 'mumbra', 'Mumbai', 'Andheri', '4006121212121', 'Home', '9167263576', '7021918970', 'khan-shadab_1575833070.jpg', 1, '', 'cKD5fzqJMwRP7kZ', '2019-12-04'),
 (3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', 0, '', '', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
 (6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10'),
 (12, 'anasshaikh1@gmail.com', '$2y$10$wnBRXFARTOq1alMxC.RUwOaaQR58sWmnK3dmLy9lQZO.rXXXvi/VS', 0, 'anas122', 'Shaikh', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'ka2shb461as5', '', '2020-01-21'),
-(13, 'skshadabkhojo@gmail.com', '$2y$10$l43uP/7Hx3hCho6xWsZ95eBRFF2IO1mtp6lZg7v8uIdn5fMQs7r8q', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, '2bhsa31465ad', '', '2020-01-21'),
-(14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'h5k41ss6ab3d', '', '2020-01-21');
+(14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'h5k41ss6ab3d', '', '2020-01-21'),
+(16, 'skshadabkhojo@gmail.com', '$2y$10$SGBa4.MYH/k0YItMpDbKKOcTGJd.bzYOt9Qbt2ZF7fY812ircPdAS', 0, 'khna', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 's65sak32bahd', '', '2020-02-18'),
+(18, 'ks615044@gmail.com', '$2y$10$V4YO0Eb.Yvo6a.MWA6bW1eGbDz/7IkEM5kv4tfNFje31J.HzHAjHG', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 1, 'dhkb6a21a34s', '', '2020-02-18');
 
 -- --------------------------------------------------------
 
@@ -497,7 +476,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -515,7 +494,7 @@ ALTER TABLE `deals`
 -- AUTO_INCREMENT for table `details`
 --
 ALTER TABLE `details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `pincode`
@@ -533,13 +512,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `subcategory`
+--
+ALTER TABLE `subcategory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

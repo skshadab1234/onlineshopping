@@ -33,12 +33,19 @@
           <!-- Main content -->
           <section class="content">
             <div class="row">
+<<<<<<< HEAD
               <ul class="breadcrumb text-right">
                 <li><a href="#">Home</a></li>
                 <li><a href="#"><?php echo $cat['name']?></a></li>
               </ul>
               <div class="col-sm-12" style="padding:0px">
                <h4 style="padding: 20px;font-size:30px"><?php echo "".$cat['name']."";?></h4>
+=======
+              <div class="col-sm-3 col-lg-3" s>
+                <!-- filter -->
+              </div>
+              <div class="col-sm-9" style="padding:0px">
+>>>>>>> 9b52b4f99e17cd81ed44fb7158b6c0fe3deedf9f
                 <?php
 
                 $conn = $pdo->open();

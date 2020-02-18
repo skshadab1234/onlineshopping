@@ -6,7 +6,7 @@ $output = array('list' => '', 'count' => 0);
 
 if (isset($_SESSION['user'])) {
 	try {
-		$stmt = $conn->prepare("SELECT *, products.name AS prodname, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE user_id=:user_id");
+		$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE user_id=:user_id");
 		$stmt->execute(['user_id' => $user['id']]);
 		foreach ($stmt as $row) {
 			$output['count']++;

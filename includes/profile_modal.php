@@ -3,7 +3,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" style="color: white"><b>Track Your Order</b></h4>
+        <h4 class="modal-title" style="color: #000"><b>Track Your Order</b></h4>
       </div>
       <div class="modal-body" style="color: white">
         <span class="pull-right"> Order Id: <span> ORDID<span id="order"></span></span></span>
@@ -30,7 +30,7 @@
   <div class="modal-dialog">
     <div class="modal-content" style="padding:10px">
       <div class="modal-header">
-        <h4 class="modal-title" style="color: white"><b>Transaction Full Details</b></h4>
+        <b>Transaction Full Details</b>
       </div>
       <div class="modal-body table-responsive text-nowrap" style="color: white">
         <p>

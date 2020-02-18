@@ -21,7 +21,7 @@ mysqli_select_db($link, "ecomm");
 
 	<div class="wrapper">
 
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="margin:0">
 
 			<div class="container-fluid">
 

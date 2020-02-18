@@ -77,7 +77,7 @@ $conn = $pdo->open();
                   $delivery1 = $order1 + $delivery;
                 }
 
-                echo "<h3>&#36; " . number_format_short($delivery1, 2) . "</h3>";
+                echo "<h3>₹ " . number_format_short($delivery1, 2) . "</h3>";
                 ?>
                 <p>Total Sales</p>
               </div>
@@ -149,7 +149,7 @@ $conn = $pdo->open();
                   $delivery1 = $order1 + $delivery;
                 }
 
-                echo "<h3>&#36; " . number_format_short($delivery1, 2) . "</h3>";
+                echo "<h3>₹ " . number_format_short($delivery1, 2) . "</h3>";
 
                 ?>
 

@@ -19,8 +19,8 @@ if (strlen($_SESSION['user']) == 0) {
 	</title>
 
 <body class="hold-transition skin-blue layout-top-nav">
-	<div class="content-wrapper" style="padding: 50px">
-		<div class="box-body table-responsive text-nowrap" style="background-color: white;border-radius: 15px;border: 3px solid white; box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);">
+	<div class="content-wrapper" style="padding: 50px;margin: 0">
+		<div class="box-body table-responsive text-nowrap" style="background-color: white;margin-top:80px;border-radius: 15px;border: 3px solid white; box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);">
 			<div class="box-header with-border">
 				<h4 class="box-title"><i class="glyphicon glyphicon-calendar" style="color: steelblue"></i> &nbsp;<b>Your Order</b></h4>
 			</div><br>

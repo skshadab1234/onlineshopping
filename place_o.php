@@ -54,25 +54,25 @@
 <thead>
 <tr>
 <td>Bag total</td>
-<td ><span class=\"pull-right\">&#36; " . number_format($total, 2) . "</span><td>
+<td ><span class=\"pull-right\">₹ " . number_format($total, 2) . "</span><td>
 </tr>
 <tr>
 <td>Bag Discount</td>
-<td ><span class=\"pull-right\">&#36; " . number_format($order, 2) . "</span><td>
+<td ><span class=\"pull-right\">₹ " . number_format($order, 2) . "</span><td>
 </tr>
 <tr>
 <td>Order Total</td>
-<td style=\"color:green\"><span class=\"pull-right\">&#36; " . number_format($order1, 2) . "</span>
+<td style=\"color:green\"><span class=\"pull-right\">₹ " . number_format($order1, 2) . "</span>
  <td>
 </tr>
 <tr>
 <td>Delivery Charges</td>
-<td  style=\"color:green\"><span class=\"pull-right\">&#36; " . number_format($delivery, 2) . "</span>
+<td  style=\"color:green\"><span class=\"pull-right\">₹ " . number_format($delivery, 2) . "</span>
  <td>
 </tr>
 <tr>
 <td style=\"font-weight:600;font-size:16px\">Grand Total</td>
-<td style=\"font-weight:600;font-size:16px\"><span class=\"pull-right\">&#36; " . number_format($delivery1, 2) . "</span>
+<td style=\"font-weight:600;font-size:16px\"><span class=\"pull-right\">₹ " . number_format($delivery1, 2) . "</span>
  <td>
 </tr>
 </thead>

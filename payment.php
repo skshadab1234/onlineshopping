@@ -11,9 +11,8 @@ include 'includes/header.php';
 <head>
   <title>Payment</title>
   <style>
-    .btn-success:hover {
-      background-image: linear-gradient(253deg, rgb(127, 13, 255), rgb(89, 9, 179));
-      transition: 0.5s ease all;
+    .input-block{
+      margin-top:10px;
     }
   </style>
   <link href="images/favicon.jpg" rel="icon">
@@ -24,7 +23,7 @@ include 'includes/header.php';
 
   <div class="wrapper">
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="margin: 0;background:#fff">
 
       <div class="container-fluid text-center">
 
@@ -45,49 +44,124 @@ include 'includes/header.php';
             </ul>
           </div>
           <div class="row">
+          <h4 style="color:#000;font-size:20px;font-weight:700;padding:20px">Choose Payment Mode</h4>
             <div class="col-sm-8" style="padding: 20px">
+              <!-- TABS PRESENTATION -->
+              <section class="blok">
+                <div class="blok-body">
+                  <div class="row">
+                    <!-- Nav tabs -->
+
+                    <ul class="nav tab-menu nav-pills col-sm-4 nav-stacked pr15">
+                      <li class="active" data-toggle="tab"><a href="#home">Instamojo</a></li>
+                      <li><a href="#profile" data-toggle="tab">Paypal</a></li>
+                      <li><a href="#messages" data-toggle="tab">COD</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content col-sm-8">
+                      <div class="tab-pane active in active" id="home">
+                      <?php 
+$output = '';
+try{
+$total = 0;
+$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
+$stmt->execute(['user'=>$user['id']]);
+foreach($stmt as $row){
+$image = (!empty($row['photo'])) ? 'images/'.$row['photo'] : 'images/noimage.jpg';
+$product = $row['name'];
+$subtotal = $row['price']*$row['quantity'];
+$total += $subtotal;
+$order = $total * ($row['old_price']-$row['price'])/  100;
+$order1 = $total - $order;
+$delivery = 15.00;
+$delivery1 = $order1 + $delivery;
+$randomNum=substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 11);
+
+$output ="";
+
+$output .= "
+<form action=\"pay.php\" class=\"contact-form\" id=\"myForm\" method=\"POST\" >
+<div class=\"col-sm-12\">
+<input class=\"form-control\" type=\"hidden\" required=\"\" name=\"product_name\" value=\"$product\">
+<input class=\"form-control\" type=\"hidden\" required=\"\" name=\"price\" value=\"$delivery1\">
+<div class=\"input-block\">
+<label for=\"\">Enter Your Name <span style=\"color: red\">*</span></label>
+<input class=\"form-control\" id=\"name\" type=\"text\" required=\"\" oninput=\"myFunction()\" name=\"name\" value=\"\">
+</div>
+</div>
+<div class=\"col-sm-12\">
+<div class=\"input-block\">
+<label for=\"\">Email <span style=\"color: red\">*</span></label>
+<input class=\"form-control\" type=\"email\" id=\"email\" required=\"\" oninput=\"myFunction1()\" name=\"email\">
+</div>
+</div>
+<div class=\"col-sm-12\">
+<div class=\"input-block\">
+<label for=\"\">Mobile Number <span style=\"color: red\">*</span></label>
+<input type=\"tel\" maxlength=\"10\" id=\"phone\" class=\"form-control js-input-mobile\"/ oninput=\"myFunction2()\" required=\"\" name=\"phone\">
+</div>
+</div>
+<div class=\"col-sm-12\">
+<button type=\"submit\" name=\"submit\"  style=\"align-items:center;margin:20px 120px\"  class=\"btn-success\">Paynow  ₹ ".number_format($delivery1, 2)."</button>
+</div>
+</form>
+";
+}
+}
+catch(PDOException $e){
+$output .= $e->getMessage();
+}
+echo($output);
+
+$pdo->close();
+
+?>
+
+                      </div>
+                      <!-- <div class="tab-pane well fade" id="profile">
+                      <li style="color: red;font-family:calibri">Pay Using Paypal  <i data-toggle="popover" data-placement="bottom" data-content="Payflow Gateway is PayPal's secure and open payment gateway. ... PayPal Payments Pro merchants use PayPal as their credit card processor, while Payflow Gateway merchants can choose to process their online store payments with any major payment processor, bank, or card association. " class="fa fa-question-circle" data-original-title="" title=""></i></li>
+<div style="text-align:center;margin-top:40px">
+<div id='paypal-button'></div>
+</div> -->
+                      </div>
+              </section><!-- // blok -->
+              <!-- TABS PRESENTATION // -->
               <div class="col-sm-6">
-                <div style="height:300px;position:relative;border:1px solid #323232;border-radius:5px">
-                  <div class="box-header">
-                    <h3>Shipping Address</h3>
-                    <hr>
-                    <div class="box-body">
-                      <?php
-                      if (isset($_SESSION['user'])) {
-                        echo "<div><span style=\"font-weight:700;font-size:17px;padding:10px\">Address : </span>" . $user['shippingaddress'] . " </div>
+                <div class="box-header">
+                  <h3>Shipping Address</h3>
+                  <hr>
+                  <div class="box-body">
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                      echo "<div><span style=\"font-weight:700;font-size:17px;padding:10px\">Address : </span>" . $user['shippingaddress'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">State : </span> " . $user['shippingstate'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">City : </span>" . $user['shippingcity'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">Pincode : </span>" . $user['shippingpincode'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">Mobile : </span>" . $user['shipping_mb'] . " </div>
 
   ";
-                      }
-                      ?>
-                      <button class="btn btn-success" style="position:absolute;top:0px;right:0;"><i class="fa fa-edit"></i> Edit</button>
-                    </div>
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
               <!-- Billing Address -->
               <div class="col-sm-6">
-                <div style="width:100%;height:300px;border:1px solid #323232;border-radius:5px">
-                  <div class="box-header">
-                    <h3>Billing Address</h3>
-                    <hr>
-                    <div class="container-fluid">
-                      <?php
-                      if (isset($_SESSION['user'])) {
-                        echo "<div><span style=\"font-weight:700;font-size:17px;padding:10px\">Address : </span>" . $user['billing_add'] . " </div>
+                <div class="box-header">
+                  <h3>Billing Address</h3>
+                  <hr>
+                  <div class="container-fluid">
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                      echo "<div><span style=\"font-weight:700;font-size:17px;padding:10px\">Address : </span>" . $user['billing_add'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">State : </span> " . $user['billing_state'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">City : </span>" . $user['billing_city'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">Pincode : </span>" . $user['billing_pincode'] . " </div>
   <div><span style=\"font-weight:700;font-size:17px;padding:10px\">Mobile : </span>" . $user['billing_mb'] . " </div>
 
   ";
-                      }
-                      ?>
-                      <button class="btn btn-success" data-toggle="modal" data-target="#profile" style="position:absolute;top:0px;right:0;"><i class="fa fa-edit"></i>Edit</button>
-                    </div>
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -106,8 +180,7 @@ include 'includes/header.php';
 
   <?php include 'includes/footer.php'; ?>
 
-</body>
-<script>
+</body><script>
   var total = 0;
   $(function() {
     $(document).on('click', '.cart_delete', function(e) {
@@ -260,7 +333,6 @@ include 'includes/header.php';
 
   }, '#paypal-button');
 </script>
-
 <script type="text/javascript">
   // To ensure only valid mobile numbers(7000000000 to 9999999999) are entered
   $('body').on('keyup', '.js-input-mobile', function() {
@@ -272,5 +344,10 @@ include 'includes/header.php';
     if (!((length > 1 && putCharacter >= 0 && inputCharacter <= 9) || (length === 1 && inputCharacter >= 7 && inputCharacter <= 9))) {
       $input.val(value.substring(0, length - 1));
     }
+    // BS tabs hover (instead - hover write - click)
+    $('.tab-menu a').hover(function(e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
   });
 </script>

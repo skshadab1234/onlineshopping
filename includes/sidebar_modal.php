@@ -92,7 +92,7 @@
 
 	@media(min-width:767px) {
 		#mobilecart {
-			width: 80%;
+			width: 40%;
 		}
 	}
 
@@ -303,7 +303,7 @@
 <!-- Modal -->
 <div class="modal right fade" id="cart1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" id="mobilecart" role="document">
-		<div class="modal-content">
+		<div class="modal-content" style="background: #fff">
 			<div style="background: #2c3e50;padding: 19px 1px 20px 30px">
 				<span style="display: flex;">
 					<img src="images/arrow1.png" alt="Cart" data-dismiss="modal" style="width: 41px;height: 40px;filter: invert();position: relative;left: -15px;">
@@ -317,6 +317,9 @@
 					?>
 			</div>
 			<div id="tbody1" style="display: flex;flex-direction: column-reverse;margin:10px;">
+			</div>
+			<div class="container">
+			<a href="cart_view.php" style="color:#000;padding:10px;border:1px solid #000">View Cart </a>
 			</div>
 		</div>
 

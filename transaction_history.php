@@ -22,9 +22,9 @@ include('includes/scripts.php');
 
 <body class="layout-top-nav">
 
-	<div class="content-wrapper" style="padding: 50px">
+	<div class="content-wrapper" style="padding: 50px;margin:0">
 
-		<div class="box-body table-responsive text-nowrap" style="background-color: white;border-radius: 15px;border: 3px solid white; box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);">
+		<div class="box-body table-responsive text-nowrap" style="margin-top:80px;background-color: white;border-radius: 15px;border: 3px solid white; box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);">
 			<div class="box-header with-border">
 				<h4 class="box-title"><i class="glyphicon glyphicon-calendar" style="color: steelblue"></i> &nbsp;<b>Transaction History</b></h4>
 			</div>
@@ -61,13 +61,13 @@ include('includes/scripts.php');
 <td style=\"border:1px solid #663355\">" . date('M d, Y', strtotime($row['sales_date'])) . "</td>
 <td style=\"border:1px solid #663355\">" . $row['pay_id'] . "</td>
 <td style=\"border:1px solid #663355;\">
-<h5 style=\"font-weight:700\">Product Price: &#36; " . number_format($row2['price'], 2) . " * " . $row2['quantity'] . " = &#36; " . number_format($subtotal, 2) . "</h5>
-<h5 style=\"font-weight:700\">Bag Discount: <span class=\"pull-right\">&#36; " . number_format($order, 2) . "</h5>
-<h5 style=\"font-weight:700\">Bag Total :<span class=\"pull-right\">&#36; " . number_format($order1, 2) . "</h5>
-<h5 style=\"font-weight:700\">Delivery Charge: <span class=\"pull-right\">&#36; " . number_format($delivery, 2) . "</h5>
+<h5 style=\"font-weight:700\">Product Price: ₹ " . number_format($row2['price'], 2) . " * " . $row2['quantity'] . " = ₹ " . number_format($subtotal, 2) . "</h5>
+<h5 style=\"font-weight:700\">Bag Discount: <span class=\"pull-right\">₹ " . number_format($order, 2) . "</h5>
+<h5 style=\"font-weight:700\">Bag Total :<span class=\"pull-right\">₹ " . number_format($order1, 2) . "</h5>
+<h5 style=\"font-weight:700\">Delivery Charge: <span class=\"pull-right\">₹ " . number_format($delivery, 2) . "</h5>
 <hr style=\"border:1px solid #ddd\">
 <h4 style=\"border:1px solid #663355;padding:10px\"><span style=\"font-weight:700\">Grand Total</span> :
-<span class=\"pull-right\">&#36; " . number_format($delivery1, 2) . "</span></h4></td>
+<span class=\"pull-right\">₹ " . number_format($delivery1, 2) . "</span></h4></td>
 <td style=\"border:1px solid #663355\"><button class='btn btn-sm btn-flat btn-success transact'  data-id='" . $row['id'] . "'><i class='fa fa-search' style=\"font-size:14px\"></i> View</button></td>
 </tr>
 ";

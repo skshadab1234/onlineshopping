@@ -42,7 +42,7 @@
 <tr>
 <td><div style=\"box-sizing:border-box\"><a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width=\"60px\"></a></div><td>
 <td>
-<span style=\"font-weight:bold;\">" . $row['brand'] . "</span><br><a href='product.php?product=" . $row['slug'] . "' style=\"color:#323232;font-size:12px\">" . $row['name'] . "</a><span style=\"color:#323232\"><br>&#36; " . number_format($row['price'], 2) . "</span> &nbsp;<span style=\"color:#323232;opacity:0.5\"><s>&#36; " . number_format($row['old_price'], 2) . "</s></span>
+<span style=\"font-weight:bold;\">" . $row['brand'] . "</span><br><a href='product.php?product=" . $row['slug'] . "' style=\"color:#323232;font-size:12px\">" . $row['name'] . "</a><span style=\"color:#323232\"><br>₹ " . number_format($row['price'], 2) . "</span> &nbsp;<span style=\"color:#323232;opacity:0.5\"><s>₹ " . number_format($row['old_price'], 2) . "</s></span>
 <span style=\"color:#323232\"><br>Qty: " . $row['quantity'] . "</span>
 </td></tr>
 </thead>
@@ -66,26 +66,26 @@
 <thead>
 <tr>
 <td>Bag total</td>
-<td ><span class=\"pull-right\">&#36; " . number_format($total, 2) . "</span><td>
+<td ><span class=\"pull-right\">₹ " . number_format($total, 2) . "</span><td>
 </tr>
 <tr>
 <td>Bag Discount</td>
-<td  style=\"color:green\"> <span class=\"pull-right\">&#36;" . number_format($order, 2) . "</span>
+<td  style=\"color:green\"> <span class=\"pull-right\">₹" . number_format($order, 2) . "</span>
  <td>
 </tr>
 <tr>
 <td>Order Total</td>
-<td><span class=\"pull-right\">&#36;" . number_format($order1, 2) . "</span>
+<td><span class=\"pull-right\">₹" . number_format($order1, 2) . "</span>
  <td>
 </tr>
 <tr>
 <td>Delivery Charges</td>
-<td  style=\"color:green\"><span class=\"pull-right\">&#36;" . number_format($delivery, 2) . "</span>
+<td  style=\"color:green\"><span class=\"pull-right\">₹" . number_format($delivery, 2) . "</span>
  <td>
 </tr>
 <tr>
 <td style=\"font-weight:600;font-size:16px;letter-spacing:1px\">Grand Total</td>
-<td  style=\"font-weight:600;font-size:16px;letter-spacing:1px\"><span class=\"pull-right\">&#36;" . number_format($delivery1, 2) . "</span>
+<td  style=\"font-weight:600;font-size:16px;letter-spacing:1px\"><span class=\"pull-right\">₹" . number_format($delivery1, 2) . "</span>
  <td>
 </tr>
 </thead>

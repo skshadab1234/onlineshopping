@@ -215,6 +215,17 @@ error_reporting(0);
                         font-size: 20px;
                 }
         }
+        #dropsidearrow:after{
+                content: '';
+                position: absolute;
+                top: -5px;
+                right: 20px;
+                border-top: none;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-bottom:15px solid #2a2440;
+
+        }
 </style>
 
 <body class="hold-transition layout-top-nav">
@@ -227,249 +238,6 @@ error_reporting(0);
                                 <a href="index.php" class="navbar-brand1">
                                         ECOMM
                                 </a>
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                        <?php
-                                        $conn = $pdo->open();
-                                        try {
-                                                $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
-                                                $stmt->execute();
-                                                foreach ($stmt as $row) {
-                                                        echo "
-                                                                                                <div class=\"subnav\">
-                                                                                                        <button id=\"h1\" class=\"subnavbtn\"><a  href='category.php?category=" . $row['cat_slug'] . "'>" . $row['name'] . "</a> </button>
-                                                                                                <div class=\"men\"></div>
-                                                                                                        <div class=\"subnav-content\">
-                                                                                                                <div class=\"container-fluid\" style=\"background:#323232;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12); \">
-                                                                                                                        <div class=\"row\">
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                                <li><h5><a href=\"category.php?category=" . $row['cat_slug'] . "\" class=\"p1\">Bottomwear</a></h5></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\">Jeans</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Casual Trousers</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Formal Trousers</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Shorts</a></li>  
-                                                                                                                                                <li><h5><a href=\"\" class=\"p1\">Innerwear & Sleepwear</a></h5></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Briefs & Trunks</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Boxers</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Vests</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Thermals</a></li>
-                                                                                                                                </div>
-
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                                <li><h5><a href=\"\" class=\"p1\">Footwear</a></h5></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Casual Shoes</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sports Shoes</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Formal Shirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Formal Shoes</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sneakers</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sandals &amp; Floaters</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Flip Flops</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Socks</a></li>
-                                                                                                                                </div>
-
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                                <li><h5><a href=\"\" class=\"p1\">Topwear</a></h5></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >T-Shirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Casual Shirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Formal Shirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sweatshirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sweaters</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Jackets</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Blazers & Coats</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Suits</a></li>
-                                                                                                                                                <li><p><a href=\"/\"class=\"p1\"  >Personal Care &amp; Grooming</a></p></li>
-                                                                                                                                                <li><p><a href=\"\" class=\"p1\"  >Sunglasses &amp; Frames</a></p></li>
-                                                                                                                                                <li><p><a href=\"\" class=\"p1\"  >Watches</a></p></li>
-                                                                                                                                </div>
-
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                                <li><h5><a href=\"\" class=\"p1\">Sports & Active Wear</a></h5></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sports Shoes</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Sports Sandals</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\">Active T-Shirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\">Track Pants & Shorts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Tracksuits</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\" >Jackets & Sweatshirts</a></li>
-                                                                                                                                                <li><a href=\"\" class=\"menulist\">Sports Accessories</a></li>
-                                                                                                                                </div>
-
-                                                                                                                        </div>
-                                                                                                                </div>
-                                                                                                        </div>
-                                                                                                </div> 
-
-                                                                                        ";
-                                                }
-                                        } catch (PDOException $e) {
-                                                echo "There is some problem in connection: " . $e->getMessage();
-                                        }
-
-                                        $pdo->close();
-
-                                        ?>
-
-                                        <!-- for women -->
-
-                                        <?php
-
-                                        $conn = $pdo->open();
-                                        try {
-                                                $stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
-                                                $stmt->execute();
-                                                foreach ($stmt as $row) {
-                                                        echo "
-                                                                                                <div class=\"subnav\">
-                                                                                                        <button id=\"h2\" class=\"subnavbtn\"><a  href='category.php?category=" . $row['cat_slug'] . "'>" . $row['name'] . "</a> </button>
-                                                                                                <div class=\"women\"></div>
-
-                                                                                                        <div class=\"subnav-content\">
-                                                                                                                <div class=\"container-fluid\" style=\"background:#323232;;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);\">
-                                                                                                                        <div class=\"row\">
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p2\">Indian & Fusion Wear</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Kurtas & Suits</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Kurtis, Tunics & Tops</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Ethnic Dresses</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Leggings, Salwars & Churidars</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Skirts & Palazzos</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Sarees</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Dress Materials</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Lehenga Cholis</a></li>
-                                                                                                                                </div>
-
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p2\">Western Wear</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Dresses & Jumpsuits</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Tops</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">T-Shirts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Shirts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Jeans & Jeggings</a></li>
-                                                                                                                                        <hr>
-                                                                                                                                        <li><p><a href=\"\" class=\"p2\">Belts, Scarves & More</a></p></li>
-                                                                                                                                        <li><p><a href=\"\" class=\"p2\">Watches & Wearables</a></p></li>  
-                                                                                                                                        </div>
-                                                                                                                                        <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p2\">Beauty & Personal Care</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Makeup</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Skincare</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Premium Beauty</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Lipsticks</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Fragrances</a></li>
-                                                                                                                                        <hr>
-                                                                                                                                        <li><h5><a href=\"\" class=\"p2\">Gadgets</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Smart Wearables</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Fitness Gadgets</a></li>
-                                                                                                                                </div>
-                                                                                                                                
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p2\">Footwear</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Flats</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Casual Shoes</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Heels</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Boots</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Sports Shoes & Floaters</a></li>
-                                                                                                                                        <hr>
-                                                                                                                                        <p><a href=\"\" class=\"p2\"  >Sports & Active Wear</a></li></p>
-                                                                                                                                        <li ><a href=\"\"   class=\"menulist\">Clothing</a></li>
-                                                                                                                                        <li ><a href=\"\"   class=\"menulist\">Footwear</a></li>
-                                                                                                                                        <li ><a href=\"\"   class=\"menulist\">Sports Accessories</a></li>
-                                                                                                                                        <li ><a href= \"\"  class=\"menulist\">Sports Equipment</a></li>
-                                                                                                                                </div>
-                                                                                                                        </div>
-                                                                                                                </div>
-                                                                                                        </div>
-                                                                                                </div> 
-                                                                                        ";
-                                                }
-                                        } catch (PDOException $e) {
-                                                echo "There is some problem in connection: " . $e->getMessage();
-                                        }
-
-                                        $pdo->close();
-
-                                        ?>
-
-                                        <!-- for kids category -->
-                                        <?php
-
-                                        $conn = $pdo->open();
-                                        try {
-                                                $stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
-                                                $stmt->execute();
-                                                foreach ($stmt as $row) {
-                                                        echo "
-                                                                                                <div class=\"subnav\">
-                                                                                                        <button id=\"h3\" class=\"subnavbtn\"><a  href='category.php?category=" . $row['cat_slug'] . "'>" . $row['name'] . "</a> </button>
-                                                                                                <div class=\"kids\"></div>
-                                                                                                        <div class=\"subnav-content\">
-                                                                                                                <div class=\"container-fluid\" style=\"background:#323232;;padding:10px;margin-top:-18px;box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12); \">
-                                                                                                                        <div class=\"row\">
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p3\">Boys Clothing</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">T-Shirts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Shirts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Shorts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Jeans</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Trousers</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Clothing Sets</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Ethnic Wear</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Track Pants & Pyjamas</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Jacket, Sweater & Sweatshirts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Innerwear & Sleepwear</a></li>
-                                                                                                                                </div>
-                                                                                                                                
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p3\">Girls Clothing</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Dresses</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Tops</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\"> Tshirts</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Clothing Sets</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Ethnic wear</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Dungarees & Jumpsuits</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Tights & Leggings</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Jeans, Trousers & Capris</a></li>
-                                                                                                                                </div>
-                                                                                                                                        
-                                                                                                                                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p3\">Boys Footwear</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Casual Shoes</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Sports Shoes</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Sandals</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Flip flops</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">School Shoes</a></li>
-                                                                                                                                        <li><h5><a href=\"\" class=\"p3\">Girls Footwear</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Flats</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Casual Shoes</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Heels</a></li>
-                                                                                                                                        </div>
-                                                                                                                                        <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">
-                                                                                                                                        <li><h5><a href=\"\" class=\"p3\">Kids Accessories</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Bags & Backpacks</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Watches</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Jewellery & Hair Accessories</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Eyewear</a></li>
-                                                                                                                                        <li><h5><a href=\"\" class=\"p3\">Brands</a></h5></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">United Colors of Benetton</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">Yk</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">U.S. Polo Assn. Kids</a></li>
-                                                                                                                                        <li><a href=\"\" class=\"menulist\" style=\"padding=\"100px\">GAP Kids</a></li>
-                                                                                                                                </div>
-                                                                                                                        </div>
-                                                                                                                </div>
-                                                                                                        </div>
-                                                                                                </div> 
-                                                                                        ";
-                                                }
-                                        } catch (PDOException $e) {
-                                                echo "There is some problem in connection: " . $e->getMessage();
-                                        }
-
-                                        $pdo->close();
-                                        ?>
-                                </ul>
                         </div>
 
                         <!-- cart search  -->
@@ -504,9 +272,29 @@ error_reporting(0);
                                                         $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
                                                         echo '
                                                 <li class="dropdown user user-menu">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#profile">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                                                                 <img src="' . $image . '" class="user-image" alt="User Image">
                                                         </a>
+                                                        <ul class="dropdown-menu" id="dropsidearrow" style="padding:10px;background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
+				<hr style="margin-top: -10px;opacity: 0.5">
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-user-o" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;User Profile </span>&nbsp;<a href="profile.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
+
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-truck" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;My Orders </span>&nbsp;<a href="orders.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
+
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-history" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Transaction History </span>&nbsp;<a href="transaction_history.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
+
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-cart-arrow-down" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Wishlist </span>&nbsp;<a href="wishlist.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
+
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-plus" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Compare Product </span>&nbsp;<a href="wishlist.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
+
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-whatsapp" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Chat With Us </span>&nbsp;<a href="wishlist.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
+				<hr style="width: 200px;margin-left: 10px">
+
+				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-sign-out" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;<a href="logout.php" class="hoverprofile" style="color: white">Logout </span>&nbsp;</a></div>
+
+				<a href="#edit" class="btn btn-success btn-flat btn-sm pull-right" id="quickview" data-toggle="modal"><i class="fa fa-edit" style="font-size: 12px;line-height: 40px"></i> Edit My Profile</a>
+
+                                                </ul>
                                                 </li>
                                                 ';
                                                 } else {

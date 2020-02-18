@@ -27,15 +27,15 @@ foreach ($stmt as $row) {
 <td ><a href='product.php?product=" . $row['slug'] . "' style=\"color:white\">" . $row['name'] . "</a> </td>
 <td >" . $row['quantity'] . "</td>
 <td >
-<h5 style=\"font-weight:700\">Product Price: &#36; " . number_format($row['price'], 2) . " * " . $row['quantity'] . " = &#36; " . number_format($subtotal, 2) . "</span> <br>
-<h5 style=\"font-weight:700\">Bag Discount: <span class=\"pull-right\">&#36; " . number_format($order, 2) . "</h5>
-<h5 style=\"font-weight:700\">Bag Total :<span class=\"pull-right\">&#36; " . number_format($order1, 2) . "</h5>
-<h5 style=\"font-weight:700\">Delivery Charge: <span class=\"pull-right\">&#36; " . number_format($delivery, 2) . "</h5>
+<h5 style=\"font-weight:700\">Product Price: ₹ " . number_format($row['price'], 2) . " * " . $row['quantity'] . " = ₹ " . number_format($subtotal, 2) . "</span> <br>
+<h5 style=\"font-weight:700\">Bag Discount: <span class=\"pull-right\">₹ " . number_format($order, 2) . "</h5>
+<h5 style=\"font-weight:700\">Bag Total :<span class=\"pull-right\">₹ " . number_format($order1, 2) . "</h5>
+<h5 style=\"font-weight:700\">Delivery Charge: <span class=\"pull-right\">₹ " . number_format($delivery, 2) . "</h5>
 <hr style=\"border:1px solid #ddd\">
 </tr>
 ";
 }
 
-$output['total'] = '<span style="color:white;letter-spacing:1px"><b>&#36; ' . number_format($delivery1, 2) . '<b></span>';
+$output['total'] = '<span style="color:white;letter-spacing:1px"><b>₹ ' . number_format($delivery1, 2) . '<b></span>';
 $pdo->close();
 echo json_encode($output);

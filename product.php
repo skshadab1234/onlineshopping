@@ -6,7 +6,7 @@ $slug = $_GET['product'];
 
 try {
 
-	$stmt = $conn->prepare("SELECT *, products.name AS prodname, category.name AS catname, products.id AS prodid FROM products LEFT JOIN category ON category.id=products.category_id WHERE slug = :slug");
+	$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname, products.id AS prodid FROM products LEFT JOIN category ON category.id=products.category_id WHERE slug = :slug");
 	$stmt->execute(['slug' => $slug]);
 	$product = $stmt->fetch();
 } catch (PDOException $e) {
@@ -246,7 +246,7 @@ try {
 
 
 	<div class="wrapper">
-		<div class="content-wrapper">
+		<div class="content-wrapper" style="margin: 0">
 			<!-- Main content -->
 			<section class="content">
 				<div class="row">
@@ -268,7 +268,7 @@ try {
 								<h4 id="code" style="font-weight: 600;color: #323232">Product Code : <span><?php echo $product['prodid']; ?></span></h4>
 								<h5 style="font-size: 14px;color: slategrey"><?php echo $product['brand']; ?></h5>
 								<h5 id="title"><?php echo $product['prodname']; ?></h5>
-								<h3 style="color: #323232;font-size:medium"><b>Rs. <?php echo number_format($product['price'] * 71.50, 2); ?> <small><s>MRP <?php echo number_format($product['old_price'] * 71.50, 2); ?></s></small><span style="color: limegreen"> <?php echo $product['discount']; ?> off</span></b></h3>
+								<h3 style="color: #323232;font-size:medium"><b>Rs. <?php echo number_format($product['price'] , 2); ?> <small><s>MRP <?php echo number_format($product['old_price'] , 2); ?></s></small><span style="color: limegreen"> <?php echo $product['discount']; ?> off</span></b></h3>
 								<a href="" data-toggle="modal" data-target="#pricedetail" style="color:dodgerblue;font-weight:bolder"> View Price Details</a>
 								<form class="form-inline" id="productForm">
 									<div class="form-group">
@@ -295,7 +295,7 @@ try {
 									<h4 style="font-size:14px;color: #000;font-weight: 500;letter-spacing: 1px;margin-bottom: 12px;">Delivering to</h4>
 									<form action="" method="post">
 										<input type="number" onKeyPress="if(this.value.length==6) return false;" style="width:100%;background: none;border-bottom: 1px solid dodgerblue;outline: none;position: relative;">
-										<input type="submit" id="submit1" value="Change" style="outline:none;font-size:12px;letter-spacing:1px;position: absolute;z-index: 9999999;top: 33px;background:none;right: 11px;color: dodgerblue;">
+										<input type="submit" id="submit1" value="Change" style="outline:none;font-size:12px;letter-spacing:1px;position: absolute;top: 33px;background:none;right: 11px;color: dodgerblue;">
 									</form>
 								</div>
 								<div class="productdetails" style="margin-top:20px">
@@ -337,13 +337,13 @@ try {
 				<h3 style="margin: 0;font-size: 16px;font-weight: 700;letter-spacing:1px">Price Details</h3>
 				<ul style="margin-top:10px;">
 					<li style="display: inline-block;width: 150px;color: dimgrey">Maximum Retail Price(Incl. of all taxes)</li>
-					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['old_price'] * 71.50, 2); ?> </li>
+					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['old_price'] , 2); ?> </li>
 					<BR></BR>
 					<li style="display: inline-block;width: 150px;color: dimgrey">Discount</li>
 					<li style="display: inline-block;width: 150px;color: #000;font-weight:700;text-align:right" class="pull-right"><?php echo $product['discount']; ?> OFF</li>
 					<h3 style="margin-top: 10px;font-size: 16px;font-weight: 700;letter-spacing:1px">Selling Price</h3>
 					<li style="display: inline-block;width: 150px;color: dimgrey">(Incl. of all taxes)</li>
-					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['price'] * 71.50, 2); ?> </li>
+					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['price'] , 2); ?> </li>
 				</ul>
 				<!-- <span style="color: #323232;padding:20px;text-align:right;"></span><span style="position:absolute;left:10px;width:200px;">Maximum Retail Price (incl. of all taxes)</span><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small></b> -->
 			</div>

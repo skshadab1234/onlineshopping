@@ -1,4 +1,4 @@
-	<?php
+<?php
 	include 'includes/session.php';
 	$conn = $pdo->open();
 
@@ -30,10 +30,10 @@
 				$subtotal = $row['price'] * $row['quantity'];
 				$total += $subtotal;
 				$output .= "
-				<div class='container-fluid' style='margin-top:10px;'>
+				<div class='container-fluid' style='margin-top:10px	;'>
 				<div class='row'>
-					<div class='col-xs-4  col-lg-6'>
-						<img src='" . $image . "' class=\"img-responsive\">
+					<div class='col-xs-4'>
+						<img src='" . $image . "' class=\"img-responsive\" width='150px'>
 					</div>
 						<div class='col-xs-8 col-lg-8'>
 							<div>
@@ -42,8 +42,7 @@
 								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand'] . "</a>
 								</span>
 								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
-								<h5>Quantity : " . $row['quantity'] . "</h5>
-								<span style=\"font-weight:bold;color:grey\">Rs. " . number_format($subtotal * 71.50, 2) . " /- Only</span>
+								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($subtotal * 71.50, 2) . " /- Only</span>
 								</p>
 							</div>
 					</div>
@@ -77,7 +76,7 @@
 
 
 			$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : Rs. " . number_format($total * 71.50, 2) . "</h5>";
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
 		} catch (PDOException $e) {
 			$output .= $e->getMessage();
 		}
@@ -85,7 +84,7 @@
 		if (count($_SESSION['cart']) != 0) {
 			$total = 0;
 			foreach ($_SESSION['cart'] as $row) {
-				$stmt = $conn->prepare("SELECT *, products.name AS prodname, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
+				$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
 				$stmt->execute(['id' => $row['productid']]);
 				$product = $stmt->fetch();
 				$image = (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg';
@@ -93,7 +92,7 @@
 				$total += $subtotal;
 				$output .= "<div class=\"container-fluid\" style='margin:10px;'>
 				<div class='row'>
-					<div class='col-xs-4  col-lg-6'>
+					<div class='col-xs-4'>
 						<img src='" . $image . "' class=\"img-responsive\">
 					</div>
 						<div class='col-xs-8 col-lg-8'>
@@ -104,7 +103,7 @@
 								</span>
 								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
 								<h5>Quantity : " . $row['quantity'] . "</h5>
-								<span style=\"font-weight:bold;color:grey\">Rs. " . number_format($product['price'] * 71.50, 2) . " /- Only</span>
+								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($product['price'] * 71.50, 2) . " /- Only</span>
 								</p>
 							</div>
 					</div>
@@ -122,7 +121,7 @@
 		</div>";
 			}
 			$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : Rs. " . number_format($total * 71.50, 2) . "</h5>";
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
 		} else {
 			$output .= "
 	<div class=\"container-fluid\" align=\"center\"><img src=\"images/cartempty.png\" class=\"img-responsive\" width='550px' height='500px'>

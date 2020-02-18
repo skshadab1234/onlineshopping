@@ -4,30 +4,18 @@ if (!isset($_SESSION['user'])) {
 	header('location: index.php');
 }
 ?>
-<?php include 'includes/header.php'; ?>
+
 
 <head>
+	<?php include 'includes/header.php'; ?>
 	<title>Thank You For Ordering</title>
-	<style type="text/css">
-		.container2 {
-			position: absolute;
-			top: 36%;
-			left: 10%;
-		}
-
-		.container3 {
-			position: absolute;
-			top: 36%;
-			left: 10%;
-		}
-	</style>
 </head>
+<?php include 'includes/navbar.php'; ?>
 
 <body class="layout-top-nav">
-	<?php include 'includes/navbar.php'; ?>
-	<div class="content-wrapper" style="margin-top: -20px">
+	<div class="content-wrapper" style="margin-left: 0px">
 
-		<div class="text-center">
+		<div class="container-fluid text-center" style="margin-top:80px">
 			<h1 class="mens" style="padding: 20px">Thank You So Much For Purchasing</h1>
 			<?php
 			include 'instamojo/Instamojo.php';
@@ -63,7 +51,7 @@ if (!isset($_SESSION['user'])) {
 			?>
 				<h2 class="mens" style="font-style: 20px;color: grey">Payment Details</h2>
 				<div class="container-fluid" align="center">
-					<table class="table table-bordered" style="margin: 20px auto;text-align: center;width: 600px;color: white">
+					<table class="table table-bordered" style="margin: 20px auto;text-align: center;width: 600px;color: #000">
 						<tr>
 							<th>Payment ID :</th>
 							<td><?= $paymentid ?></td>
@@ -97,47 +85,12 @@ if (!isset($_SESSION['user'])) {
 			} ?>
 		</div>
 
-
-		<link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,900' rel='stylesheet' type='text/css'>
-		<div class="row">
-			<div class="col-sm-6 col-lg-6">
-				<div class="container3">
-					<a href="index.php" class="btn">
-						<svg width="277" height="62">
-							<defs>
-								<linearGradient id="grad1">
-									<stop offset="0%" stop-color="#FF8282" />
-									<stop offset="100%" stop-color="#E178ED" />
-								</linearGradient>
-							</defs>
-							<rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-						</svg>
-						<!--<span>Voir mes réalisations</span>-->
-						<span>Continue Shopping</span>
-					</a>
-
-				</div>
-			</div>
-			<div class="col-sm-6 col-lg-6">
-				<div class="container2">
-					<a href="cart_view.php" class="btn">
-						<svg width="277" height="62">
-							<defs>
-								<linearGradient id="grad1">
-									<stop offset="0%" stop-color="grey" />
-									<stop offset="100%" stop-color="#E178ED" />
-								</linearGradient>
-							</defs>
-							<rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
-						</svg>
-						<!--<span>Voir mes réalisations</span>-->
-						<span>View cart</span>
-					</a>
-
-				</div>
-			</div>
-
-		</div>
+<div class="container-fluid">
+<ul style="display: flex">
+<li style="padding: 20px"><a href="index.php" style="font-size:22px;color:#000;">Continue Shopping</a></li>
+<li style="padding: 20px"><a href="orders.php" style="font-size:22px;color:#000;">My Orders</a></li>
+</ul>
+</div>
 	</div>
 
 

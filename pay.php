@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 $product_name = $_POST['product_name'];
-$price = $_POST['price'];
+$delivery1 = $_POST['price'];
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
@@ -29,7 +29,7 @@ try {
 
     $response = $api->paymentRequestCreate(array(
         "purpose" => $product_name,
-        "amount" => $price,
+        "amount" => $delivery1,
         "send_email" => true,
         "email" => $email,
         "phone" => $phone,
@@ -37,7 +37,7 @@ try {
         "phone" => $phone,
         "send_sms" => true,
         "allow_repeated_payments" => false,
-        "redirect_url" => "http://localhost/ecomm/thankyou.php"
+        "redirect_url" => "http://localhost/shadabonlineshopping/thankyou.php"
     ));
 
     $pay_url = $response['longurl'];

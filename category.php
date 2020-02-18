@@ -1,4 +1,4 @@
-  <?php include 'includes/session.php'; ?>
+<?php include 'includes/session.php'; ?>
   <?php
   $slug = $_GET['category'];
 
@@ -26,39 +26,39 @@
   <body class="hold-transition layout-top-nav">
 
     <div class="wrapper">
-
+      <?php include 'includes/sidenav.php' ?>
       <div class="content-wrapper">
 
         <div style="background:#fff">
           <!-- Main content -->
           <section class="content">
             <div class="row">
-              <div class="col-sm-3 col-lg-3" s>
-                <div class="filter1200px">
-                  <?php include 'includes/filter.php'; ?>
-                </div>
-              </div>
-              <div class="col-sm-9" style="padding:0px">
+              <ul class="breadcrumb text-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#"><?php echo $cat['name']?></a></li>
+              </ul>
+              <div class="col-sm-12" style="padding:0px">
+               <h4 style="padding: 20px;font-size:30px"><?php echo "".$cat['name']."";?></h4>
                 <?php
 
                 $conn = $pdo->open();
 
                 try {
-                  $inc = 4;
+                  $inc = 6;
                   $stmt = $conn->prepare("SELECT * FROM products WHERE category_id = :catid");
                   $stmt->execute(['catid' => $catid]);
                   foreach ($stmt as $row) {
                     $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
-                    $inc = ($inc == 4) ? 1 : $inc + 1;
-                    if ($inc == 4) echo "<div class='row'>";
+                    $inc = ($inc == 6) ? 1 : $inc + 1;
+                    if ($inc == 6) echo "<div class='row'>";
                 ?>
-                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2">
                       <div class="card">
                         <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-fluid\" width='250px' height='250px'></a> "; ?>
                         <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
                           <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand'] . " " ?></h5>
                           <?php echo "<a style=\"color:black\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                          <h5 class="text-left" style="font-size:16px"><?php echo "&#36; " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " &#36; " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                          <h5 class="text-left" style="font-size:16px"><?php echo "₹ " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                         </div>
                         <div class="fav" style="position:absolute;top:20px;right:20px;">
                           <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
@@ -91,8 +91,8 @@
                                       <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
                                       <i class="fa fa-star-o" style="color: orange;font-size: 14px"></i>
                                       <br><br>
-                                      <span class="price" style="color: white;font-size: 20px"><?php echo "&#36; " . number_format($row['price'], 2) . ""; ?></span>&nbsp;
-                                      <small style="font-size: 14px;color: white"><s><?php echo "&#36; " . number_format($row['old_price'], 2) . ""; ?></s></small>
+                                      <span class="price" style="color: white;font-size: 20px"><?php echo "₹ " . number_format($row['price'], 2) . ""; ?></span>&nbsp;
+                                      <small style="font-size: 14px;color: white"><s><?php echo "₹ " . number_format($row['old_price'], 2) . ""; ?></s></small>
                                       <br>
                                       <br>
 
@@ -113,10 +113,10 @@
 
                 <?php echo "
   ";
-                    if ($inc == 4) echo "</div>";
+                    if ($inc == 6) echo "</div>";
                   }
-                  if ($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
-                  if ($inc == 4) echo "<div class='col-sm-3'></div></div>";
+                  if ($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
+                  if ($inc == 6) echo "<div class='col-sm-3'></div></div>";
                 } catch (PDOException $e) {
                   echo "There is some problem in connection: " . $e->getMessage();
                 }

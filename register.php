@@ -74,7 +74,7 @@ Ecomm Customer — Customer Number: 7021918970
 <p>First, please confirm your email address. If you're ever locked out of your account, this will help us get you back in.
 </p>
 </div>
-  <a href='http://localhost/ecomm/activate.php?code=" . $code . "&user=" . $userid . "' style=\"text-decoration: none;
+  <a href='http://localhost/shadabonlineshopping/activate.php?code=" . $code . "&user=" . $userid . "' style=\"text-decoration: none;
   background-color: #00a63f;
   border-top: 10px solid #00a63f;
   border-bottom: 10px solid #00a63f;
@@ -103,7 +103,7 @@ Ecomm Customer — Customer Number: 7021918970
         $mail->SMTPAuth = true;
         //Provide username and password     
         $mail->Username = "ks615044@gmail.com";
-        $mail->Password = "**************";
+        $mail->Password = "1@adsenseaccount1";
         //If SMTP requires TLS encryption then set it
         $mail->SMTPSecure = "tls";
         //Set TCP port to connect to 

@@ -1,4 +1,4 @@
-﻿    <?php include 'includes/session.php'; ?>
+﻿<?php include 'includes/session.php'; ?>
     <?php
     $link = mysqli_connect("localhost", "root", "");
     mysqli_select_db($link, "ecomm");
@@ -24,27 +24,19 @@
     <body class="layout-top-nav">
       <?php include 'includes/navbar.php'; ?>
       <div class="wrapper">
-        <div class="content-wrapper">
+      <?php include 'includes/sidenav.php' ?>
+        <div class="content-wrapper" >
           <!-- Slider 1 -->
-          <div class="slider" id="slider1">
+          <div class="slider" id="slider1" style="margin-top:70px;">
             <!-- Slides -->
             <div>
-              <a href=""><img src="images/banner/men2.jpg" alt="slider"></a>
-            </div>
-            <div>
-              <a href=""><img src="images/banner/couple.webp" alt="slider"></a>
-            </div>
-            <div>
-              <a href=""><img src="images/banner/women3.jpg" alt="slider"></a>
+              <?php echo '<a href="subcategory.php?subcategory=Western%20Wear"><img src="images/banner/men2.jpg" alt="slider"></a>' ?>
             </div>
             <div>
               <a href=""><img src="images/banner/adidas.jpg" alt="slider"></a>
             </div>
             <div>
               <a href=""><img src="images/banner/women2.jpg" alt="slider"></a>
-            </div>
-            <div>
-              <a href=""><img src="images/banner/men.webp" alt="slider"></a>
             </div>
             <!-- The Arrows -->
             <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
@@ -67,105 +59,6 @@
                 unset($_SESSION['error']);
               }
               ?>
-
-              <!--<div class="container-fluid" style="margin-top: -40px;padding: 10px 20px" >
-         
-    <?php
-    $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
-    $stmt->execute();
-    foreach ($stmt as $row) {
-      echo " 
-    <div class=\"swiper-slide\"><a href=\"category.php?category=" . $row['cat_slug'] . "\"><img src=\"images/category/men.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
-    <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\" >Men</a></h2></div>
-
-    ";
-    } ?>
-    <?php
-    $stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
-    $stmt->execute();
-    foreach ($stmt as $row) {
-      echo " 
-    <div class=\"swiper-slide\"><a href=\"category.php?category=" . $row['cat_slug'] . "\"><img src=\"images/category/women.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
-    <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Women</a></h2></div>
-    ";
-    } ?>
-    <?php
-    $stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
-    $stmt->execute();
-    foreach ($stmt as $row) {
-      echo " 
-    <div class=\"swiper-slide\"><a href=\"category.php?category=" . $row['cat_slug'] . "\"><img src=\"images/category/kids.webp\" width=\"150px\" style=\"border-radius: 50%\"></a>
-    <h2 style=\"font-size: 18px\"><a class=\"cat\" href=\"\">Kids</a></h2></div>
-    ";
-    } ?> 
-    </div>-->
-
-              <!-- category section -->
-              <div class="container-fluid" style="margin-top:10px;">
-                <div align="center">
-                  <h2 class="mens" align="center">Shop By Category</h2>
-                  <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;width: 100px;border-radius: 50px;margin-bottom: 10px;"></div>
-                  </h2>
-                </div>
-                <div style="display:flex;width:100%">
-                  <div class="imgfluid">
-                    <img src="images/p1.jpg" alt="Avatar" id="images" class="img-responsive" style="width:100%">
-                    <div class="middle">
-                      <?php
-                      $stmt = $conn->prepare("SELECT * FROM category WHERE id=1");
-                      $stmt->execute();
-                      foreach ($stmt as $row) {
-                        echo " 
-      <div class=\"text\">
-      <a href=\"category.php?category=" . $row['cat_slug'] . "\">
-      " . $row['name'] . "
-      </a>
-        </div>
-    ";
-                      } ?>
-                    </div>
-                  </div>
-
-                  <div class="imgfluid">
-                    <img src="images/libas-women-kurtas.jpg" alt="Avatar" id="images" class="img-responsive" style="width:100%">
-                    <div class="middle">
-                      <?php
-                      $stmt = $conn->prepare("SELECT * FROM category WHERE id=2");
-                      $stmt->execute();
-                      foreach ($stmt as $row) {
-                        echo " 
-      <div class=\"text\">
-      <a href=\"category.php?category=" . $row['cat_slug'] . "\">
-      " . $row['name'] . "
-      </a>
-        </div>
-    ";
-                      } ?>
-                    </div>
-                  </div>
-
-
-                  <div class="imgfluid">
-                    <img src="images/khan-shadab.jpg" alt="Avatar" id="images" class="img-responsive">
-                    <div class="middle">
-                      <?php
-                      $stmt = $conn->prepare("SELECT * FROM category WHERE id=3");
-                      $stmt->execute();
-                      foreach ($stmt as $row) {
-                        echo " 
-      <div class=\"text\">
-      <a href=\"category.php?category=" . $row['cat_slug'] . "\">
-      " . $row['name'] . "
-      </a>
-        </div>
-    ";
-                      } ?>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
               <div class="container-fluid" id="clock2">
                 <div align="center">
                   <h2 class="mens" align="center">Deal of the Week </h2>
@@ -564,7 +457,7 @@
             </div> -->
             <!-- //end of modal display -->
           </div>
-          <?php include 'includes/footer.php'; ?>
+          <div style="margin-left:160px"><?php include 'includes/footer.php'; ?></div>
 
           <?php include 'includes/scripts.php'; ?>
 

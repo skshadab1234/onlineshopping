@@ -32,6 +32,23 @@ $pdo->close();
   <div class="desktop">
     <?php include 'includes/navbar.php' ?>
   </div>
+
+  <div class="wrapper">
+      <?php include 'includes/sidenav.php' ?>
+        <div class="content-wrapper" >
+
+        <div style="background:#fff;height:100%">
+          <!-- Main content -->
+          <section class="content">
+          <ul class="breadcrumb text-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#"><?php echo $subcat['name']?></a></li>
+              </ul>
+           
+        </section>
+        </div>
+        </div>
+  </div>
   <!-- mobile view -->
   <div class="container-fluid1" id="mobileview">
     <img src="images/arrow1.png" onclick="history.back(-1)" id="arrow" alt="">

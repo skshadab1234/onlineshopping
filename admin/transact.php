@@ -19,15 +19,15 @@ foreach ($stmt as $row) {
 	$total += $subtotal;
 	$output['list'] .= "
 			<tr class='prepend_items' >
-							<td style=\"border:1px solid #663355;\"><a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "'  width='80px' height='80px' class=\"img-rounded\"></a>    </td>
+							<td ><a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "'  width='80px' height='80px' class=\"img-rounded\"></a>    </td>
 
-				<td style=\"border:1px solid #663355;\">" . $row['name'] . "</td>
-				<td style=\"border:1px solid #663355;\">" . $row['quantity'] . "</td>
-				<td style=\"border:1px solid #663355;\">&#36; " . number_format($subtotal, 2) . "</td>
+				<td >" . $row['name'] . "</td>
+				<td >" . $row['quantity'] . "</td>
+				<td >₹ " . number_format($subtotal, 2) . "</td>
 			</tr>
 		";
 }
 
-$output['total'] = '<b>&#36; ' . number_format($total, 2) . '<b>';
+$output['total'] = '<b>₹ ' . number_format($total, 2) . '<b>';
 $pdo->close();
 echo json_encode($output);

@@ -118,8 +118,8 @@ if (isset($_GET['category'])) {
                               <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:white'></i></a></span>
                             </td>
                             <td><a href='#description' data-toggle='modal' class='btn btn-success desc' style=\"line-height:40px\" data-id='" . $row['id'] . "'><i class='fa fa-search'></i> View</a></td>
-                            <td>&#36; " . number_format($row['price'], 2) . "</td>
-                            <td><s>&#36; " . number_format($row['old_price'], 2) . "</s></td>
+                            <td>₹ " . number_format($row['price'], 2) . "</td>
+                            <td><s>₹ " . number_format($row['old_price'], 2) . "</s></td>
 
                             <td>" . $row['discount'] . "</td>  
                             <td>" . $row['color'] . "</td>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2020 at 08:14 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.26
+-- Generation Time: Feb 19, 2020 at 08:08 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -13,6 +13,20 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ecomm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `address`
+--
 
 CREATE TABLE `address` (
   `id` int(11) NOT NULL,
@@ -65,9 +79,29 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `cat_slug`, `photo`) VALUES
-(1, 'MEN', 'MEN', '_1581969439.webp'),
-(2, 'WOMEN', 'WOMEN', '_1581969457.webp'),
-(3, 'KIDS', 'KIDS', '_1581969477.webp');
+(1, 'MEN', 'MEN', '_1582097755.webp'),
+(2, 'WOMEN', 'WOMEN', '_1582103598.webp'),
+(4, 'KIDS', 'KIDS', '.webp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_banner`
+--
+
+CREATE TABLE `category_banner` (
+  `id` int(11) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category_banner`
+--
+
+INSERT INTO `category_banner` (`id`, `photo`, `type`, `url`) VALUES
+(1, '', '1', 'as');
 
 -- --------------------------------------------------------
 
@@ -128,8 +162,8 @@ CREATE TABLE `ordertrackhistory` (
   `user_id` int(11) NOT NULL,
   `orderId` int(11) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `remark` mediumtext DEFAULT NULL,
-  `postingDate` timestamp NOT NULL DEFAULT current_timestamp()
+  `remark` mediumtext,
+  `postingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -193,7 +227,7 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `
 (6, 112132, 1, '99', 'GREY', 'ADIDAS', 'Grey Adidas Graphic Printed', 'L,XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'grey-adidas-graphic-printed', '350', 345, '10%', 'grey-adidas-graphic-printed.jpeg', '2019-11-17', 1),
 (7, 254578, 1, '99', 'GREY', 'ADIDAS', 'Grey Adidas Graphic Print', 'L', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'grey-adidas-graphic-print', '450', 400, '24%', 'grey-adidas-graphic-print.jpeg', '2019-11-22', 7),
 (8, 147858, 1, '99', 'Black', 'ADIDAS', 'Black Adidas No print', 'L', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'black-adidas-no-print', '245', 200, '24%', 'black-adidas-no-print.jpeg', '2019-11-17', 1),
-(9, 254569, 1, '99', 'White', 'ADIDAS', 'Adidas White Printed t-shirt  For Men', 'LX', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-white-printed-t-shirt-men', '250', 234, '12%', 'adidas-white-printed-t-shirt-men.jpeg', '2008-08-08', 1),
+(9, 254569, 1, '99', 'White', 'ADIDAS', 'Adidas White Printed t-shirt  For Men', 'xl', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-white-printed-t-shirt-men', '250', 234, '12%', 'adidas-white-printed-t-shirt-men.jpeg', '2008-08-08', 1),
 (10, 324587, 1, '99', 'Black', 'ADIDAS', 'Black Adidas Graphic Print', 'XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'black-adidas-graphic-print', '299', 234, '20%', 'black-adidas-graphic-print.jpeg', '2019-11-17', 3),
 (11, 215487, 1, '99', 'GREY', 'ADIDAS', 'Adidas Light Grey T-shirt For Men', 'S, X', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-light-grey-t-shirt-men', '150', 120, '24%', 'adidas-light-grey-t-shirt-men.jpeg', '0000-00-00', 0),
 (12, 324568, 1, '99', 'Black', 'ADIDAS', 'Adidas Black Printed t-shirt  For Men', 'XL', '<ul>\r\n	<li>5% polyester created from recycled plastic bottles</li>\r\n	<li>Imported</li>\r\n	<li>Pull On closure</li>\r\n	<li>Machine Wash</li>\r\n	<li>0.7&quot; high</li>\r\n	<li>14&quot; wide</li>\r\n	<li>50% cotton 50% polyester</li>\r\n</ul>\r\n', 'adidas-black-printed-t-shirt-men', '249', 200, '24%', 'adidas-black-printed-t-shirt-men.jpeg', '0000-00-00', 0),
@@ -204,7 +238,6 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `deals`, `color`, `
 (17, 200123, 3, '21', 'RED', 'Ginni and Joy', 'Ginni and Joy Red T-Shirts ', 'L XL', '<h3 style=\"font-style: italic;\"><small><big>Red self-design sweatshirt, has a kangaroo pocket, a round neck, long sleeves, straight hem</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big>Material &amp; Care</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big>Cotton<br />\r\nMachine-wash</big></small></h3>\r\n\r\n<h3 style=\"font-style: italic;\"><small><big><strong>Specifications</strong></big></small></h3>\r\n\r\n<p>Sleeve Length&nbsp;</p>\r\n\r\n<p>Long Sleeves</p>\r\n', 'ginni-and-joy-red-t-shirts', '150', 123, '70%', 'ginni-and-joy-red-t-shirts.jpg', '2019-12-01', 1),
 (18, 0, 3, '22', 'red', 'Ginni and Joy', 'Ginni and joy red T-shirt', 'L', '<p><strong>Ginni and Joy</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n', 'ginni-and-joy-red-t-shirt', '450', 400, '2%', 'ginni-and-joy-red-t-shirt.jpg', '0000-00-00', 0),
 (19, 0, 3, '', 'Sky Blue', 'Indian Terrain', 'Indian Terrain Blue T-Shirts ', 'S', '<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n\r\n<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n\r\n<p>Indian Terrain Blue T-Shirts&nbsp;</p>\r\n', 'indian-terrain-blue-t-shirts', '50020', 50000, '20%', 'indian-terrain-blue-t-shirts_1575487752.jpg', '0000-00-00', 0),
-(20, 0, 1, '', 'White', 'SHADABZONE', 'khan Shadab', '', '', 'khan-shadab', '', 400, '20%', 'khan-shadab_1575833070.jpg', '0000-00-00', 0),
 (21, 0, 1, '', 'red', 'ks', 'Shadab Khan', 'standard', '<p>as</p>\r\n', 'shadab-khan', '15', 12, '12%', 'shadab-khan.jpeg', '0000-00-00', 0);
 
 -- --------------------------------------------------------
@@ -251,7 +284,6 @@ CREATE TABLE `subcategory` (
 
 INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`, `photo`) VALUES
 (2, 'Innerwear & Sleepwears', 'Innerwear and Sleepwear', 'men', '_1581970950.jpg'),
-(3, 'Footwear', 'Footwear', 'men', '_1581970959.jpg'),
 (4, 'Topwear', 'Topwear', 'men', '_1581970976.jpg'),
 (5, 'Sport & Active Wear', 'Sport and Active Wear', 'men', '_1581970993.jpg'),
 (7, 'Beauty & Personal Care', 'Beauty and Personal Care', 'women', '_1581972503.jpg'),
@@ -307,7 +339,8 @@ INSERT INTO `subcategory` (`id`, `name`, `sub_catslug`, `type`, `photo`) VALUES
 (75, 'ssk', '', 'ssk', ''),
 (76, 'meh', '', 'meh', ''),
 (79, 'aa', 'aa', 'AA', 'aa.jpg'),
-(80, 'Bottomwear', 'Bottomwear', 'men', '_1581971006.webp');
+(80, 'Bottomwear', 'Bottomwear', 'men', '_1581971006.webp'),
+(83, 'Footwear', 'Footwear', 'men', '.jpg');
 
 -- --------------------------------------------------------
 
@@ -354,10 +387,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `type`, `firstname`, `lastname`,
 (1, 'offical@admin.com', '$2y$10$wBHwxev2QtoswmAsZGTokeLmw7EMBC23wg8abymd3kNB0ItTqkf.q', 1, 'Khan', 'Shadab', 'sayeed manzil121', 'Dunstan', 'South Austra', 400612, '', '', '', '', 0, '', '', '', '', '', '0', '', '', '.jpg', 1, '', '5kU3wiLICtjlqNG', '2018-05-01'),
 (3, 'anasshaikh@gmail.com', '$2y$10$uLq.51bDz3FM9O1hIEI6P.kD2tFCpjO8QHXYinIePYgDbUARrhoQm', 0, 'Anas', 'Shaikh', 'mumbra', 'Andheri  ', 'Mumbai  ', 400612, 'Home', '', '', '', 0, '', '', '', '', '', '', '', '7021918970', 'favicon.jpg', 1, '', '', '2019-12-09'),
 (6, 'shadab@gmail.com', '$2y$10$YJXUI4EJW2WsIGpufpC40u9VRW20.SYgcKVvyn.apLGBT7T8/K.VO', 2, 'Shadab', 'Khan', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', 'PicsArt_11-21-08.jpg', 1, '', '', '2020-01-10'),
-(12, 'anasshaikh1@gmail.com', '$2y$10$wnBRXFARTOq1alMxC.RUwOaaQR58sWmnK3dmLy9lQZO.rXXXvi/VS', 0, 'anas122', 'Shaikh', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'ka2shb461as5', '', '2020-01-21'),
 (14, 'madihasayyed99@gmail.com', '$2y$10$OiyirtsGjnUhzIdkvBjlke2ekPlV7jkLoGlsH/GQ1yoNtO0H6Kwzm', 0, 'madiha', 'kadiri', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 'h5k41ss6ab3d', '', '2020-01-21'),
-(16, 'skshadabkhojo@gmail.com', '$2y$10$SGBa4.MYH/k0YItMpDbKKOcTGJd.bzYOt9Qbt2ZF7fY812ircPdAS', 0, 'khna', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 0, 's65sak32bahd', '', '2020-02-18'),
-(18, 'ks615044@gmail.com', '$2y$10$V4YO0Eb.Yvo6a.MWA6bW1eGbDz/7IkEM5kv4tfNFje31J.HzHAjHG', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '', 1, 'dhkb6a21a34s', '', '2020-02-18');
+(18, 'ks615044@gmail.com', '$2y$10$V4YO0Eb.Yvo6a.MWA6bW1eGbDz/7IkEM5kv4tfNFje31J.HzHAjHG', 0, 'khan', 'shadab', '', '', '', 0, '', '', '', '', 0, '', '', '', '', '', '', '', '', '.jpg', 1, 'dhkb6a21a34s', '', '2020-02-18');
 
 -- --------------------------------------------------------
 
@@ -392,6 +423,12 @@ ALTER TABLE `cart`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_banner`
+--
+ALTER TABLE `category_banner`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -462,13 +499,19 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `category_banner`
+--
+ALTER TABLE `category_banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `deals`
@@ -504,7 +547,7 @@ ALTER TABLE `sales`
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -367,12 +367,6 @@
                 <a href="./index.php">SHADABZONE</a>. All rights reserved.
               </p>
             </div>
-
-            <a href="#top">
-              <div class="go_top">
-                <span class="icon-arrow-up"></span>
-              </div>
-            </a>
           </div>
         </div>
       </div>

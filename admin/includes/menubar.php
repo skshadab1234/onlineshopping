@@ -31,6 +31,8 @@
         <ul class="treeview-menu">
           <li><a href="products.php"><i class="fa fa-circle-o"></i> Product List</a></li>
           <li><a href="category.php"><i class="fa fa-circle-o"></i> Category</a></li>
+          <li><a href="subcategory.php"><i class="fa fa-circle-o"></i> Sub Category</a></li>
+
         </ul>
       </li>
     </ul>

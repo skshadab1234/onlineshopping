@@ -47,9 +47,6 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="box table-responsive text-nowrap">
-              <div class="box-header with-border">
-                <a href="#addnew" data-toggle="modal" class="btn btn-success btn-sm btn-flat" style="padding:10px"><i class="fa fa-plus"></i> New</a>
-              </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
                   <thead>
@@ -112,7 +109,7 @@
 
   </div>
   <!-- ./wrapper -->
-
+  <a href="#addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
   <?php include 'includes/scripts.php'; ?>
   <script>
     $(function() {

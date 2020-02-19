@@ -57,7 +57,6 @@ if (isset($_GET['category'])) {
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header with-border">
-                <a href="#addnew" data-toggle="modal" class="btn btn-success btn-sm btn-flat" style="padding:10px" id="addproduct"><i class="fa fa-plus"></i> New</a>
                 <div class="pull-right">
                   <form class="form-inline">
                     <div class="form-group" style="color: white">
@@ -118,14 +117,12 @@ if (isset($_GET['category'])) {
                               <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:white'></i></a></span>
                             </td>
                             <td><a href='#description' data-toggle='modal' class='btn btn-success desc' style=\"line-height:40px\" data-id='" . $row['id'] . "'><i class='fa fa-search'></i> View</a></td>
-                            <td>₹ " . number_format($row['price'], 2) . "</td>
-                            <td><s>₹ " . number_format($row['old_price'], 2) . "</s></td>
-
+                            <td>₹  " . number_format($row['price'], 2) . "</td>
+                            <td><s>₹  " . number_format($row['old_price'], 2) . "</s></td>
                             <td>" . $row['discount'] . "</td>  
                             <td>" . $row['color'] . "</td>
                             <td>" . $row['brand'] . "</td>
                             <td>" . $row['size'] . "</td>
-
                             <td>" . $counter . "</td>
                             <td>
                               <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
@@ -155,6 +152,7 @@ if (isset($_GET['category'])) {
 
   </div>
   <!-- ./wrapper -->
+  <span id="a-plus"><a href="#addnew" data-toggle="modal" id="addproduct"><i class="fa fa-plus"></i></a></span>
 
   <?php include 'includes/scripts.php'; ?>
   <script>

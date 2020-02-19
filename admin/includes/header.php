@@ -187,5 +187,44 @@ folder instead of downloading all of them to reduce the load. -->
             height: 100%;
             border-radius: 5px;
         }
+
+        #a-plus {
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            box-sizing: content-box;
+        }
+
+        #a-plus i {
+            position: absolute;
+            top: 30%;
+            left: 33%;
+            font-size: 29px;
+            background: -webkit-linear-gradient(hotpink, steelblue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #dropdown-arrow:after {
+            content: "";
+            position: absolute;
+            top: -14px;
+            right: 3px;
+            border-top: none;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid #2a2440;
+        }
+
+        @media (max-width: 991px) {
+            .content-header>.breadcrumb {
+                background: none;
+            }
+        }
     </style>
 </head>

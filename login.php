@@ -158,6 +158,34 @@ if (isset($_SESSION['user'])) {
         width: 100%;
       }
     }
+
+
+    .buttonInside {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    input {
+      height: 25px;
+      width: 100%;
+      padding-left: 10px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+    }
+
+
+    #showPassword2 {
+      position: absolute;
+      right: 0px;
+      top: 4px;
+      border: none;
+      border-radius: 100%;
+      outline: none;
+      text-align: center;
+      font-weight: bold;
+      padding: 2px;
+    }
   </style>
 
   <body>
@@ -189,11 +217,10 @@ if (isset($_SESSION['user'])) {
               <input type="email" class="form-control" name="email" placeholder="Email *" required>
               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-            <div class="form-group has-feedback" data-validate="Password is required">
-              <input type="password" class="form-control" name="password" placeholder="Password *" required>
-              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <div class="buttonInside">
+              <input placeholder="Enter Password" name="password" placeholder="Password" type="password" required>
+              <span id="showPassword2"><i class="fa fa-eye" onclick="myFunction(this)" aria-hidden="true"></i></span>
             </div>
-
             <div class="row">
               <div class="col-xs-12">
                 <button type="submit" name="login"><i class="fa fa-sign-in"></i> Sign In</button>
@@ -205,5 +232,23 @@ if (isset($_SESSION['user'])) {
           </form>
         </div>
       </div>
+      <?php include 'includes/scripts.php' ?>
+
+      <script>
+        function myFunction(x) {
+          x.classList.toggle("fa-eye-slash");
+        }
+      </script>
+
+      <script>
+        // preview and hide password
+        $("#showPassword2").click(function() {
+          var foo1 = $(this).prev().attr("type");
+          if (foo1 == "password") {
+            $(this).prev().attr("type", "text");
+          } else {
+            $(this).prev().attr("type", "password");
+          }
+        });
+      </script>
   </body>
-  <?php include 'includes/scripts.php' ?>

@@ -1,6 +1,19 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 
+<head>
+  <style>
+    #plus {
+      position: relative;
+      left: 46%;
+      font-size: 31px;
+      background: -webkit-linear-gradient(hotpink, steelblue);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+  </style>
+</head>
+
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
@@ -45,28 +58,53 @@
           unset($_SESSION['success']);
         }
         ?>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="panel">
+                <div class="panel panel-header" style="padding:10px">
+                  <h4>Top Banner</h4>
+                </div>
+                <a href="#addbanner" data-toggle="modal">
+                  <div class="panel panel-body">
+                    <i class="fa fa-plus" id="plus"></i>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel">
+                <div class="panel panel-header">
+                  <h4>Banner</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
         <div class="row">
           <div class="col-xs-12">
             <div class="box">
-              <div class="box-header with-border">
-                <a href="#addnew" data-toggle="modal" class="btn btn-success " style="padding:10px"><i class="fa fa-plus"></i> New</a>
-              </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
                   <thead>
+                    <th>Image</th>
                     <th>Category Name</th>
                     <th>Tools</th>
                   </thead>
                   <tbody>
                     <?php
                     $conn = $pdo->open();
-
                     try {
                       $stmt = $conn->prepare("SELECT * FROM category");
                       $stmt->execute();
                       foreach ($stmt as $row) {
+                        $image = (!empty($row['photo']) ? '../images/category/' . $row['photo'] . '' : '../images/noimage.jpg');
                         echo "
                           <tr>
+                          <td><img src=" . $image . " class='img-circle' width='40px' height='40px'>
+                          <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:white'></i></a></span>
+                          </td>
                             <td>" . $row['name'] . "</td>
                             <td>
                               <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
@@ -88,12 +126,12 @@
           </div>
         </div>
       </section>
-
     </div>
     <?php include 'includes/footer.php'; ?>
     <?php include 'includes/category_modal.php'; ?>
 
   </div>
+  <a href="#addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
   <!-- ./wrapper -->
 
   <?php include 'includes/scripts.php'; ?>
@@ -109,6 +147,12 @@
       $(document).on('click', '.delete', function(e) {
         e.preventDefault();
         $('#delete').modal('show');
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+      $(document).on('click', '.photo', function(e) {
+        e.preventDefault();
         var id = $(this).data('id');
         getRow(id);
       });
@@ -130,6 +174,16 @@
         }
       });
     }
+
+    $.ajax({
+      type: 'POST',
+      url: 'category_fetch.php',
+      dataType: 'json',
+      success: function(response) {
+        $('#category1').append(response);
+        $('#edit_category').append(response);
+      }
+    });
   </script>
 </body>
 

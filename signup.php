@@ -135,13 +135,56 @@
     }
 
   }
-</style>
+
+  .buttonInside {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  input {
+    height: 25px;
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+  }
+
+
+  #showPassword {
+    position: absolute;
+    right: 0px;
+    top: 4px;
+    border: none;
+    border-radius: 100%;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 2px;
+  }
+
+  #showPassword1 {
+    position: absolute;
+    right: 0px;
+    top: 4px;
+    border: none;
+    border-radius: 100%;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 2px;
+  }
+
+  #showPassword1:hover {
+    cursor: pointer;
+  }
 </style>
 <?php include 'includes/session.php'; ?>
 <?php
 if (isset($_SESSION['user'])) {
   header('location: cart_view.php');
 }
+
 if (isset($_SESSION['captcha'])) {
   $now = time();
   if ($now >= $_SESSION['captcha']) {
@@ -149,6 +192,7 @@ if (isset($_SESSION['captcha'])) {
   }
 }
 ?>
+
 <?php include 'includes/header.php'; ?>
 
 <body>
@@ -188,28 +232,32 @@ if (isset($_SESSION['captcha'])) {
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           <span id="user-availability-status1" style="font-size:12px;"></span>
         </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="password" placeholder="Password" required>
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="repassword" placeholder="Retype password" required>
-          <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-        </div>
-        <?php
-        if (!isset($_SESSION['captcha'])) {
-          echo '
-                <div style="width:100%;">
-                  <div class="g-recaptcha" data-sitekey="6LevO1IUAAAAAFX5PpmtEoCxwae-I8cCQrbhTfM6"></div>
-                </div>
-              ';
-        }
-        ?>
 
+        <div class="buttonInside">
+          <input placeholder="Password" name="password" placeholder="Password" type="password" required>
+          <span id="showPassword"><i class="fa fa-eye" onclick="myFunction(this)" aria-hidden="true"></i></span>
+        </div>
+
+        <div class="buttonInside">
+          <input placeholder="Retype Password" name="repassword" placeholder="Retype Password" type="password" required>
+          <span id="showPassword1"><i class="fa fa-eye" onclick="myFunction(this)" aria-hidden="true"></i></span>
+        </div>
+
+        <div class="container text-center" style="padding:10px">
+          <?php
+          if (!isset($_SESSION['captcha'])) {
+            echo '
+                      <di class="form-group" style="width:100%;">
+                        <div class="g-recaptcha" data-sitekey="6LevO1IUAAAAAFX5PpmtEoCxwae-I8cCQrbhTfM6"></div>
+                      </di>
+                    ';
+          }
+          ?>
+        </div>
 
         <div class="row">
           <div class="col-xs-12">
-            <button type="submit" class="form-group" name="signup"><i class="fa fa-pencil"></i> Sign Up</button>
+            <button type="submit" class="btn btn-success" name="signup"><i class="fa fa-pencil"></i> Sign Up</button>
           </div>
         </div>
       </form>
@@ -232,6 +280,33 @@ if (isset($_SESSION['captcha'])) {
         error: function() {}
       });
     }
+  </script>
+
+  <script>
+    function myFunction(x) {
+      x.classList.toggle("fa-eye-slash");
+    }
+  </script>
+  <script>
+    // preview and hide password
+    $("#showPassword").click(function() {
+      var foo = $(this).prev().attr("type");
+      if (foo == "password") {
+        $(this).prev().attr("type", "text");
+      } else {
+        $(this).prev().attr("type", "password");
+      }
+    });
+
+    // preview and hide repassword
+    $("#showPassword1").click(function() {
+      var foo = $(this).prev().attr("type");
+      if (foo == "password") {
+        $(this).prev().attr("type", "text");
+      } else {
+        $(this).prev().attr("type", "password");
+      }
+    });
   </script>
 </body>
 

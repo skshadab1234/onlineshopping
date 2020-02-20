@@ -80,13 +80,54 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <div class="box">
+            <div class="box" style="background: #fff;color:#000">
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
+                  <thead>
+                    <th>Image</th>
+                    <th>URL</th>
+                    <th>Category</th>
+                    <th>Tools</th>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $conn = $pdo->open();
+                    try {
+                      $stmt = $conn->prepare("SELECT * FROM category_banner");
+                      $stmt->execute();
+                      foreach ($stmt as $row) {
+                        $image = (!empty($row['photo']) ? '../images/cat_banner/' . $row['photo'] . '' : '../images/noimage.jpg');
+                        echo "
+                          <tr>
+                          <td><img src=" . $image . " class='img-circle' width='40px' height='40px'>
+                          <span class='pull-right'><a href='#edit_photo1' class='photo1' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:#000'></i></a></span>
+                          </td>
+                            <td>" . $row['url'] . "</td>
+                            <td>" . $row['type'] . "</td>
+                            <td>
+                              <button class='btn btn-success btn-sm edit1 btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete1 btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    } catch (PDOException $e) {
+                      echo $e->getMessage();
+                    }
+
+                    $pdo->close();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="box-body">
+                <table id="example4" class="table table-bordered">
                   <thead>
                     <th>Image</th>
                     <th>Category Name</th>
@@ -129,6 +170,8 @@
     </div>
     <?php include 'includes/footer.php'; ?>
     <?php include 'includes/category_modal.php'; ?>
+    <?php include 'includes/category_banner_modal.php'; ?>
+
 
   </div>
   <a href="#addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
@@ -159,6 +202,29 @@
 
     });
 
+    $(function() {
+      $(document).on('click', '.edit1', function(e) {
+        e.preventDefault();
+        $('#edit1').modal('show');
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+      $(document).on('click', '.delete1', function(e) {
+        e.preventDefault();
+        $('#delete1').modal('show');
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+      $(document).on('click', '.photo1', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+    });
+
     function getRow(id) {
       $.ajax({
         type: 'POST',
@@ -173,6 +239,20 @@
           $('.catname').html(response.name);
         }
       });
+
+      $.ajax({
+        type: 'POST',
+        url: 'category_banner_row.php',
+        data: {
+          id: id
+        },
+        dataType: 'json',
+        success: function(response) {
+          $('.catidbanner').val(response.id);
+          $('.bannername').html(response.url);
+
+        }
+      });
     }
 
     $.ajax({
@@ -182,6 +262,17 @@
       success: function(response) {
         $('#category1').append(response);
         $('#edit_category').append(response);
+      }
+    });
+
+
+    $.ajax({
+      type: 'POST',
+      url: 'category_banner_fetch.php',
+      dataType: 'json',
+      success: function(response) {
+        $('#category2').append(response);
+        $('#edit_category2').append(response);
       }
     });
   </script>

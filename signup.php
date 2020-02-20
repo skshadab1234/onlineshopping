@@ -200,7 +200,7 @@ if (isset($_SESSION['captcha'])) {
     <h4 style="color: #000;font-size: 25px;padding-top: 50px;text-transform: uppercase;letter-spacing: 1px;font-weight:bolder;margin: auto;">Create Account</h4>
     <?php
     if (isset($_SESSION['error'])) {
-      echo "
+      echo " 
           <div class='callout callout-danger text-center'>
             <p>" . $_SESSION['error'] . "</p> 
           </div>

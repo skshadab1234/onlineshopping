@@ -68,7 +68,7 @@ folder instead of downloading all of them to reduce the load. -->
         .box {
             border-radius: 3px;
             color: white;
-            border: 1px solid white;
+            border: 1px solid #000;
             background: none;
         }
 

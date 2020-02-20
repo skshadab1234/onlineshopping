@@ -33,11 +33,33 @@ $pdo->close();
         <section class="content">
           <div class="row">
             <div class="col-sm-12" style="padding:0px">
-              <div class="container-fluid">
+              <div class="container-fluid" style="margin:10px">
                 <img src="images/banner/priceinclusive.webp" alt="">
                 <?php
+                $conn = $pdo->open();
+                try {
+                  $stmt = $conn->prepare("SELECT * FROM category_banner WHERE type = :catid");
+                  $stmt->execute(['catid' => $catid]);
+                  foreach ($stmt as $row) {
+                    $image = (!empty($row['photo'])) ? 'images/cat_banner/' . $row['photo'] : 'images/noimage.jpg';
+                ?>
+                    <div style="width:100%;">
+                      <?php echo "<a href=" . $row['url'] . "><img src='" . $image . "' class=\"img-responsive\" width='100%'></a> "; ?>
+                    </div>
+                <?php echo "
+  ";
+                  }
+                } catch (PDOException $e) {
+                  echo "There is some problem in connection: " . $e->getMessage();
+                }
+                $pdo->close();
 
                 ?>
+
+                <div class="container-fluid" style="padding:20px">
+                  <h4 class="mens" style="font-family:calibri;letter-spacing:2px;margin:0;line-height:40px">#featured </h4>
+                  <p style="font-family:calibri;">Sunny Days and sizzling looks are here again!</p>
+                </div>
               </div>
             </div>
           </div>

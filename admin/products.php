@@ -114,7 +114,7 @@ if (isset($_GET['category'])) {
                             <td style=\"white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:30px \">" . $row['name'] . " - " . $row['id'] . "</td>
                             <td>
                               <img src='" . $image . "' height='30px' class='img-circle' width='30px'>
-                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:white'></i></a></span>
+                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
                             <td><a href='#description' data-toggle='modal' class='btn btn-success desc' style=\"line-height:40px\" data-id='" . $row['id'] . "'><i class='fa fa-search'></i> View</a></td>
                             <td>₹  " . number_format($row['price'], 2) . "</td>

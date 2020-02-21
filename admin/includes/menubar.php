@@ -18,8 +18,9 @@
       <li><a href="sales.php"><i class="fa fa-money"></i> <span>Sales</span></a></li>
       <li class="header" style="background: #1a1336;color: white">MANAGE</li>
       <li><a href="users.php"><i class="fa fa-users"></i> <span>Users</span></a></li>
+      <li><a href="category.php"><i class="fa fa-list-alt"></i> <span> Category </span></a></li>
+      <li><a href="subcategory.php"><i class="fa fa-sticky-note-o"></i> <span> Sub Category</a></span></li>
       <li><a href="slider.php"><i class="fa fa-slideshare"></i> <span>Manage Slides</span></a></li>
-
       <li class="treeview">
         <a href="#">
           <i class="fa fa-barcode"></i>
@@ -30,8 +31,6 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="products.php"><i class="fa fa-circle-o"></i> Product List</a></li>
-          <li><a href="category.php"><i class="fa fa-circle-o"></i> Category</a></li>
-          <li><a href="subcategory.php"><i class="fa fa-circle-o"></i> Sub Category</a></li>
 
         </ul>
       </li>

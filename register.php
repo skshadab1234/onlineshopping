@@ -89,12 +89,10 @@ Ecomm Customer — Customer Number: 7021918970
 </div>
 </div>
 ";
-
-
         require_once "vendor/autoload.php";
         $mail = new PHPMailer;
         //Enable SMTP debugging. 
-        $mail->SMTPDebug = 3;
+        $mail->SMTPDebug = 0;
         //Set PHPMailer to use SMTP.
         $mail->isSMTP();
         //Set SMTP host name                          
@@ -126,12 +124,11 @@ Ecomm Customer — Customer Number: 7021918970
         }
       } catch (PDOException $e) {
         $_SESSION['error'] = $e->getMessage();
-        header('location: signup.php');
       }
       $pdo->close();
     }
   }
 } else {
   $_SESSION['error'] = 'Fill up signup form first';
-  header('location: signup.php');
 }
+header('location: signup.php');

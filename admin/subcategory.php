@@ -68,7 +68,7 @@
                                                 echo "
                           <tr>
                           <td><img src='" . $image . "' class='img-circle' width='40px' height='40px'>
-                          <span class='pull-right'><a href='#edit_photosub' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:white'></i></a></span>
+                          <span class='pull-right'><a href='#edit_photosub' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' ></i></a></span>
                           </td>
                             <td>" . $row['name'] . "</td>
                             <td>" . $row['type'] . "</td>

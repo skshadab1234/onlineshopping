@@ -28,43 +28,33 @@ $pdo->close();
   <div class="wrapper">
     <?php include 'includes/sidenav.php' ?>
     <div class="content-wrapper" style="background:#fff">
-      <div class="container-fluid">
-        <!-- Main content -->
-        <section class="content">
-          <div class="row">
-            <div class="col-sm-12" style="padding:0px">
-              <div class="container-fluid" style="margin:10px">
-                <img src="images/banner/priceinclusive.webp" alt="">
-                <?php
-                $conn = $pdo->open();
-                try {
-                  $stmt = $conn->prepare("SELECT * FROM category_banner WHERE type = :catid");
-                  $stmt->execute(['catid' => $catid]);
-                  foreach ($stmt as $row) {
-                    $image = (!empty($row['photo'])) ? 'images/cat_banner/' . $row['photo'] : 'images/noimage.jpg';
-                ?>
-                    <div style="width:100%;">
-                      <?php echo "<a href=" . $row['url'] . "><img src='" . $image . "' class=\"img-responsive\" width='100%'></a> "; ?>
-                    </div>
-                <?php echo "
+      <!-- Main content -->
+      <section class="content" style="padding: 0">
+        <img src="images/banner/priceinclusive.webp" alt="">
+        <?php
+        $conn = $pdo->open();
+        try {
+          $stmt = $conn->prepare("SELECT * FROM category_banner WHERE type = :catid");
+          $stmt->execute(['catid' => $catid]);
+          foreach ($stmt as $row) {
+            $image = (!empty($row['photo'])) ? 'images/cat_banner/' . $row['photo'] : 'images/noimage.jpg';
+        ?>
+            <?php echo "<a href=" . $row['url'] . "><img src='" . $image . "' class=\"img-fluid\" width='100%'></a> "; ?>
+        <?php echo "
   ";
-                  }
-                } catch (PDOException $e) {
-                  echo "There is some problem in connection: " . $e->getMessage();
-                }
-                $pdo->close();
+          }
+        } catch (PDOException $e) {
+          echo "There is some problem in connection: " . $e->getMessage();
+        }
+        $pdo->close();
 
-                ?>
+        ?>
 
-                <div class="container-fluid" style="padding:20px">
-                  <h4 class="mens" style="font-family:calibri;letter-spacing:2px;margin:0;line-height:40px">#featured </h4>
-                  <p style="font-family:calibri;">Sunny Days and sizzling looks are here again!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+        <div class="container-fluid" style="padding:20px;position:relative">
+          <h4 class="mens" style="font-family:calibri;letter-spacing:2px;margin:0;line-height:20px;">#featured </h4>
+          <h6 style="font-family:sans-serif;color:lightgray;position:absolute;top: 39px;left: 34px;">Sunny Days and sizzling looks are here again!</h6>
+        </div>
+      </section>
 
       <div id="mobilefilter">
         <a href="" data-toggle="modal" data-target="#filter"><i class="fa fa-filter"></i> Filter</a>

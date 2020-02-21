@@ -12,7 +12,6 @@
           <input type="hidden" class="userid" name="id">
           <div class="form-group">
             <label for="product" class="col-sm-3 control-label">Product</label>
-
             <div class="col-sm-9">
               <select class="form-control select2" style="width: 100%;" name="product" id="product" required>
                 <option value="" selected>- Select -</option>

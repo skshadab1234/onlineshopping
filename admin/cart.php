@@ -64,8 +64,8 @@ if (!isset($_GET['user'])) {
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header with-border">
-                <a href="#addnew" data-toggle="modal" id="add" data-id="<?php echo $user['id']; ?>" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
-                <a href="users.php" class="btn btn-sm btn-primary btn-flat"><i class="fa fa-arrow-left"></i> Users</a>
+                <a href="#addnew" data-toggle="modal" id="add" data-id="<?php echo $user['id']; ?>"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> New</button></a>
+                <a href="users.php" class="btn btn-sm btn-primary btn-flat"> <button class="btn btn-success btn-sm btn-flat"><i class="fa fa-arrow-left"></i> Users</button></a>
               </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">

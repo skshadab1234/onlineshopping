@@ -62,17 +62,17 @@
                     $conn = $pdo->open();
 
                     try {
-                      $stmt = $conn->prepare("SELECT * FROM users WHERE type=:type");
-                      $stmt->execute(['type' => 0]);
+                      $stmt = $conn->prepare("SELECT * FROM users where status=:status");
+                      $stmt->execute(['status' => 1]);
                       foreach ($stmt as $row) {
                         $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
                         $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
-                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="' . $row['id'] . '"><i class="fa fa-check-square-o" style="color:white"></i></a></span>' : '';
+                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="' . $row['id'] . '"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
                           <tr>
                             <td>
                               <img src='" . $image . "' height='30px' class='img-circle' width='30px'>
-                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:white'></i></a></span>
+                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
                             <td>" . $row['email'] . "</td>
                             <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
@@ -99,8 +99,56 @@
                 </table>
               </div>
             </div>
+
+            <div class="box table-responsive text-nowrap">
+              <div class="box-header">
+                <h3>NOT VERIFIED USERS</h3>
+              </div>
+              <div class=" box-body">
+                <table id="example2" class="table table-bordered">
+                  <thead>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Date Added</th>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $conn = $pdo->open();
+
+                    try {
+                      $stmt = $conn->prepare("SELECT * FROM users WHERE status=:status");
+                      $stmt->execute(['status' => 0]);
+                      foreach ($stmt as $row) {
+                        $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
+                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
+                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="' . $row['id'] . '"><i class="fa fa-check-square-o"></i></a></span>' : '';
+                        echo "
+                          <tr>
+                            <td>" . $row['email'] . "</td>
+                            <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
+                            <td>
+                              " . $status . "
+                              " . $active . "
+                            </td>
+                            <td>" . date('M d, Y', strtotime($row['created_on'])) . "</td>
+                          </tr>
+                        ";
+                      }
+                    } catch (PDOException $e) {
+                      echo $e->getMessage();
+                    }
+
+                    $pdo->close();
+                    ?>
+                  </tbody>
+                </table>
+                <div class="text-center">
+                  <a href="user_noactive_mail.php"><i class='fa fa-send'></i> SEND MAIL To all not verified Users</a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
       </section>
 
     </div>
@@ -109,7 +157,7 @@
 
   </div>
   <!-- ./wrapper -->
-  <a href="#addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
+  <a href=" #addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
   <?php include 'includes/scripts.php'; ?>
   <script>
     $(function() {

@@ -1,35 +1,35 @@
 <?php
-	include 'includes/session.php';
-	$conn = $pdo->open();
+include 'includes/session.php';
+$conn = $pdo->open();
 
-	$output = '';
+$output = '';
 
-	if (isset($_SESSION['user'])) {
-		if (isset($_SESSION['cart'])) {
-			foreach ($_SESSION['cart'] as $row) {
-				$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM cart WHERE user_id=:user_id AND product_id=:product_id");
-				$stmt->execute(['user_id' => $user['id'], 'product_id' => $row['productid']]);
-				$crow = $stmt->fetch();
-				if ($crow['numrows'] < 1) {
-					$stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (:user_id, :product_id, :quantity)");
-					$stmt->execute(['user_id' => $user['id'], 'product_id' => $row['productid'], 'quantity' => $row['quantity']]);
-				} else {
-					$stmt = $conn->prepare("UPDATE cart SET quantity=:quantity WHERE user_id=:user_id AND product_id=:product_id");
-					$stmt->execute(['quantity' => $row['quantity'], 'user_id' => $user['id'], 'product_id' => $row['productid']]);
-				}
+if (isset($_SESSION['user'])) {
+	if (isset($_SESSION['cart'])) {
+		foreach ($_SESSION['cart'] as $row) {
+			$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM cart WHERE user_id=:user_id AND product_id=:product_id");
+			$stmt->execute(['user_id' => $user['id'], 'product_id' => $row['productid']]);
+			$crow = $stmt->fetch();
+			if ($crow['numrows'] < 1) {
+				$stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (:user_id, :product_id, :quantity)");
+				$stmt->execute(['user_id' => $user['id'], 'product_id' => $row['productid'], 'quantity' => $row['quantity']]);
+			} else {
+				$stmt = $conn->prepare("UPDATE cart SET quantity=:quantity WHERE user_id=:user_id AND product_id=:product_id");
+				$stmt->execute(['quantity' => $row['quantity'], 'user_id' => $user['id'], 'product_id' => $row['productid']]);
 			}
-			unset($_SESSION['cart']);
 		}
+		unset($_SESSION['cart']);
+	}
 
-		try {
-			$total = 0;
-			$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
-			$stmt->execute(['user' => $user['id']]);
-			foreach ($stmt as $row) {
-				$image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
-				$subtotal = $row['price'] * $row['quantity'];
-				$total += $subtotal;
-				$output .= "
+	try {
+		$total = 0;
+		$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
+		$stmt->execute(['user' => $user['id']]);
+		foreach ($stmt as $row) {
+			$image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
+			$subtotal = $row['price'] * $row['quantity'];
+			$total += $subtotal;
+			$output .= "
 				<div class='container-fluid' style='margin-top:10px	;'>
 				<div class='row'>
 					<div class='col-xs-4'>
@@ -60,37 +60,37 @@
 				</div>
 				</div>
 	";
-			}
-			if ($total * 71.50 >= 10000) {
-				$output .= "
+		}
+		if ($total * 71.50 >= 10000) {
+			$output .= "
 				<h5>Free Delivery</h5>				
 				";
-			}
+		}
 
-			if ($total == 0) {
-				$output .= "	
+		if ($total == 0) {
+			$output .= "	
 				<div style='margin: 50% auto;'>
 				<a href='index.php'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
 			</div>";
-			}
-
-
-			$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
-		} catch (PDOException $e) {
-			$output .= $e->getMessage();
 		}
-	} else {
-		if (count($_SESSION['cart']) != 0) {
-			$total = 0;
-			foreach ($_SESSION['cart'] as $row) {
-				$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
-				$stmt->execute(['id' => $row['productid']]);
-				$product = $stmt->fetch();
-				$image = (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg';
-				$subtotal = $product['price'] * $row['quantity'];
-				$total += $subtotal;
-				$output .= "<div class=\"container-fluid\" style='margin:10px;'>
+
+
+		$output .= "
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
+	} catch (PDOException $e) {
+		$output .= $e->getMessage();
+	}
+} else {
+	if (count($_SESSION['cart']) != 0) {
+		$total = 0;
+		foreach ($_SESSION['cart'] as $row) {
+			$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
+			$stmt->execute(['id' => $row['productid']]);
+			$product = $stmt->fetch();
+			$image = (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg';
+			$subtotal = $product['price'] * $row['quantity'];
+			$total += $subtotal;
+			$output .= "<div class=\"container-fluid\" style='margin:10px;'>
 				<div class='row'>
 					<div class='col-xs-4'>
 						<img src='" . $image . "' class=\"img-responsive\">
@@ -119,20 +119,16 @@
 				</div>
 			</div>
 		</div>";
-			}
-			$output .= "
+		}
+		$output .= "
 			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
-		} else {
-			$output .= "
+	} else {
+		$output .= "
 	<div class=\"container-fluid\" align=\"center\"><img src=\"images/cartempty.png\" class=\"img-responsive\" width='550px' height='500px'>
 	</div>
 	";
-		}
 	}
+}
 
-	$pdo->close();
-	echo json_encode($output);
-
-	?>
-
-	
+$pdo->close();
+echo json_encode($output);

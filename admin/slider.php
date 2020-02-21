@@ -30,10 +30,6 @@
 
 
           <section class="content" style="color: white;letter-spacing: 2px">
-
-
-
-
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">

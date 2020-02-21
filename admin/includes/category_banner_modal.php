@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="url" class="col-sm-3 control-label">url</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="url">
+                            <input type="text" class="form-control" id="edit_banner_name" name="url">
                         </div>
                     </div>
             </div>

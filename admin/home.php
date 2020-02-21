@@ -83,7 +83,7 @@ $conn = $pdo->open();
               </div>
 
               <div class="icon">
-                <i class="fa fa-shopping-cart"></i>
+                <i class="fa fa-shopping-bag"></i>
               </div>
               <a href="book.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -104,7 +104,7 @@ $conn = $pdo->open();
                 <p>Number of Products</p>
               </div>
               <div class="icon">
-                <i class="fa fa-barcode"></i>
+                <i class="fa fa-sort"></i>
               </div>
               <a href="student.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -115,8 +115,8 @@ $conn = $pdo->open();
             <div class="small-box bg-aqua">
               <div class="inner">
                 <?php
-                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users");
-                $stmt->execute();
+                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users where type =:type");
+                $stmt->execute(['type' => 0]);
                 $urow =  $stmt->fetch();
 
                 echo "<h3>" . $urow['numrows'] . "</h3>";
@@ -136,27 +136,17 @@ $conn = $pdo->open();
             <div class="small-box bg-red">
               <div class="inner">
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN sales ON sales.id=details.sales_id LEFT JOIN products ON products.id=details.product_id WHERE sales_date=:sales_date");
-                $stmt->execute(['sales_date' => $today]);
-
-                $total = 0;
-                foreach ($stmt as $trow) {
-                  $subtotal = $trow['price'] * $trow['quantity'];
-                  $total += $subtotal;
-                  $order = $total * ($trow['old_price'] - $trow['price']) /  100;
-                  $order1 = $total - $order;
-                  $delivery = 15.00;
-                  $delivery1 = $order1 + $delivery;
-                }
-
-                echo "<h3>₹ " . number_format_short($delivery1, 2) . "</h3>";
+                $stmt = $conn->prepare("SELECT COUNT(*) As numrows FROM users where type=:type");
+                $stmt->execute(['type' => 2]);
+                $drow = $stmt->fetch();
+                echo "<h3>" . $drow['numrows'] . "</h3>";
 
                 ?>
 
-                <p>Sales Today</p>
+                <p>Number Of DeliveryBoy</p>
               </div>
               <div class="icon">
-                <i class="fa fa-money"></i>
+                <i class="fa fa-truck"></i>
               </div>
               <a href="borrow.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -274,9 +264,9 @@ $conn = $pdo->open();
           data: <?php echo $sales; ?>
         }]
       }
-      //barChartData.datasets[1].fillColor   = '#00a65a'
-      //barChartData.datasets[1].strokeColor = '#00a65a'
-      //barChartData.datasets[1].pointColor  = '#00a65a'
+      // barChartData.datasets[1].fillColor = '#00a65a',
+      //   barChartData.datasets[1].strokeColor = '#00a65a',
+      //   barChartData.datasets[1].pointColor = '#00a65a'
       var barChartOptions = {
         //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
         scaleBeginAtZero: true,

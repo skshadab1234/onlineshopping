@@ -67,10 +67,9 @@ folder instead of downloading all of them to reduce the load. -->
 
         .box {
             border-radius: 3px;
-            color: white;
-            border: 1px solid #000;
-            background: none;
+            border: none;
         }
+
 
         th,
         td {
@@ -198,6 +197,7 @@ folder instead of downloading all of them to reduce the load. -->
             width: 30px;
             height: 30px;
             box-sizing: content-box;
+            z-index: 999999;
         }
 
         #a-plus i {

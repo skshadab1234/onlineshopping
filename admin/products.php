@@ -226,10 +226,7 @@ if (isset($_GET['category'])) {
           $('#edit_discount').val(response.proddiscount);
           $('#edit_color').val(response.prodcolor);
           $('#edit_size').val(response.size);
-
           $('#edit_brand').val(response.prodbrand);
-
-
           CKEDITOR.instances["editor2"].setData(response.description);
           getCategory();
         }

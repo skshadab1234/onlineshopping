@@ -29,7 +29,6 @@
         </h1>
         <ol class="breadcrumb">
           <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li style="color: white">Products</li>
           <li class="active" style="color: white">Category</li>
         </ol>
       </section>
@@ -60,23 +59,16 @@
         ?>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
               <div class="panel">
-                <div class="panel panel-header" style="padding:10px">
-                  <h4>Top Banner</h4>
+                <div class="panel panel-header">
+                  <h4 class="bold" style="padding-left: 10px">Add Banner</h4>
                 </div>
                 <a href="#addbanner" data-toggle="modal">
                   <div class="panel panel-body">
                     <i class="fa fa-plus" id="plus"></i>
                   </div>
                 </a>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="panel">
-                <div class="panel panel-header">
-                  <h4>Banner</h4>
-                </div>
               </div>
             </div>
           </div>

@@ -91,6 +91,15 @@ folder instead of downloading all of them to reduce the load. -->
             background: red;
         }
 
+        .input-group .form-control:last-child,
+        .input-group-addon:last-child,
+        .input-group-btn:first-child>.btn-group:not(:first-child)>.btn,
+        .input-group-btn:first-child>.btn:not(:first-child),
+        .input-group-btn:last-child>.btn,
+        .input-group-btn:last-child>.btn-group>.btn,
+        .input-group-btn:last-child>.dropdown-toggle {
+            color: #323232;
+        }
 
         .btn-success,
         #quickview,

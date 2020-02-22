@@ -66,7 +66,7 @@ $conn = $pdo->open();
                 <?php
                 $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id");
                 $stmt->execute();
-
+                $delivery1 = 0;
                 $total = 0;
                 foreach ($stmt as $srow) {
                   $subtotal = $srow['price'] * $srow['quantity'];

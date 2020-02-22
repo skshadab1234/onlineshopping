@@ -475,7 +475,6 @@
             .slider,
             .slider>div {
                 max-height: 300px;
-                margin-top: 29px;
             }
 
             .slider img {

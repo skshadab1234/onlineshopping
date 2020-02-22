@@ -12,11 +12,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header" style="color: white">
                 <h1>
-                    Sub Category
+                    DeliveryBoy
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active" style="color: white">Sub Category</li>
+                    <li><a href="home.php" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active" style="color: white">DeliveryBoy</li>
                 </ol>
             </section>
 
@@ -46,13 +46,15 @@
                 ?>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="box  table-responsive text-nowrap">
+                        <div class="box table-responsive text-nowrap">
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered">
                                     <thead>
-                                        <th>Image</th>
-                                        <th>Sub Category Name</th>
-                                        <th>Type</th>
+                                        <th>Photo</th>
+                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Date Added</th>
                                         <th>Tools</th>
                                     </thead>
                                     <tbody>
@@ -60,20 +62,29 @@
                                         $conn = $pdo->open();
 
                                         try {
-                                            $stmt = $conn->prepare("SELECT * FROM subcategory");
-                                            $stmt->execute();
+                                            $stmt = $conn->prepare("SELECT * FROM users where type=:type");
+                                            $stmt->execute(['type' => 2]);
                                             foreach ($stmt as $row) {
-                                                $image = (!empty($row['photo'])) ? '../images/subcategory/' . $row['photo'] : '../images/noimage.jpg';
+                                                $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
+                                                $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
+                                                $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="' . $row['id'] . '"><i class="fa fa-check-square-o"></i></a></span>' : '';
                                                 echo "
                           <tr>
-                          <td><img src='" . $image . "' class='img-circle' width='40px' height='40px'>
-                          <span class='pull-right'><a href='#edit_photosub' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' ></i></a></span>
-                          </td>
-                            <td>" . $row['name'] . "</td>
-                            <td>" . $row['type'] . "</td>
                             <td>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+                              <img src='" . $image . "' height='30px' class='img-circle' width='30px'>
+                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i></a></span>
+                            </td>
+                            <td>" . $row['email'] . "</td>
+                            <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
+                            <td>
+                              " . $status . "
+                              " . $active . "
+                            </td>
+                            <td>" . date('M d, Y', strtotime($row['created_on'])) . "</td>
+                            <td>
+                              <button id='quickview'><a href='deliveryboyassignwork.php?user=" . $row['id'] . "' style='color:white' ><i class='fa fa-truck'></i> Assign Delivery</a></button>
+                              <button class='btn btn-success btn-sm edit btn-flat'  id='quickview' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -89,20 +100,19 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
 
         </div>
         <?php include 'includes/footer.php'; ?>
-        <?php include 'includes/subcategory_modal.php'; ?>
+        <?php include 'includes/users_modal.php'; ?>
 
     </div>
     <!-- ./wrapper -->
-    <a href="#addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
-
+    <a href="#adddelivery" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
     <?php include 'includes/scripts.php'; ?>
     <script>
         $(function() {
+
             $(document).on('click', '.edit', function(e) {
                 e.preventDefault();
                 $('#edit').modal('show');
@@ -123,22 +133,31 @@
                 getRow(id);
             });
 
+            $(document).on('click', '.status', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                getRow(id);
+            });
 
         });
 
         function getRow(id) {
             $.ajax({
                 type: 'POST',
-                url: 'subcategory_row.php',
+                url: 'users_row.php',
                 data: {
                     id: id
                 },
                 dataType: 'json',
                 success: function(response) {
-                    $('.subcatid').val(response.id);
-                    $('#edit_subname').val(response.name);
-                    $('.subcatname').html(response.name);
-                    $('#edit_subtype').val(response.type);
+                    $('.userid').val(response.id);
+                    $('#edit_email').val(response.email);
+                    $('#edit_password').val(response.password);
+                    $('#edit_firstname').val(response.firstname);
+                    $('#edit_lastname').val(response.lastname);
+                    $('#edit_address').val(response.address);
+                    $('#edit_contact').val(response.contact_info);
+                    $('.fullname').html(response.firstname + ' ' + response.lastname);
                 }
             });
         }

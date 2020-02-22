@@ -15,8 +15,10 @@ mysqli_select_db($link, "ecomm");
       background: #fff;
     }
 
-    #clock2 {
-      margin-top: 10px;
+    #brandimage:hover {
+      transform: scale(1.01);
+      overflow: hidden;
+      transition: transform, 0.5s ease all;
     }
   </style>
 </head>
@@ -59,6 +61,39 @@ mysqli_select_db($link, "ecomm");
             unset($_SESSION['error']);
           }
           ?>
+
+          <div class="container-fluid text-center" style="margin-top:10px">
+            <h2 class="mens" align="center">Brands</h2>
+            <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 30px;width: 100px;border-radius: 50px"></div>
+
+            <?php
+            $conn = $pdo->open();
+            try {
+              $inc = 6;
+              $stmt = $conn->prepare("SELECT * FROM brands");
+              $stmt->execute();
+              foreach ($stmt as $row) {
+                $image = (!empty($row['brand_image'])) ? 'images/brand/' . $row['brand_image'] : 'images/noimage.jpg';
+                $inc = ($inc == 6) ? 1 : $inc + 1;
+                if ($inc == 6) echo "<div class='row'>";
+            ?>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-2">
+                  <?php echo "<a href=\"store.php?store=" . $row['brand_name'] . "\"><img src='" . $image . "' class=\"img-fluid\" id=\"brandimage\" width='250px' height='250px'></a> "; ?>
+                </div>
+
+            <?php echo "
+              ";
+                if ($inc == 6) echo "</div>";
+              }
+              if ($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
+              if ($inc == 6) echo "<div class='col-sm-3'></div></div>";
+            } catch (PDOException $e) {
+              echo "There is some problem in connection: " . $e->getMessage();
+            }
+            $pdo->close();
+            ?>
+
+          </div>
           <div class="container-fluid" id="clock2">
             <div align="center">
               <h2 class="mens" align="center">Deal of the Week </h2>
@@ -80,8 +115,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small></span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small></span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -97,8 +132,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small></span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small></span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -114,8 +149,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small></span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small></span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -131,8 +166,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small> </span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small> </span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -148,8 +183,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small> </span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small> </span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -165,8 +200,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small> </span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small> </span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -182,8 +217,8 @@ mysqli_select_db($link, "ecomm");
     </div></h1>
     ";
                       echo "<br>";
-                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">&#36; " . number_format($row['price'], 0) . " &nbsp;</span>";
-                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>&#36; " . number_format($row['old_price'], 0) . "</s></small></span>";
+                      echo "<span style=\"font-size:16px;color:red;font-weight:600\">₹  " . number_format($row['price'], 0) . " &nbsp;</span>";
+                      echo "<span style=\"color:green\"><small style=\"color:black\"><s>₹  " . number_format($row['old_price'], 0) . "</s></small></span>";
                       echo "<br>";
                       echo " <span><a style=\"color:black;font-size: 1.4rem;line-height: 1.8rem;padding: 0 0 0 5px;margin-bottom: .8rem;text-align: center;font-weight:bold\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>";
                     }
@@ -211,60 +246,6 @@ mysqli_select_db($link, "ecomm");
             //# sourceURL=pen.js
           </script>
 
-
-          <div class="container-fluid" id="brands">
-            <h2 class="mens" align="center">Styles to steal</h2>
-            <p align="center" style="margin-top: -30px;margin-bottom: 40px;font-family: sans-serif;letter-spacing: 1px">Inspired by influncers</p>
-            <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 40px;width: 100px;border-radius: 50px"></div>
-            <div class="row" style="margin-bottom: 20px">
-              <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                <a href=""><img src="images/banner/product1.jpg" style="border-radius: 10px"></a>
-              </div>
-              <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                <a href=""><img src="images/banner/product2.jpg" style="border-radius: 10px"></a>
-              </div>
-              <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                <a href=""><img src="images/banner/product3.jpg" style="border-radius: 10px"></a>
-              </div>
-              <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                <a href=""><img src="images/banner/product4.jpg" style="border-radius: 10px"></a>
-              </div>
-            </div>
-            <span class="moretext">
-              <div class="row" style="margin-bottom: 30px">
-                <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product5.jpg" style="border-radius: 10px"></a>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product6.jpg" style="border-radius: 10px"></a>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product7.jpg" style="border-radius: 10px"></a>
-                </div>
-                <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product8.jpg" style="border-radius: 10px"></a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product9.jpg" style="border-radius: 10px"></a>
-                </div>
-                <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product10.jpg" style="border-radius: 10px"></a>
-                </div>
-                <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product11.jpg" style="border-radius: 10px"></a>
-                </div>
-                <div class="col-xs-6	 col-sm-3 col-md-3 col-lg-3">
-                  <a href=""><img src="images/banner/product12.jpg" style="border-radius: 10px"></a>
-                </div>
-
-              </div>
-            </span>
-            <div class="container my-4" align="center" style="padding: 10px">
-              <button class="moreless-button">VIEW ALL</button>
-            </div>
-          </div>
           <div id="carousel3d" class="container-fluid">
             <h2 class="mens" align="center">Top Brands</h2>
             <div style="border-bottom: 5px solid #ff3f6c;margin: -10px auto;margin-bottom: 30px;width: 100px;border-radius: 50px"></div>
@@ -359,7 +340,7 @@ mysqli_select_db($link, "ecomm");
                       <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
                         <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand'] . " " ?></h5>
                         <?php echo "<a style=\"color:black\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class="text-left" style="font-size:16px"><?php echo "&#36; " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " &#36; " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                        <h5 class="text-left" style="font-size:16px"><?php echo "₹  " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " ₹  " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                       </div>
                       <div class="fav" style="position:absolute;top:20px;right:20px;">
                         <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
@@ -402,8 +383,8 @@ mysqli_select_db($link, "ecomm");
                                     <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
                                     <i class="fa fa-star-o" style="color: orange;font-size: 14px"></i>
                                     <br><br>
-                                    <span class="price" style="color: white;font-size: 20px"><?php echo "&#36; " . number_format($row['price'], 2) . ""; ?></span>&nbsp;
-                                    <small style="font-size: 14px;"><s><?php echo "&#36; " . number_format($row['old_price'], 2) . ""; ?></s></small>
+                                    <span class="price" style="color: white;font-size: 20px"><?php echo "₹  " . number_format($row['price'], 2) . ""; ?></span>&nbsp;
+                                    <small style="font-size: 14px;"><s><?php echo "₹  " . number_format($row['old_price'], 2) . ""; ?></s></small>
                                     <br>
                                     <br>
 

@@ -38,7 +38,7 @@
             <label for="category" class="col-sm-1 control-label">Category</label>
 
             <div class="col-sm-5">
-              <select class="form-control" id="category" name="category" required>
+              <select class="form-control select2" style="width: 100%;" id="category" name="category" required>
                 <option value="" selected>- Select -</option>
               </select>
             </div>

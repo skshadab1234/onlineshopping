@@ -47,9 +47,7 @@ $pdo->close();
           echo "There is some problem in connection: " . $e->getMessage();
         }
         $pdo->close();
-
         ?>
-
         <div class="container-fluid" style="padding:20px;position:relative">
           <h4 class="mens" style="font-family:calibri;letter-spacing:2px;margin:0;line-height:20px;">#featured </h4>
           <h6 style="font-family:sans-serif;color:lightgray;position:absolute;top: 39px;left: 34px;">Sunny Days and sizzling looks are here again!</h6>

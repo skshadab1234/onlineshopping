@@ -38,6 +38,6 @@
 							$_SESSION['error'] = 'Fill up user form first';
 						}
 
-						header('location: users.php');
+						header("Location: " . "http://" . $_SERVER['HTTP_HOST'] . $location);
 
 						?>

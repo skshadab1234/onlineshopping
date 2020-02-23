@@ -1,7 +1,7 @@
 <?php include 'includes/session.php'; ?>
 <?php
 if (!isset($_GET['user'])) {
-    header('location: users.php');
+    header('location: deliveryboy.php');
     exit();
 } else {
     $conn = $pdo->open();
@@ -80,19 +80,31 @@ if (!isset($_GET['user'])) {
                                         $conn = $pdo->open();
 
                                         try {
-                                            $stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
-                                            $stmt->execute(['user_id' => $user['id']]);
-                                            foreach ($stmt as $row) {
-                                                echo "
+
+                                            $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id ORDER BY sales_date DESC where users.id=:id");
+                                            $stmt->execute(['id' => $user['id']]);
+                                            foreach ($stmt as $row2) {
+                                                $stmt = $conn->prepare("SELECT *, assigndelivery.product_name AS productid FROM assigndelivery LEFT JOIN products ON products.id = assigndelivery.product_name LEFT JOIN warehouse ON warehouse.id = assigndelivery.pickup LEFT JOIN details ON details.id = assigndelivery.ship_address LEFT JOIN users ON users.id =assigndelivery.assign_to WHERE users.id =:assign_to");
+                                                $stmt->execute(['assign_to' => $user['id']]);
+                                                foreach ($stmt as $row) {
+                                                    $status = ($row['status']  == 1) ? '<span class="label label-success">Processed</span>' : '<span class="label label-danger">Not yet Processed</span>';
+                                                    echo "
 <tr>
-<td>" . $row['name'] . "</td>
-<td>" . $row['quantity'] . "</td>
-<td>
-<button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['cartid'] . "'><i class='fa fa-edit'></i> Edit Quantity</button>
-<button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['cartid'] . "'><i class='fa fa-trash'></i> Delete</button>
+<td>" . $user['firstname'] . " " . $user['lastname'] . "</td>
+<td>" . $row['name'] . " <br>
+<button type='button' style='background:none;border:none;color:steelblue;outline:none' class='transact' data-id='" . $row['productid'] . "'>View Details</button>
 </td>
+<td>" . $row['warehouse_name'] . " </td>
+<td><h5>Ship to : " . $row2['firstname'] . " " . $row2['lastname'] . ",</h5>
+<h5>" . $row['deliver_shipaddress'] . "</h5>
+<h5>" . $row['deliver_shipcity'] . "</h5>
+<h5>" . $row['deliver_shipstate'] . "</h5> 
+<h5>" . $row['deliver_shippincode'] . "</h5> 
+</td>
+<td>" . $status . "</td>
 </tr>
 ";
+                                                }
                                             }
                                         } catch (PDOException $e) {
                                             echo $e->getMessage();
@@ -111,6 +123,7 @@ if (!isset($_GET['user'])) {
         </div>
         <?php include 'includes/footer.php'; ?>
         <?php include 'includes/delivery_modal.php'; ?>
+        <?php include '../includes/profile_modal.php'; ?>
 
     </div>
     <!-- ./wrapper -->
@@ -132,6 +145,18 @@ if (!isset($_GET['user'])) {
         function getProducts(id) {
             $.ajax({
                 type: 'POST',
+                url: 'deliveryboy_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#users').append(response);
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
                 url: 'deliverorder_all.php',
                 data: {
                     id: id
@@ -141,7 +166,56 @@ if (!isset($_GET['user'])) {
                     $('#delivery').append(response);
                 }
             });
+            $.ajax({
+                type: 'POST',
+                url: 'warehouse_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#warehouse').append(response);
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: 'shipaddress_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#shipaddress').append(response);
+                }
+            });
         }
+    </script>
+    <script>
+        $(function() {
+            $(document).on('click', '.transact', function(e) {
+                e.preventDefault();
+                $('#transaction').modal('show');
+                var id = $(this).data('id');
+                $.ajax({
+                    type: 'POST',
+                    url: 'trasaction_product_detail.php',
+                    data: {
+                        id: id
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#date').html(response.date);
+                        $('#transid').html(response.transaction);
+                        $('#detail').prepend(response.list);
+                        $('#total').html(response.total);
+                    }
+                });
+            });
+
+            $("#transaction").on("hidden.bs.modal", function() {
+                $('.prepend_items').remove();
+            });
+        });
     </script>
 </body>
 

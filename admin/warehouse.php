@@ -72,6 +72,7 @@ $pdo->close();
                                         <th>City</th>
                                         <th>State</th>
                                         <th>Pincode</th>
+                                        <th>Tools</th>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -83,10 +84,14 @@ $pdo->close();
                                             foreach ($stmt as $row) {
                                                 echo "
 <tr>
-<td>" . $row['name'] . "</td>
+<td>" . $row['warehouse_name'] . "</td>
 <td>" . $row['city'] . "</td>
 <td>" . $row['state'] . "</td>
 <td>" . $row['pincode'] . "</td>
+<td>
+<button class='btn btn-success btn-sm edit btn-flat'  id='quickview' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+</td>
 
 ";
                                             }
@@ -114,6 +119,45 @@ $pdo->close();
     <a href="#adddelivery" data-toggle="modal" id="a-plus" data-id="<?php echo $row['id']; ?>"><i class="fa fa-plus"></i> </a>
 
     <?php include 'includes/scripts.php'; ?>
+    <script>
+        $(function() {
+
+            $(document).on('click', '.edit', function(e) {
+                e.preventDefault();
+                $('#edit').modal('show');
+                var id = $(this).data('id');
+                getRow(id);
+            });
+
+            $(document).on('click', '.delete', function(e) {
+                e.preventDefault();
+                $('#delete').modal('show');
+                var id = $(this).data('id');
+                getRow(id);
+            });
+
+        });
+
+        function getRow(id) {
+            $.ajax({
+                type: 'POST',
+                url: 'warehouse_row.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('.warehouseid').val(response.id);
+                    $('#edit_name').val(response.name);
+                    $('#edit_city').val(response.city);
+                    $('#edit_state').val(response.state);
+                    $('#edit_pincode').val(response.pincode);
+                    $('.warehousename').html(response.name);
+
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

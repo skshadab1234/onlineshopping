@@ -29,43 +29,48 @@
                         <div class="box-body table-responsive text-nowrap">
                             <table id="example1" class="table table-bordered">
                                 <thead>
-                                    <th class="hidden"></th>
-                                    <th>Date</th>
-                                    <th>Customer Name</th>
-                                    <th>Delivery Address</th>
-                                    <th>Full Details</th>
+                                    <th>Delivery Boy</th>
+                                    <th>Product Details</th>
+                                    <th>Source Address</th>
+                                    <th>Destinaton Address</th>
+                                    <th>Status</th>
                                 </thead>
-                                <tbody>
-                                    <?php
-                                    $conn = $pdo->open();
+                                <tbody> <?php
+                                        $conn = $pdo->open();
 
-                                    try {
-                                        $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id Where user_id=user_id");
-                                        $stmt->execute();
-                                        foreach ($stmt as $row) {
-                                            $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id   WHERE details.sales_id=:id");
-                                            $stmt->execute(['id' => $row['salesid']]);
-                                            $total = 0;
-                                            foreach ($stmt as $details) {
-                                                $subtotal = $details['price'] * $details['quantity'];
-                                                $total += $subtotal;
-                                            }
-                                            echo "
+                                        try {
+
+                                            $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id  where sales.user_id=:id");
+                                            $stmt->execute(['id' => $deliveryboy['id']]);
+                                            foreach ($stmt as $row2) {
+                                                $stmt = $conn->prepare("SELECT *, assigndelivery.product_name AS productid FROM assigndelivery LEFT JOIN products ON products.id = assigndelivery.product_name LEFT JOIN warehouse ON warehouse.id = assigndelivery.pickup LEFT JOIN details ON details.id = assigndelivery.ship_address LEFT JOIN users ON users.id =assigndelivery.assign_to WHERE users.id =:assign_to");
+                                                $stmt->execute(['assign_to' => $deliveryboy['id']]);
+                                                foreach ($stmt as $row) {
+                                                    $status = ($row['status']  == 1) ? '<span class="label label-success">Processed</span>' : '<span class="label label-danger">Not yet Processed</span>';
+                                                    echo "
 <tr>
-<td class='hidden'></td>
-<td>" . date('M d, Y', strtotime($row['sales_date'])) . "</td>
-<td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
-<td >Address: " . $row['address'] . " <br> State:  " . $row['state'] . " <br> City: " . $row['city'] . " <br> Pincode: " . $row['pincode'] . "</td>
-<td><button type='button' class='btn btn-success btn-sm btn-flat orders_pending' data-id='" . $row['id'] . "'><i class='fa fa-search'></i> View</button></td>
+<td>" . $row2['firstname'] . " " . $row2['lastname'] . "</td>
+<td>" . $row['name'] . " <br>
+<button type='button' style='background:none;border:none;color:steelblue;outline:none' class='transact' data-id='" . $row['productid'] . "'>View Details</button>
+</td>
+<td>" . $row['warehouse_name'] . " </td>
+<td><h5>Ship to : " . $row2['firstname'] . " " . $row2['lastname'] . ",</h5>
+<h5>" . $row['deliver_shipaddress'] . "</h5>
+<h5>" . $row['deliver_shipcity'] . "</h5>
+<h5>" . $row['deliver_shipstate'] . "</h5> 
+<h5>" . $row['deliver_shippincode'] . "</h5> 
+</td>
+<td>" . $status . "</td>
 </tr>
 ";
+                                                }
+                                            }
+                                        } catch (PDOException $e) {
+                                            echo $e->getMessage();
                                         }
-                                    } catch (PDOException $e) {
-                                        echo $e->getMessage();
-                                    }
 
-                                    $pdo->close();
-                                    ?>
+                                        $pdo->close();
+                                        ?>
                                 </tbody>
                             </table>
                         </div>
@@ -82,16 +87,76 @@
 
     <?php include 'includes/scripts.php'; ?>
 
-
     <script>
         $(function() {
-            $(document).on('click', '.orders_pending', function(e) {
+            $('#add').click(function(e) {
                 e.preventDefault();
-                $('#orders_pending').modal('show');
+                var id = $(this).data('id');
+                getProducts(id);
+            });
+
+            $("#addnew").on("hidden.bs.modal", function() {
+                $('.append_items').remove();
+            });
+        });
+
+        function getProducts(id) {
+            $.ajax({
+                type: 'POST',
+                url: 'deliveryboy_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#users').append(response);
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: 'deliverorder_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#delivery').append(response);
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: 'warehouse_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#warehouse').append(response);
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: 'shipaddress_all.php',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#shipaddress').append(response);
+                }
+            });
+        }
+    </script>
+    <script>
+        $(function() {
+            $(document).on('click', '.transact', function(e) {
+                e.preventDefault();
+                $('#transaction').modal('show');
                 var id = $(this).data('id');
                 $.ajax({
                     type: 'POST',
-                    url: 'pending.php',
+                    url: 'delivery_detail.php',
                     data: {
                         id: id
                     },
@@ -105,7 +170,7 @@
                 });
             });
 
-            $("#orders_pending").on("hidden.bs.modal", function() {
+            $("#transaction").on("hidden.bs.modal", function() {
                 $('.prepend_items').remove();
             });
         });

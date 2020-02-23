@@ -8,12 +8,14 @@
                 <h4 class="modal-title"><b>Add Delivery Order</b></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="cart_add.php">
+                <form class="form-horizontal" method="POST" action="adddeliveryorder_add.php">
                     <input type="hidden" class="userid" name="id">
                     <div class="form-group">
                         <label for="deliverboy" class="col-sm-3 control-label">Deliver By</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" value="<?= $user['firstname'] . ' ' . $user['lastname'] ?>" disabled style="color: #000">
+                            <select class="form-control select2" style="width: 100%;" name="assign_to" id="users" required>
+                                <option value="" selected>- Select -</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -25,10 +27,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="quantity" class="col-sm-3 control-label">Quantity</label>
-
+                        <label for="warehouse" class="col-sm-3 control-label">Pick up Address</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" id="quantity" name="quantity" value="1" required>
+                            <select class="form-control select2" style="width: 100%;" name="pickup" id="warehouse" required>
+                                <option value="" selected>- Select -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="warehouse" class="col-sm-3 control-label">Ship/Billing Address</label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" style="width: 100%;" name="shipaddress" id="shipaddress" required>
+                                <option value="" selected>- Select -</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="warehouse" class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-9">
+                            <select class="form-control select2" style="width: 100%;" name="status" required>
+                                <option value="" selected>- Select -</option>
+                                <option value="1">Processed</option>
+                                <option value="2">Not Yet Processed</option>
+                            </select>
                         </div>
                     </div>
             </div>

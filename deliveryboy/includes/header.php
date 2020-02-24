@@ -67,9 +67,8 @@ folder instead of downloading all of them to reduce the load. -->
 
         .box {
             border-radius: 3px;
-            color: white;
-            border: 1px solid white;
-            background: none;
+            color: #000;
+            background: #fff;
         }
 
         th,
@@ -142,7 +141,6 @@ folder instead of downloading all of them to reduce the load. -->
         }
 
         .modal-content {
-            background-image: linear-gradient(254deg, #5909b3, #7f0dff);
             border-radius: 5px;
         }
 

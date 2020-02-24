@@ -1,3 +1,20 @@
+<?php
+$conn = $pdo->open();
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM assigndelivery where assign_to=:id");
+$stmt->execute(['id' => $deliveryboy['id']]);
+$detail = $stmt->fetch();
+
+
+
+$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM assigndelivery where order_status='delivered'and assign_to=:id");
+$stmt->execute(['id' => $deliveryboy['id']]);
+$orderstatus = $stmt->fetch();
+
+$pdo->close();
+
+
+?>
 <aside class="main-sidebar" style="background:#150d2d;">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
@@ -28,9 +45,9 @@
       <li class="header" style="background: #1a1336;color: white">REPORTS</li>
       <li><a href="home.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li class="header" style="background: #1a1336;color: white">Orders Status</li>
-      <li><a href="orders_pending.php"><i class="fa fa-list"></i> <span>Orders Pending <span class="w3-badge w3-grey pull-right">1</span></span></a></li>
-      <li><a href="orders_delivered.php"><i class="fa fa-truck"></i> <span>Orders Delivered <span class="w3-badge w3-blue pull-right">1</span></span></a></li>
-      <li><a href="#"><i class="fa fa-list-alt"></i> <span>Today Orders <span class="w3-badge w3-green pull-right">1</span></span></a></li>
+      <li><a href="orders_pending.php"><i class="fa fa-list"></i> <span>Orders Pending <span class="w3-badge w3-grey pull-right"><?= $orderstatus['numrows'] ?></span></span></a></li>
+      <li><a href="orders_delivered.php"><i class="fa fa-truck"></i> <span>Orders Delivered <span class="w3-badge w3-blue pull-right"><?= $orderstatus['numrows'] ?></span></span></a></li>
+      <li><a href="#"><i class="fa fa-list-alt"></i> <span>Total <span class="w3-badge w3-green pull-right"><?= $detail['numrows'] ?></span></span></a></li>
     </ul>
   </section>
   <!-- /.sidebar -->

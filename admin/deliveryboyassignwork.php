@@ -81,7 +81,7 @@ if (!isset($_GET['user'])) {
 
                                         try {
 
-                                            $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id ORDER BY sales_date DESC where users.id=:id");
+                                            $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id where user_id=:id");
                                             $stmt->execute(['id' => $user['id']]);
                                             foreach ($stmt as $row2) {
                                                 $stmt = $conn->prepare("SELECT *, assigndelivery.product_name AS productid FROM assigndelivery LEFT JOIN products ON products.id = assigndelivery.product_name LEFT JOIN warehouse ON warehouse.id = assigndelivery.pickup LEFT JOIN details ON details.id = assigndelivery.ship_address LEFT JOIN users ON users.id =assigndelivery.assign_to WHERE users.id =:assign_to");

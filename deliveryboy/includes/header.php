@@ -69,6 +69,7 @@ folder instead of downloading all of them to reduce the load. -->
             border-radius: 3px;
             color: #000;
             background: #fff;
+            box-shadow: 3px 3px 10px 5px #f1f1f1;
         }
 
         th,

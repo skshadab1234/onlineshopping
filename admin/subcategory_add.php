@@ -3,6 +3,8 @@
 include 'includes/session.php';
 
 if (isset($_POST['add'])) {
+    $set = 'skshadab1fiojioajadjgdasuij23456';
+    $code = substr(str_shuffle($set), 0, 12);
     $name = $_POST['name'];
     $type = $_POST['type'];
     $filename = $_FILES['photo']['name'];
@@ -18,7 +20,7 @@ if (isset($_POST['add'])) {
     } else {
         if (!empty($filename)) {
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            $new_filename = $slug . '.' . $ext;
+            $new_filename = $code . '.' . $ext;
             move_uploaded_file($_FILES['photo']['tmp_name'], '../images/subcategory/' . $new_filename);
         } else {
             $new_filename = '';

@@ -57,8 +57,25 @@ folder instead of downloading all of them to reduce the load. -->
         }
 
         .content-wrapper {
-            box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
-            background: #150d2d;
+            background: #fafafa;
+        }
+
+        .skin-blue .sidebar-menu>li.header {
+            background: #e1e1e1;
+        }
+
+        .skin-blue .sidebar-menu>li:hover>a,
+        .skin-blue .sidebar-menu>li.active>a,
+        .skin-blue .sidebar-menu>li.menu-open>a {
+            background: #6201ed;
+        }
+
+        .skin-blue .sidebar-menu .treeview-menu>li>a {
+            background: #6201ed;
+        }
+
+        .skin-blue .sidebar-menu>li>.treeview-menu {
+            background: #6201ed;
         }
 
         .close {
@@ -66,10 +83,53 @@ folder instead of downloading all of them to reduce the load. -->
         }
 
         .box {
-            border-radius: 3px;
+            box-shadow: 5px 11px 23px 3px #e5e5e5;
             border: none;
+            border-radius: 5px;
         }
 
+        .box:hover {
+            transform: scale(1.01);
+            transition: transform, 0.2s ease-out;
+        }
+
+        .breadcrumb {
+            color: #010101
+        }
+
+        .skin-blue .main-header .navbar .sidebar-toggle:hover {
+            background: none;
+        }
+
+        .btn {
+            overflow: hidden;
+            position: relative;
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .btn:after {
+            content: "";
+            background: #90EE90;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .btn:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
 
         th,
         td {
@@ -101,44 +161,13 @@ folder instead of downloading all of them to reduce the load. -->
             color: #323232;
         }
 
-        .btn-success,
-        #quickview,
-        .btn-danger,
-        .btn-primary,
-        .btn-info {
-            background: #7f0dff;
-            background-image: linear-gradient(253deg, rgb(89, 9, 179), rgb(127, 13, 255));
-            color: #ffffff;
-            cursor: pointer;
-            border: 0.25rem;
-            padding: 0 18px;
-            max-width: 150px;
-            min-width: 136px;
-            font-size: 14px;
-            min-height: 40px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-            background: #7f0dff;
-            font-weight: 500;
-            font-family: "Rubik", sans-serif;
-            margin-right: 10px;
-            text-transform: capitalize;
-            background-image: linear-gradient(254deg, #5909b3, #7f0dff);
-            transition-property: background;
-            transition-duration: 1s;
-            transition-timing-function: linear;
-        }
-
-        .btn-danger {
-            border: 0.25rem solid #7f0dff;
-            background: none;
-            color: #7f0dff;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-
-        }
-
         .modal.fade {
             backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            transform: scale(1.04);
+            transition: 0.5s ease-in-out
         }
 
         .modal-content {
@@ -206,7 +235,7 @@ folder instead of downloading all of them to reduce the load. -->
             width: 30px;
             height: 30px;
             box-sizing: content-box;
-            z-index: 999999;
+            box-shadow: 5px 15px 10px 0px #eee;
         }
 
         #a-plus i {
@@ -217,6 +246,11 @@ folder instead of downloading all of them to reduce the load. -->
             background: -webkit-linear-gradient(hotpink, steelblue);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .small-box:hover {
+            transform: scale(1.03);
+            transition: transform, 0.5s ease-in-out;
         }
 
         #dropdown-arrow:after {

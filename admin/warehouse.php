@@ -26,13 +26,13 @@ $pdo->close();
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header" style="color: white">
+            <section class="content-header">
                 <h1>
                     List of Warehouse
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active" style="color: white">Warehouse</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Warehouse</li>
                 </ol>
             </section>
 
@@ -62,9 +62,7 @@ $pdo->close();
                 ?>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-header with-border">
-                            </div>
+                        <div class="box table-responsive text-nowrap">
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered">
                                     <thead>
@@ -148,11 +146,11 @@ $pdo->close();
                 dataType: 'json',
                 success: function(response) {
                     $('.warehouseid').val(response.id);
-                    $('#edit_name').val(response.name);
+                    $('#edit_name').val(response.warehouse_name);
                     $('#edit_city').val(response.city);
                     $('#edit_state').val(response.state);
                     $('#edit_pincode').val(response.pincode);
-                    $('.warehousename').html(response.name);
+                    $('.warehousename').html(response.warehouse_name);
 
                 }
             });

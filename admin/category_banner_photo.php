@@ -16,8 +16,8 @@ if (isset($_POST['upload1'])) {
     }
 
     try {
-        $stmt = $conn->prepare("UPDATE category_banner SET photo=:photo WHERE id=:id");
-        $stmt->execute(['photo' => $new_filename, 'id' => $id]);
+        $stmt = $conn->prepare("UPDATE category_banner SET banner_photo=:banner_photo WHERE id=:id");
+        $stmt->execute(['banner_photo' => $new_filename, 'id' => $id]);
         $_SESSION['success'] = 'category Banner photo updated successfully';
     } catch (PDOException $e) {
         $_SESSION['error'] = $e->getMessage();

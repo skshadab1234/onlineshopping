@@ -55,6 +55,7 @@
         .layout-top-nav .content-wrapper,
         .layout-top-nav .main-footer {
             margin-left: 160px;
+            background: #F5F5F6;
         }
 
         .modal.fade {
@@ -342,6 +343,10 @@
                 margin-left: 0px;
             }
 
+            #search-header {
+                display: none;
+            }
+
         }
 
         /* Medium devices (desktops, 992px and up) */
@@ -514,7 +519,6 @@
                 position: relative;
                 top: 16px;
                 /* line-height: 34px; */
-                height: 23px;
                 left: 12px;
             }
 
@@ -523,9 +527,7 @@
             }
 
             .mobile-view-header #brand {
-                line-height: 35px;
-                font-weight: 900;
-                text-transform: uppercase;
+                line-height: 39px;
             }
 
             .mobile-view-header #index {
@@ -533,14 +535,10 @@
                 font-size: 20px;
             }
 
-            #brands img {
-                margin-bottom: 20px;
-            }
-
             #drop-mobile::before {
                 content: " ";
                 position: absolute;
-                right: 0;
+                right: -1px;
                 top: -10px;
                 border-top: none;
                 border-right: 15px solid transparent;
@@ -565,9 +563,9 @@
             }
 
             #drop-mobile a {
-                color: #000;
+                color: #010101;
+                opacity: 1;
                 font-size: 2vh;
-                font-weight: lighter;
                 letter-spacing: 1px;
             }
 
@@ -581,13 +579,12 @@
 
             .signups {
                 padding: 10px;
-                border-bottom: 1px solid grey;
                 display: flex;
             }
 
-            .signups a {
-                border: 1px solid #000;
+            .signups h5 {
                 padding: 10px;
+                border-bottom: 2px solid green;
                 margin: 10px;
             }
 
@@ -1136,9 +1133,42 @@
             color: black;
         }
 
+        .profile-width {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: #F5F5F6;
+            height: 180px;
+            position: relative;
+            right: 0;
+        }
+
+        .profile-avt {
+            position: absolute;
+            top: 100px;
+            left: 30%;
+            background: #faf;
+            overflow: hidden;
+            width: 140px;
+            border-radius: 10px;
+            height: 140px;
+        }
+
         @media (min-width: 768px) {
             #mobileview {
                 display: none;
+            }
+
+            #mb-men {
+                display: none;
+            }
+
+            #dealofweek {
+                display: none;
+            }
+
+            .mobile-view-profile {
+                display: none
             }
 
             #mobilefilter {
@@ -1399,6 +1429,10 @@
                 border-top: 0 none;
             }
 
+            #slider1 {
+                display: none;
+            }
+
             .features h2.section-title {
                 font-size: 32px;
             }
@@ -1413,6 +1447,10 @@
                 max-width: none;
                 width: 100%;
             }
+
+            #features {
+                display: none;
+            }
         }
 
         .profileedit td {
@@ -1420,6 +1458,19 @@
             color: white;
             font-weight: 100;
             letter-spacing: 1.5px;
+        }
+
+
+        #sidebar-details li {
+            padding-top: 30px;
+            font-size: 16px;
+            color: darkslategray;
+            font-weight: lighter;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        #sidebar-details a {
+            color: #323232;
         }
     </style>
 
@@ -1431,7 +1482,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("feb 22, 2020 12:00:00 pm").getTime();
+    var countDownDate = new Date("mar 22, 2020 12:00:00 pm").getTime();
     // Update the count down every 1 second
     var x = setInterval(function() {
 

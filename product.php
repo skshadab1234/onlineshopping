@@ -219,6 +219,76 @@ try {
 				width: 80px;
 			}
 		}
+
+		#snackbar {
+			visibility: hidden;
+			min-width: 250px;
+			margin-left: -125px;
+			background-color: #333;
+			color: #fff;
+			text-align: center;
+			border-radius: 2px;
+			padding: 16px;
+			position: fixed;
+			z-index: 1;
+			left: 50%;
+			bottom: 60px;
+			font-size: 17px;
+		}
+
+		#snackbar.show {
+			visibility: visible;
+			-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			animation: fadein 0.5s, fadeout 0.5s 2.5s;
+		}
+
+		@-webkit-keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
+
+			to {
+				bottom: 60px;
+				opacity: 1;
+			}
+		}
+
+		@keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
+
+			to {
+				bottom: 60px;
+				opacity: 1;
+			}
+		}
+
+		@-webkit-keyframes fadeout {
+			from {
+				bottom: 60px;
+				opacity: 1;
+			}
+
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
+		}
+
+		@keyframes fadeout {
+			from {
+				bottom: 60px;
+				opacity: 1;
+			}
+
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
+		}
 	</style>
 	<div class="desktop">
 		<?php include 'includes/navbar.php' ?>
@@ -235,7 +305,7 @@ try {
 				<li>
 					<a href="#"><i class="fa fa-heart-o"></i></a>
 				</li>
-				<a href="#" data-toggle="modal" data-target="#cart1">
+				<a href="cart_view.php">
 					<img src="images/cart.png" alt="Cart" style="width: 30px;height: 30px;position: relative;top:-4px;">
 					<span class="cart_count" style="position: relative;left: -18px;top: -9px;color: red;border-radius: 50%;font-size: 14px;"></span>
 				</a>
@@ -251,6 +321,10 @@ try {
 			<section class="content">
 				<div class="row">
 					<div class="col-sm-12">
+
+						<div id="snackbar">
+							<h5 class="message"></h5>
+						</div>
 						<div class="row">
 							<div class="col-sm-6 sk">
 								<div class="img-magnifier-container text-center">
@@ -268,7 +342,7 @@ try {
 								<h4 id="code" style="font-weight: 600;color: #323232">Product Code : <span><?php echo $product['prodid']; ?></span></h4>
 								<h5 style="font-size: 14px;color: slategrey"><?php echo $product['brand']; ?></h5>
 								<h5 id="title"><?php echo $product['prodname']; ?></h5>
-								<h3 style="color: #323232;font-size:medium"><b>Rs. <?php echo number_format($product['price'] , 2); ?> <small><s>MRP <?php echo number_format($product['old_price'] , 2); ?></s></small><span style="color: limegreen"> <?php echo $product['discount']; ?> off</span></b></h3>
+								<h3 style="color: #323232;font-size:medium"><b>Rs. <?php echo number_format($product['price'], 2); ?> <small><s>MRP <?php echo number_format($product['old_price'], 2); ?></s></small><span style="color: limegreen"> <?php echo $product['discount']; ?> off</span></b></h3>
 								<a href="" data-toggle="modal" data-target="#pricedetail" style="color:dodgerblue;font-weight:bolder"> View Price Details</a>
 								<form class="form-inline" id="productForm">
 									<div class="form-group">
@@ -283,11 +357,10 @@ try {
 											</span>
 											<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
 										</div>
-										<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" data-toggle="modal" data-target="#cart1" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+										<button type="submit" onclick="myFunction3()" class="btn btn-primary btn-lg btn-flat addtocart" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 									</div>
 									<br><br>
-									<div class="callout" id="callout" style="display:none">
-										<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+									<div id="snackbar">
 										<span class="message"></span>
 									</div>
 								</form>
@@ -322,7 +395,7 @@ try {
 		<form class="form-inline" id="productForm1">
 			<input type="hidden" name="quantity" id="quantity" align="center" class="form-control input-lg" value="1">
 			<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
-			<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" data-toggle="modal" data-target="#cart1" style="background-color: #008cff;border-radius: 5x;border: none;width:100%;"><i class="fa fa-shopping-cart"></i> <span style="font-size: 20px;font-weight:700;letter-spacing:1px;text-transform:uppercase">&nbsp;&nbsp;Add to Cart</span></button>
+			<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" onclick="myFunction3()" style="background-color: #008cff;border-radius: 5x;border: none;width:100%;"><i class="fa fa-shopping-cart"></i> <span style="font-size: 20px;font-weight:700;letter-spacing:1px;text-transform:uppercase">&nbsp;&nbsp;Add to Cart</span></button>
 		</form>
 	</div>
 
@@ -337,13 +410,13 @@ try {
 				<h3 style="margin: 0;font-size: 16px;font-weight: 700;letter-spacing:1px">Price Details</h3>
 				<ul style="margin-top:10px;">
 					<li style="display: inline-block;width: 150px;color: dimgrey">Maximum Retail Price(Incl. of all taxes)</li>
-					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['old_price'] , 2); ?> </li>
+					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['old_price'], 2); ?> </li>
 					<BR></BR>
 					<li style="display: inline-block;width: 150px;color: dimgrey">Discount</li>
 					<li style="display: inline-block;width: 150px;color: #000;font-weight:700;text-align:right" class="pull-right"><?php echo $product['discount']; ?> OFF</li>
 					<h3 style="margin-top: 10px;font-size: 16px;font-weight: 700;letter-spacing:1px">Selling Price</h3>
 					<li style="display: inline-block;width: 150px;color: dimgrey">(Incl. of all taxes)</li>
-					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['price'] , 2); ?> </li>
+					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['price'], 2); ?> </li>
 				</ul>
 				<!-- <span style="color: #323232;padding:20px;text-align:right;"></span><span style="position:absolute;left:10px;width:200px;">Maximum Retail Price (incl. of all taxes)</span><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small></b> -->
 			</div>
@@ -365,6 +438,15 @@ with the id of the image, and the strength of the magnifier glass:*/
 		magnify("myimage", 2);
 	</script>
 
+	<script>
+		function myFunction3() {
+			var x = document.getElementById("snackbar");
+			x.className = "show";
+			setTimeout(function() {
+				x.className = x.className.replace("show", "");
+			}, 10000);
+		}
+	</script>
 </body>
 
 </html>

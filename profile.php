@@ -57,14 +57,13 @@ $pdo->close();
 	</title>
 	<style type="text/css">
 		/*** START BS OVERRIDES ***/
-		
 	</style>
 </head>
 <?php include 'includes/navbar.php'; ?>
 
 <body class="hold-transition skin-blue layout-top-nav">
 	<div class="wrapper">
-		<div class="content-wrapper" style="background:#fff">
+		<div class="content-wrapper" style="background:#fff;margin:0">
 
 			<?php
 			if (isset($_SESSION['error'])) {
@@ -85,6 +84,7 @@ $pdo->close();
 				unset($_SESSION['success']);
 			}
 			?>
+
 			<div class="row" style="margin-top:60px">
 				<div class="col-sm-12" style="padding: 20px">
 					<div class="light-brown features" id="features">
@@ -482,146 +482,242 @@ $pdo->close();
 					</div>
 				</div>
 			</div>
+			<!-- mobile-view-profile -->
+			<div class="mobile-view-profile" style="background: #F5F5F6;height:100%;position:relative;top:-100px">
+				<section class="content" style="padding: 0">
+					<div class="container-fluid" style="padding: 0;height:320px;background:#fff">
+						<div class="profile-width">
+							<div class="profile-avt">
+								<img src="<?php echo (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg'; ?>">
+							</div>
+							<h5 style="position:relative;left: 129px;top:255px;"><?php echo $user['email']; ?></h5>
+						</div>
+					</div>
 
-			<?php include 'includes/footer.php'; ?>
-			<?php include 'includes/profile_modal.php'; ?>
+					<div class="container-fluid" style="background: #fff;margin-top:10px;width:100%;border-bottom:1px solid #eee">
+						<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-first-order" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
+						<div class="col-sm-10 col-md-10 col-xs-10">
+							<a href="orders.php">
+								<div class="container-fluid" style="position:relative;left:-49px;">
+									<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">orders</h5>
+									<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">check your order status</h5>
+									<i class="fa fa-angle-right" style="position:absolute;top:15px;right:-50px;color:#010101"></i>
+							</a>
+						</div>
+					</div>
+			</div>
+
+			<div class="container-fluid" style="background: #fff;width:100%;border-bottom:1px solid #eee">
+				<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-bookmark-o" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
+				<div class="col-sm-10 col-md-10 col-xs-10">
+					<a href="wishlist.php">
+						<div class="container-fluid" style="position:relative;left:-49px;">
+							<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Collections & Wishlist</h5>
+							<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">All your curated product collections</h5>
+							<i class="fa fa-angle-right" style="position:absolute;top:15px;right:-50px;color:#010101"></i>
+					</a>
+				</div>
+			</div>
 		</div>
 
-		<?php include 'includes/scripts.php'; ?>
-		<!-- JS -->
-		<script type="text/javascript">
-			$(document).ready(function() {
+		<div class="container-fluid" style="background: #fff;margin-top:10px;width:100%;border-bottom:1px solid #eee">
+			<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-history" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
+			<div class="col-sm-10 col-md-10 col-xs-10">
+				<a href="transaction_history.php">
+					<div class="container-fluid" style="position:relative;left:-49px;">
+						<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Transaction History</h5>
+						<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">check your transaction Status</h5>
+						<i class="fa fa-angle-right" style="position:absolute;top:15px;right:-50px;color:#010101"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" style="background: #fff;width:100%;border-bottom:1px solid #eee">
+		<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-map-marker" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
+		<div class="col-sm-10 col-md-10 col-xs-10">
+			<a href="addressconfirm.php">
+				<div class="container-fluid" style="position:relative;left:-49px;">
+					<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Addresses</h5>
+					<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">Save addresses for a hassle-free checkout</h5>
+					<i class="fa fa-angle-right" style="position:absolute;top:15px;right:-50px;color:#010101"></i>
+			</a>
+		</div>
+	</div>
+	</div>
 
-				$('[data-toggle="popover"]').popover({
-					trigger: 'hover'
-				});
+	<div class="container-fluid" style="background: #fff;width:100%;border-bottom:1px solid #eee">
+		<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-gift" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
+		<div class="col-sm-10 col-md-10 col-xs-10">
+			<a href="coupons.php">
+				<div class="container-fluid" style="position:relative;left:-49px;">
+					<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Coupons</h5>
+					<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">Manage coupons for additional disounts</h5>
+					<i class="fa fa-angle-right" style="position:absolute;top:15px;right:-50px;color:#010101"></i>
+			</a>
+		</div>
+	</div>
+	</div>
 
-				$('.v-tab-head .v-tab-link').mouseover(tabHandler);
-				$('.v-tab-head.v-tab-link').click(tabHandler);
+	<div class="container-fluid" style="background: #fff;width:100%;margin-top:10px;border-bottom:1px solid #eee">
+		<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-user-circle-o" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
+		<div class="col-sm-10 col-md-10 col-xs-10">
+			<a href="#edit" data-toggle="modal">
+				<div class="container-fluid" style="position:relative;left:-49px;">
+					<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Profile Details</h5>
+					<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">Change Your Profile Details and Passwords</h5>
+					<i class="fa fa-angle-right" style="position:absolute;top:15px;right:-50px;color:#010101"></i>
+			</a>
+		</div>
+	</div>
+	</section>
+	<div class="container-fluid" style="padding: 20px;">
+		<a href="logout.php"><button class="form-control btn btn-danger" style="padding: 20px;line-height:6px;font-size:17px;text-transform:uppercase">Logout</button></a>
+	</div>
+	</div>
+	<?php include 'includes/footer.php'; ?>
+	<?php include 'includes/profile_modal.php'; ?>
 
+	</div>
+
+
+
+
+
+	<?php include 'includes/scripts.php'; ?>
+	<!-- JS -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('[data-toggle="popover"]').popover({
+				trigger: 'hover'
 			});
 
-			var tabHandler = function(e) {
+			$('.v-tab-head .v-tab-link').mouseover(tabHandler);
+			$('.v-tab-head.v-tab-link').click(tabHandler);
+
+		});
+
+		var tabHandler = function(e) {
+			e.preventDefault();
+
+			var target = $($(this).data('target')),
+				tabLink = $('.v-tab-link[data-target="' + $(this).data('target') + '"]');
+
+			tabPanelToShow(tabLink);
+			tabLinkToActivate(target);
+
+		};
+
+		var tabPanelToShow = function(elem) {
+			$('.v-tab-link').removeClass('active').parent().find(elem).addClass('active');
+		};
+
+		var tabLinkToActivate = function(elem) {
+			$('.v-tab-pane').children('div').removeClass('in').parent().find(elem).addClass('in');
+		};
+	</script>
+	<script>
+		$(function() {
+			$(document).on('click', '.track', function(e) {
 				e.preventDefault();
-
-				var target = $($(this).data('target')),
-					tabLink = $('.v-tab-link[data-target="' + $(this).data('target') + '"]');
-
-				tabPanelToShow(tabLink);
-				tabLinkToActivate(target);
-
-			};
-
-			var tabPanelToShow = function(elem) {
-				$('.v-tab-link').removeClass('active').parent().find(elem).addClass('active');
-			};
-
-			var tabLinkToActivate = function(elem) {
-				$('.v-tab-pane').children('div').removeClass('in').parent().find(elem).addClass('in');
-			};
-		</script>
-		<script>
-			$(function() {
-				$(document).on('click', '.track', function(e) {
-					e.preventDefault();
-					$('#track').modal('show');
-					var id = $(this).data('id');
-					$.ajax({
-						type: 'POST',
-						url: 'tracking.php',
-						data: {
-							id: id
-						},
-						dataType: 'json',
-						success: function(response) {
-							$('#order').html(response.order);
-						}
-					});
-				});
-
-				$("#track").on("hidden.bs.modal", function() {
-					$('.prepend_items').remove();
-				});
-			});
-		</script>
-
-		<script>
-			$(function() {
-				$(document).on('click', '.transact', function(e) {
-					e.preventDefault();
-					$('#transaction').modal('show');
-					var id = $(this).data('id');
-					$.ajax({
-						type: 'POST',
-						url: 'transaction.php',
-						data: {
-							id: id
-						},
-						dataType: 'json',
-						success: function(response) {
-							$('#date').html(response.date);
-							$('#transid').html(response.transaction);
-							$('#detail').prepend(response.list);
-							$('#total').html(response.total);
-						}
-					});
-				});
-
-				$("#transaction").on("hidden.bs.modal", function() {
-					$('.prepend_items').remove();
-				});
-			});
-		</script>
-		<script type="text/javascript">
-			//material contact form animation
-			$(".contact-form")
-				.find(".form-control")
-				.each(function() {
-					var targetItem = $(this).parent();
-					if ($(this).val()) {
-						$(targetItem)
-							.find("label")
-							.css({
-								top: "-6px",
-								fontSize: "16px",
-								color: "#33cc66"
-							});
+				$('#track').modal('show');
+				var id = $(this).data('id');
+				$.ajax({
+					type: 'POST',
+					url: 'tracking.php',
+					data: {
+						id: id
+					},
+					dataType: 'json',
+					success: function(response) {
+						$('#order').html(response.order);
 					}
 				});
-			$(".contact-form")
-				.find(".form-control")
-				.focus(function() {
+			});
+
+			$("#track").on("hidden.bs.modal", function() {
+				$('.prepend_items').remove();
+			});
+		});
+	</script>
+
+	<script>
+		$(function() {
+			$(document).on('click', '.transact', function(e) {
+				e.preventDefault();
+				$('#transaction').modal('show');
+				var id = $(this).data('id');
+				$.ajax({
+					type: 'POST',
+					url: 'transaction.php',
+					data: {
+						id: id
+					},
+					dataType: 'json',
+					success: function(response) {
+						$('#date').html(response.date);
+						$('#transid').html(response.transaction);
+						$('#detail').prepend(response.list);
+						$('#total').html(response.total);
+					}
+				});
+			});
+
+			$("#transaction").on("hidden.bs.modal", function() {
+				$('.prepend_items').remove();
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		//material contact form animation
+		$(".contact-form")
+			.find(".form-control")
+			.each(function() {
+				var targetItem = $(this).parent();
+				if ($(this).val()) {
+					$(targetItem)
+						.find("label")
+						.css({
+							top: "-6px",
+							fontSize: "16px",
+							color: "#33cc66"
+						});
+				}
+			});
+		$(".contact-form")
+			.find(".form-control")
+			.focus(function() {
+				$(this)
+					.parent(".input-block")
+					.addClass("focus");
+				$(this)
+					.parent()
+					.find("label")
+					.animate({
+						top: "-6px",
+						left: "10px",
+						fontSize: "16px",
+						color: "#fff"
+					}, 200);
+			});
+		$(".contact-form")
+			.find(".form-control")
+			.blur(function() {
+				if ($(this).val().length == 0) {
 					$(this)
 						.parent(".input-block")
-						.addClass("focus");
+						.removeClass("focus");
 					$(this)
 						.parent()
 						.find("label")
 						.animate({
-							top: "-6px",
+							top: "20px",
 							left: "10px",
-							fontSize: "16px",
-							color: "#fff"
-						}, 200);
-				});
-			$(".contact-form")
-				.find(".form-control")
-				.blur(function() {
-					if ($(this).val().length == 0) {
-						$(this)
-							.parent(".input-block")
-							.removeClass("focus");
-						$(this)
-							.parent()
-							.find("label")
-							.animate({
-								top: "20px",
-								left: "10px",
-								fontSize: "16px"
-							}, 300);
-					}
-				});
-		</script>
+							fontSize: "16px"
+						}, 300);
+				}
+			});
+	</script>
 </body>
 
 </html>

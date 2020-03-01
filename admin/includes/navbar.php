@@ -1,15 +1,15 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="#" class="logo" style="background:#150d2d;">
+  <a href="#" class="logo" style="background:#fff;color:#010101;font-weight:700;text-transform:uppercase">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>E</b>B</span>
+    <span class="logo-mini"><b>D</b>M</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg">ECOMM</span>
+    <span class="logo-lg">Dressmania</span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
-  <nav class="navbar navbar-static-top" style="background:#150d2d;">
+  <nav class="navbar navbar-static-top" style="background:#fff;">
     <!-- Sidebar toggle button-->
-    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" style="color:#010101" role="button">
       <span class="sr-only">Toggle navigation</span>
     </a>
 
@@ -19,7 +19,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="<?php echo (!empty($admin['photo'])) ? '../images/' . $admin['photo'] : '../images/profile.jpg'; ?>" class="user-image" alt="User Image">
-            <span class="hidden-xs"><?php echo $admin['firstname'] . ' ' . $admin['lastname']; ?></span>
+            <span class="hidden-xs" style="color: #010101"><?php echo $admin['firstname'] . ' ' . $admin['lastname']; ?></span>
           </a>
           <style type="text/css">
             .dropdown-menu li a:hover {

@@ -8,19 +8,21 @@ if (!isset($_SESSION['user'])) {
 
 <head>
 	<title>
-		Profile
+		Wishlist <?php
+					if (isset($_SESSION['user'])) {
+						echo " - " . $user['firstname'] . " " . $user['lastname'] . "";
+					} else {
+						echo "";
+					}
+					?>
 	</title>
 </head>
 <?php include 'includes/navbar.php'; ?>
 
 <body class="hold-transition skin-blue layout-top-nav">
 	<div class="wrapper">
-
-
-		<div class="content-wrapper">
-			<div class="container text-center">
-				<h2>Wishlist PAGE WILL BE EDITED SOON
-				</h2>
+		<div class="wrapper">
+			<div class="content-wrapper" style="margin: 0">
 				<!-- Main content -->
 				<section class="content">
 					<div class="row">
@@ -47,6 +49,10 @@ if (!isset($_SESSION['user'])) {
 							?>
 						</div>
 					</div>
+					<div class="container-fluid text-center">
+						<h2><b>Wishlist PAGE WILL BE EDITED SOON<b>
+						</h2>
+
 				</section>
 			</div>
 		</div>
@@ -54,4 +60,5 @@ if (!isset($_SESSION['user'])) {
 
 	<?php include 'includes/footer.php'; ?>
 	<?php include 'includes/scripts.php'; ?>
+	</div>
 </body>

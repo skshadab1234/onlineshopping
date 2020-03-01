@@ -25,14 +25,14 @@ if (!isset($_GET['user'])) {
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header" style="color: white">
+      <section class="content-header">
         <h1>
           <?php echo $user['firstname'] . ' ' . $user['lastname'] . '`s Cart' ?>
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li style="color: white">Users</li>
-          <li class="active" style="color: white">Cart</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li>Users</li>
+          <li class="active">Cart</li>
         </ol>
       </section>
 
@@ -65,11 +65,12 @@ if (!isset($_GET['user'])) {
             <div class="box">
               <div class="box-header with-border">
                 <a href="#addnew" data-toggle="modal" id="add" data-id="<?php echo $user['id']; ?>"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> New</button></a>
-                <a href="users.php" class="btn btn-sm btn-primary btn-flat"> <button class="btn btn-success btn-sm btn-flat"><i class="fa fa-arrow-left"></i> Users</button></a>
+                <a href="users.php"> <button class="btn btn-danger btn-sm btn-flat"><i class="fa fa-arrow-left"></i> Users</button></a>
               </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
                   <thead>
+                    <th>Product Image</th>
                     <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Tools</th>
@@ -82,8 +83,10 @@ if (!isset($_GET['user'])) {
                       $stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
                       $stmt->execute(['user_id' => $user['id']]);
                       foreach ($stmt as $row) {
+                        $image = (!empty($row['photo']) ? '../images/' . $row['photo'] . '' : '../images/noimage.jpg');
                         echo "
                           <tr>
+                          <td><a href=\"../images/" . $row['photo'] . "\"><img src=" . $image . " class='img-circle' width='40px' height='40px'></a>
                             <td>" . $row['name'] . "</td>
                             <td>" . $row['quantity'] . "</td>
                             <td>

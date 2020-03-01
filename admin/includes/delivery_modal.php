@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="adddeliveryorder_add.php">
-                    <input type="hidden" class="userid" name="id">
+                    <input type="hidden" class="deliveryid" name="deliveryid">
                     <div class="form-group">
                         <label for="deliverboy" class="col-sm-3 control-label">Deliver By</label>
                         <div class="col-sm-9">
@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="product" class="col-sm-3 control-label">Product</label>
                         <div class="col-sm-9">
-                            <select class="form-control select2" style="width: 100%;" name="product" id="delivery" required>
+                            <select class="form-control select2" style="width: 100%;" name="product" id="delivery1" required>
                                 <option value="" selected>- Select -</option>
                             </select>
                         </div>

@@ -23,13 +23,13 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header" style="color: white">
+      <section class="content-header">
         <h1>
           Brands
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active" style="color: white">Category</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Brands</li>
         </ol>
       </section>
 
@@ -58,7 +58,7 @@
         }
         ?>
         <div class="container-fluid">
-          <div class="box">
+          <div class="box table-responsive text-nowrap">
             <div class="box-body">
               <table id="example3" class="table table-bordered">
                 <thead>
@@ -71,20 +71,20 @@
                   <?php
                   $conn = $pdo->open();
                   try {
-                    $stmt = $conn->prepare("SELECT * FROM brands");
+                    $stmt = $conn->prepare("SELECT *, brands.id AS brandid FROM brands LEFT JOIN category ON category.id = brands.category");
                     $stmt->execute();
                     foreach ($stmt as $row) {
                       $image = (!empty($row['brand_image']) ? '../images/brand/' . $row['brand_image'] . '' : '../images/noimage.jpg');
                       echo "
                           <tr>
                           <td><img src=" . $image . " class='img-circle' width='40px' height='40px'>
-                          <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' ></i></a></span>
+                          <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['brandid'] . "'><i class='fa fa-edit' ></i></a></span>
                           </td>
                             <td>" . $row['brand_name'] . "</td>
-                            <td>" . $row['category'] . "</td>
+                            <td>" . $row['name'] . "</td>
                             <td>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['brandid'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['brandid'] . "'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -146,10 +146,11 @@
         },
         dataType: 'json',
         success: function(response) {
-          $('.brandid').val(response.id);
+          $('.brandid').val(response.brandid);
           $('#edit_brand').val(response.brand_name);
           $('#edit_brand1').val(response.brand_name);
           $('.brandname').html(response.brand_name);
+          $('#brandselect').val(response.category).html(response.catname);
         }
       });
 
@@ -161,7 +162,7 @@
       dataType: 'json',
       success: function(response) {
         $('#category').append(response);
-        $('#edit_category').append(response);
+        $('#edit_category1').append(response);
       }
     });
   </script>

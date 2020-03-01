@@ -25,14 +25,14 @@ if (!isset($_GET['user'])) {
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header" style="color: white">
+            <section class="content-header">
                 <h1>
                     <?php echo $user['firstname'] . ' ' . $user['lastname'] . ' (Delivery Boy)' ?>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li style="color: white">DeliveryBoy</li>
-                    <li class="active" style="color: white">Assign Delivery</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li>DeliveryBoy</li>
+                    <li class="active">Assign Delivery</li>
                 </ol>
             </section>
 
@@ -62,9 +62,9 @@ if (!isset($_GET['user'])) {
                 ?>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-header with-border">
-                                <a href="#adddelivery" data-toggle="modal" id="add" data-id="<?php echo $user['id']; ?>"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> New</button></a>
+                        <div class="box table-responsive text-nowrap">
+                            <div class="box-header">
+                                <a href="#adddelivery" data-toggle="modal" class="delete" id="add" data-id="<?php echo $user['id']; ?>"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> New</button></a>
                             </div>
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered">
@@ -137,6 +137,12 @@ if (!isset($_GET['user'])) {
                 getProducts(id);
             });
 
+            $(document).on('click', '.delete', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                getProducts(id);
+            });
+
             $("#addnew").on("hidden.bs.modal", function() {
                 $('.append_items').remove();
             });
@@ -163,7 +169,8 @@ if (!isset($_GET['user'])) {
                 },
                 dataType: 'json',
                 success: function(response) {
-                    $('#delivery').append(response);
+                    $('.deliveryid').val(response.did);
+                    $('#delivery1').append(response);
                 }
             });
             $.ajax({

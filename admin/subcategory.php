@@ -10,13 +10,13 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header" style="color: white">
+            <section class="content-header">
                 <h1>
                     Sub Category
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active" style="color: white">Sub Category</li>
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Sub Category</li>
                 </ol>
             </section>
 

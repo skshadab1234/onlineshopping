@@ -3,6 +3,7 @@
 include 'includes/session.php';
 
 if (isset($_POST['add'])) {
+    $id = $_POST['deliveryid'];
     $name = $_POST['assign_to'];
     $product = $_POST['product'];
     $pickup = $_POST['pickup'];
@@ -21,7 +22,11 @@ if (isset($_POST['add'])) {
         try {
             $stmt = $conn->prepare("INSERT INTO assigndelivery (product_name,assign_to,pickup,ship_address,status) VALUES (:product_name,:assign_to,:pickup,:ship_address,:status)");
             $stmt->execute(['product_name' => $product, 'assign_to' => $name, 'pickup' => $pickup, 'ship_address' => $shipaddress, 'status' => $status]);
+
             $_SESSION['success'] = $product .  ' will be delivered by ' . $name . ' successfully';
+
+            $stmt2 = $conn->prepare("DELETE FROM delivery_details where id=:id");
+            $stmt2->execute(['id' => $id]);
         } catch (PDOException $e) {
             $_SESSION['error'] = $e->getMessage();
         }

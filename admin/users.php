@@ -10,13 +10,13 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header" style="color: white">
+      <section class="content-header">
         <h1>
           Users
         </h1>
         <ol class="breadcrumb">
-          <li><a href="home.php" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active" style="color: white">Users</li>
+          <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Users</li>
         </ol>
       </section>
 
@@ -45,8 +45,11 @@
         }
         ?>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12 col-lg-6">
             <div class="box table-responsive text-nowrap">
+              <div class="box-header">
+                <h4><i class="fa fa-check-circle" style="color: green;font-size:20px"></i><b> VERIFIED<b></h4>
+              </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
                   <thead>
@@ -62,7 +65,7 @@
                     $conn = $pdo->open();
 
                     try {
-                      $stmt = $conn->prepare("SELECT * FROM users where status=:status");
+                      $stmt = $conn->prepare("SELECT * FROM users where status=:status and type=0");
                       $stmt->execute(['status' => 1]);
                       foreach ($stmt as $row) {
                         $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
@@ -82,7 +85,7 @@
                             </td>
                             <td>" . date('M d, Y', strtotime($row['created_on'])) . "</td>
                             <td>
-                              <button id='quickview'><a href='cart.php?user=" . $row['id'] . "' style='color:white' ><i class='fa fa-search'></i> Cart</a></button>
+                              <a href='cart.php?user=" . $row['id'] . "' style='color:white' ><button class='btn btn-success btn-flat btn-sm' id='quickview'><i class='fa fa-search'></i> Cart</button></a>
                               <button class='btn btn-success btn-sm edit btn-flat'  id='quickview' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
                             </td>
@@ -99,12 +102,13 @@
                 </table>
               </div>
             </div>
-
+          </div>
+          <div class="col-xs-12 col-lg-6">
             <div class="box table-responsive text-nowrap">
               <div class="box-header">
-                <h3>NOT VERIFIED USERS</h3>
+                <h4><i class="fa fa-times-circle" style="color: red;font-size:20px"></i><b> NOT VERIFIED<b></h4>
               </div>
-              <div class=" box-body">
+              <div class="box-body">
                 <table id="example2" class="table table-bordered">
                   <thead>
                     <th>Email</th>
@@ -143,8 +147,8 @@
                     ?>
                   </tbody>
                 </table>
-                <div class="text-center">
-                  <a href="user_noactive_mail.php"><i class='fa fa-send'></i> SEND MAIL To all not verified Users</a>
+                <div class="text-center" style="padding: 20px">
+                  <a href="user_noactive_mail.php"><i class='fa fa-send'></i> SEND MAIL</a>
                 </div>
               </div>
             </div>

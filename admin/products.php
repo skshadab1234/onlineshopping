@@ -18,14 +18,14 @@ if (isset($_GET['category'])) {
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header" style="color: white">
+      <section class="content-header">
         <h1>
           Product List
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li style="color: white">Products</li>
-          <li style="color: white" class="active">Product List</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li>Products</li>
+          <li class="active">Product List</li>
         </ol>
       </section>
 
@@ -61,7 +61,7 @@ if (isset($_GET['category'])) {
                   <form class="form-inline">
                     <div class="form-group" style="color: white">
                       <label>Category: </label>
-                      <select class="form-control input-sm" id="select_category">
+                      <select class="form-control input-sm select2" id="select_category">
                         <option value="0">ALL</option>
                         <?php
                         $conn = $pdo->open();
@@ -116,7 +116,7 @@ if (isset($_GET['category'])) {
                               <img src='" . $image . "' height='30px' class='img-circle' width='30px'>
                               <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
-                            <td><a href='#description' data-toggle='modal' class='btn btn-success desc' style=\"line-height:40px\" data-id='" . $row['id'] . "'><i class='fa fa-search'></i> View</a></td>
+                            <td><a href='#description' data-toggle='modal' class='desc' style=\"line-height:40px\" data-id='" . $row['id'] . "'> View</a></td>
                             <td>₹  " . number_format($row['price'], 2) . "</td>
                             <td><s>₹  " . number_format($row['old_price'], 2) . "</s></td>
                             <td>" . $row['discount'] . "</td>  

@@ -23,13 +23,13 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header" style="color: white">
+      <section class="content-header">
         <h1>
           Category
         </h1>
         <ol class="breadcrumb">
-          <li><a href="#" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active" style="color: white">Category</li>
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Category</li>
         </ol>
       </section>
 
@@ -57,67 +57,12 @@
           unset($_SESSION['success']);
         }
         ?>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="panel">
-                <div class="panel panel-header">
-                  <h4 class="bold" style="padding-left: 10px">Add Banner</h4>
-                </div>
-                <a href="#addbanner" data-toggle="modal">
-                  <div class="panel panel-body">
-                    <i class="fa fa-plus" id="plus"></i>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="row">
-          <div class="col-xs-12">
-            <div class="box" style="background: #fff;color:#000">
-              <div class="box-body">
-                <table id="example1" class="table table-bordered">
-                  <thead>
-                    <th>Image</th>
-                    <th>URL</th>
-                    <th>Category</th>
-                    <th>Tools</th>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $conn = $pdo->open();
-                    try {
-                      $stmt = $conn->prepare("SELECT * FROM category_banner");
-                      $stmt->execute();
-                      foreach ($stmt as $row) {
-                        $image = (!empty($row['photo']) ? '../images/cat_banner/' . $row['photo'] . '' : '../images/noimage.jpg');
-                        echo "
-                          <tr>
-                          <td><img src=" . $image . " class='img-circle' width='40px' height='40px'>
-                          <span class='pull-right'><a href='#edit_photo1' class='photo1' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit' style='color:#000'></i></a></span>
-                          </td>
-                            <td>" . $row['url'] . "</td>
-                            <td>" . $row['type'] . "</td>
-                            <td>
-                              <button class='btn btn-success btn-sm edit1 btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete1 btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
-                            </td>
-                          </tr>
-                        ";
-                      }
-                    } catch (PDOException $e) {
-                      echo $e->getMessage();
-                    }
-
-                    $pdo->close();
-                    ?>
-                  </tbody>
-                </table>
+          <div class="col-xs-12 col-lg-6">
+            <div class="box table-responsive text-nowrap">
+              <div class="box-header">
+                <a href="#addnew" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span> Add Category</span></button></a>
               </div>
-            </div>
-
-            <div class="box">
               <div class="box-body">
                 <table id="example3" class="table table-bordered">
                   <thead>
@@ -140,8 +85,103 @@
                           </td>
                             <td>" . $row['name'] . "</td>
                             <td>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm edit' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    } catch (PDOException $e) {
+                      echo $e->getMessage();
+                    }
+
+                    $pdo->close();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="box table-responsive text-nowrap" style="background: #fff;color:#000">
+              <div class="box-header">
+                <a href="#addbanner" data-toggle="modal"> <button class="btn btn-success btn-sm btn-flat "><i class="fa fa-plus"></i> <span> Add Banner</span></button></a>
+              </div>
+              <div class="box-body">
+                <table id="example1" class="table table-bordered">
+                  <thead>
+                    <th>Image</th>
+                    <th>URL</th>
+                    <th>Category</th>
+                    <th>Tools</th>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $conn = $pdo->open();
+                    try {
+                      $stmt = $conn->prepare("SELECT *, category_banner.id AS banid FROM category_banner LEFT JOIN category ON category.id = category_banner.banner_type ");
+                      $stmt->execute();
+                      foreach ($stmt as $row) {
+                        $image = (!empty($row['banner_photo']) ? '../images/cat_banner/' . $row['banner_photo'] . '' : '../images/noimage.jpg');
+                        echo "
+                          <tr>
+                          <td><img src=" . $image . " class='img-circle' width='40px' height='40px'>
+                          <span class='pull-right'><a href='#edit_photo1' class='photo1' data-toggle='modal' data-id='" . $row['banid'] . "'><i class='fa fa-edit' style='color:#000'></i></a></span>
+                          </td>
+                            <td>" . $row['url'] . "</td>
+                            <td>" . $row['name'] . "</td>
+                            <td>
+                              <button class='btn btn-success edit1' data-id='" . $row['banid'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete1' data-id='" . $row['banid'] . "'><i class='fa fa-trash'></i> Delete</button>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    } catch (PDOException $e) {
+                      echo $e->getMessage();
+                    }
+
+                    $pdo->close();
+                    ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-lg-6">
+            <div class="box table-responsive text-nowrap">
+              <div class="box-header">
+                <a href="#addoffer" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span> Add Offer</span></button></a>
+              </div>
+              <div class="box-body">
+                <table id="example2" class="table table-bordered">
+                  <thead>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Url</th>
+                    <th>Tools</th>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $conn = $pdo->open();
+                    try {
+                      $stmt = $conn->prepare("SELECT *,  category_offer.id AS offer_id FROM category_offer LEFT JOIN category ON category.id = category_offer.offer_type");
+                      $stmt->execute();
+                      foreach ($stmt as $row) {
+                        $image = (!empty($row['offer_photo']) ? '../images/category_offer/' . $row['offer_photo'] . '' : '../images/noimage.jpg');
+                        echo "
+                          <tr>
+                          <td><a href='../images/category_offer/" . $row['offer_photo'] . "'><img src=" . $image . " class='img-circle' width='40px' height='40px'></a>
+                          <span class='pull-right'><a href='#edit_photo2' class='photo2' data-toggle='modal' data-id='" . $row['offer_id'] . "'><i class='fa fa-edit' ></i></a></span>
+                          </td>
+                            <td>" . $row['name'] . "</td>
+                            <td>" . $row['offer_url'] . "</td>
+                            <td>
+                              <button class='btn btn-success btn-sm edit2' data-id='" . $row['offer_id'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete2' data-id='" . $row['offer_id'] . "'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -162,16 +202,17 @@
     </div>
     <?php include 'includes/footer.php'; ?>
     <?php include 'includes/category_modal.php'; ?>
+    <?php include 'includes/category_offer_modal.php'; ?>
     <?php include 'includes/category_banner_modal.php'; ?>
 
 
   </div>
-  <a href="#addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
   <!-- ./wrapper -->
 
   <?php include 'includes/scripts.php'; ?>
   <script>
     $(function() {
+      // CRUD OPERATION ON CATEGORY START
       $(document).on('click', '.edit', function(e) {
         e.preventDefault();
         $('#edit').modal('show');
@@ -191,29 +232,52 @@
         var id = $(this).data('id');
         getRow(id);
       });
+      // CRUD OPERATION ON CATEGORY END
 
-    });
-
-    $(function() {
+      // CRUD OPERATION ON CATEGORY BANNER START
       $(document).on('click', '.edit1', function(e) {
         e.preventDefault();
         $('#edit1').modal('show');
         var id = $(this).data('id');
-        getRow(id);
+        getBanner(id);
       });
 
       $(document).on('click', '.delete1', function(e) {
         e.preventDefault();
         $('#delete1').modal('show');
         var id = $(this).data('id');
-        getRow(id);
+        getBanner(id);
       });
 
       $(document).on('click', '.photo1', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        getRow(id);
+        getBanner(id);
       });
+      // CRUD OPERATION ON CATEGORY BANNER END
+
+      // CRUD OPERATION ON CATEGORY OFFER START
+
+      $(document).on('click', '.edit2', function(e) {
+        e.preventDefault();
+        $('#edit2').modal('show');
+        var id = $(this).data('id');
+        getOFFER(id);
+      });
+
+      $(document).on('click', '.delete2', function(e) {
+        e.preventDefault();
+        $('#delete2').modal('show');
+        var id = $(this).data('id');
+        getOFFER(id);
+      });
+
+      $(document).on('click', '.photo2', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        getOFFER(id);
+      });
+      // CRUD OPERATION ON CATEGORY BANNER END
 
     });
 
@@ -232,6 +296,9 @@
         }
       });
 
+    }
+
+    function getBanner(id) {
       $.ajax({
         type: 'POST',
         url: 'category_banner_row.php',
@@ -240,23 +307,43 @@
         },
         dataType: 'json',
         success: function(response) {
-          $('.catidbanner').val(response.id);
+          $('.catidbanner').val(response.banid);
           $('.bannername').html(response.url);
           $('#edit_banner_name').val(response.url);
         }
       });
     }
 
-    $.ajax({
-      type: 'POST',
-      url: 'category_fetch.php',
-      dataType: 'json',
-      success: function(response) {
-        $('#category1').append(response);
-        $('#edit_category').append(response);
-      }
-    });
+    function getOFFER(id) {
+      $.ajax({
+        type: 'POST',
+        url: 'category_offer_row.php',
+        data: {
+          id: id
+        },
+        dataType: 'json',
+        success: function(response) {
+          $('.offerid').val(response.offer_id);
+          $('#url').val(response.offer_url);
+          $('.offername').val(response.offer_type).html(response.catname);
+          $('#offerselected').val(response.offer_type).html(response.catname);
+          getCategory()
+        }
+      });
+    }
 
+    function getCategory() {
+      $.ajax({
+        type: 'POST',
+        url: 'category_fetch.php',
+        dataType: 'json',
+        success: function(response) {
+          $('#category1').append(response);
+          $('#category3').append(response);
+          $('#edit_category').append(response);
+        }
+      });
+    }
 
     $.ajax({
       type: 'POST',
@@ -265,6 +352,17 @@
       success: function(response) {
         $('#category2').append(response);
         $('#edit_category2').append(response);
+      }
+    });
+
+
+    $.ajax({
+      type: 'POST',
+      url: 'category_offer_fetch.php',
+      dataType: 'json',
+      success: function(response) {
+        $('#category3').append(response);
+        $('#edit_category3').append(response);
       }
     });
   </script>

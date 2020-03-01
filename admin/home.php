@@ -13,6 +13,23 @@ $conn = $pdo->open();
 ?>
 <?php include 'includes/header.php'; ?>
 
+<head>
+  <style>
+    .box1 {
+      padding: 1px 10px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 3px 3px 10px 5px #f1f1f1;
+      margin: 20px 10px;
+    }
+
+    .box1 h3 {
+      font-size: 35px;
+      font-weight: 700
+    }
+  </style>
+</head>
+
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
@@ -23,13 +40,13 @@ $conn = $pdo->open();
     <div class="content-wrapper">
 
       <!-- Content Header (Page header) -->
-      <section class="content-header" style="color: white">
+      <section class="content-header">
         <h1>
           Dashboard
         </h1>
         <ol class="breadcrumb">
-          <li><a href="home.php" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active" style="color: white">Dashboard</li>
+          <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Dashboard</li>
         </ol>
       </section>
 
@@ -57,98 +74,79 @@ $conn = $pdo->open();
           unset($_SESSION['success']);
         }
         ?>
-        <!-- Small boxes (Stat box) -->
+        <!-- Small cardes (Stat card) -->
         <div class="row">
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-blue">
-              <div class="inner">
-                <?php
-                $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id");
-                $stmt->execute();
-                $delivery1 = 0;
-                $total = 0;
-                foreach ($stmt as $srow) {
-                  $subtotal = $srow['price'] * $srow['quantity'];
-                  $total += $subtotal;
-                  $order = $total * ($srow['old_price'] - $srow['price']) /  100;
-                  $order1 = $total - $order;
-                  $delivery = 15.00;
-                  $delivery1 = $order1 + $delivery;
-                }
+            <div class="box1">
+              <?php
+              $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id");
+              $stmt->execute();
+              $delivery1 = 0;
+              $total = 0;
+              foreach ($stmt as $srow) {
+                $subtotal = $srow['price'] * $srow['quantity'];
+                $total += $subtotal;
+                $order = $total * ($srow['old_price'] - $srow['price']) /  100;
+                $order1 = $total - $order;
+                $delivery = 15.00;
+                $delivery1 = $order1 + $delivery;
+              }
 
-                echo "<h3>₹ " . number_format_short($delivery1, 2) . "</h3>";
-                ?>
-                <p>Total Sales</p>
+              echo "<h3>₹ " . number_format_short($delivery1, 2) . "</h3>";
+              ?>
+              <p>Total Sales</p>
+              <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-primary" style="width:100%">
+                  <?= " ₹ " . $delivery1 ?>
+                </div>
               </div>
 
-              <div class="icon">
-                <i class="fa fa-shopping-bag"></i>
-              </div>
-              <a href="book.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-maroon">
-              <div class="inner">
-                <?php
-                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM products");
-                $stmt->execute();
-                $prow =  $stmt->fetch();
+            <div class="box1">
+              <?php
+              $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM products");
+              $stmt->execute();
+              $prow =  $stmt->fetch();
 
-                echo "<h3>" . $prow['numrows'] . "</h3>";
-                ?>
+              echo "<h3>" . $prow['numrows'] . "</h3>";
+              ?>
 
-                <p>Number of Products</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-sort"></i>
-              </div>
-              <a href="student.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <p>Number of Products</p>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <?php
-                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users where type =:type");
-                $stmt->execute(['type' => 0]);
-                $urow =  $stmt->fetch();
+            <div class="box1">
+              <?php
+              $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM users where type =:type");
+              $stmt->execute(['type' => 0]);
+              $urow =  $stmt->fetch();
 
-                echo "<h3>" . $urow['numrows'] . "</h3>";
-                ?>
+              echo "<h3>" . $urow['numrows'] . "</h3>";
+              ?>
 
-                <p>Number of Users</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-users"></i>
-              </div>
-              <a href="return.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <p>Number of Users</p>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-red">
-              <div class="inner">
-                <?php
-                $stmt = $conn->prepare("SELECT COUNT(*) As numrows FROM users where type=:type");
-                $stmt->execute(['type' => 2]);
-                $drow = $stmt->fetch();
-                echo "<h3>" . $drow['numrows'] . "</h3>";
+            <div class="box1">
+              <?php
+              $stmt = $conn->prepare("SELECT COUNT(*) As numrows FROM users where type=:type");
+              $stmt->execute(['type' => 2]);
+              $drow = $stmt->fetch();
+              echo "<h3><b>" . $drow['numrows'] . "<b></h3>";
 
-                ?>
+              ?>
 
-                <p>Number Of DeliveryBoy</p>
-              </div>
-              <div class="icon">
-                <i class="fa fa-truck"></i>
-              </div>
-              <a href="borrow.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <p>Number Of DeliveryBoy</p>
             </div>
           </div>
           <!-- ./col -->
@@ -156,7 +154,7 @@ $conn = $pdo->open();
         <!-- /.row -->
         <div class="row">
           <div class="col-xs-12 col-md-6 col-lg-6">
-            <div class="box" style="background: white;border: none;border-radius: 5px">
+            <div class="box">
               <div class="box-header bg-aqua" style="border-radius: 5px;height: 70px;">
                 <h3 class="box-title" style="color: white;font-weight: 700;text-transform: uppercase;">Monthly Sales Report</h3>
                 <div class="box-tools pull-right">
@@ -297,7 +295,7 @@ $conn = $pdo->open();
 
       barChartOptions.datasetFill = false
       var myChart = barChart.Bar(barChartData, barChartOptions)
-      document.getElementById('legend').innerHTML = myChart.generateLegend();
+      document.getElementById('legend').innerdivHTML = myChart.generateLegend();
     });
   </script>
   <script>

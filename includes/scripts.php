@@ -145,7 +145,9 @@
 					}
 				}
 			});
+
 		});
+
 
 		$(document).on('click', '.minus', function(e) {
 			e.preventDefault();
@@ -172,6 +174,7 @@
 				}
 			});
 		});
+
 
 		$(document).on('click', '.add', function(e) {
 			e.preventDefault();

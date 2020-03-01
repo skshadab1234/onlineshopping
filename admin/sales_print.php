@@ -22,7 +22,7 @@ function generateRow($from, $to, $conn)
 				<td>' . date('M d, Y', strtotime($row['sales_date'])) . '</td>
 				<td>' . $row['firstname'] . ' ' . $row['lastname'] . '</td>
 				<td>' . $row['pay_id'] . '</td>
-				<td align="right">&#36; ' . number_format($amount, 2) . '</td>
+				<td align="right">Rs.  ' . number_format($amount, 2) . '</td>
 			</tr>
 			';
 	}
@@ -30,7 +30,7 @@ function generateRow($from, $to, $conn)
 	$contents .= '
 			<tr>
 				<td colspan="3" align="right"><b>Total</b></td>
-				<td align="right"><b>&#36; ' . number_format($total, 2) . '</b></td>
+				<td align="right"><b>Rs.  ' . number_format($total, 2) . '</b></td>
 			</tr>
 		';
 	return $contents;
@@ -62,10 +62,10 @@ if (isset($_POST['print'])) {
 	$pdf->AddPage();
 	$content = '';
 	$content .= '
-	      	<h2 align="center">SHADABZONE</h2>
-	      	<h4 align="center">SALES REPORT</h4>
+	<div>DRESSMANIA</div>
+	<h4 align="center">SALES REPORT</h4>
 	      	<h4 align="center">' . $from_title . " - " . $to_title . '</h4>
-	      	<table border="1" cellspacing="0" cellpadding="3">  
+	      	<table border="4" cellspacing="1" cellpadding="3">  
 	           <tr>  
 	           		<th width="15%" align="center"><b>Date</b></th>
 	                <th width="30%" align="center"><b>Buyer Name</b></th>

@@ -15,6 +15,7 @@ error_reporting(0);
                 width: 100%;
                 padding: 10px;
                 position: fixed;
+                background: #fff;
         }
 
         .navbar-collapse {
@@ -24,11 +25,10 @@ error_reporting(0);
         .navbar-brand1 {
                 font-size: 25px;
                 width: 300px;
-                color: #4b6cb7;
+                color: #010101;
                 padding: 20px;
                 line-height: 50px;
                 letter-spacing: 2px;
-                font-weight: 700;
         }
 
         .openBtn {
@@ -75,12 +75,11 @@ error_reporting(0);
 
         .autocomplete-items {
                 position: absolute;
-                border: 1px solid #d4d4d4;
                 border-bottom: none;
                 border-top: none;
                 z-index: 99;
                 /*position the autocomplete items to be the same width as the container:*/
-                top: 100%;
+                top: 44px;
                 left: 0;
                 right: 0;
         }
@@ -89,7 +88,6 @@ error_reporting(0);
                 padding: 10px;
                 cursor: pointer;
                 background-color: #fff;
-                border-bottom: 1px solid #d4d4d4;
         }
 
         /*when hovering an item:*/
@@ -99,8 +97,8 @@ error_reporting(0);
 
         /*when navigating through the items using the arrow keys:*/
         .autocomplete-active {
-                background-color: DodgerBlue !important;
-                color: #ffffff;
+                background-color: #e9e9e9 !important;
+                color: #010101;
         }
 
         #myHeader.sticky .fa-bars {
@@ -168,13 +166,13 @@ error_reporting(0);
                         display: flex;
                         position: fixed;
                         z-index: 999;
+                        padding: 10px;
                         background: #fff;
-                        padding: 10px
                 }
 
                 #mobileview img {
-                        width: 24px;
-                        height: 26px;
+                        width: 20px;
+                        height: 23px;
                         position: relative;
                         top: 6px;
                 }
@@ -209,13 +207,20 @@ error_reporting(0);
 
                 .rightsection li {
                         display: inline-block;
+                        padding: 0px 5px;
                 }
 
-                .rightsection li i {
-                        font-size: 20px;
+                .rightsection li:last-child {
+                        padding: 0
                 }
+
+                .rightsection .fa {
+                        font-size: 50px;
+                }
+
         }
-        #dropsidearrow:after{
+
+        #dropsidearrow:after {
                 content: '';
                 position: absolute;
                 top: -5px;
@@ -223,7 +228,7 @@ error_reporting(0);
                 border-top: none;
                 border-left: 15px solid transparent;
                 border-right: 15px solid transparent;
-                border-bottom:15px solid #2a2440;
+                border-bottom: 15px solid #2a2440;
 
         }
 </style>
@@ -236,7 +241,7 @@ error_reporting(0);
                         </button>
                         <div class="navbar-header">
                                 <a href="index.php" class="navbar-brand1">
-                                        ECOMM
+                                        <b> DRESSMANIA<b>
                                 </a>
                         </div>
 
@@ -321,7 +326,7 @@ error_reporting(0);
 
         <div class="mobile-view-header" id="mobileview">
                 <?php
-                if ($cat) {
+                if ($cat or $subcat or $_POST['keyword'] or $brand or $_GET['choose']) {
                         echo '<img src="images/arrow1.png" onclick="history.back(-1)" alt="">';
                 } else {
                         echo '<img src="images/hamburg.png" data-toggle="modal" data-target="#bar" alt="">';
@@ -332,68 +337,37 @@ error_reporting(0);
                         <?php
                         if ($cat) {
                                 echo $cat['name'];
+                        } elseif ($_GET['styles']) {
+                                echo $subcat['name'];
+                        } elseif ($_GET['choose']) {
+                                echo "Choose Category";
+                        } elseif ($_GET['brand']) {
+                                echo $brand['brand_name'];
+                        } elseif ($_POST['keyword']) {
+                                echo $_POST['keyword'];
                         } else {
                                 echo '
-                        <a href="index.php" style="color:#010101;font-size:26px;text-transform:uppercase;letter-spacing:1px;font-family:calibri">Ecomm</a>
+                        <a href="index.php" style="color:#010101;font-size:20px;text-transform:uppercase;letter-spacing:1px;font-family:calibri">Dressmania</a>
                         ';
                         }
                         ?>
                 </div>
-                <div class="rightsection pull-right">
+                <div class="rightsection container">
                         <ul>
                                 <li>
-                                        <a href="wishlist.php"><i class="fa fa-heart-o"></i></a>
+                                        <a href="" data-toggle="modal" data-target="#mb-search"><i class="fa fa-search"></i></a>
                                 </li>
+                                <li>
+                                        <a href="wishlist.php" style="margin-right:5px"><i class="fa fa-bookmark-o"></i></a>
                                 </li>
-                                <a href="#" data-toggle="modal" data-target="#cart1">
-                                        <img src="images/cart.png" alt="Cart" style="width: 30px;height: 30px;position: relative;top:-4px;">
-                                        <span class="cart_count" style="position: relative;left: -8px;top: -9px;color: red;border-radius: 50%;font-size: 14px;"></span>
-                                </a>
+                                <li>
+                                        <a href="cart_view.php"><i class="fa fa-shopping-bag"></i>
+                                                <span class="badge badge-danger cart_count" style="color:white;background:red;position:absolute;top:0px;right:3px;"></span>
+                                        </a>
                                 </li>
-
-                                <a href="#" data-toggle="dropdown" id="cart" style="margin-left: 10px;margin-right: 6px;margin-top:8px;">
-                                        <i class="fa fa-ellipsis-v"></i>
-                                </a>
-                                <ul class="dropdown-menu pull-right" id="drop-mobile">
-                                        <?php
-                                        if (isset($_SESSION['user'])) {
-                                                echo '
-                                        <a href="orders.php"><li><i class="fa fa-credit-card"></i> Orders</li></a>
-                                        <a href="transaction_history.php"><li><i class="fa fa-line-chart"></i> Transactions</li></a>
-                                        <a href="wishlist.php"><li><i class="fa fa-heart-o"></i> Wishlists</li></a>
-                                        <a href="chat.php"><li><i class="fa fa-commenting-o"></i> Chats</li></a>
-                                        <a href="Notification.php"><li><i class="fa fa-bell-o"></i> Notifications</li></a>
-                                        <a href="logout.php"><li><i class="fa fa-power-off"></i> Logout</li></a>
-                                        ';
-                                        } else {
-                                                echo ' 
-                                        
-                                        <div class="signups">
-                                                <a href="login.php">Login</a><a href="signup.php"> Signup</a>
-                                        </div>
-
-                                        <div class="signups1" >
-                                                <a href="help.php"><li><i class="fa fa-info-circle" style="font-size:22px"></i> Help</li></a>
-                                        </div>
-                                        
-                                        <div class="signups1">
-                                                <a href="notification.php"><li><i class="fa fa-bell-o"></i> Notification</li></a>
-                                        </div>
-                                        
-                                        <div class="signups1" style="border:none ">
-                                                <a href="download.php"><li><i class="fa fa-download"></i> Download App</li></a>
-                                        </div>
-                                        ';
-                                        }
-                                        ?>
-                                </ul>
                         </ul>
                 </div>
         </div>
-
-        </ul>
-        </div>
-
         <!-- all modal -->
         <?php include 'includes/sidebar_modal.php'; ?>
         <?php include 'includes/profile_modal.php'; ?>
@@ -520,14 +494,24 @@ error_reporting(0);
         }
 
         /*An array containing all the country names in the world:*/
-        var countries = ["Nike", "Woodland", "Adidas", "SeeandWear", "Lee Cooper", "Fila", "Puma", "RedTape"];
+        var countries = ["Nike", "Woodland", "Adidas", "Alikas", "SeeandWear", "Lee Cooper", "Fila", "Puma", "RedTape"];
 
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput1"), countries);
         autocomplete(document.getElementById("myInput"), countries);
 </script>
 <script>
-        var input = document.getElementById("myInput");
+        var input = document.getElementById("myInput1");
         input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById("myBtn1").click();
+                }
+        });
+</script>
+<script>
+        var input1 = document.getElementById("myInput");
+        input1.addEventListener("keyup", function(event) {
                 if (event.keyCode === 13) {
                         event.preventDefault();
                         document.getElementById("myBtn").click();

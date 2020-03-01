@@ -10,13 +10,13 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header" style="color: white">
+            <section class="content-header">
                 <h1>
                     DeliveryBoy
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="home.php" style="color: white"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active" style="color: white">DeliveryBoy</li>
+                    <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">DeliveryBoy</li>
                 </ol>
             </section>
 
@@ -82,7 +82,7 @@
                             </td>
                             <td>" . date('M d, Y', strtotime($row['created_on'])) . "</td>
                             <td>
-                              <button id='quickview'><a href='deliveryboyassignwork.php?user=" . $row['id'] . "' style='color:white' ><i class='fa fa-truck'></i> Assign Delivery</a></button>
+                              <a href='deliveryboyassignwork.php?user=" . $row['id'] . "' >Assign Delivery   </a>
                               <button class='btn btn-success btn-sm edit btn-flat'  id='quickview' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
                               <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
                             </td>

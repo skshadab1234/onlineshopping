@@ -7,7 +7,7 @@ if (isset($_POST['edit'])) {
     $url = $_POST['url'];
 
     try {
-        $stmt = $conn->prepare("UPDATE category_banner SET type = :category1, url=:url WHERE id=:id");
+        $stmt = $conn->prepare("UPDATE category_banner SET banner_type = :category1, url=:url WHERE id=:id");
         $stmt->execute(['category1' => $category, 'url' => $url, 'id' => $id]);
         $_SESSION['success'] = 'Banner Catgory updated successfully';
     } catch (PDOException $e) {

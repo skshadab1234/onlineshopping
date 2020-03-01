@@ -6,7 +6,7 @@ if (isset($_POST['id'])) {
 
     $conn = $pdo->open();
 
-    $stmt = $conn->prepare("SELECT * FROM category_banner WHERE id=:id");
+    $stmt = $conn->prepare("SELECT *, category_banner.id As banid FROM category_banner WHERE id=:id");
     $stmt->execute(['id' => $id]);
     $row = $stmt->fetch();
 

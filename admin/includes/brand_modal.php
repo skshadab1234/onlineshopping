@@ -60,11 +60,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="brand" class="col-sm-3 control-label">Category</label>
+                        <label for="edit_category" class="col-sm-3 control-label">Category</label>
 
                         <div class="col-sm-9">
-                            <select class="form-control" id="edit_category" name="category" required>
-                                <option value="" selected>- Select -</option>
+                            <select class="form-control" id="edit_category1" name="category" required>
+                                <option selected id="brandselect"></option>
                             </select>
                         </div>
                     </div>

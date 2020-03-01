@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label for="category" class="col-sm-3 control-label">Category </label>
                         <div class="col-sm-9">
-                            <select class="form-control" id="category1" name="category" required>
+                            <select class="form-control" id="category3" name="category" required>
                                 <option value="" selected>- Select -</option>
                             </select>
                         </div>

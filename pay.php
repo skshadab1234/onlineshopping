@@ -37,7 +37,7 @@ try {
         "phone" => $phone,
         "send_sms" => true,
         "allow_repeated_payments" => false,
-        "redirect_url" => "http://localhost/shadabonlineshopping/thankyou.php"
+        "redirect_url" => "http://localhost/onlineshopping/thankyou.php"
     ));
 
     $pay_url = $response['longurl'];

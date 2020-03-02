@@ -188,10 +188,9 @@ error_reporting(0);
 
                 #brand {
                         white-space: nowrap;
+                        line-height: 39px;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        line-height: 39px;
-                        font-size: 17px;
                         FONT-WEIGHT: bold;
                         font-family: sans-serif;
                         letter-spacing: 1px;
@@ -338,11 +337,11 @@ error_reporting(0);
                         if ($cat) {
                                 echo $cat['name'];
                         } elseif ($_GET['styles']) {
-                                echo $subcat['name'];
+                                echo "<h4 style='position: relative;top: -8px;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $subcat['name'] . "</h4><h5 style='position:relative;top:-12px;font-size:12px'>" . $total_pro['prodids'] . " items</h5>";
                         } elseif ($_GET['choose']) {
                                 echo "Choose Category";
                         } elseif ($_GET['brand']) {
-                                echo $brand['brand_name'];
+                                echo "<h4 style='position: relative;top: -8px;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $brand['brand_name'] . "</h4><h5 style='position:relative;top:-12px;font-size:12px'>" . $total_brand['prodids'] . " items</h5>";
                         } elseif ($_POST['keyword']) {
                                 echo $_POST['keyword'];
                         } else {

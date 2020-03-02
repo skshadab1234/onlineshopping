@@ -26,7 +26,7 @@ if (isset($_POST['add'])) {
 	} else {
 		if (!empty($filename)) {
 			$ext = pathinfo($filename, PATHINFO_EXTENSION);
-			$new_filename = $slug . '.' . $ext;
+			$new_filename = $row['slug'] . '_' . time() . '.' . $ext;
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/' . $new_filename);
 		} else {
 			$new_filename = '';

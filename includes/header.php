@@ -80,7 +80,7 @@
         }
 
         .content {
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         /* slider css code */
@@ -526,9 +526,6 @@
                 margin: 10px 20px;
             }
 
-            .mobile-view-header #brand {
-                line-height: 39px;
-            }
 
             .mobile-view-header #index {
                 color: #fff;

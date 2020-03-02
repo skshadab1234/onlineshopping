@@ -31,6 +31,18 @@ if (isset($_GET['styles'])) {
   $pdo->close();
 }
 ?>
+<?php
+
+if (isset($subcatid)) {
+  $stmt = $conn->prepare("SELECT *, COUNT(products.id) As prodids FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE subcategory_id = :catid");
+  $stmt->execute(['catid' => $subcatid]);
+  $total_pro = $stmt->fetch();
+} elseif ($_GET['brand']) {
+  $stmt = $conn->prepare("SELECT *, COUNT(products.id) As prodids FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE brand_id = :catid");
+  $stmt->execute(['catid' => $brandid]);
+  $total_brand = $stmt->fetch();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,23 +71,13 @@ if (isset($_GET['styles'])) {
       <div style="background:#fff;height:100%">
         <!-- Main content -->
         <section class="content" style="padding:0px">
-          <ul class="breadcrumb text-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#"><?php
-                            if (isset($_GET['styles'])) {
-                              echo $subcat['name'];
-                            } else {
-                              echo $brand['brand_name'];
-                            }
-                            ?> </a></li>
-          </ul>
           <div class="container-fluid" style="margin:0;padding:0;">
             <?php
             if (isset($subcatid)) {
               $conn = $pdo->open();
               try {
                 $inc = 6;
-                $stmt = $conn->prepare("SELECT *, products.id As prodid FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE subcategory_id = :catid");
+                $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name as prodname FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE subcategory_id = :catid");
                 $stmt->execute(['catid' => $subcatid]);
                 foreach ($stmt as $row) {
                   $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
@@ -83,12 +85,14 @@ if (isset($_GET['styles'])) {
                   if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
             ?>
                   <div class="col-xs-6 col-sm-4 col-md-4 col-lg-2" style='margin:0;padding:0'>
-                    <div class="card">
-                      <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px'></a> "; ?>
-                      <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
-                        <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand_name'] . " " ?></h5>
-                        <?php echo "<a style=\"color:black\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class="text-left" style="font-size:16px"><?php echo "₹ " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                    <div class="card" style="overflow: hidden">
+                      <div style="width:200px;overflow:hidden;height:250px">
+                        <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\"  style='object-fit:contain;width:200px;height:100%'></a> "; ?>
+                      </div>
+                      <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;line-height:9px;padding:5px;font-family:calibri">
+                        <h5 class="text-left" style="font-weight: 700;font-size: 15px;font-family: calibri;"><?php echo "" . $row['brand_name'] . " " ?></h5>
+                        <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
+                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                       </div>
                       <div class="fav" style="position:absolute;top:20px;right:20px;">
                         <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
@@ -163,13 +167,15 @@ if (isset($_GET['styles'])) {
                   $inc = ($inc == 6) ? 1 : $inc + 1;
                   if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
                 ?>
-                  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2" style='margin:0;padding:0'>
-                    <div class="card">
-                      <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-fluid\" width='250px' height='250px'></a> "; ?>
-                      <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;padding:10px">
-                        <h5 class="text-left" style="font-size:20px;font-weight:700"><?php echo "" . $row['brand_name'] . " " ?></h5>
-                        <?php echo "<a style=\"color:black\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class="text-left" style="font-size:16px"><?php echo "₹ " . number_format($row['price'], 2) . "" ?><span style="color:#313131;font-size:12px"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                  <div class="col-xs-6 col-sm-4 col-md-4 col-lg-2" style='margin:0;padding:0'>
+                    <div class="card" style="overflow: hidden">
+                      <div style="width:200px;overflow:hidden;height:250px">
+                        <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\"  style='object-fit:contain;width:200px;height:100%'></a> "; ?>
+                      </div>
+                      <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;line-height:9px;padding:5px;font-family:calibri">
+                        <h5 class="text-left" style="font-weight: 700;font-size: 15px;font-family: calibri;"><?php echo "" . $row['brand_name'] . " " ?></h5>
+                        <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
+                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                       </div>
                       <div class="fav" style="position:absolute;top:20px;right:20px;">
                         <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
@@ -188,7 +194,7 @@ if (isset($_GET['styles'])) {
                               <div class="container-fluid" style="color: #544a82">
                                 <div class="row">
                                   <div class="col-sm-6">
-                                    <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-rounded\"></a>"; ?>
+                                    <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\"></a>"; ?>
                                   </div>
                                   <div class="col-sm-6">
                                     <span style="color:steelblue"><?php echo "" . $row['brand'] . ""; ?></span>
@@ -221,7 +227,6 @@ if (isset($_GET['styles'])) {
                       </div>
                     </div>
                   </div>
-
             <?php echo "
 ";
                   if ($inc == 6) echo "</div>";

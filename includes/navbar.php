@@ -166,7 +166,6 @@ error_reporting(0);
                         display: flex;
                         position: fixed;
                         z-index: 999;
-                        padding: 10px;
                         background: #fff;
                 }
 

@@ -79,6 +79,11 @@
             scroll-behavior: smooth;
         }
 
+        .d-view {
+            position: absolute;
+            top: 100px;
+        }
+
         .content {
             margin-top: 60px;
         }
@@ -434,6 +439,10 @@
         @media (max-width: 768px) {
 
             .filter1200px {
+                display: none
+            }
+
+            .d-view {
                 display: none
             }
 
@@ -1509,6 +1518,9 @@
         }
     }, 1000);
 </script>
+
+<!-- slider javascript  -->
+
 <!-- <script>
 var stateObject = {
 "India": { 

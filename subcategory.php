@@ -80,7 +80,7 @@ if (isset($subcatid)) {
                 $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name as prodname FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE subcategory_id = :catid");
                 $stmt->execute(['catid' => $subcatid]);
                 foreach ($stmt as $row) {
-                  $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
+                  $image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
                   $inc = ($inc == 6) ? 1 : $inc + 1;
                   if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
             ?>
@@ -163,7 +163,7 @@ if (isset($subcatid)) {
                 $stmt = $conn->prepare("SELECT *, products.id As prodid FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE brand_id = :catid");
                 $stmt->execute(['catid' => $brandid]);
                 foreach ($stmt as $row) {
-                  $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
+                  $image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
                   $inc = ($inc == 6) ? 1 : $inc + 1;
                   if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
                 ?>

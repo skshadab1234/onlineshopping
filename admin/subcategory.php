@@ -63,7 +63,7 @@
                                             $stmt = $conn->prepare("SELECT * FROM subcategory");
                                             $stmt->execute();
                                             foreach ($stmt as $row) {
-                                                $image = (!empty($row['photo'])) ? '../images/subcategory/' . $row['photo'] : '../images/noimage.jpg';
+                                                $image = (!empty($row['subcat_photo'])) ? '../images/subcategory/' . $row['subcat_photo'] : '../images/noimage.jpg';
                                                 echo "
                           <tr>
                           <td><img src='" . $image . "' class='img-circle' width='40px' height='40px'>

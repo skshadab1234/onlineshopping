@@ -328,7 +328,7 @@ try {
 						<div class="row">
 							<div class="col-sm-6 sk">
 								<div class="img-magnifier-container text-center">
-									<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg'; ?>">
+									<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg'; ?>">
 								</div>
 							</div>
 							<div class="col-sm-6" id="details" style="padding: 20px">

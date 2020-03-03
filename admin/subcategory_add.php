@@ -26,8 +26,8 @@ if (isset($_POST['add'])) {
             $new_filename = '';
         }
         try {
-            $stmt = $conn->prepare("INSERT INTO subcategory (name,sub_catslug,type,photo) VALUES (:name,:sub_catslug,:type,:photo)");
-            $stmt->execute(['name' => $name, 'sub_catslug' => $name, 'type' => $type, 'photo' => $new_filename]);
+            $stmt = $conn->prepare("INSERT INTO subcategory (name,sub_catslug,type,subcat_photo) VALUES (:name,:sub_catslug,:type,:subcat_photo)");
+            $stmt->execute(['name' => $name, 'sub_catslug' => $name, 'type' => $type, 'subcat_photo' => $new_filename]);
             $_SESSION['success'] = 'Sub-Category added successfully';
         } catch (PDOException $e) {
             $_SESSION['error'] = $e->getMessage();

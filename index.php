@@ -29,7 +29,7 @@ mysqli_select_db($link, "ecomm");
     <?php include 'includes/sidenav.php' ?>
     <div class="content-wrapper">
       <section class="content">
-        <div class="swiper-container swiper1" id="category_landing_page" style="margin-top:10px">
+        <div class="swiper-container swiper1" id="category_landing_page" style="margin-top:10px;">
           <div class="swiper-wrapper">
             <?php
             $stmt = $conn->prepare("SELECT * FROM category");
@@ -344,7 +344,6 @@ mysqli_select_db($link, "ecomm");
       </section>
 
     </div>
-
 
 
     <!-- if you want to display modal on page load  -->

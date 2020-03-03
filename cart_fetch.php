@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
 		$stmt->execute(['user_id' => $user['id']]);
 		foreach ($stmt as $row) {
 			$output['count']++;
-			$image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
+			$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
 			$productname = (strlen($row['prodname']) > 10) ? substr_replace($row['prodname'], '...', 28) : $row['prodname'];
 			$output['list'] .= "
 					<li>
@@ -42,7 +42,7 @@ if (isset($_SESSION['user'])) {
 			$stmt = $conn->prepare("SELECT *, products.name AS prodname, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
 			$stmt->execute(['id' => $row['productid']]);
 			$product = $stmt->fetch();
-			$image = (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg';
+			$image = (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg';
 			$output['list'] .= "
 					<li>
 						<a href='product.php?product=" . $product['slug'] . "'>

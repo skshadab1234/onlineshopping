@@ -109,13 +109,13 @@ if (isset($_GET['subcategory'])) {
                       $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name As prodname FROM products left join brands on brands.id = products.brand_id left join subcategory on subcategory.id = products.subcategory_id $where");
                       $stmt->execute();
                       foreach ($stmt as $row) {
-                        $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/noimage.jpg';
+                        $image = (!empty($row['photo'])) ? '../images/allproduct/' . $row['photo'] : '../images/noimage.jpg';
                         $counter = ($row['date_view'] == $now) ? $row['counter'] : 0;
                         echo "
                           <tr>
                             <td style=\"white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:30px \">" . $row['prodname'] . " - " . $row['prodid'] . "</td>
                             <td>
-                             <a href=../images/" . $row['photo'] . "> <img src='" . $image . "' height='30px' class='img-circle' width='30px'></a>
+                             <a href=../images/allproduct/" . $row['photo'] . "> <img src='" . $image . "' height='30px' class='img-circle' width='30px'></a>
                               <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
                             <td><a href='#description' data-toggle='modal' class='desc' style=\"line-height:40px\" data-id='" . $row['prodid'] . "'> View</a></td>

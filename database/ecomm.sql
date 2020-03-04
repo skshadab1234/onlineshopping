@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2020 at 11:15 AM
+-- Generation Time: Mar 04, 2020 at 09:53 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -371,7 +371,30 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `subcategory_id`, `
 (67, 0, NULL, 95, 20, 'RED', 'Nike - Children\'s Watch, Steel Band, Red/Grey: Amazon.co ...', 'standard', '<p>Nike WD0139689 - Children&#39;s Watch, Steel Band, Red/Grey:&nbsp;</p>\r\n', 'nike-children-s-watch-steel-band-red-grey-amazon-co', '1500', 1100, '12%', '_1583229284.jpg', '0000-00-00', 0),
 (68, 0, NULL, 95, 20, 'BLUE', ' Nike Kids\' R0017-607 Triax Junior Watch: Amazon.co.uk: Sports .', 'standard', '<p>Nike Kids&#39; R0017-607 Triax Junior Watch: Amazon.co.uk: Sports&nbsp;</p>\r\n', 'nike-kids-r0017-607-triax-junior-watch-amazon-co-uk-sports', '1300', 1000, '12%', '_1583229570.jpg', '0000-00-00', 0),
 (69, 0, NULL, 96, 20, 'NAVY BLACK', ' eBay Nike Sock Dart Premium SE Mens Navy Casual Lifestyle Sneakers Shoes 859553-', '8-9-10', '<p><a href=\"https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fwww.ebay.com%2Fc%2F1074826354&amp;psig=AOvVaw0H5t1albeD8we-d5y7WC70&amp;ust=1583316271556000&amp;source=images&amp;cd=vfe&amp;ved=0CAkQjhxqFwoTCNjp9u6G_ucCFQAAAAAdAAAAABAH\" target=\"_blank\">Nike Sock Dart Premium SE Mens Navy Casual Lifestyle Sneakers Shoes 859553-</a></p>\r\n', 'ebay-nike-sock-dart-premium-se-mens-navy-casual-lifestyle-sneakers-shoes-859553', '7000', 4000, '12%', '_1583230095.jpg', '0000-00-00', 0),
-(70, 0, NULL, 96, 20, 'red', ' Man\'s Nike Vandal High Supreme Casual Shoe Gym Red/black/white ', '8,9,10', '<p>&nbsp;Man&#39;s Nike Vandal High Supreme Casual Shoe Gym Red/black/white&nbsp;</p>\r\n', 'man-s-nike-vandal-high-supreme-casual-shoe-gym-red-black-white', '5000', 2500, '11%', '_1583230376.jpg', '0000-00-00', 0);
+(70, 0, NULL, 96, 20, 'red', ' Man\'s Nike Vandal High Supreme Casual Shoe Gym Red/black/white ', '8,9,10', '<p>&nbsp;Man&#39;s Nike Vandal High Supreme Casual Shoe Gym Red/black/white&nbsp;</p>\r\n', 'man-s-nike-vandal-high-supreme-casual-shoe-gym-red-black-white', '5000', 2500, '11%', '_1583230376.jpg', '0000-00-00', 0),
+(71, 0, NULL, 94, 24, 'brown', ' Sportswear Rowing Crepe Blazer', 's,m,l,xl,xxl', '<p>&nbsp;Sportswear Rowing Crepe Blazer</p>\r\n', 'sportswear-rowing-crepe-blazer', '2000', 1000, '30%', '_1583309493.jpeg', '0000-00-00', 0),
+(72, 0, NULL, 94, 24, 'green', ' Blazer stretchy! NWT L NWT', 's,m,xl,xxl', '<p>&nbsp;Blazer stretchy! NWT L NWT</p>\r\n', 'blazer-stretchy-nwt-l-nwt', '1000', 750, '10%', '_1583309615.jpg', '0000-00-00', 0),
+(73, 0, NULL, 97, 21, 'grey', 'Allen Solly Grey Trousers', '34-40', '<p>Allen Solly Grey Trousers</p>\r\n', 'allen-solly-grey-trousers', '800', 500, '30%', '_1583309721.jpg', '0000-00-00', 0),
+(74, 0, NULL, 97, 21, 'browm', 'Casual Cotton Chinos Trousers Pants', '28-40', '<p>Casual Cotton Chinos Trousers Pants</p>\r\n', 'casual-cotton-chinos-trousers-pants', '2600', 2000, '11%', '_1583309798.jpg', '0000-00-00', 0),
+(75, 0, NULL, 97, 21, 'light blue', ' Mens Cotton Light Blue Trouser', '28-40', '<p>&nbsp;Mens Cotton Light Blue Trouser</p>\r\n', 'mens-cotton-light-blue-trouser', '2000', 1000, '12%', '_1583309897.jpg', '0000-00-00', 0),
+(76, 0, NULL, 97, 21, 'light pink', 'Sandy Slim Fit Pleat-Front Trousers', '28-40', '<p>Sandy Slim Fit Pleat-Front Trousers</p>\r\n', 'sandy-slim-fit-pleat-front-trousers', '2000', 1200, '20%', '_1583309966.jpg', '0000-00-00', 0),
+(77, 0, NULL, 97, 21, 'white', ' Kurta Pants ', '28-40', '<p>&nbsp;Kurta Pants&nbsp;</p>\r\n', 'kurta-pants', '500', 300, '10%', '_1583310085.jpg', '0000-00-00', 0),
+(78, 0, NULL, 97, 22, 'BLUE', 'Lino Pants ', '28-40', '<p>Lino Pants&nbsp;</p>\r\n', 'lino-pants', '3000', 2000, '10%', '_1583310165.jpg', '0000-00-00', 0),
+(79, 0, NULL, 97, 23, 'BROWN', 'Military Style Loose Fit Baggy Cargo Pants Men Multi Pocket Cargo Pants For Men Casual Cotton Straight ', '28-40', '<p>Military Style Loose Fit Baggy Cargo Pants Men Multi Pocket Cargo Pants For Men Casual Cotton Straight&nbsp;</p>\r\n', 'military-style-loose-fit-baggy-cargo-pants-men-multi-pocket-cargo-pants-men-casual-cotton-straight', '2500', 2000, '20%', '_1583310256.jpg', '0000-00-00', 0),
+(80, 0, NULL, 98, 36, 'RED', ' Maroon plain raw silk men-kurtas', 'XL', '<p>&nbsp;Maroon plain raw silk men-kurtas</p>\r\n', 'maroon-plain-raw-silk-men-kurtas', '2500', 2000, '3%', '_1583310367.jpg', '0000-00-00', 0),
+(81, 0, NULL, 98, 23, 'BLUE', 'Sayesha Mens\' Solid Blue Self Design Cotton Long Kurta ', 'S,M,L', '<p>Sayesha Mens&#39; Solid Blue Self Design Cotton Long Kurta&nbsp;</p>\r\n', 'sayesha-mens-solid-blue-self-design-cotton-long-kurta', '3000', 2000, '25%', '_1583310467.jpg', '0000-00-00', 0),
+(82, 0, NULL, 97, 23, 'PURPLE', ' Vastramay Men Purple Cotton Kurta ', 'XL,XXL', '<p>&nbsp;Vastramay Men Purple Cotton Kurta</p>\r\n', 'vastramay-men-purple-cotton-kurta', '1200', 1000, '10%', '_1583310537.png', '0000-00-00', 0),
+(83, 0, NULL, 98, 24, 'GREY', ' Grey Cowl Kurta Set', 'S,M,L,XL', '<p>&nbsp;Grey Cowl Kurta Set</p>\r\n', 'grey-cowl-kurta-set', '2500', 2000, '12%', 'grey-cowl-kurta-set_1583310777.jpg', '0000-00-00', 0),
+(84, 0, NULL, 98, 25, 'LIGHT ORANGE', ' Light Orange Embroidered Kurta ', 'S,M,L,XL', '<p>&nbsp;Light Orange Embroidered Kurta&nbsp;</p>\r\n', 'light-orange-embroidered-kurta', '2000', 1500, '20%', 'light-orange-embroidered-kurta_1583310733.jpg', '0000-00-00', 0),
+(85, 0, NULL, 98, 26, 'BROWN SILK', 'kurta pajama Silk Golden Kurta', 'S,M,L', '<p>kurta pajama Silk Golden Kurta</p>\r\n', 'kurta-pajama-silk-golden-kurta', '1000', 875, '12%', '_1583310863.jpg', '0000-00-00', 0),
+(86, 0, NULL, 98, 27, 'BLACK', 'Black Kurta Set', 'S,M', '<p>Black Kurta Set</p>\r\n', 'black-kurta-set', '2000', 1500, '12%', 'black-kurta-set_1583311051.jpg', '0000-00-00', 0),
+(87, 0, NULL, 98, 36, 'GREY', ' Grey Block Printed Kurta', 'XL', '<p>&nbsp;Grey Block Printed Kurta</p>\r\n', 'grey-block-printed-kurta', '4500', 2500, '30%', '_1583310994.jpg', '0000-00-00', 0),
+(88, 0, NULL, 99, 20, 'BLUE', 'Buy Sapper Mens Denim Jean 890483291(Denim Blue, Medium) ', '28-40', '<p>Buy Sapper Mens Denim Jean 890483291(Denim Blue, Medium)&nbsp;</p>\r\n', 'buy-sapper-mens-denim-jean-890483291-denim-blue-medium', '1000', 800, '12%', '_1583311183.jpg', '0000-00-00', 0),
+(89, 0, NULL, 99, 21, 'BLUE', ' Gap Skinny Built-In Flex Distressed Jeans', '28-42', '<p>&nbsp;Gap Skinny Built-In Flex Distressed Jeans</p>\r\n', 'gap-skinny-built-flex-distressed-jeans', '2000', 1000, '12%', '_1583311254.jpg', '0000-00-00', 0),
+(90, 0, NULL, 99, 22, 'BLACK', ' Pants Pencil Leg Hot Sale Cowboy Trousers', '28-44', '<p>&nbsp;Pants Pencil Leg Hot Sale Cowboy Trousers</p>\r\n', 'pants-pencil-leg-hot-sale-cowboy-trousers', '1000', 500, '12%', '_1583311327.jpg', '0000-00-00', 0),
+(91, 0, NULL, 99, 21, 'BLUE', ' - Buy Stylish Men\'s Jeans', '28-44', '<p>&nbsp;- Buy Stylish Men&#39;s Jeans</p>\r\n', 'buy-stylish-men-s-jeans', '1200', 1000, '50%', '_1583311415.jpg', '0000-00-00', 0),
+(92, 0, NULL, 99, 22, 'BLUE', 'No Boundaries Men\'s Skinny Jean', '28-42', '<p>No Boundaries Men&#39;s Skinny Jean</p>\r\n', 'no-boundaries-men-s-skinny-jean', '1100', 1000, '15%', '_1583311496.jpg', '0000-00-00', 0),
+(93, 0, NULL, 99, 22, 'BLACK', 'Men’s denim - Organic denim', '22-40', '<p>Men&rsquo;s denim - Organic denim</p>\r\n', 'men-s-denim-organic-denim', '2000', 1500, '23%', '_1583311613.jpg', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -689,7 +712,7 @@ ALTER TABLE `pincode`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `sales`

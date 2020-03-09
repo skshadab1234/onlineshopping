@@ -15,7 +15,7 @@ if (isset($_GET['styles'])) {
   }
 
   $pdo->close();
-} else {
+} elseif ($_GET['brand']) {
   $brand = $_GET['brand'];
   $conn = $pdo->open();
 
@@ -71,13 +71,45 @@ if (isset($subcatid)) {
       <div style="background:#fff;height:100%">
         <!-- Main content -->
         <section class="content" style="padding:0px">
-          <div class="container-fluid" style="margin:0;padding:0;">
+
+          <div class="container-fluid" style="margin:40px 0px;padding:0;">
+            <div class="container-fluid" id="pr-show" style="background: #f5f5f6;padding:20px;margin:10px 0px">
+
+<?php
+              if (isset($brandid)) {
+                echo  '<ul id="breadcrumb-cat"> 
+                <li>Home</li>
+                <li><i class="fa fa-angle-right"></i></li>
+                <li>'.$brand['brand_name'].'</li>
+                </ul>
+                ';
+              }
+              elseif(isset($subcatid)){
+                echo  '<ul id="breadcrumb-cat"> 
+                <li>Home</li>
+                <li><i class="fa fa-angle-right"></i></li>
+                <li>'.$subcat['name'].'</li>
+                </ul>
+                ';
+             
+              }
+              ?>
+
+              <?php
+              if (isset($brandid)) {
+                echo  $brand['brand_name'] . " - <span style='color:gray'>" . $total_brand['prodids']."  items</span>";
+              }
+              elseif(isset($subcatid)){
+                echo  $subcat['name'] . " - " . $total_pro['prodids']." items";
+              }
+              ?>
+            </div>
             <?php
             if (isset($subcatid)) {
               $conn = $pdo->open();
               try {
                 $inc = 6;
-                $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name as prodname FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE subcategory_id = :catid");
+                $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name as prodname FROM products LEFT JOIN brands on brands.id = products.brand_id  WHERE subcategory_id = :catid ORDER BY RAND()");
                 $stmt->execute(['catid' => $subcatid]);
                 foreach ($stmt as $row) {
                   $image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
@@ -94,11 +126,12 @@ if (isset($subcatid)) {
                         <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
                         <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                       </div>
-                      <div class="fav" style="position:absolute;top:20px;right:20px;">
-                        <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
-                      </div>
-                      <div class="card1" style="position: absolute;top: 212px;background: #fff;padding: 10px;">
-                        <button class="btn btn-primary" style="background:#ff3f6c;border:none;text-transform:uppercase;font-weight:bolder" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
+                      <div class="card1" style="position: absolute;bottom: 44px;background: #fff;padding:5px">
+                        <div class="btn-group" id="q-btn">
+                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
+                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Wishlist</button>
+                        </div>
+
                         <h5>Sizes : <?php echo "" . $row['size'] . "" ?></h5>
                       </div>
                       <!-- Modal -->
@@ -158,6 +191,7 @@ if (isset($subcatid)) {
               $pdo->close();
             } elseif (isset($brandid)) {
               $conn = $pdo->open();
+
               try {
                 $inc = 6;
                 $stmt = $conn->prepare("SELECT *, products.id As prodid FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE brand_id = :catid");
@@ -177,11 +211,12 @@ if (isset($subcatid)) {
                         <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
                         <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
                       </div>
-                      <div class="fav" style="position:absolute;top:20px;right:20px;">
-                        <a href=""><i class="fa fa-heart-o" style="font-size:20px"></i></a>
-                      </div>
-                      <div class="card1" style="position: absolute;top: 212px;background: #fff;padding: 10px;">
-                        <button class="btn btn-primary" style="background:#ff3f6c;border:none;text-transform:uppercase;font-weight:bolder" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
+                      <div class="card1" style="position: absolute;bottom: 44px;background: #fff;width: 100%;overflow: hidden;padding: 10px;">
+                        <div class="btn-group" id="q-btn">
+                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
+                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Wishlist</button>
+                        </div>
+
                         <h5>Sizes : <?php echo "" . $row['size'] . "" ?></h5>
                       </div>
                       <!-- Modal -->
@@ -238,6 +273,8 @@ if (isset($subcatid)) {
               }
 
               $pdo->close();
+            } else {
+              echo "thanks";
             }
             ?>
           </div>
@@ -245,7 +282,7 @@ if (isset($subcatid)) {
       </div>
     </div>
   </div>
-
+  <?php include 'includes/footer.php' ?>
   <?php include 'includes/scripts.php' ?>
 </body>
 

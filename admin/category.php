@@ -57,11 +57,17 @@
           unset($_SESSION['success']);
         }
         ?>
+        <div class="container" style="padding: 10px" id="modal-adding">
+          <a href="#addnew" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span>On Landing Page</span></button></a>
+          <a href="#addbanner" data-toggle="modal"> <button class="btn btn-success btn-sm btn-flat "><i class="fa fa-plus"></i> <span> Add Banner</span></button></a>
+          <a href="#addoffer" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span> Add Offer</span></button></a>
+        </div>
+
         <div class="row">
           <div class="col-xs-12 col-lg-6">
             <div class="box table-responsive text-nowrap">
               <div class="box-header">
-                <a href="#addnew" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span> Add Category</span></button></a>
+                <h4><b>Category</b></h4>
               </div>
               <div class="box-body">
                 <table id="example3" class="table table-bordered">
@@ -106,8 +112,8 @@
 
           <div class="col-xs-12 col-lg-6">
             <div class="box table-responsive text-nowrap" style="background: #fff;color:#000">
-              <div class="box-header">
-                <a href="#addbanner" data-toggle="modal"> <button class="btn btn-success btn-sm btn-flat "><i class="fa fa-plus"></i> <span> Add Banner</span></button></a>
+            <div class="box-header">
+                <h4><b>Banner</b></h4>
               </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
@@ -153,8 +159,8 @@
 
           <div class="col-xs-12 col-lg-6">
             <div class="box table-responsive text-nowrap">
-              <div class="box-header">
-                <a href="#addoffer" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span> Add Offer</span></button></a>
+            <div class="box-header">
+                <h4><b>Offers</b></h4>
               </div>
               <div class="box-body">
                 <table id="example2" class="table table-bordered">
@@ -201,13 +207,11 @@
       </section>
     </div>
     <?php include 'includes/footer.php'; ?>
-    <?php include 'includes/category_modal.php'; ?>
-    <?php include 'includes/category_offer_modal.php'; ?>
-    <?php include 'includes/category_banner_modal.php'; ?>
-
-
   </div>
   <!-- ./wrapper -->
+  <?php include 'includes/category_offer_modal.php'; ?>
+    <?php include 'includes/category_modal.php'; ?>
+    <?php include 'includes/category_banner_modal.php'; ?>
 
   <?php include 'includes/scripts.php'; ?>
   <script>
@@ -350,7 +354,7 @@
       url: 'category_banner_fetch.php',
       dataType: 'json',
       success: function(response) {
-        $('#category2').append(response);
+        $('#category5').append(response);
         $('#edit_category2').append(response);
       }
     });

@@ -223,13 +223,13 @@ if (isset($_GET['category'])) {
     <div class="slider" id="slider1" style='width:100%;height:600px'>
       <!-- Slides -->
       <?php
-      $stmt = $conn->prepare("SELECT * FROM category_banner WHERE banner_type = :catid ");
+      $stmt = $conn->prepare("SELECT * FROM slider  WHERE slider_name = :catid ");
       $stmt->execute(['catid' => $catid]);
       foreach ($stmt as $row) {
-        $image = (!empty($row['banner_photo'])) ? 'images/cat_banner/' . $row['banner_photo'] : 'images/noimage.jpg';
+        $image = (!empty($row['slider_photo'])) ? 'images/sliders/' . $row['slider_photo'] : 'images/noimage.jpg';
         echo "
             <div>
-                <a href='" . $row['url'] . "'><img src='" . $image . "' style='background:pink;height:600px'></a>
+                <a href='subcategory.php?s=" . $row['slider_name'] . "?off=".$row['slider_off']."'><img src='" . $image . "' style='background:pink;height:600px'></a>
                 </div>
                 ";
       }
@@ -242,7 +242,7 @@ if (isset($_GET['category'])) {
           <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path>
         </svg></i>
     </div>
-    <div class="container-fluid" style="position:relative;padding:0;text-align:center">
+    <div class="container-fluid" style="position:relative;padding:0;text-align:center;background:#f5f5f6">
       <?php
       $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = 'brands'");
       $stmt->execute(['name' => $_GET['category']]);
@@ -271,7 +271,7 @@ if (isset($_GET['category'])) {
           echo "
 <div class=\"col-xs-4 col-sm-3 col-lg-2\" style='padding:5px'>
 <div class='container-fluid1' style='margin:0px;padding:0;'>
-<a href='subcategory.php?brand=" . $row['brand_name'] . "' ><img src='" . $image . "' style='background:#010101'  class='img-thumbnail' width='150px' height='180px;'></a>    
+<a href='subcategory.php?brand=" . $row['brand_name'] . "' ><img src='" . $image . "' style='background:#010101' ></a>    
 </div>
 </div>
 ";
@@ -287,6 +287,52 @@ if (isset($_GET['category'])) {
       $pdo->close();
       ?>
     </div>
+    <div class="container-fluid" style="position:relative;padding:0;text-align:center;background:#f5f5f6">
+      <?php
+      $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = :name");
+      $stmt->execute(['name' => $_GET['category']]);
+      foreach ($stmt as $row) {
+        $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
+        echo "
+                <img src='" . $image . "' style='background:pink'>
+                ";
+      }
+
+      ?>
+    </div>
+    <div class="container-fluid" style="padding:0;text-align:center;background:#f5f5f6">
+      <?php
+
+      $conn = $pdo->open();
+
+      try {
+        $inc = 6;
+        $stmt = $conn->prepare("SELECT * FROM subcategory WHERE type = :type");
+        $stmt->execute(['type' => $_GET['category']]);
+        foreach ($stmt as $row) {
+          $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
+          $inc = ($inc == 6) ? 1 : $inc + 1;
+          if ($inc == 6) echo "<div class='row' style='margin:0'>";
+          echo "
+<div class=\"col-xs-4 col-sm-3 col-lg-2\" style='padding:5px'>
+<div class='container-fluid1' style='margin:0px;padding:0;'>
+<a href='subcategory.php?styles=" . $row['sub_catslug'] . "' ><img src='" . $image . "'  class='img-thumbnail'></a>    
+</div>
+</div>
+";
+
+          if ($inc == 6) echo "</div>";
+        }
+        if ($inc == 3) echo "<div class='col-sm-4'></div><div class='col-sm-4'></div></div>";
+        if ($inc == 3) echo "<div class='col-xs-4'></div></div>";
+      } catch (PDOException $e) {
+        echo "There is some problem in connection: " . $e->getMessage();
+      }
+
+      $pdo->close();
+      ?>
+    </div>
+    
   </div>
   <!-- 
   <div id="mobilefilter">

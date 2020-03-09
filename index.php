@@ -47,13 +47,13 @@ mysqli_select_db($link, "ecomm");
         <div class="slider" id="slider1">
           <!-- Slides -->
           <?php
-          $stmt = $conn->prepare("SELECT * FROM category_offer");
+          $stmt = $conn->prepare("SELECT * FROM slider LEFT JOIN category  On category.id = slider.slider_name LEFT JOIN subcategory on subcategory.id = slider.slider_name where slider_type=0 ");
           $stmt->execute();
           foreach ($stmt as $row) {
-            $image = (!empty($row['offer_photo'])) ? 'images/category_offer/' . $row['offer_photo'] : 'images/noimage.jpg';
+            $image = (!empty($row['slider_photo'])) ? 'images/sliders/' . $row['slider_photo'] : 'images/noimage.jpg';
             echo "
             <div>
-                <img src='" . $image . "' style='background:pink'>
+                <a href='subcategory.php?styles=".$row['sub_catslug']."'><img src='" . $image . "' style='background:pink'></a>
                 </div>
                 ";
           }

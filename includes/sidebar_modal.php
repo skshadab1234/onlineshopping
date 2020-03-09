@@ -290,3 +290,19 @@
 
 	</div>
 </div>
+
+
+
+<!-- search modal-dialog -->
+
+<div class="modal fade" id="quantity" >
+	<div class="modal-dialog">
+			<div class="modal-content" style="background: #fff;padding:10px"> 
+			<h5><b>Select Quantity</b></h5>
+			edited soon
+			<!-- <select name="" id="">/ -->
+			<!-- <option value=""></option> -->
+			</select>
+			</div>
+	</div>
+</div>

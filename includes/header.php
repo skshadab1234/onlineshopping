@@ -52,6 +52,57 @@
             font-family: 'Alatsi', sans-serif;
         }
 
+        .buynowfixedfooter {
+            position: fixed;
+            left: 0;
+            bottom: 0px;
+            padding: 10px;
+            z-index: 999;
+            width: 100%;
+            height: 60px;
+            line-height: 40px;
+            background: #fff;
+        }
+
+        #breadcrumb-cat {
+            display: flex;
+        }
+
+        #breadcrumb-cat li {
+            padding-left: 10px;
+        }
+
+        #breadcrumb-cat i {
+            position: relative;
+            top: -6px;
+        }
+
+        #q-btn .btn-sm:first-child {
+            margin: 10px;
+            border: none;
+            background: #ff3f6c;
+            padding: 5px 10px;
+            outline: none;
+            border-radius: 2px;
+            opacity: 1;
+        }
+
+        #q-btn .btn-sm:first-child:hover {
+            opacity: 0.9
+        }
+
+        #q-btn .btn-sm:last-child {
+            margin: 10px;
+            padding: 5px 10px;
+            background: none;
+            color: #010101;
+            border: 1px solid grey
+        }
+
+        .effect5 {
+            position: relative;
+        }
+
         .layout-top-nav .content-wrapper,
         .layout-top-nav .main-footer {
             margin-left: 160px;
@@ -95,7 +146,7 @@
             background-position: center top;
             display: block;
             width: 100%;
-            height: 80vh;
+            height: 600px;
             position: relative;
             background-size: cover;
             background-repeat: no-repeat;
@@ -343,6 +394,10 @@
                 display: none;
             }
 
+            #pr-show {
+                display: none;
+            }
+
             .layout-top-nav .content-wrapper,
             .layout-top-nav .main-footer {
                 margin-left: 0px;
@@ -440,6 +495,24 @@
 
             .filter1200px {
                 display: none
+            }
+
+            #place_o {
+                display: none;
+            }
+
+            #place_o1 {
+                border: 1px solid #fff;
+                margin-top: 0;
+                padding: 0px;
+            }
+
+            #total_b {
+                display: none;
+            }
+
+            #widget {
+                display: none;
             }
 
             .d-view {
@@ -1057,9 +1130,7 @@
             cursor: pointer;
             text-align: center;
             border: none;
-            box-shadow: 0 9px 8px rgba(0, 0, 0, 0.30), 0 5px 112px rgba(0, 0, 0, 0.22);
             line-height: 6px;
-            border-radius: 3px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -1162,6 +1233,10 @@
 
         @media (min-width: 768px) {
             #mobileview {
+                display: none;
+            }
+
+            .buynowfixedfooter {
                 display: none;
             }
 

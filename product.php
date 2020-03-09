@@ -180,18 +180,6 @@ try {
 
 			}
 
-			.buynowfixedfooter {
-				position: fixed;
-				left: 0;
-				bottom: 0px;
-				padding: 10px;
-				z-index: 999;
-				width: 100%;
-				height: 60px;
-				line-height: 40px;
-				background: #fff;
-			}
-
 			#productForm {
 				display: none;
 			}
@@ -294,8 +282,8 @@ try {
 		<?php include 'includes/navbar.php' ?>
 	</div>
 	<!-- mobile view -->
-	<div class="container-fluid1" id="mobileview">
-		<img src="images/arrow1.png" onclick="history.back(-1)" width="40px" id="arrow" alt="">
+	<div class="container-fluid1" id="mobileview" style="padding: 10px ">
+		<img src="images/arrow2.png" onclick="history.back(-1)" width="40px" id="arrow" alt="">
 
 		<div id="brand">
 			<?php echo $product['prodname']; ?>

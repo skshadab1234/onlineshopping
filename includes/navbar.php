@@ -336,11 +336,11 @@ error_reporting(0);
                         if ($cat) {
                                 echo $cat['name'];
                         } elseif ($_GET['styles']) {
-                                echo "<h4 style='position: relative;top: -8px;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $subcat['name'] . "</h4><h5 style='position:relative;top:-12px;font-size:12px'>" . $total_pro['prodids'] . " items</h5>";
+                                echo "<h4 style='position: relative;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $subcat['name'] . "</h4><h5 style='position:relative;top:-6px;font-size:12px'>" . $total_pro['prodids'] . " items</h5>";
                         } elseif ($_GET['choose']) {
                                 echo "Choose Category";
                         } elseif ($_GET['brand']) {
-                                echo "<h4 style='position: relative;top: -8px;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $brand['brand_name'] . "</h4><h5 style='position:relative;top:-12px;font-size:12px'>" . $total_brand['prodids'] . " items</h5>";
+                                echo "<h4 style='position: relative;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $brand['brand_name'] . "</h4><h5 style='position:relative;top:-6px;font-size:12px'>" . $total_brand['prodids'] . " items</h5>";
                         } elseif ($_POST['keyword']) {
                                 echo $_POST['keyword'];
                         } else {

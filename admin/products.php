@@ -238,15 +238,6 @@ if (isset($_GET['subcategory'])) {
     }
 
     function getCategory() {
-      $.ajax({
-        type: 'POST',
-        url: 'category_fetch.php',
-        dataType: 'json',
-        success: function(response) {
-          $('#category').append(response);
-          $('#edit_category').append(response);
-        }
-      });
 
       $.ajax({
         type: 'POST',

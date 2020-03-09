@@ -19,8 +19,8 @@ if (isset($_POST['addbanner'])) {
         $new_filename = '';
     }
     try {
-        $stmt = $conn->prepare("INSERT INTO category_banner (photo,type,url)  VALUES (:photo,:type,:url)");
-        $stmt->execute(['type' => $category,  'photo' => $new_filename, 'url' => $url]);
+        $stmt = $conn->prepare("INSERT INTO category_banner (banner_photo,banner_type,url)  VALUES (:banner_photo,:banner_type,:url)");
+        $stmt->execute(['banner_type' => $category,  'banner_photo' => $new_filename, 'url' => $url]);
         $_SESSION['success'] =  'Banner added successfully';
     } catch (PDOException $e) {
         $_SESSION['error'] = $e->getMessage();

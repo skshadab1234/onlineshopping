@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SHADABZONE</title>
 
     <link href="../images/favicon.jpg" rel="icon">
 
@@ -62,6 +61,24 @@ folder instead of downloading all of them to reduce the load. -->
 
         .skin-blue .sidebar-menu>li.header {
             background: #e1e1e1;
+        }
+
+        #modal-adding button {
+            background: none;
+            padding: 10px;
+            color:#5909b3;
+            border: 1px solid #5909b3;
+            margin-left:30px;
+        }
+
+        #modal-adding button:hover{
+            background: #5909b3;
+            color: #fff;    
+        }
+
+        #modal-adding span,i{
+            font-size: 16px;
+            padding: 3px; 
         }
 
         .skin-blue .sidebar-menu>li:hover>a,

@@ -18,7 +18,7 @@ if (isset($_POST['upload'])) {
     }
 
     try {
-        $stmt = $conn->prepare("UPDATE subcategory SET photo=:photo WHERE id=:id");
+        $stmt = $conn->prepare("UPDATE subcategory SET subcat_photo=:photo WHERE id=:id");
         $stmt->execute(['photo' => $new_filename, 'id' => $id]);
         $_SESSION['success'] = 'Subcategory photo updated successfully';
     } catch (PDOException $e) {

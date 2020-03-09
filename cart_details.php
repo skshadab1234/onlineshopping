@@ -20,7 +20,6 @@ if (isset($_SESSION['user'])) {
 		}
 		unset($_SESSION['cart']);
 	}
-
 	try {
 		$total = 0;
 		$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart  LEFT JOIN products ON products.id=cart.product_id LEFT JOIN brands on brands.id = products.brand_id WHERE user_id=:user");
@@ -29,10 +28,12 @@ if (isset($_SESSION['user'])) {
 			$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
 			$subtotal = $row['price'] * $row['quantity'];
 			$total += $subtotal;
+			$old_p = $row['old_price'] * $row['quantity'];
+			
 			$output .= "
-				<div class='container-fluid' style='margin-top:10px	;'>
+				<div class='container-fluid box' style='padding:10px;border:2px solid #f5f5f6' >
 				<div class='row'>
-					<div class='col-xs-4'>
+					<div class='col-xs-4 col-md-2 col-lg-2'>
 						<img src='" . $image . "' class=\"img-responsive\" width='150px'>
 					</div>
 						<div class='col-xs-8 col-lg-8'>
@@ -41,22 +42,26 @@ if (isset($_SESSION['user'])) {
 								<span style=\"font-weight:bold;\">
 								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
-								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($subtotal, 2) . " /- Only</span>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
 								</p>
+								<a href = '' data-toggle='modal' data-target='#quantity'>Qty : ".$row['quantity']."</a>
 							</div>
+							</div>
+							<div class='col-xs-4 col-md-2 col-lg-2'>
+							<span style=\"font-weight:bold;color:#000;\">₹ " . number_format($subtotal, 2) . "</span>
+							<h5 style=\"font-size:12px;color:grey\"><s>₹ " . number_format($old_p, 2) . "</s></h5>
 					</div>
-				</div>
-				<div>
-					<div class='row' style='padding: 10px;text-align: center;border-top: 1px solid grey;width: 100%;margin: 10px;'>
+				</div>		
+					<div class='container-fluid' style='padding-top: 10px;text-align: center;margin-top: 10px'>
+						<div class='col-xs-12 col-mg-6 col-lg-6'>
 						<div class='col-xs-6'>
-							<button type='button' data-id='" . $row['cartid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>Remove</a>
+							<button type='button' data-id='" . $row['cartid'] . "' style='color: grey;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>Remove</a>
 						</div>
 						<div class='col-xs-6'>
-						<button type='button' data-id='" . $row['cartid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>WISHLIST</a>
+						<button type='button' data-id='" . $row['cartid'] . "' style='color: grey	;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>WISHLIST</a>
 						</div>
-					</div>
-	</div>
+						</div>
+						</div>
 				</div>
 				</div>
 	";
@@ -76,7 +81,7 @@ if (isset($_SESSION['user'])) {
 
 
 		$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total, 2) . "</h5>";
+			<h5 id = 'total_b' style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total, 2) . "</h5>";
 	} catch (PDOException $e) {
 		$output .= $e->getMessage();
 	}
@@ -132,3 +137,5 @@ if (isset($_SESSION['user'])) {
 
 $pdo->close();
 echo json_encode($output);
+?>
+

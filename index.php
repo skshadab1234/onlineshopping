@@ -109,7 +109,7 @@ mysqli_select_db($link, "ecomm");
                 echo "
 <div class=\"col-xs-4 col-sm-3 col-lg-2\" style='padding:5px'>
 <div class='container-fluid1' style='margin-top:10px;padding:0;'>
-<a href='subcategory.php?styles=" . $row['sub_catslug'] . "' ><img src='" . $image . "' style='background:pink'  width='150px' height='150px;'></a>    
+<a href='subcategory.php?styles=" . $row['sub_catslug'] . "' ><img src='" . $image . "' style='background:pink'></a>    
 </div>
 </div>
 ";
@@ -154,7 +154,7 @@ mysqli_select_db($link, "ecomm");
                 echo "
 <div class=\"col-xs-4 col-sm-3 col-lg-2\" style='padding:5px'>
 <div class='container-fluid1' style='margin-top:10px;padding:0;'>
-<a href='subcategory.php?styles=" . $row['sub_catslug'] . "' ><img src='" . $image . "' style='background:pink'  width='150px' height='150px;'></a>    
+<a href='subcategory.php?styles=" . $row['sub_catslug'] . "' ><img src='" . $image . "' style='background:pink'></a>    
 </div>
 </div>
 ";
@@ -200,7 +200,7 @@ mysqli_select_db($link, "ecomm");
                 if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
             ?>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-2">
-                  <?php echo "<a href=\"subcategory.php?brand=" . $row['brand_name'] . "\"><img src='" . $image . "' class=\"img-fluid\" id=\"brandimage\" width='250px' height='250px'></a> "; ?>
+                  <?php echo "<a href=\"subcategory.php?brand=" . $row['brand_name'] . "\"><img src='" . $image . "' class=\"img-fluid\" id=\"brandimage\" ></a> "; ?>
                 </div>
 
             <?php echo "

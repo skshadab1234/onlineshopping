@@ -39,7 +39,7 @@ if (isset($_SESSION['user'])) {
 	} else {
 		foreach ($_SESSION['cart'] as $row) {
 			$output['count']++;
-			$stmt = $conn->prepare("SELECT *, products.name AS prodname, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
+			$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
 			$stmt->execute(['id' => $row['productid']]);
 			$product = $stmt->fetch();
 			$image = (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg';
@@ -48,12 +48,13 @@ if (isset($_SESSION['user'])) {
 						<a href='product.php?product=" . $product['slug'] . "'>
 							<div class='pull-left'>
 								<img src='" . $image . "' class='img-circle' alt='User Image'>
-							</div>+
+							</div>
 							<h4>
 		                        <b>" . $product['catname'] . "</b>
 		                        <small>&times; " . $row['quantity'] . "</small>
 		                    </h4>
-		                    <p>" . $product['prodname'] . "</p>
+		                    <p style='white-space: nowrap;
+							overflow: hidden;width: 200px;text-overflow: ellipsis;'>" . $product['prodname'] . "</p>
 						</a>
 					</li>
 				";

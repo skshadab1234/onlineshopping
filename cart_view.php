@@ -3,6 +3,7 @@
 $link = mysqli_connect("localhost", "root", "");
 mysqli_select_db($link, "ecomm");
 ?>
+<link rel="stylesheet" href="build/swiper.min.css">
 <?php include 'includes/header.php'; ?>
 
 <head>
@@ -13,23 +14,27 @@ mysqli_select_db($link, "ecomm");
 					echo "";
 				}
 				?></title>
-				<STYle>
-					@media(max-width:768px){
-					.content{
-						background: #f5f5f7;
-					}
-				}
-				</STYle>
+	<STYle>
+		@media(max-width:768px) {
+			.content {
+				background: #f5f5f7;
+			}
+		}
+
+		.swiper-wrapper {
+			height: 350px
+		}
+	</STYle>
 
 </head>
 
 <body class="hold-transition layout-top-nav">
-<div class="desktop">
+	<div class="desktop">
 		<?php include 'includes/navbar.php' ?>
 	</div>
 	<!-- mobile view -->
 	<div class="container-fluid1" id="mobileview" style="padding:10px">
-		<img src="images/arrow2.png" onclick="history.back(-1)"   alt="">
+		<img src="images/arrow2.png" onclick="history.back(-1)" alt="">
 
 		<div id="brand" style="font-size: 18px">
 			SHOPPING BAG
@@ -41,11 +46,11 @@ mysqli_select_db($link, "ecomm");
 
 	<div class="wrapper">
 
-		<div class="content-wrapper" style="margin:0;background:#fff;margin-bottom:300px">
+		<div class="content-wrapper" style="margin:0;background:#fff;margin-bottom:70px">
 
 			<div class="container" style="padding:0">
 
-				<div class="content" style="margin-top: 40px"> 
+				<div class="content" style="margin-top: 40px">
 
 					<div class="row">
 						<!-- Main content -->
@@ -68,30 +73,92 @@ mysqli_select_db($link, "ecomm");
 						<div class="col-sm-12 col-xs-12 col-lg-8 col-md-8" style="margin-top:20px;padding:0">
 							<div id="tbody">
 							</div>
+							<a href="wishlist.php" style="color:#000;font-size:14px;text-transform:uppercase;font-weight:lighter">
+								<div class="container-fluid" style="position:relative;border: 1px solid #f6f6f6;padding:20px;background:#fff;margin:10px 0;"><i class='fa fa-bookmark-o' style="font-size: 16px"></i> <span style="padding-left:8px;font-size:14px ">Add More From Wishlist</span><i class="fa fa-angle-right" style="position: absolute;right:10px;top:15px"></i></div>
+							</a>
 						</div>
-						<div id="m-view"></div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4" style="background: #fff">
 							<div id="tbody1">
 							</div>
 						</div>
+					</div>
+					<hr style="border:1px solid #7e818c">
+					<div>
+						<h5><b>You may also like:</b></h5>
+							<?php
+							$conn = $pdo->open();
 
+							try {
+								$inc = 4;
+								$stmt = $conn->prepare("SELECT * FROM products LEFT JOIN brands on brands.id = products.brand_id ORDER BY RAND() Limit 12");
+								$stmt->execute();
+								foreach ($stmt as $row) {
+									$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
+									$inc = ($inc == 4) ? 1 : $inc + 1;
+									if ($inc == 4) echo "<div class='row' style='margin:0;padding:0'>";
+							?>
+									<div id="d-like" class=" col-md-4 col-lg-3">
+										<div class='swiper-slide' style='width:250px;height:250px;;margin-bottom:100px;'>
+										<?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src= $image style='width:250px;height:250px;object-fit:contain'></a> "; ?>
+											<h5><b><?= $row['brand_name'] ?></b></h5>
+											<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'><?= '<a href=product.php?product='.$row['slug'].' style=\'color:#000\'>'. $row['name'].' '?></a></h5>
+											<h5 style="color: orange">₹<?= number_format($row['price']) ?> <small><s> ₹<?= $row['old_price'] ?></s></small></h5>
+										</div>
+									</div>
+							<?php echo "";
+									if ($inc == 6) echo "</div>";
+								}
+								if ($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
+								if ($inc == 4) echo "<div class='col-sm-3'></div></div>";
+							} catch (PDOException $e) {
+								echo "There is some problem in connection: " . $e->getMessage();
+							}
+
+							$pdo->close();
+							?>
+						<div class="swiper-container swiper1" id="slider-m-view" style="padding-top: 10px;background:#fff;">
+							<div class="swiper-wrapper">
+								<?php
+								$conn = $pdo->open();
+								try {
+									$stmt = $conn->prepare("SELECT * FROM products LEFT JOIN brands on brands.id = products.brand_id ORDER BY RAND() Limit 12");
+									$stmt->execute();
+									foreach ($stmt as $row) {
+										$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
+										echo "
+					<div class='swiper-slide' style='width:250px;height:250px;overflow:hidden'><a href='product.php?product=" . $row['slug'] . "'><img src= $image style='width:250px;height:250px;object-fit:contain'>
+					<h5><b>" . $row['brand_name'] . "</b></h5>
+					<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'>" . $row['name'] . "</h5>
+					<h5>" . $row['price'] . "</h5>
+					</div>
+                    ";
+									}
+								} catch (PDOException $e) {
+									echo "There is some problem in connection: " . $e->getMessage();
+								}
+								$pdo->close();
+								?>
+							</div>
+						</div>
 					</div>
 				</div>
-			<a href="wishlist.php" style="color:#000;font-size:14px;text-transform:uppercase;font-weight:lighter"><div class="container-fluid" style="position:relative;border: 1px solid #f6f6f6;padding:20px"><i class='fa fa-bookmark-o' style="font-size: 16px"></i> <span style="padding-left:8px;font-size:14px ">Add More From Wishlist</span><i class="fa fa-angle-right" style="position: absolute;right:10px;top:15px"></i></div></a>
 			</div>
 		</div>
 	</div>
-	
-	<?php include 'includes/footer.php'; ?>
-	
-	<div class="buynowfixedfooter"  style="padding:0;height:70px;">
-	<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-secondary" style="background: none;background: none;position: relative;left: 30px;">Left</button>
-  <button type="button" class="btn btn-secondary button-base-button" style="position: relative;right: -170px;">Place Order</button>
-</div>
+	<?php include 'includes/pay_foot.php' ?>
+
+	<div class="buynowfixedfooter" style="padding:10px;height:70px;">
+		<a href="payment.php"><button type="button" class="btn btn-secondary button-base-button form-control">Place Order</button></a>
 	</div>
-   <?php include 'includes/sidebar_modal.php' ?>				
+	<script src="build/swiper.min.js"></script>
+	<?php include 'includes/sidebar_modal.php' ?>
 	<?php include 'includes/scripts.php'; ?>
+	<script>
+		var swiper2 = new Swiper('.swiper1', {
+			slidesPerView: 2,
+			spaceBetween: 30,
+		});
+	</script>
 	<script>
 		var total = 0;
 		$(function() {

@@ -74,7 +74,7 @@ if (isset($_SESSION['user'])) {
 
 		if ($total == 0) {
 			$output .= "	
-				<div style='margin: 50% auto;'>
+				<div style='width:100%;margin: 20% auto;text-align:center;'>
 				<a href='index.php'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
 			</div>";
 		}
@@ -95,35 +95,41 @@ if (isset($_SESSION['user'])) {
 			$image = (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg';
 			$subtotal = $product['price'] * $row['quantity'];
 			$total += $subtotal;
-			$output .= "<div class=\"container-fluid\" style='margin:10px;'>
+			$output .= "
+			<div class='container-fluid box' style='padding:10px;border:none;margin:10px 0' >
 				<div class='row'>
-					<div class='col-xs-4'>
-						<img src='" . $image . "' class=\"img-responsive\">
+					<div class='col-xs-4 col-md-2 col-lg-2'>
+						<img src='" . $image . "' class=\"img-responsive\" width='150px'>
 					</div>
 						<div class='col-xs-8 col-lg-8'>
-							<div>
+						<div>
 								<p>
 								<span style=\"font-weight:bold;\">
 								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand_name'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
-								<h5>Quantity : " . $row['quantity'] . "</h5>
-								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($product['price'], 2) . " /- Only</span>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
 								</p>
+								<a href = '' data-toggle='modal' data-target='#quantity'>Qty : " . $row['quantity'] . "</a>
 							</div>
+							</div>
+							<div class='col-xs-4 col-md-2 col-lg-2'>
+							<span style=\"font-weight:bold;color:#000;\">₹ " . number_format($subtotal, 2) . "</span>
 					</div>
-					<div>
-					<div class='row' style='padding: 10px;text-align: center;border-top: 1px solid grey;'>
+					</div>
+				</div>		
+					<div class='container-fluid' style='padding-top: 10px;text-align: center;margin-top: 10px'>
+						<div class='col-xs-12 col-mg-6 col-lg-6'>
 						<div class='col-xs-6'>
-							<button type='button' data-id='" . $row['productid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>Remove</a>
+							<button type='button' data-id='" . $row['productid'] . "' style='color: grey;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>Remove</a>
 						</div>
 						<div class='col-xs-6'>
-						<button type='button' data-id='" . $row['productid'] . "' style='color: #010101;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>WISHLIST</a>
+						<button type='button' data-id='" . $row['productid'] . "' style='color: grey;font-size: 16px;font-family: calibri;text-transform:uppercase;font-weight:bold;letter-spacing:1px;background: none;border: none;outline: none;' class='btn-flat cart_delete'>WISHLIST</a>
 						</div>
-					</div>
+						</div>
+						</div>
 				</div>
-			</div>
-		</div>";
+				</div>
+	";
 		}
 		$output .= "
 			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total, 2) . "</h5>";
@@ -138,4 +144,3 @@ if (isset($_SESSION['user'])) {
 $pdo->close();
 echo json_encode($output);
 ?>
-

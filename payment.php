@@ -11,15 +11,29 @@ include 'includes/header.php';
 <head>
   <title>Payment</title>
   <style>
-    .input-block{
-      margin-top:10px;
+    .input-block {
+      margin-top: 10px;
     }
   </style>
   <link href="images/favicon.jpg" rel="icon">
 </head>
 
 <body class="hold-transition skin-blue layout-top-nav">
-  <?php include 'includes/navbar.php' ?>
+  <div class="desktop">
+    <?php include 'includes/navbar.php' ?>
+  </div>
+  <!-- mobile view -->
+  <div class="container-fluid1" id="mobileview" style="padding:10px">
+    <img src="images/arrow2.png" onclick="history.back(-1)" alt="">
+
+    <div id="brand" style="font-size: 18px">
+      PAYMENT
+    </div>
+    <div class="rightsection pull-right" style="top:0">
+      <h5 style="padding:10px">STEP 2/3</h5>
+    </div>
+  </div>
+
 
   <div class="wrapper">
 
@@ -29,7 +43,7 @@ include 'includes/header.php';
 
         <div class="content">
 
-          <div class="row">
+          <div id="widget" class="row">
             <ul style="margin:25px;">
               <li style="display: inline-block;padding: 10px 10px" title="step 1">
                 <p style="letter-spacing: 3px;font-size: 12px;font-weight: 600;letter-spacing: 3px;text-transform: uppercase;"><a href="cart_view.php" style="color: grey">Bag</a></p>
@@ -44,7 +58,7 @@ include 'includes/header.php';
             </ul>
           </div>
           <div class="row">
-          <h4 style="color:#000;font-size:20px;font-weight:700;padding:20px">Choose Payment Mode</h4>
+            <h4 style="color:#000;font-size:20px;font-weight:700;padding:20px">Choose Payment Mode</h4>
             <div class="col-sm-8" style="padding: 20px">
               <!-- TABS PRESENTATION -->
               <section class="blok">
@@ -60,26 +74,30 @@ include 'includes/header.php';
                     <!-- Tab panes -->
                     <div class="tab-content col-sm-8">
                       <div class="tab-pane active in active" id="home">
-                      <?php 
-$output = '';
-try{
-$total = 0;
-$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
-$stmt->execute(['user'=>$user['id']]);
-foreach($stmt as $row){
-$image = (!empty($row['photo'])) ? 'images/'.$row['photo'] : 'images/noimage.jpg';
-$product = $row['name'];
-$subtotal = $row['price']*$row['quantity'];
-$total += $subtotal;
-$order = $total * ($row['old_price']-$row['price'])/  100;
-$order1 = $total - $order;
-$delivery = 15.00;
-$delivery1 = $order1 + $delivery;
-$randomNum=substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 11);
+                        <?php
+                        $output = '';
+                        try {
+                          $total = 0;
+                          $stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
+                          $stmt->execute(['user' => $user['id']]);
+                          foreach ($stmt as $row) {
+                            $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
+                            $product = $row['name'];
+                            $subtotal = $row['price'] * $row['quantity'];
+                            $total += $subtotal;
+                            $old_p = $row['old_price'] * $row['quantity'];
+                            $total += $subtotal;
+                            $discount += $old_p;
+                            $disc_t = $discount - $total;
+                            $order_t = $discount - $disc_t;
+                            $o_t = $order_t - $disc_t;
+                            $delivery = 50;
+                            $grand_t = $o_t + $delivery;
+                            $randomNum = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 11);
 
-$output ="";
+                            $output = "";
 
-$output .= "
+                            $output .= "
 <form action=\"pay.php\" class=\"contact-form\" id=\"myForm\" method=\"POST\" >
 <div class=\"col-sm-12\">
 <input class=\"form-control\" type=\"hidden\" required=\"\" name=\"product_name\" value=\"$product\">
@@ -102,20 +120,19 @@ $output .= "
 </div>
 </div>
 <div class=\"col-sm-12\">
-<button type=\"submit\" name=\"submit\"  style=\"align-items:center;margin:20px 120px\"  class=\"btn-success\">Paynow  ₹ ".number_format($delivery1, 2)."</button>
+<button type=\"submit\" name=\"submit\"  style=\"align-items:center;margin:20px 120px\"  class=\"btn-success\">Paynow  ₹ " . number_format($grand_t, 2) . "</button>
 </div>
 </form>
 ";
-}
-}
-catch(PDOException $e){
-$output .= $e->getMessage();
-}
-echo($output);
+                          }
+                        } catch (PDOException $e) {
+                          $output .= $e->getMessage();
+                        }
+                        echo ($output);
 
-$pdo->close();
+                        $pdo->close();
 
-?>
+                        ?>
 
                       </div>
                       <!-- <div class="tab-pane well fade" id="profile">
@@ -123,7 +140,7 @@ $pdo->close();
 <div style="text-align:center;margin-top:40px">
 <div id='paypal-button'></div>
 </div> -->
-                      </div>
+                    </div>
               </section><!-- // blok -->
               <!-- TABS PRESENTATION // -->
               <div class="col-sm-6">
@@ -180,7 +197,8 @@ $pdo->close();
 
   <?php include 'includes/footer.php'; ?>
 
-</body><script>
+</body>
+<script>
   var total = 0;
   $(function() {
     $(document).on('click', '.cart_delete', function(e) {

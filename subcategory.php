@@ -124,7 +124,7 @@ if (isset($subcatid)) {
                       <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;line-height:9px;padding:5px;font-family:calibri">
                         <h5 class="text-left" style="font-weight: 700;font-size: 15px;font-family: calibri;"><?php echo "" . $row['brand_name'] . " " ?></h5>
                         <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . "% " ?>OFF</span></h5>
                       </div>
                       <div class="card1" style="position: absolute;bottom: 44px;background: #fff;padding:5px">
                         <div class="btn-group" id="q-btn">
@@ -209,7 +209,7 @@ if (isset($subcatid)) {
                       <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;line-height:9px;padding:5px;font-family:calibri">
                         <h5 class="text-left" style="font-weight: 700;font-size: 15px;font-family: calibri;"><?php echo "" . $row['brand_name'] . " " ?></h5>
                         <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . " " ?>OFF</span></h5>
+                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . "% " ?>OFF</span></h5>
                       </div>
                       <div class="card1" style="position: absolute;bottom: 44px;background: #fff;width: 100%;overflow: hidden;padding: 10px;">
                         <div class="btn-group" id="q-btn">

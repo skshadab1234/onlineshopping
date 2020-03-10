@@ -500,7 +500,9 @@
             #place_o {
                 display: none;
             }
-
+#d-like{
+    display: none;
+}
             #place_o1 {
                 border: 1px solid #fff;
                 margin-top: 0;
@@ -1126,7 +1128,7 @@
             font-size: 14px;
             font-weight: 600;
             padding: 20px;
-            background: #e381c1;
+            background: #ff3f6c;
             cursor: pointer;
             text-align: center;
             border: none;
@@ -1233,6 +1235,10 @@
 
         @media (min-width: 768px) {
             #mobileview {
+                display: none;
+            }
+
+            #slider-m-view {
                 display: none;
             }
 

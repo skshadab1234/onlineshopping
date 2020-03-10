@@ -312,7 +312,7 @@ error_reporting(0);
                                 </li>
 
                                 <li>
-                                        <button class="openBtn" data-toggle="modal" data-target="#search"><i class="fa fa-search"></i></button>
+                                        <button class="openBtn" data-toggle="modal" data-target="#search" style="outline: none"><i class="fa fa-search"></i></button>
                                 </li>
                                 </ul>
                         </div>
@@ -325,7 +325,7 @@ error_reporting(0);
         <div class="mobile-view-header" id="mobileview">
                 <?php
                 if ($cat or $subcat or $_POST['keyword'] or $brand or $_GET['choose']) {
-                        echo '<img src="images/arrow1.png" onclick="history.back(-1)" alt="">';
+                        echo '<img src="images/arrow2.png" onclick="history.back(-1)" alt="">';
                 } else {
                         echo '<img src="images/hamburg.png" data-toggle="modal" data-target="#bar" alt="">';
                 }

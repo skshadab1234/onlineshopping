@@ -41,7 +41,7 @@
 				$delivery = 50;
 				$grand_t = $o_t + $delivery;
 				$output = " 
-				<div id='place_o1' style=\"padding:10px;border:1px solid #ddd;margin-top:20px;width:100%;display:block;\" class=\"pull-center\">
+				<div id='place_o1' style=\"\" class=\"pull-center\">
 					<div class=\"row\">
 					<div class=\"col-sm-12\">
 				<div class=\"container-fluid\" style=\"padding: 10px;width: 100%;\">

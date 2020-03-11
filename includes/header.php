@@ -500,9 +500,15 @@
             #place_o {
                 display: none;
             }
-#d-like{
-    display: none;
-}
+
+            #checkout {
+                display: none;
+            }
+
+            #d-like {
+                display: none;
+            }
+
             #place_o1 {
                 border: 1px solid #fff;
                 margin-top: 0;

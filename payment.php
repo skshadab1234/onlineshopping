@@ -78,13 +78,15 @@ include 'includes/header.php';
                         $output = '';
                         try {
                           $total = 0;
+                          $old_p = 0;
+                          $discount = 0;
+                          $disc_t = 0;
                           $stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
                           $stmt->execute(['user' => $user['id']]);
                           foreach ($stmt as $row) {
-                            $image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
-                            $product = $row['name'];
+                            $image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
                             $subtotal = $row['price'] * $row['quantity'];
-                            $total += $subtotal;
+                            $product = $row['name'];
                             $old_p = $row['old_price'] * $row['quantity'];
                             $total += $subtotal;
                             $discount += $old_p;
@@ -95,13 +97,11 @@ include 'includes/header.php';
                             $grand_t = $o_t + $delivery;
                             $randomNum = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyz"), 0, 11);
 
-                            $output = "";
-
-                            $output .= "
+                            $output = "
 <form action=\"pay.php\" class=\"contact-form\" id=\"myForm\" method=\"POST\" >
 <div class=\"col-sm-12\">
 <input class=\"form-control\" type=\"hidden\" required=\"\" name=\"product_name\" value=\"$product\">
-<input class=\"form-control\" type=\"hidden\" required=\"\" name=\"price\" value=\"$delivery1\">
+<input class=\"form-control\" type=\"hidden\" required=\"\" name=\"price\" value=\"$grand_t\">
 <div class=\"input-block\">
 <label for=\"\">Enter Your Name <span style=\"color: red\">*</span></label>
 <input class=\"form-control\" id=\"name\" type=\"text\" required=\"\" oninput=\"myFunction()\" name=\"name\" value=\"\">
@@ -306,7 +306,7 @@ include 'includes/header.php';
       url: 'cart_total.php',
       dataType: 'json	',
       success: function(response) {
-        delivery1 = response;
+        grand_t = response;
 
       }
     });
@@ -335,7 +335,7 @@ include 'includes/header.php';
           transactions: [{
             //total purchase
             amount: {
-              total: delivery1,
+              total: grand_t,
               currency: 'USD'
             }
           }]

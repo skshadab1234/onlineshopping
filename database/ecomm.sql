@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2020 at 09:47 PM
+-- Generation Time: Mar 11, 2020 at 07:48 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.26
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -394,7 +394,8 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `subcategory_id`, `
 (109, 0, NULL, 94, 67, 'Red ', 'Men Red Self Design Regular Fit Single-Breasted Blazer', 'x,xl', '<p>Men Red Self Design Regular Fit Single-Breasted Blazer</p>\r\n', 'men-red-self-design-regular-fit-single-breasted-blazer', '2000', 1979, 20, '_1583506209.webp', '0000-00-00', 0),
 (110, 0, NULL, 94, 67, 'Black', 'Men Black Solid Pathani Kurta', 'x,xl', '<p>Men Black Solid Pathani Kurta</p>\r\n\r\n<h3>&nbsp;</h3>\r\n', 'men-black-solid-pathani-kurta', '3000', 2399, 20, '_1583506444.webp', '0000-00-00', 0),
 (111, 0, NULL, 94, 67, 'Rust', 'Men Rust Printed Bandhgala', 'x,xl', '<p>Men Rust Printed Bandhgala</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-rust-printed-bandhgala', '2500', 1999, 20, '_1583506726.webp', '0000-00-00', 0),
-(112, 0, NULL, 94, 67, 'Blue', 'Men Blue Solid Nehru Jacket', 'x,xl', '<p>Men Blue Solid Nehru Jacket</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-blue-solid-nehru-jacket', '2500', 2300, 20, 'men-blue-solid-nehru-jacket_1583507462.webp', '0000-00-00', 0);
+(112, 0, NULL, 94, 67, 'Blue', 'Men Blue Solid Nehru Jacket', 'x,xl', '<p>Men Blue Solid Nehru Jacket</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-blue-solid-nehru-jacket', '2500', 2300, 20, 'men-blue-solid-nehru-jacket_1583507462.webp', '0000-00-00', 0),
+(113, 0, NULL, 102, 21, 'black', ' Baby Clothes Men Shirts Legible Casual Social Formal Shirt Men', 's,m', '', 'baby-clothes-men-shirts-legible-casual-social-formal-shirt-men', '2000', 1200, 10, '_1583908748.jpg', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -734,7 +735,7 @@ ALTER TABLE `pincode`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `sales`

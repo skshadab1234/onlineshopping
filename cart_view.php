@@ -82,12 +82,10 @@ mysqli_select_db($link, "ecomm");
 							</div>
 						</div>
 					</div>
-					<hr style="border:1px solid #7e818c">
 					<div>
-						<h5><b>You may also like:</b></h5>
-							<?php
-							$conn = $pdo->open();
-
+						<?php
+						$conn = $pdo->open();
+							echo "<h5><b>You may also like:</b></h5>";
 							try {
 								$inc = 4;
 								$stmt = $conn->prepare("SELECT * FROM products LEFT JOIN brands on brands.id = products.brand_id ORDER BY RAND() Limit 12");
@@ -96,12 +94,12 @@ mysqli_select_db($link, "ecomm");
 									$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
 									$inc = ($inc == 4) ? 1 : $inc + 1;
 									if ($inc == 4) echo "<div class='row' style='margin:0;padding:0'>";
-							?>
+						?>
 									<div id="d-like" class=" col-md-4 col-lg-3">
 										<div class='swiper-slide' style='width:250px;height:250px;;margin-bottom:100px;'>
-										<?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src= $image style='width:250px;height:250px;object-fit:contain'></a> "; ?>
+											<?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src= $image style='width:250px;height:250px;object-fit:contain'></a> "; ?>
 											<h5><b><?= $row['brand_name'] ?></b></h5>
-											<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'><?= '<a href=product.php?product='.$row['slug'].' style=\'color:#000\'>'. $row['name'].' '?></a></h5>
+											<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'><?= '<a href=product.php?product=' . $row['slug'] . ' style=\'color:#000\'>' . $row['name'] . ' ' ?></a></h5>
 											<h5 style="color: orange">₹<?= number_format($row['price']) ?> <small><s> ₹<?= $row['old_price'] ?></s></small></h5>
 										</div>
 									</div>
@@ -116,8 +114,8 @@ mysqli_select_db($link, "ecomm");
 
 							$pdo->close();
 							?>
-						<div class="swiper-container swiper1" id="slider-m-view" style="padding-top: 10px;background:#fff;">
-							<div class="swiper-wrapper">
+							<div class="swiper-container swiper1" id="slider-m-view" style="padding-top: 10px;background:#fff;">
+								<div class="swiper-wrapper">
 								<?php
 								$conn = $pdo->open();
 								try {
@@ -126,20 +124,24 @@ mysqli_select_db($link, "ecomm");
 									foreach ($stmt as $row) {
 										$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
 										echo "
-					<div class='swiper-slide' style='width:250px;height:250px;overflow:hidden'><a href='product.php?product=" . $row['slug'] . "'><img src= $image style='width:250px;height:250px;object-fit:contain'>
-					<h5><b>" . $row['brand_name'] . "</b></h5>
+					<div class='swiper-slide' style='width:250px;height:100%;overflow:hidden;'>
+					<a href='product.php?product=" . $row['slug'] . "' ><img src= $image style='width:200px;height:250px;object-fit:contain;overflow:hidden'></a>
+				<div class='container-fluid' style='color:#000'>
+				<h5><b>" . $row['brand_name'] . "</b></h5>
 					<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'>" . $row['name'] . "</h5>
-					<h5>" . $row['price'] . "</h5>
+					<h5 style='color: orange'>₹ " . number_format($row['price']) . " <small><s> ₹ " . $row['old_price'] . " </s></small></h5>
+				</div>
 					</div>
-                    ";
+					";
 									}
 								} catch (PDOException $e) {
 									echo "There is some problem in connection: " . $e->getMessage();
-								}
-								$pdo->close();
+							}
+
+							$pdo->close();
 								?>
+								</div>
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -148,7 +150,17 @@ mysqli_select_db($link, "ecomm");
 	<?php include 'includes/pay_foot.php' ?>
 
 	<div class="buynowfixedfooter" style="padding:10px;height:70px;">
+		<?php
+		if (isset($_SESSION['user'])) {
+			echo '
 		<a href="payment.php"><button type="button" class="btn btn-secondary button-base-button form-control">Place Order</button></a>
+		';
+		} else {
+			echo '
+		<a href="login.php"><button type="button" class="btn btn-secondary button-base-button form-control" style=\'background:steelblue\'>Login</button></a>
+		';
+		}
+		?>
 	</div>
 	<script src="build/swiper.min.js"></script>
 	<?php include 'includes/sidebar_modal.php' ?>
@@ -156,7 +168,6 @@ mysqli_select_db($link, "ecomm");
 	<script>
 		var swiper2 = new Swiper('.swiper1', {
 			slidesPerView: 2,
-			spaceBetween: 30,
 		});
 	</script>
 	<script>

@@ -82,26 +82,25 @@ $conn = $pdo->open();
               <?php
               $stmt = $conn->prepare("SELECT * FROM details LEFT JOIN products ON products.id=details.product_id");
               $stmt->execute();
-              $delivery1 = 0;
               $total = 0;
+              $old_p = 0;
+              $discount = 0;
+              $disc_t = 0;
+              $grand_t = 0;
               foreach ($stmt as $srow) {
                 $subtotal = $srow['price'] * $srow['quantity'];
                 $total += $subtotal;
-                $order = $total * ($srow['old_price'] - $srow['price']) /  100;
-                $order1 = $total - $order;
-                $delivery = 15.00;
-                $delivery1 = $order1 + $delivery;
+                $discount += $old_p;
+                $disc_t = $discount - $total;
+                $order_t = $discount - $disc_t;
+                $o_t = $order_t - $disc_t;
+                $delivery = 50;
+                $grand_t = $o_t + $delivery;
               }
 
-              echo "<h3>₹ " . number_format_short($delivery1, 2) . "</h3>";
+              echo "<h3>₹ " . number_format_short($grand_t, 2) . "</h3>";
               ?>
               <p>Total Sales</p>
-              <div class="progress progress-striped">
-                <div class="progress-bar progress-bar-primary" style="width:100%">
-                  <?= " ₹ " . $delivery1 ?>
-                </div>
-              </div>
-
             </div>
           </div>
           <!-- ./col -->

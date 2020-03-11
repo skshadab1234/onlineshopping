@@ -26,7 +26,6 @@
 			$old_p = 0;
 			$discount = 0;
 			$disc_t = 0;
-			$discount_off = 0;
 			$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
 			$stmt->execute(['user' => $user['id']]);
 			foreach ($stmt as $row) {
@@ -85,7 +84,7 @@
 		}
 	} else {
 		$output .= "
-<div class=\"container\" style=\"margin:100px 100px\">
+<div class=\"container\" id='checkout' style=\"margin:100px 100px\">
 <a href=\"login.php\"><button class=\"btn btn-flat btn-primary\">Sign up to checkout</button>
 </a>
 </div>

@@ -22,87 +22,87 @@
 		}
 		try {
 			$total = 0;
+			$old_p = 0;
+			$discount = 0;
+			$disc_t = 0;
 			$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
 			$stmt->execute(['user' => $user['id']]);
 			foreach ($stmt as $row) {
 				$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
 				$subtotal = $row['price'] * $row['quantity'];
+				$old_p = $row['old_price'] * $row['quantity'];
 				$total += $subtotal;
-				$order = $total * ($row['old_price'] - $row['price']) /  100;
-				$order1 = $total - $order;
-				$delivery = 15.00;
-				$delivery1 = $order1 + $delivery;
-				$output .= "
-   <div style=\"padding:10px;border:1px solid #ddd;background:#fff;box-shadow: 0px 8px 20px -10px rgba(13, 28, 39, 0.6);margin:10px;outline:none\" class=\"pull-center\">
-	<div class=\"row\">
-		<div class=\"col-sm-12\">
-
-<table class=\"table table-borderless\" style=\"color:grey\">
-<thead>
-<tr>
-<td><div style=\"box-sizing:border-box\"><a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width=\"60px\"></a></div><td>
-<td>
-<span style=\"font-weight:bold;\">" . $row['brand'] . "</span><br><a href='product.php?product=" . $row['slug'] . "' style=\"color:#323232;font-size:12px\">" . $row['name'] . "</a><span style=\"color:#323232\"><br>₹ " . number_format($row['price'], 2) . "</span> &nbsp;<span style=\"color:#323232;opacity:0.5\"><s>₹ " . number_format($row['old_price'], 2) . "</s></span>
-<span style=\"color:#323232\"><br>Qty: " . $row['quantity'] . "</span>
-</td></tr>
-</thead>
-</table>
-		</div>	 	
-	</div>
-	</div>
+				$discount += $old_p;
+				$disc_t = $discount - $total;
+				$order_t = $discount - $disc_t;
+				$o_t = $order_t - $disc_t;
+				$delivery = 50;
+				$grand_t = $o_t + $delivery;
+				echo  "
+				<div class='container-fluid box' style='padding:10px;border:2px solid #f5f5f6' >
+				<div class='row'>
+					<div class='col-xs-4 col-md-2 col-lg-3'>
+						<img src='" . $image . "' class=\"img-responsive\" width='150px'>
+					</div>
+						<div class='col-xs-8 col-lg-9' style='text-align:left'>
+							<div>
+								<p>
+								<span style=\"font-weight:bold;\">
+								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
+								</span>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
+								</p>
+							<span style=\"font-weight:bold;color:#000;\">₹ " . number_format($subtotal, 2) . "</span>
+							<span style=\"font-size:12px;color:grey\"><s>₹ " . number_format($old_p, 2) . "</s></span>
+							Qty : ".$row['quantity']."
+							</div>
+							</div>
+					</div>
+					</div>
 	";
+				$output = " 
+				<div id='place_o1' style=\"\" class=\"pull-center\">
+					<div class=\"row\">
+					<div class=\"col-sm-12\">
+				<div class=\"container-fluid\" style=\"padding: 10px;width: 100%;\">
+				<span><h5 style=\"text-transform: uppercase;font-weight:600;font-family: 'Alata', sans-serif;letter-spacing: 1px;font-size: 14px;color:grey\">PRICE DETAIL</h5></span>
+				</div>
+				<table class=\"table table-bordered\" style=\"width:100%;color:black;padding:4px;font-size:12px;font-weight:lighter;font-family:calibri\">
+				<tbody>
+				<tr>
+				<td>Bag total</td>
+				<td><span class=\"pull-right\">₹ " . number_format($order_t, 2) . "</span><td>
+				</tr>
+				<tr>
+				<td>Bag Discount</td>
+				<td><span class=\"pull-right\" style='color:green'>₹ " . number_format($disc_t, 2) . "</span><td>
+				</tr>
+				<tr>
+				<td>Order Total</td>
+				<td ><span class=\"pull-right\">₹ " . number_format($o_t, 2) . "</span><td>
+				</tr>
+				<tr>
+				<td>Delivery Charge</td>
+				<td ><span class=\"pull-right\">₹ " . number_format($delivery, 2) . "</span><td>
+				</tr>
+				<tr>
+				<td style='font-weight:700;font-size:16px'>Total</td>
+				<td ><span class=\"pull-right\" style='font-size:16px;font-weight:700'>₹ " . number_format($grand_t) . "</span><td>
+				</tr>
+				</tbody>
+				</table>
+				</div>
+				</div>
+				</div>
+				";
 			}
-			$output .= "
-<div style=\"padding:20px;background:#fff;border:1px solid #ddd;box-shadow: 0px 8px 20px -10px rgba(13, 28, 39, 0.6);margin:10px 0px\" class=\"pull-center\">
-	<div class=\"row\">
-
-	<div class=\"col-sm-12\">
-<span><h5 class=\"mens\" style=\"color:grey;font-size:20px\">Price Details
-
-<input type=\"button\" class=\"button-base-button pull-right\" value=\"UPDATE\" onClick=\"document.location.reload(true)\"></h5></span>
-
-
-<table class=\"table table-borderless\" style=\"color:#323232\">
-<thead>
-<tr>
-<td>Bag total</td>
-<td ><span class=\"pull-right\">₹ " . number_format($total, 2) . "</span><td>
-</tr>
-<tr>
-<td>Bag Discount</td>
-<td  style=\"color:green\"> <span class=\"pull-right\">₹" . number_format($order, 2) . "</span>
- <td>
-</tr>
-<tr>
-<td>Order Total</td>
-<td><span class=\"pull-right\">₹" . number_format($order1, 2) . "</span>
- <td>
-</tr>
-<tr>
-<td>Delivery Charges</td>
-<td  style=\"color:green\"><span class=\"pull-right\">₹" . number_format($delivery, 2) . "</span>
- <td>
-</tr>
-<tr>
-<td style=\"font-weight:600;font-size:16px;letter-spacing:1px\">Grand Total</td>
-<td  style=\"font-weight:600;font-size:16px;letter-spacing:1px\"><span class=\"pull-right\">₹" . number_format($delivery1, 2) . "</span>
- <td>
-</tr>
-</thead>
-</table>
-</div>
-</div>	
-	";
+				$output .= "";
 		} catch (PDOException $e) {
 			$output .= $e->getMessage();
 		}
-
-
-
-		echo ($output);
 	}
 	$pdo->close();
-
+	echo($output);
 	?>
 
 

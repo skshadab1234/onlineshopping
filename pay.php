@@ -1,21 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "ecomm";
-
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-
 $product_name = $_POST['product_name'];
-$delivery1 = $_POST['price'];
+$grand_t = $_POST['price'];
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
@@ -29,7 +14,7 @@ try {
 
     $response = $api->paymentRequestCreate(array(
         "purpose" => $product_name,
-        "amount" => $delivery1,
+        "amount" => $grand_t,
         "send_email" => true,
         "email" => $email,
         "phone" => $phone,

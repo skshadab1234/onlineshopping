@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2020 at 07:54 AM
+-- Generation Time: Mar 12, 2020 at 06:44 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -395,7 +395,8 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `subcategory_id`, `
 (110, 0, NULL, 94, 67, 'Black', 'Men Black Solid Pathani Kurta', 'x,xl', '<p>Men Black Solid Pathani Kurta</p>\r\n\r\n<h3>&nbsp;</h3>\r\n', 'men-black-solid-pathani-kurta', '3000', 2399, 20, '_1583506444.webp', '0000-00-00', 0),
 (111, 0, NULL, 94, 67, 'Rust', 'Men Rust Printed Bandhgala', 'x,xl', '<p>Men Rust Printed Bandhgala</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-rust-printed-bandhgala', '2500', 1999, 20, '_1583506726.webp', '0000-00-00', 0),
 (112, 0, NULL, 94, 67, 'Blue', 'Men Blue Solid Nehru Jacket', 'x,xl', '<p>Men Blue Solid Nehru Jacket</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-blue-solid-nehru-jacket', '2500', 2300, 20, 'men-blue-solid-nehru-jacket_1583507462.webp', '0000-00-00', 0),
-(113, 0, NULL, 102, 21, 'black', ' Baby Clothes Men Shirts Legible Casual Social Formal Shirt Men', 's,m', '', 'baby-clothes-men-shirts-legible-casual-social-formal-shirt-men', '2000', 1200, 10, '_1583908748.jpg', '0000-00-00', 0);
+(113, 0, NULL, 102, 21, 'black', ' Baby Clothes Men Shirts Legible Casual Social Formal Shirt Men', 's,m', '', 'baby-clothes-men-shirts-legible-casual-social-formal-shirt-men', '2000', 1200, 10, '_1583908748.jpg', '0000-00-00', 0),
+(114, 0, NULL, 102, 22, 'pink', ' Mens Dress Shirts Cotton Solid Casual Shirt Men Slim Fit Plus Size Long ', 's,m', '', 'mens-dress-shirts-cotton-solid-casual-shirt-men-slim-fit-plus-size-long', '2000', 1200, 10, '_1583909842.webp', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -735,7 +736,7 @@ ALTER TABLE `pincode`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `sales`

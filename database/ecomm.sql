@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2020 at 06:44 PM
+-- Generation Time: Mar 13, 2020 at 07:37 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -396,7 +396,74 @@ INSERT INTO `products` (`id`, `product_code`, `category_id`, `subcategory_id`, `
 (111, 0, NULL, 94, 67, 'Rust', 'Men Rust Printed Bandhgala', 'x,xl', '<p>Men Rust Printed Bandhgala</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-rust-printed-bandhgala', '2500', 1999, 20, '_1583506726.webp', '0000-00-00', 0),
 (112, 0, NULL, 94, 67, 'Blue', 'Men Blue Solid Nehru Jacket', 'x,xl', '<p>Men Blue Solid Nehru Jacket</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'men-blue-solid-nehru-jacket', '2500', 2300, 20, 'men-blue-solid-nehru-jacket_1583507462.webp', '0000-00-00', 0),
 (113, 0, NULL, 102, 21, 'black', ' Baby Clothes Men Shirts Legible Casual Social Formal Shirt Men', 's,m', '', 'baby-clothes-men-shirts-legible-casual-social-formal-shirt-men', '2000', 1200, 10, '_1583908748.jpg', '0000-00-00', 0),
-(114, 0, NULL, 102, 22, 'pink', ' Mens Dress Shirts Cotton Solid Casual Shirt Men Slim Fit Plus Size Long ', 's,m', '', 'mens-dress-shirts-cotton-solid-casual-shirt-men-slim-fit-plus-size-long', '2000', 1200, 10, '_1583909842.webp', '0000-00-00', 0);
+(114, 0, NULL, 102, 22, 'pink', ' Mens Dress Shirts Cotton Solid Casual Shirt Men Slim Fit Plus Size Long ', 's,m', '', 'mens-dress-shirts-cotton-solid-casual-shirt-men-slim-fit-plus-size-long', '2000', 1200, 10, '_1583909842.webp', '0000-00-00', 0),
+(115, 0, NULL, 93, 47, 'white', ' Innerwear  ', 's,m', '<p>&nbsp;Innerwear &nbsp;</p>\r\n', 'innerwear', '2000', 1200, 10, '_1584035418.jpg', '0000-00-00', 0),
+(116, 0, NULL, 93, 22, 'red', ' Fashioning India Since 1968 ', 's,m', '<p>&nbsp;Fashioning India Since 1968&nbsp;</p>\r\n', 'fashioning-india-since-1968', '2000', 1200, 10, '_1584035504.jpg', '0000-00-00', 0),
+(117, 0, NULL, 93, 21, 'black', ' Allen Solly Buy Allen Solly Innerwear for Men Online India | ', 's,m', '<p>&nbsp;Allen Solly Buy Allen Solly Innerwear for Men Online India |&nbsp;</p>\r\n', 'allen-solly-buy-allen-solly-innerwear-men-online-india', '2000', 1200, 10, '_1584035628.jpg', '0000-00-00', 0),
+(118, 0, NULL, 93, 21, 'black', 'Allen Solly Black Brief', 's,m', '<p>Allen Solly Black Brief</p>\r\n', 'allen-solly-black-brief', '2000', 1200, 10, '_1584035744.jpg', '0000-00-00', 0),
+(119, 0, NULL, 93, 21, 'white', 'Allen Solly White Brief', 's,m', '<p>Allen Solly White Brief</p>\r\n', 'allen-solly-white-brief', '2000', 1200, 10, '_1584035954.jpg', '0000-00-00', 0),
+(120, 0, NULL, 93, 21, 'grey', 'Allen Solly Grey Brief', 's,m', '<p>Allen Solly Grey Brief</p>\r\n', 'allen-solly-grey-brief', '1000', 800, 10, '_1584036020.jpg', '0000-00-00', 0),
+(121, 0, NULL, 93, 21, 'black', ' Allen Solly Navy Brief', 's,m', '<p>&nbsp;Allen Solly Navy Brief</p>\r\n', 'allen-solly-navy-brief', '2000', 1200, 10, '_1584036093.jpg', '0000-00-00', 0),
+(122, 0, NULL, 93, 21, 'grey', ' Allen Solly Navy Brief vv', 's,m', '<p>&nbsp;Allen Solly Navy Brief vv</p>\r\n', 'allen-solly-navy-brief-vv', '2000', 1200, 10, '_1584036241.jpg', '0000-00-00', 0),
+(123, 0, NULL, 93, 21, 'red', ' Allen Solly Navy Vest for Men ', '', '<p>&nbsp;Allen Solly Navy Vest for Men&nbsp;</p>\r\n', 'allen-solly-navy-vest-men', '2000', 1200, 0, '_1584036309.jpg', '0000-00-00', 0),
+(124, 0, NULL, 93, 21, 'grey', ' Allen Solly Grey Vest', 's,m', '<p>&nbsp;Allen Solly Grey Vest</p>\r\n', 'allen-solly-grey-vest', '2000', 1200, 10, '_1584036385.jpg', '0000-00-00', 0),
+(125, 0, NULL, 93, 21, 'light grey', 'allen Solly Innerwear Vests Jackets', 's,m', '<p>allen Solly Innerwear Vests Jackets</p>\r\n', 'allen-solly-innerwear-vests-jackets', '2000', 1200, 10, '_1584036488.jpg', '0000-00-00', 0),
+(126, 0, NULL, 93, 24, 'grey', ' Under Armour Men\'s Compression Clothing ', 's,m', '<p>&nbsp;Under Armour Men&#39;s Compression Clothing&nbsp;</p>\r\n', 'under-armour-men-s-compression-clothing', '2000', 1200, 10, '_1584036596.webp', '0000-00-00', 0),
+(127, 0, NULL, 93, 24, 'grey', 'under armour inner', 's,m', '<p>under armour inner</p>\r\n', 'under-armour-inner', '2000', 1200, 10, '_1584036714.jpg', '0000-00-00', 0),
+(128, 0, NULL, 93, 24, 'black', ' Cricket Under Armour Lighter Longer PO Hoodie', 's,m', '<p><a href=\"https://www.prodirectcricket.com/products/Under-Armour-Lighter-Longer-PO-Hoodie-Black-Black-Mens-Clothing-1331609-001-196605.aspx\" target=\"_blank\">&nbsp;Cricket Under Armour Lighter Longer PO Hoodie</a></p>\r\n', 'cricket-under-armour-lighter-longer-po-hoodie', '2000', 1200, 10, '_1584036785.webp', '0000-00-00', 0),
+(129, 0, NULL, 93, 24, 'black', ' under armour us females inners .', 's,m', '<p>&nbsp;under armour us females inners .</p>\r\n', 'under-armour-us-females-inners', '2000', 1200, 10, '_1584036903.jpg', '0000-00-00', 0),
+(130, 0, NULL, 95, 20, 'black', 'Nike Series 5 GPS + Cellular 40mm Space Gray ', '', '<p>Nike Series 5 GPS + Cellular 40mm Space Gray</p>\r\n', 'nike-series-5-gps-cellular-40mm-space-gray', '2000', 1200, 10, '_1584037029.webp', '0000-00-00', 0),
+(131, 0, NULL, 95, 20, 'black', ' Nike Oregon Square', '', '<p>&nbsp;Nike Oregon Square</p>\r\n', 'nike-oregon-square', '2000', 1200, 10, '_1584037103.jpg', '0000-00-00', 0),
+(132, 0, NULL, 95, 20, 'black', ' Apple Watch Nike', '', '<p>&nbsp;Apple Watch Nike</p>\r\n', 'apple-watch-nike', '2000', 1200, 10, '_1584037225.jpeg', '0000-00-00', 0),
+(133, 0, NULL, 95, 22, 'black', ' SPY The Best Menâ€™s Watches ', '', '<p>&nbsp;SPY The Best Men&rsquo;s Watches&nbsp;</p>\r\n', 'spy-best-men-s-watches', '500', 200, 10, '_1584037298.jpg', '0000-00-00', 0),
+(134, 0, NULL, 95, 40, 'black', ' SPY The Best Menâ€™s Watches qq', '', '<p>&nbsp;SPY The Best Men&rsquo;s Watches qq</p>\r\n', 'spy-best-men-s-watches-qq', '1200', 1000, 10, '_1584037374.webp', '0000-00-00', 0),
+(135, 0, NULL, 95, 23, 'black', 'Watch Smartwatch', '', '<p>Watch Smartwatch</p>\r\n', 'watch-smartwatch', '2000', 1200, 10, '_1584037445.jpg', '0000-00-00', 0),
+(136, 0, NULL, 95, 22, 'black', 'Heritage 1921 - Men\'s Watch -', '', '<p>Heritage 1921 - Men&#39;s Watch -</p>\r\n', 'heritage-1921-men-s-watch', '2000', 1200, 10, '_1584037490.jpg', '0000-00-00', 0),
+(137, 0, NULL, 95, 22, 'black', ' men\'s running stopwatch', '', '', 'men-s-running-stopwatch', '2000', 1200, 10, 'men-s-running-stopwatch_1584037763.jpg', '0000-00-00', 0),
+(138, 0, NULL, 95, 22, 'brown', ' SHENGKE Women Watches', '', '', 'shengke-women-watches', '2000', 1200, 10, '_1584037594.jpg', '0000-00-00', 0),
+(139, 0, NULL, 95, 23, 'black', 'SHENGKE Watches', '', '<p>SHENGKE Watches</p>\r\n', 'shengke-watches', '2000', 1200, 10, '_1584037663.jpg', '0000-00-00', 0),
+(140, 0, NULL, 95, 22, 'black', 'Checkmate Black Dial Leather Strap Watch', 's,m', '<p>Checkmate Black Dial Leather Strap Watch</p>\r\n', 'checkmate-black-dial-leather-strap-watch', '2000', 1200, 10, '_1584037852.webp', '0000-00-00', 0),
+(141, 0, NULL, 95, 23, 'black', ' Watches - Buy ', 's,m', '<p>&nbsp;Watches - Buy&nbsp;</p>\r\n', 'watches-buy', '2000', 1200, 10, '_1584037903.jpeg', '0000-00-00', 0),
+(142, 0, NULL, 95, 24, 'pink', ' Men\'s Lacoste 12.12 ', '', '', 'men-s-lacoste-12-12', '2000', 1200, 10, '_1584037978.jpg', '0000-00-00', 0),
+(143, 0, NULL, 95, 21, 'black', 'Curl Asia Beacon Black Leather', '', '<p>Curl Asia Beacon Black Leather</p>\r\n', 'curl-asia-beacon-black-leather', '2000', 1200, 10, '_1584038025.jpg', '0000-00-00', 0),
+(144, 0, NULL, 95, 23, 'black', 'smartwatch, plus adult Marvel watches ', '', '<p>smartwatch, plus adult Marvel watches&nbsp;</p>\r\n', 'smartwatch-plus-adult-marvel-watches', '2000', 1200, 10, '_1584038121.webp', '0000-00-00', 0),
+(145, 0, NULL, 95, 22, 'grey', ' Master Ultra Thin RÃ©serve', '', '<p>&nbsp;Master Ultra Thin R&eacute;serve</p>\r\n', 'master-ultra-thin-reserve', '2000', 1200, 10, '_1584038186.webp', '0000-00-00', 0),
+(146, 0, NULL, 95, 23, 'brown', ' Master Ultra Thin RÃ©servet', '', '<p>&nbsp;Master Ultra Thin R&eacute;servet</p>\r\n', 'master-ultra-thin-reservet', '2000', 1200, 10, '_1584038256.jpg', '0000-00-00', 0),
+(147, 0, NULL, 96, 21, 'dark grey', ' Allen Solly Footwear,', '', '<p>&nbsp;Allen Solly Footwear,</p>\r\n', 'allen-solly-footwear', '2000', 1200, 10, '_1584038412.jpg', '0000-00-00', 0),
+(148, 0, NULL, 96, 21, 'grey', 'allen Solly Grey Casual Shoes', 's,m', '<p>allen Solly Grey Casual Shoes</p>\r\n', 'allen-solly-grey-casual-shoes', '2000', 1200, 10, '_1584038521.jpg', '0000-00-00', 0),
+(149, 0, NULL, 95, 21, 'white', 'Allen Solly White Casual Shoes', 's,m', '<p>Allen Solly White Casual Shoes</p>\r\n', 'allen-solly-white-casual-shoes', '2000', 1200, 10, '_1584038581.jpg', '0000-00-00', 0),
+(150, 0, NULL, 96, 21, 'black', ' Allen Solly Black Boots', 's,m', '<p>&nbsp;Allen Solly Black Boots</p>\r\n', 'allen-solly-black-boots', '2000', 1200, 10, '_1584038638.jpg', '0000-00-00', 0),
+(151, 0, NULL, 96, 21, 'blue', 'Allen Solly Blue Casual Shoes', 's,m', '<p>Allen Solly Blue Casual Shoes</p>\r\n', 'allen-solly-blue-casual-shoes', '2000', 1200, 10, '_1584038701.jpg', '0000-00-00', 0),
+(152, 0, NULL, 96, 21, 'black', ' ALLEN SOLLY SHOES', '', '<p>&nbsp;ALLEN SOLLY SHOES</p>\r\n', 'allen-solly-shoes', '2000', 1200, 10, 'allen-solly-shoes_1584038780.jpg', '0000-00-00', 0),
+(153, 0, NULL, 96, 21, 'white', 'Allen Solly White Lace Up Shoes', 's,m', '<p>Allen Solly White Lace Up Shoes</p>\r\n', 'allen-solly-white-lace-up-shoes', '2000', 1200, 10, 'allen-solly-white-lace-up-shoes_1584038949.jpg', '0000-00-00', 0),
+(154, 0, NULL, 96, 21, 'black', ' Allen solly aMen Black Casual Shoes', '', '<p>&nbsp;Allen solly aMen Black Casual Shoes</p>\r\n', 'allen-solly-amen-black-casual-shoes', '2000', 1200, 10, '_1584038897.jpg', '0000-00-00', 0),
+(155, 0, NULL, 96, 21, 'brown', ' Allen Solly Brown Sneaker Shoes ', 's,m', '<p>&nbsp;Allen Solly Brown Sneaker Shoes&nbsp;</p>\r\n', 'allen-solly-brown-sneaker-shoes', '2000', 1200, 10, '_1584039034.jpg', '0000-00-00', 0),
+(156, 0, NULL, 96, 21, 'green', ' Allen Solly green Sneaker Shoes ', 's,m', '<p>&nbsp;Allen Solly green Sneaker Shoes&nbsp;</p>\r\n', 'allen-solly-green-sneaker-shoes', '2000', 1200, 10, '_1584039092.jpeg', '0000-00-00', 0),
+(157, 0, NULL, 97, 22, 'brown', 'Men Pants Custom Mens Chinos', '', '<p>Men Pants Custom Mens Chinos</p>\r\n', 'men-pants-custom-mens-chinos', '2000', 1200, 10, '_1584039215.jpg', '0000-00-00', 0),
+(158, 0, NULL, 97, 23, 'green', ' Olive Green Solid Brooklyn Fit Chino Trousers', 's,m', '<p>&nbsp;Olive Green Solid Brooklyn Fit Chino Trousers</p>\r\n', 'olive-green-solid-brooklyn-fit-chino-trousers', '2000', 1200, 10, '_1584039439.jpg', '0000-00-00', 0),
+(159, 0, NULL, 97, 24, 'blue', 'Slim Coastal Chinos', 's,m', '<p>Slim Coastal Chinos</p>\r\n\r\n<p>&nbsp;</p>\r\n', 'slim-coastal-chinos', '2000', 1200, 10, '_1584039498.jpg', '0000-00-00', 0),
+(160, 0, NULL, 97, 23, 'brown', 'Trousers & Chinos for Men', 's,m', '<p>Trousers &amp; Chinos for Men</p>\r\n', 'trousers-chinos-men', '2000', 1200, 10, '_1584039616.jpg', '0000-00-00', 0),
+(161, 0, NULL, 97, 23, 'black', 'Chinos ', 's,m', '<p>Chinos</p>\r\n', 'chinos', '2000', 1200, 10, '_1584039696.jpeg', '0000-00-00', 0),
+(162, 0, NULL, 97, 24, 'pink', ' Women\'s Cotton Lycra Official Pant', 's,m', '<p>&nbsp;Women&#39;s Cotton Lycra Official Pant</p>\r\n', 'women-s-cotton-lycra-official-pant', '2000', 1200, 10, '_1584039745.jpg', '0000-00-00', 0),
+(163, 0, NULL, 97, 26, 'black', 'Men\'s Size 46 Inch Trousers', '46', '<p>Men&#39;s Size 46 Inch Trousers</p>\r\n', 'men-s-size-46-inch-trousers', '2000', 1200, 10, '_1584039931.jpg', '0000-00-00', 0),
+(164, 0, NULL, 97, 30, 'brown', ' Men\'s clothes - Fashion.gr', 's,m', '<p>&nbsp;Men&#39;s clothes - Fashion.gr</p>\r\n', 'men-s-clothes-fashion-gr', '2000', 1200, 10, '_1584039988.jpg', '0000-00-00', 0),
+(165, 0, NULL, 97, 33, 'red', ' Men\'s clothes - Fashion.gryy', 's,m', '<p>&nbsp;Men&#39;s clothes - Fashion.gryy</p>\r\n', 'men-s-clothes-fashion-gryy', '2000', 1200, 10, '_1584040035.jpg', '0000-00-00', 0),
+(166, 0, NULL, 97, 27, 'white', 'Men\'s Trousers & Chinosff', 's,m', '<p>Men&#39;s Trousers &amp; Chinosff</p>\r\n', 'men-s-trousers-chinosff', '2000', 1200, 10, '_1584040104.jpg', '0000-00-00', 0),
+(167, 0, NULL, 99, 20, 'blue', 'Plus Size Blue Stonewash Riot ', 's,m', '<p>Plus Size Blue Stonewash Riot</p>\r\n', 'plus-size-blue-stonewash-riot', '2000', 1200, 10, '_1584040220.jpg', '0000-00-00', 0),
+(168, 0, NULL, 99, 23, 'blue', 'Butt Shaper Mid Rise Skinny Jeans ', 's,m', '', 'butt-shaper-mid-rise-skinny-jeans', '2000', 1200, 10, '_1584040306.jpg', '0000-00-00', 0),
+(169, 0, NULL, 99, 23, 'black', 'Stretch Parkour Jeans', 's,m', '<p>Stretch Parkour Jeans</p>\r\n', 'stretch-parkour-jeans', '2000', 1200, 10, '_1584040358.jpg', '0000-00-00', 0),
+(170, 0, NULL, 99, 27, 'black', ' Slim Fit Stretch Cotton Denim Jeans for Men | Emporio Armani', 's,m', '<p>Slim Fit Stretch Cotton Denim Jeans for Men | Emporio Armani</p>\r\n', 'slim-fit-stretch-cotton-denim-jeans-men-emporio-armani', '2000', 1200, 10, '_1584040425.jpg', '0000-00-00', 0),
+(171, 0, NULL, 99, 26, 'black', ' Jeans Fit Guide', 's,m', '<p>&nbsp;Jeans Fit Guide</p>\r\n', 'jeans-fit-guide', '2000', 1200, 10, 'jeans-fit-guide_1584040601.jpg', '0000-00-00', 0),
+(172, 0, NULL, 99, 21, 'black', ' Solly Jeans & Jeggings', 's,m', '<p>&nbsp;Solly Jeans &amp; Jeggings</p>\r\n', 'solly-jeans-jeggings', '2000', 1200, 10, '_1584040669.jpg', '0000-00-00', 0),
+(173, 0, NULL, 101, 20, 'white', ' Nike  Sportswear Men\'s T-Shirt 4', 's,m', '<p>&nbsp;Nike &nbsp;Sportswear Men&#39;s T-Shirt 4</p>\r\n', 'nike-sportswear-men-s-t-shirt-4', '2000', 1200, 10, '_1584040815.jpg', '0000-00-00', 0),
+(174, 0, NULL, 101, 20, 'white', ' Nike Sportswear Men\'s T-Shirt 46', 's,m', '<p>&nbsp;Nike Sportswear Men&#39;s T-Shirt 46</p>\r\n', 'nike-sportswear-men-s-t-shirt-46', '2000', 1200, 10, '_1584040906.jpg', '0000-00-00', 0),
+(175, 0, NULL, 101, 20, 'black', ' Nike SB Floral Old School', 's,m', '<p>&nbsp;Nike SB Floral Old School</p>\r\n', 'nike-sb-floral-old-school', '2000', 1200, 10, '_1584040979.jpg', '0000-00-00', 0),
+(176, 0, NULL, 101, 20, 'black', ' Nike SB Floral Old School 67', 's,m', '<p>&nbsp;Nike SB Floral Old School 67</p>\r\n', 'nike-sb-floral-old-school-67', '2000', 1200, 10, '_1584041033.jpg', '0000-00-00', 0),
+(177, 0, NULL, 101, 20, 'white', ' Nike SB Floral Old School 678', 's,m', '<p>&nbsp;Nike SB Floral Old School 678</p>\r\n', 'nike-sb-floral-old-school-678', '2000', 1200, 10, '_1584041086.jpeg', '0000-00-00', 0),
+(178, 0, NULL, 101, 20, 'black', ' Nike SB Floral Old School 67888', 's,m', '<p>&nbsp;Nike SB Floral Old School 67888</p>\r\n', 'nike-sb-floral-old-school-67888', '2000', 1200, 10, '_1584041132.jpg', '0000-00-00', 0),
+(179, 0, NULL, 101, 20, 'black', ' Nike ohohohSB Floral Old School 67888', 's,m', '<p>&nbsp;Nike ohohohSB Floral Old School 67888</p>\r\n', 'nike-ohohohsb-floral-old-school-67888', '', 1200, 10, '_1584041183.jpg', '0000-00-00', 0),
+(180, 0, NULL, 102, 23, 'black', 'SN Casual Shirts for Men,', 's,m', '<p>&nbsp;Casual Shirts for Men,</p>\r\n', 'sn-casual-shirts-men', '2000', 1200, 10, '_1584041264.jpg', '0000-00-00', 0),
+(181, 0, NULL, 102, 29, 'black', ' Casual Shirts for Men,8', 's,m', '<p>&nbsp;Casual Shirts for Men,8</p>\r\n', 'casual-shirts-men-8', '2000', 1200, 10, '_1584041314.jpg', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -736,7 +803,7 @@ ALTER TABLE `pincode`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 
 --
 -- AUTO_INCREMENT for table `sales`

@@ -4,26 +4,25 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="./images/favicon.jpg" rel="icon">
+     <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Favicon  -->
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
-    <!-- Magnify -->
-    <link rel="stylesheet" href="magnify/magnify.min.css">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+ <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- Paypal Express -->
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <!-- Google Recaptcha -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    
+    <link rel="icon" href="essence/img/core-img/favicon.ico">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="essence/css/core-style.css">
+    <link rel="stylesheet" href="essence/style.css">
 
     <!-- Custom CSS -->
     <style type="text/css">
@@ -47,9 +46,12 @@
             background: #323232;
             color: white;
         }
-
+.single-mega.cn-col-5.banner-image{
+    height: 430px;
+}
         body {
             font-family: 'Alatsi', sans-serif;
+            background: #fff
         }
 
         .buynowfixedfooter {
@@ -103,12 +105,6 @@
             position: relative;
         }
 
-        .layout-top-nav .content-wrapper,
-        .layout-top-nav .main-footer {
-            margin-left: 160px;
-            background: #F5F5F6;
-        }
-
         .modal.fade {
             backdrop-filter: blur(5px);
             background: rgba(0, 0, 0, 0.5)
@@ -137,6 +133,7 @@
 
         .content {
             margin-top: 60px;
+            background-color: #fff
         }
 
         /* slider css code */
@@ -1571,8 +1568,7 @@
 
 <body>
 
-</body>
-
+ 
 <script>
     // Set the date we're counting down to
     var countDownDate = new Date("mar 22, 2020 12:00:00 pm").getTime();

@@ -69,6 +69,7 @@ $pdo->close();
             </ul>
         </div>
     </div>
+  <?php include 'includes/essence_script.php'; ?>
 
     <?php include 'includes/scripts.php' ?>
 </body>

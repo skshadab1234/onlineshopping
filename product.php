@@ -435,6 +435,8 @@ with the id of the image, and the strength of the magnifier glass:*/
 			}, 10000);
 		}
 	</script>
+	  <?php include 'includes/essence_script.php'; ?>
+
 </body>
 
 </html>

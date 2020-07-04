@@ -3,8 +3,7 @@
 $link = mysqli_connect("localhost", "root", "");
 mysqli_select_db($link, "ecomm");
 ?>
-<link rel="stylesheet" href="build/swiper.min.css">
-<?php include 'includes/header.php'; ?>
+	<?php include 'includes/header.php'; ?>
 
 <head>
 	<title>Cart <?php
@@ -164,6 +163,9 @@ mysqli_select_db($link, "ecomm");
 	</div>
 	<script src="build/swiper.min.js"></script>
 	<?php include 'includes/sidebar_modal.php' ?>
+  <?php include 'includes/essence_script.php'; ?>
+
+	
 	<?php include 'includes/scripts.php'; ?>
 	<script>
 		var swiper2 = new Swiper('.swiper1', {
@@ -171,124 +173,7 @@ mysqli_select_db($link, "ecomm");
 		});
 	</script>
 	<script>
-		var total = 0;
-		$(function() {
-			$(document).on('click', '.cart_delete', function(e) {
-				e.preventDefault();
-				var id = $(this).data('id');
-				$.ajax({
-					type: 'POST',
-					url: 'cart_delete.php',
-					data: {
-						id: id
-					},
-					dataType: 'json',
-					success: function(response) {
-						if (!response.error) {
-							getDetails();
-							getCart();
-							getTotal();
-							getplace();
-						}
-					}
-				});
-			});
-
-			$(document).on('click', '.minus', function(e) {
-				e.preventDefault();
-				var id = $(this).data('id');
-				var qty = $('#qty_' + id).val();
-				if (qty > 1) {
-					qty--;
-				}
-				$('#qty_' + id).val(qty);
-				$.ajax({
-					type: 'POST',
-					url: 'cart_update.php',
-					data: {
-						id: id,
-						qty: qty,
-					},
-					dataType: 'json',
-					success: function(response) {
-						if (!response.error) {
-							getDetails();
-							getCart();
-							getTotal();
-							getplace();
-						}
-					}
-				});
-			});
-
-			$(document).on('click', '.add', function(e) {
-				e.preventDefault();
-				var id = $(this).data('id');
-				var qty = $('#qty_' + id).val();
-				qty++;
-				$('#qty_' + id).val(qty);
-				$.ajax({
-					type: 'POST',
-					url: 'cart_update.php',
-					data: {
-						id: id,
-						qty: qty,
-					},
-					dataType: 'json',
-					success: function(response) {
-						if (!response.error) {
-							getDetails();
-							getCart();
-							getTotal();
-							getplace();
-						}
-					}
-				});
-			});
-
-			getDetails();
-			getTotal();
-			getplace();
-
-		});
-
-		function getDetails() {
-			$.ajax({
-				type: 'POST',
-				url: 'cart_details.php',
-				dataType: 'json',
-				success: function(response) {
-					$('#tbody').html(response);
-					getCart();
-				}
-			});
-		}
-
-
-		function getplace() {
-			$.ajax({
-				type: 'POST',
-				url: 'place_o.php',
-				dataType: 'json',
-				success: function(response) {
-					$('#tbody1').html(response);
-					getCart();
-				}
-			});
-		}
-
-
-		function getTotal() {
-			$.ajax({
-				type: 'POST',
-				url: 'cart_total.php',
-				dataType: 'json	',
-				success: function(response) {
-					delivery1 = response;
-
-				}
-			});
-		}
+	
 	</script>
 
 

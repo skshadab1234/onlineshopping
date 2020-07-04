@@ -87,6 +87,8 @@ if (strlen($_SESSION['user']) == 0) {
 		<?php include 'includes/footer.php'; ?>
 		<?php include 'includes/profile_modal.php'; ?>
 	</div>
+	  <?php include 'includes/essence_script.php'; ?>
+
 	<?php include 'includes/scripts.php'; ?>
 
 	<script>

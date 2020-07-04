@@ -1,3 +1,4 @@
+
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -13,6 +14,7 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- CK Editor -->
 <script src="bower_components/ckeditor/ckeditor.js"></script>
+
 <script>
 	$(function() {
 		// Datatable
@@ -25,7 +27,6 @@
 	});
 </script>
 <!--Magnify -->
-<script src="magnify/magnify.min.js"></script>
 <script>
 	$(function() {
 		$('.zoom').magnify();
@@ -125,107 +126,139 @@
 	});
 </script>
 <script>
-	var total = 0;
-	$(function() {
-		$(document).on('click', '.cart_delete', function(e) {
-			e.preventDefault();
-			var id = $(this).data('id');
-			$.ajax({
-				type: 'POST',
-				url: 'cart_delete.php',
-				data: {
-					id: id
-				},
-				dataType: 'json',
-				success: function(response) {
-					if (!response.error) {
-						getDetails();
-						getCart();
-						getTotal();
+		var total = 0;
+		$(function() {
+			$(document).on('click', '.cart_delete', function(e) {
+				e.preventDefault();
+				var id = $(this).data('id');
+				$.ajax({
+					type: 'POST',
+					url: 'cart_delete.php',
+					data: {
+						id: id
+					},
+					dataType: 'json',
+					success: function(response) {
+						if (!response.error) {
+							getDetails();
+							getCart();
+							getTotal();
+							getplace();
+							getovercart();
+						}
 					}
-				}
+				});
 			});
 
+			$(document).on('click', '.minus', function(e) {
+				e.preventDefault();
+				var id = $(this).data('id');
+				var qty = $('#qty_' + id).val();
+				if (qty > 1) {
+					qty--;
+				}
+				$('#qty_' + id).val(qty);
+				$.ajax({
+					type: 'POST',
+					url: 'cart_update.php',
+					data: {
+						id: id,
+						qty: qty,
+					},
+					dataType: 'json',
+					success: function(response) {
+						if (!response.error) {
+							getDetails();
+							getCart();
+							getTotal();
+							getplace();
+							getovercart();
+						}
+					}
+				});
+			});
+
+			$(document).on('click', '.add', function(e) {
+				e.preventDefault();
+				var id = $(this).data('id');
+				var qty = $('#qty_' + id).val();
+				qty++;
+				$('#qty_' + id).val(qty);
+				$.ajax({
+					type: 'POST',
+					url: 'cart_update.php',
+					data: {
+						id: id,
+						qty: qty,
+					},
+					dataType: 'json',
+					success: function(response) {
+						if (!response.error) {
+							getDetails();
+							getCart();
+							getTotal();
+							getplace();
+							getovercart();
+						}
+					}
+				});
+			});
+
+			getDetails();
+			getTotal();
+			getplace();
+			getovercart();
+
 		});
 
-
-		$(document).on('click', '.minus', function(e) {
-			e.preventDefault();
-			var id = $(this).data('id');
-			var qty = $('#qty_' + id).val();
-			if (qty > 1) {
-				qty--;
-			}
-			$('#qty_' + id).val(qty);
+		function getDetails() {
 			$.ajax({
 				type: 'POST',
-				url: 'cart_update.php',
-				data: {
-					id: id,
-					qty: qty,
-				},
+				url: 'cart_details.php',
 				dataType: 'json',
 				success: function(response) {
-					if (!response.error) {
-						getDetails();
-						getCart();
-						getTotal();
-					}
+					$('#tbody').html(response);
+					getCart();
+
 				}
 			});
-		});
+		}
 
 
-		$(document).on('click', '.add', function(e) {
-			e.preventDefault();
-			var id = $(this).data('id');
-			var qty = $('#qty_' + id).val();
-			qty++;
-			$('#qty_' + id).val(qty);
+		function getplace() {
 			$.ajax({
 				type: 'POST',
-				url: 'cart_update.php',
-				data: {
-					id: id,
-					qty: qty,
-				},
+				url: 'place_o.php',
 				dataType: 'json',
 				success: function(response) {
-					if (!response.error) {
-						getDetails();
-						getCart();
-						getTotal();
-					}
+					$('#tbody1').html(response);
+					getCart();
 				}
 			});
-		});
+		}
 
-		getDetails();
-		getTotal();
+	function getovercart() {
+			$.ajax({
+				type: 'POST',
+				url: 'cart_overview.php',
+				dataType: 'json',
+				success: function(response) {
+					$('#overview').html(response);
+					getCart();
+					getDetails();
+				}
+			});
+		}
 
-	});
+		function getTotal() {
+			$.ajax({
+				type: 'POST',
+				url: 'cart_total.php',
+				dataType: 'json	',
+				success: function(response) {
+					delivery1 = response;
 
-	function getDetails() {
-		$.ajax({
-			type: 'POST',
-			url: 'cart_details1.php',
-			dataType: 'json',
-			success: function(response) {
-				$('#tbody1').html(response);
-				getCart();
-			}
-		});
-	}
-
-	function getTotal() {
-		$.ajax({
-			type: 'POST',
-			url: 'cart_total.php',
-			dataType: 'json	',
-			success: function(response) {
-				delivery1 = response;
-
-			}
-		});
-	}
+				}
+			});
+		}
 </script>

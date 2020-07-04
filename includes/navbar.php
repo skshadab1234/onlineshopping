@@ -1,392 +1,494 @@
+
 <?php
-error_reporting(0);
-?>
-<style type="text/css">
-        .sticky {
-                padding: 5px;
-                top: 0;
-                width: 100%;
-                background: #fff;
-                z-index: 0;
-        }
+    $conn = $pdo->open();
+    
+        $stmt3 = $conn->prepare("SELECT * FROM category where id=:id");
+        $stmt3->execute(['id'=>2]);
 
-        #myHeader {
-                transition: 0.9s ease all;
-                width: 100%;
-                padding: 10px;
-                position: fixed;
-                background: #fff;
-        }
+         $stmt4 = $conn->prepare("SELECT * FROM category where id=:id");
+        $stmt4->execute(['id'=>1]);
 
-        .navbar-collapse {
-                margin-left: 5%;
-        }
+         $stmt5 = $conn->prepare("SELECT * FROM category where id=:id");
+        $stmt5->execute(['id'=>3]);
 
-        .navbar-brand1 {
-                font-size: 25px;
-                width: 300px;
-                color: #010101;
-                padding: 20px;
-                line-height: 50px;
-                letter-spacing: 2px;
-        }
+        $stmt7 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt7->execute(['type'=>"women_clothing"]);
 
-        .openBtn {
-                border: none;
-                padding: 10px;
-                background: none;
-                color: #2b5876;
-                font-size: 20px;
-                cursor: pointer;
-        }
+        $stmt8 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt8->execute(['type'=>"women_shoes"]);        
+        
+        $stmt9 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt9->execute(['type'=>"women_sunglass"]);        
+        
+        $stmt10 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt10->execute(['type'=>"women_watch"]);        
 
-        #myHeader.sticky .openBtn {
-                color: #2b5876;
-        }
+        $stmt11 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt11->execute(['type'=>"women_jewellery"]);   
 
-        #myHeader.sticky .navbar-brand1 {
-                color: #4b6cb7;
-        }
+        $stmt12 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt12->execute(['type'=>"women_handbag"]);        
+        
+       $stmt13 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt13->execute(['type'=>"women_banner"]);    
 
-        /*the container must be positioned relative:*/
-        .autocomplete {
-                position: relative;
-                display: inline-block;
-        }
+       $stmt14 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+       $stmt14->execute(['type'=>"men_clothing"]);      
+
+       $stmt15 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt15->execute(['type'=>"men_shoes"]);    
+
+           $stmt16 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt16->execute(['type'=>"men_eyewear"]);
+
+        $stmt17 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt17->execute(['type'=>"men_jewellery"]);    
 
 
-        input {
-                border: 1px solid transparent;
-                background-color: #f1f1f1;
-                padding: 10px;
-                font-size: 16px;
-        }
+        $stmt18 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt18->execute(['type'=>"men_watches"]);    
+        
+        $stmt19 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt19->execute(['type'=>"men_banner"]);  
 
-        input[type=text] {
-                background-color: #f1f1f1;
-                width: 100%;
-        }
+        $stmt20 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt20->execute(['type'=>"girls_clothing"]);  
 
-        input[type=submit] {
-                background-color: steelblue;
-                color: #fff;
-                cursor: pointer;
-        }
+        $stmt21 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt21->execute(['type'=>"boys_clothing"]); 
 
-        .autocomplete-items {
-                position: absolute;
-                border-bottom: none;
-                border-top: none;
-                z-index: 99;
-                /*position the autocomplete items to be the same width as the container:*/
-                top: 44px;
-                left: 0;
-                right: 0;
-        }
+           $stmt22 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt22->execute(['type'=>"kids"]); 
 
-        .autocomplete-items div {
-                padding: 10px;
-                cursor: pointer;
-                background-color: #fff;
-        }
+         $stmt23 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt23->execute(['type'=>"baby"]); 
 
-        /*when hovering an item:*/
-        .autocomplete-items div:hover {
-                background-color: #e9e9e9;
-        }
-
-        /*when navigating through the items using the arrow keys:*/
-        .autocomplete-active {
-                background-color: #e9e9e9 !important;
-                color: #010101;
-        }
-
-        #myHeader.sticky .fa-bars {
-                color: #232526;
-                padding-right: -10px;
-        }
-
-        .fa-bars {
-                color: #232526;
-                padding-right: -10px;
-        }
-
-        #myHeader.sticky .fa-shopping-bag {
-                color: #232526;
-        }
-
-        .subnavbtn a {
-                color: #323232;
-                margin-left: 30px;
-                letter-spacing: 1px;
-                font-weight: 400;
-        }
-
-        #myHeader.sticky .subnavbtn a {
-                color: #232526;
-        }
-
-        .login {
-                color: #232526;
-        }
-
-        .login:hover {
-                color: #232526;
-        }
-
-        #myHeader.sticky .login {
-                color: #232526;
-        }
-
-        .fa-shopping-bag {
-                color: #232526;
-                font-size: 14px;
-        }
-
-        .fa-heart-o {
-                color: #232526;
-                font-size: 14px;
-        }
-
-        #myHeader.sticky .fa-heart-o {
-                color: #232526;
-        }
-
-        @media(max-width:768px) {
-                .desktop {
-                        display: none;
-                }
-
-                .modal-backdrop.in {
-                        z-index: 0;
-                }
-
-                #mobileview {
-                        width: 100%;
-                        display: flex;
-                        position: fixed;
-                        z-index: 999;
-                        background: #fff;
-                }
-
-                #mobileview img {
-                        width: 20px;
-                        height: 23px;
-                        position: relative;
-                        top: 6px;
-                }
-
-                #mobileview i {
-                        color: #000;
-                        font-size: 20px;
-                }
-
-                .sk {
-                        margin-top: 20px;
-                }
-
-                #brand {
-                        white-space: nowrap;
-                        line-height: 39px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        FONT-WEIGHT: bold;
-                        font-family: sans-serif;
-                        letter-spacing: 1px;
-                        position: relative;
-                        left: 20px;
-                }
-
-                .rightsection {
-                        position: absolute;
-                        right: 5px;
-                        line-height: 39px;
-                }
-
-                .rightsection li {
-                        display: inline-block;
-                        padding: 0px 5px;
-                }
-
-                .rightsection li:last-child {
-                        padding: 0
-                }
-
-                .rightsection .fa {
-                        font-size: 50px;
-                }
-
-        }
-
-        #dropsidearrow:after {
-                content: '';
-                position: absolute;
-                top: -5px;
-                right: 20px;
-                border-top: none;
-                border-left: 15px solid transparent;
-                border-right: 15px solid transparent;
-                border-bottom: 15px solid #2a2440;
-
-        }
-</style>
-
-<body class="hold-transition layout-top-nav">
-        <header class="main-header" style="background:transparent">
-                <nav class="navbar navbar-static-top" id="myHeader">
-                        <button type="button" class="navbar-toggle collapsed" id="bars" data-toggle="modal" data-target="#bar">
-                                <i class="fa fa-bars"></i>
-                        </button>
-                        <div class="navbar-header">
-                                <a href="index.php" class="navbar-brand1">
-                                        <b> DRESSMANIA<b>
-                                </a>
-                        </div>
-
-                        <!-- cart search  -->
-
-                        <div class="navbar-custom-menu" style="position:absolute;right:10px">
-                                <ul class="nav navbar-nav">
-                                        <li class="dropdown messages-menu">
-                                                <!-- Menu toggle button -->
-                                                <a href="#" class="dropdown-toggle" id="cart" data-toggle="dropdown">
-                                                        <i class="fa fa-shopping-bag"></i>
-                                                        <span class="label label-info cart_count"></span>
-                                                </a>
-                                                <ul class="dropdown-menu" style="background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
-                                                        <li class="header" style="background: #2a2440;color: white">You have <span class="cart_count" style="color: red"></span> item(s) in cart</li>
-                                                        <li>
-                                                                <ul class="menu" id="cart_menu"></ul>
-                                                        </li>
-
-                                                        <li class="pull-center"><a href="cart_view.php" style="background-color:#2a2440;color: #fff;font-weight: bolder;text-align: center;font-size: 16px;padding: 20px">View Cart</a></li>
-                                                </ul>
-
-                                        <li class="dropdown messages-menu">
-                                                <!-- Menu toggle button -->
-                                                <a href="wishlist.php" id="cart">
-                                                        <i class="fa fa-heart-o"></i>
-                                                </a>
-                                        </li>
-
-                                        <li>
-                                                <?php
-                                                if (isset($_SESSION['user'])) {
-                                                        $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
-                                                        echo '
-                                                <li class="dropdown user user-menu">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                                                <img src="' . $image . '" class="user-image" alt="User Image">
-                                                        </a>
-                                                        <ul class="dropdown-menu" id="dropsidearrow" style="padding:10px;background: #2a2440;box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);border-radius:2px;border: none;">
-				<hr style="margin-top: -10px;opacity: 0.5">
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-user-o" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;User Profile </span>&nbsp;<a href="profile.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
-
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-truck" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;My Orders </span>&nbsp;<a href="orders.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
-
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-history" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Transaction History </span>&nbsp;<a href="transaction_history.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
-
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-cart-arrow-down" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Wishlist </span>&nbsp;<a href="wishlist.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
-
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-plus" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Compare Product </span>&nbsp;<a href="wishlist.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
-
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-whatsapp" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;Chat With Us </span>&nbsp;<a href="wishlist.php" class="hoverprofile"><i class="fa fa-external-link" style="color: white;font-size: 16px"></i></a></div>
-				<hr style="width: 200px;margin-left: 10px">
-
-				<div style="margin-bottom: 20px;margin-left: 20px;font-size: 20px"><i class="fa fa-sign-out" style="color: orange;font-size: 14px"></i><span style="color: white;font-size: 14px;letter-spacing: 1px;text-transform: uppercase;">&nbsp;&nbsp;<a href="logout.php" class="hoverprofile" style="color: white">Logout </span>&nbsp;</a></div>
-
-				<a href="#edit" class="btn btn-success btn-flat btn-sm pull-right" id="quickview" data-toggle="modal"><i class="fa fa-edit" style="font-size: 12px;line-height: 40px"></i> Edit My Profile</a>
-
-                                                </ul>
-                                                </li>
-                                                ';
-                                                } else {
-                                                        echo "
-                                                ";
-                                                ?>
-                                        <li><a href='login.php' class='login'>LOGIN</a></li>
-                                        <li><a href='signup.php' class='login'>SIGNUP</a></li>
-                                <?php
-                                                }
-                                ?>
-                                </li>
-
-                                <li>
-                                        <button class="openBtn" data-toggle="modal" data-target="#search" style="outline: none"><i class="fa fa-search"></i></button>
-                                </li>
-                                </ul>
-                        </div>
-                </nav>
-        </header>
-
-
-        <!-- mobile view -->
-
-        <div class="mobile-view-header" id="mobileview">
-                <?php
-                if ($cat or $subcat or $_POST['keyword'] or $brand or $_GET['choose']) {
-                        echo '<img src="images/arrow2.png" onclick="history.back(-1)" alt="">';
-                } else {
-                        echo '<img src="images/hamburg.png" data-toggle="modal" data-target="#bar" alt="">';
-                }
-
-                ?>
-                <div id="brand">
-                        <?php
-                        if ($cat) {
-                                echo $cat['name'];
-                        } elseif ($_GET['styles']) {
-                                echo "<h4 style='position: relative;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $subcat['name'] . "</h4><h5 style='position:relative;top:-6px;font-size:12px'>" . $total_pro['prodids'] . " items</h5>";
-                        } elseif ($_GET['choose']) {
-                                echo "Choose Category";
-                        } elseif ($_GET['brand']) {
-                                echo "<h4 style='position: relative;font-weight: 600;font-family: calibri;font-size: 17px;'>" . $brand['brand_name'] . "</h4><h5 style='position:relative;top:-6px;font-size:12px'>" . $total_brand['prodids'] . " items</h5>";
-                        } elseif ($_POST['keyword']) {
-                                echo $_POST['keyword'];
-                        } else {
-                                echo '
-                        <a href="index.php" style="color:#010101;font-size:20px;text-transform:uppercase;letter-spacing:1px;font-family:calibri">Dressmania</a>
-                        ';
-                        }
-                        ?>
+        $stmt24 = $conn->prepare("SELECT * FROM subcategory where type=:type");
+        $stmt24->execute(['type'=>"kids_img"]); 
+        
+    $pdo->close();
+    ?>
+<!-- ##### Header Area Start ##### -->
+    <header class="header_area">
+        <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+            <!-- Classy Menu -->
+            <nav class="classy-navbar" id="essenceNav">
+                <!-- Logo -->
+                <a class="nav-brand" href="index.php"><img src="essence/img/core-img/logo.png" alt=""></a>
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>
-                <div class="rightsection container">
-                        <ul>
-                                <li>
-                                        <a href="" data-toggle="modal" data-target="#mb-search"><i class="fa fa-search"></i></a>
-                                </li>
-                                <li>
-                                        <a href="wishlist.php" style="margin-right:5px"><i class="fa fa-bookmark-o"></i></a>
-                                </li>
-                                <li>
-                                        <a href="cart_view.php"><i class="fa fa-shopping-bag"></i>
-                                                <span class="badge badge-danger cart_count" style="color:white;background:red;position:absolute;top:0px;right:3px;"></span>
-                                        </a>
-                                </li>
+                <!-- Menu -->
+                <div class="classy-menu">
+                    <!-- close btn -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+                    <!-- Nav Start -->
+                    
+                       <?php  
+
+foreach ($stmt3 as $row3) {
+$image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'images/noimage.jpg';
+
+            ?>
+            <div class="classynav" style="display:-webkit-inline-box"> 
+             <ul>
+                            <li>
+            <a href="category.php?category=<?= $row3['cat_slug']?>">
+          <img src="<?= $image ?>"  width="30px" height="30px">
+          <span style="font-size:12px"><?= $row3['cat_slug'] ?></span>
+            </a><?php } ?>
+
+                                <div class="megamenu">
+                       <ul class="single-mega cn-col-5">
+                                <li class="title">Clothing</li>
+                                <?php 
+                                        foreach ($stmt7 as $row7) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row7['sub_catslug']) ?>"><?= $row7['name'] ?></a></li>
+                                   <?php } ?>
                         </ul>
+
+                         <ul class="single-mega cn-col-5">
+                                <li class="title">Shoes</li>
+                                <?php 
+                                        foreach ($stmt8 as $row8) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row8['sub_catslug']) ?>"><?= $row8['name'] ?></a></li>
+                                   <?php } ?>
+
+                                    <li class="title">Eyewear</li>
+                                <?php 
+                                        foreach ($stmt9 as $row9) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row9['sub_catslug']) ?>"><?= $row9['name'] ?></a></li>
+                                   <?php } ?>
+
+                        </ul>
+
+
+                         <ul class="single-mega cn-col-5">
+                                <li class="title">Jewllery</li>
+                                <?php 
+                                        foreach ($stmt11 as $row11) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row11['sub_catslug']) ?>"><?= $row11['name'] ?></a></li>
+                                   <?php } ?>   
+
+                                   <li class="title">Watches</li>
+                                <?php 
+                                        foreach ($stmt10 as $row10) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row10['sub_catslug']) ?>"><?= $row10['name'] ?></a></li>
+                                   <?php } ?>
+
+                                       <li class="title">HANDBAGS & CLUTCHES</li>
+                                <?php 
+                                        foreach ($stmt12 as $row12) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row12['sub_catslug']) ?>"><?= $row12['name'] ?></a></li>
+                                   <?php } ?>
+
+
+                               
+                        </ul>
+                                    <?php 
+                                        foreach ($stmt13 as $row13) {
+                                        $image = (!empty($row13['subcat_photo'])) ? 'images/subcategory/' . $row13['subcat_photo'] : 'images/noimage.jpg';
+
+                                 ?>
+                                    <div class="single-mega cn-col-5 banner-image">
+                                        <a href="shop.php?shop=<?= str_replace("&", "and", $row13['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <div class="container">
+                                                <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row13['name'] ?></h5>
+                                                <h5 class="title text-center">Explore Store</h5>
+                                        </div></a>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                            </li>
+                           
+
+
+                        <!-- WOMEN -->
+
+                <?php  
+
+foreach ($stmt4 as $row4) {
+          $image = (!empty($row4['photo'])) ? 'images/category/' . $row4['photo'] : '../images/noimage.jpg';
+            ?>
+            <div class="classynav" style="display:-webkit-inline-box"> 
+             <ul>
+                            <li>
+            <a href="category.php?category=<?= $row4['cat_slug']?>">
+          <img src="<?= $image ?>"  width="30px" height="30px">
+          <span style="font-size:12px"><?= $row4['cat_slug'] ?></span>
+            </a><?php } ?>
+
+                                 <div class="megamenu">
+                       <ul class="single-mega cn-col-5">
+                                <li class="title">Clothing</li>
+                                <?php 
+                                   foreach ($stmt14 as $row14) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row14['sub_catslug']) ?>"><?= $row14['name'] ?></a></li>
+                                   <?php } ?>
+                        </ul>
+
+                         <ul class="single-mega cn-col-5">
+                                <li class="title">Shoes</li>
+                                <?php 
+                                        foreach ($stmt15 as $row15) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row15['sub_catslug']) ?>"><?= $row15['name'] ?></a></li>
+                                   <?php } ?>
+
+                                    <li class="title">Eyewear</li>
+                                <?php 
+                                        foreach ($stmt16 as $row16) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row16['sub_catslug']) ?>"><?= $row16['name'] ?></a></li>
+                                   <?php } ?>
+
+                        </ul>
+
+
+                         <ul class="single-mega cn-col-5">
+                                <li class="title">Jewllery</li>
+                                <?php 
+                                        foreach ($stmt17 as $row17) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row17['sub_catslug']) ?>"><?= $row17['name'] ?></a></li>
+                                   <?php } ?>   
+
+                                   <li class="title">Watches</li>
+                                <?php 
+                                        foreach ($stmt18 as $row18) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row18['sub_catslug']) ?>"><?= $row18['name'] ?></a></li>
+                                   <?php } ?>
+
+                                <li><a href="shop.php?shop=Wallets">Wallets</a></li>
+                               
+                        </ul>
+                                    <?php 
+                                        foreach ($stmt19 as $row19) {
+                                        $image = (!empty($row19['subcat_photo'])) ? 'images/subcategory/' . $row19['subcat_photo'] : 'images/noimage.jpg';
+
+                                 ?>
+                                    <div class="single-mega cn-col-5 banner-image">
+                                        <a href="shop.php?shop=<?= str_replace("&", "and", $row19['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <div class="container">
+                                                <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row19['name'] ?></h5>
+                                                <h5 class="title text-center">Explore Store</h5>
+                                        </div></a>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                            </li>
+                           
+
+             <!-- KIDS -->
+                <?php  
+
+foreach ($stmt5 as $row5) {
+          $image = (!empty($row5['photo'])) ? 'images/category/' . $row5['photo'] : '../images/noimage.jpg';
+            ?>
+            <div class="classynav" style="display:-webkit-inline-box"> 
+             <ul>
+                            <li>
+            <a href="category.php?category=<?= $row5['cat_slug']?>">
+          <img src="<?= $image ?>"  width="30px" height="30px">
+          <span style="font-size:12px"><?= $row5['cat_slug'] ?></span>
+            </a><?php } ?>
+
+
+                                 <div class="megamenu">
+                       <ul class="single-mega cn-col-5">
+                                 <li class="title">Girls</li>
+                                <?php 
+                                   foreach ($stmt20 as $row20) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row20['sub_catslug']) ?>"><?= $row20['name'] ?></a></li>
+                                   <?php } ?>
+                        </ul>
+
+                         <ul class="single-mega cn-col-5">
+                                <li class="title">Boys</li>
+                                <?php 
+                                        foreach ($stmt21 as $row21) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row21['sub_catslug']) ?>"><?= $row21['name'] ?></a></li>
+                                   <?php } ?>
+
+                        </ul>
+
+
+                         <ul class="single-mega cn-col-5">
+                                <li class="title">Kids</li>
+                                <?php 
+                                        foreach ($stmt22 as $row22) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row22['sub_catslug']) ?>"><?= $row22['name'] ?></a></li>
+                                   <?php } ?>   
+
+                                   <li class="title">Baby</li>
+                                <?php 
+                                        foreach ($stmt23 as $row23) {
+                                 ?>
+                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row23['sub_catslug']) ?>"><?= $row23['name'] ?></a></li>
+                                   <?php } ?>
+
+                               
+                        </ul>
+                                    <?php 
+                                        foreach ($stmt24 as $row24) {
+                                        $image = (!empty($row24['subcat_photo'])) ? 'images/subcategory/' . $row24['subcat_photo'] : 'images/noimage.jpg';
+
+                                 ?>
+                                    <div class="single-mega cn-col-5 banner-image">
+                                        <a href="shop.php?shop=<?= str_replace("&", "and", $row24['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <div class="container-fluid">
+                                                <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row24['name'] ?></h5>
+                                                <h5 class="title text-center">Explore Store</h5>
+                                        </div></a>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                            </li>
+                           
+
+
+                          <!--   <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="single-product-details.html">Product Details</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="single-blog.html">Single Blog</a></li>
+                                    <li><a href="regular-page.html">Regular Page</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul> -->
+                    </div>
+                    <!-- Nav End -->
                 </div>
+            </nav>
+
+            <!-- Header Meta Data -->
+            <div class="header-meta d-flex clearfix justify-content-end">
+                <!-- Search Area -->
+                <div class="search-area">
+                    <form autocomplete="off" method="post" action="search.php">
+                        <input type="text" id="myInput"  placeholder="Type for search">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <!-- Favourite Area -->
+                <div class="favourite-area">
+                    <a href="#"><img src="essence/img/core-img/heart.svg" alt=""></a>
+                </div>
+                <!-- User Login Info -->
+                <div class="user-login-info">
+                     <?php
+                    if (isset($_SESSION['user'])) {
+                            $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
+                            echo '
+                            <a href="#" title="'.$user['firstname'].' ' .$user['lastname'].'" id="profilecart">
+                                    <img src="' . $image . '" class="user-image" alt="User Image">
+                            </a>
+                           
+                    ';
+                    } else {
+                            echo "
+                    ";
+                    ?>
+                               <a href="#" id="profilecart1"><img src="essence/img/core-img/user.svg"  alt=""></a>
+
+            <?php
+                            }
+            ?>
+                </div>
+
+
+
+
+
+                <!-- Cart Area -->
+                <div class="cart-area" id="essenceCartBtn">
+                     <a href="#" id="cart">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="label cart_count" style="font-size: 15px;color: #fff;
+background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right: 10px;"></span>
+                                                </a>
+                </div>
+            </div>
+
         </div>
-        <!-- all modal -->
-        <?php include 'includes/sidebar_modal.php'; ?>
-        <?php include 'includes/profile_modal.php'; ?>
+    </header>
+    <!-- ##### Header Area End ##### -->
 
-</body>
-<script>
-        window.onscroll = function() {
-                myFunction()
-        };
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="cart-bg-overlay"></div>
 
-        var header = document.getElementById("myHeader");
-        var sticky = header.offsetTop;
+    <div class="right-side-cart-area">
 
-        function myFunction() {
-                if (window.pageYOffset > sticky) {
-                        header.classList.add("sticky");
-                } else {
-                        header.classList.remove("sticky");
-                }
-        }
-</script>
+        <!-- Cart Button -->
+        <div class="cart-button">
+            <a href="#" id="rightSideCart"><img src="essence/img/core-img/bag.svg" alt=""> <span class="cart_count"> </span></a>
+        </div>
+
+        <div class="cart-content d-flex">
+
+            <!-- Cart List Area -->
+            <div class="cart-list">
+                <!-- Single Cart Item -->
+                <div class="single-cart-item" id="cart_menu" style="padding: 10px;">
+                        <!-- <img src="essence/img/product-img/product-1.jpg" class="cart-thumb" alt="">
+                        <div class="cart-item-desc">
+                          <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">Mango</span>
+                            <h6>Button Through Strap Mini Dress</h6>
+                            <p class="size">Size: S</p>
+                            <p class="color">Color: Red</p>
+                            <p class="price">$45.00</p>
+                        </div> -->
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-amount-summary">
+                <div id="overview"></div>
+            </div>
+        </div>
+    </div>
+ 
+
+ <!-- profile -->
+
+
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="profile-overlay"></div>
+
+    <div class="right-side-profile-area">
+
+        <!-- Cart Button -->
+        <div class="profile-button">
+            <a href="#" id="profilerightSide"><?php
+                            $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
+                            echo '
+                                    <img src="' . $image . '" class="user-image" alt="User Image">
+                                        ';
+                           ?> </a>
+        </div>
+
+        <div class="profile-content d-flex" style="background: #000;">
+
+            <!-- Cart Summary -->
+            <div class="profile-amount-summary">
+                <ul>
+                    <li><a href="profile.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="profile.php")?"active":""; ?>">Profile</a></li>
+                    <li><a href="orders.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="orders.php")?"active":""; ?>">Orders</a></li>
+                    <li><a href="transaction.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="transaction.php")?"active":""; ?>">History</a></li>
+                    <li><a href="coupons.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="coupons.php")?"active":""; ?>">Coupons</a></li>
+                    <li><a href="logout.php" class="nav active1">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="profile-overlay1"></div>
+
+    <div class="right-side-profile-area1" >
+
+        <!-- Cart Button -->
+        <div class="profile-button1">
+            <a href="#"  id="profilerightSide1">
+                                    <img src="essence/img/core-img/bag.svg" class="user-image" alt="User Image">
+            </a>
+        </div>
+
+        <div class="profile-content d-flex" style="background: #000;">
+
+            <!-- Cart Summary -->
+            <div class="profile-amount-summary">
+                <ul>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="signup.php">Signup</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ 
+
 
 <script>
         function autocomplete(inp, arr) {
@@ -413,7 +515,7 @@ error_reporting(0);
                                 /*check if the item starts with the same letters as the text field value:*/
                                 if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                                         /*create a DIV element for each matching element:*/
-                                        b = document.createElement("DIV");
+                                        b = document.createElement("DIV style='background:green'");
                                         /*make the matching letters bold:*/
                                         b.innerHTML = "<strong style='color:red;'>" + arr[i].substr(0, val.length) + "</strong>";
                                         b.innerHTML += arr[i].substr(val.length);
@@ -495,24 +597,5 @@ error_reporting(0);
         var countries = ["Nike", "Woodland", "Adidas", "Alikas", "SeeandWear", "Lee Cooper", "Fila", "Puma", "RedTape"];
 
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-        autocomplete(document.getElementById("myInput1"), countries);
         autocomplete(document.getElementById("myInput"), countries);
-</script>
-<script>
-        var input = document.getElementById("myInput1");
-        input.addEventListener("keyup", function(event) {
-                if (event.keyCode === 13) {
-                        event.preventDefault();
-                        document.getElementById("myBtn1").click();
-                }
-        });
-</script>
-<script>
-        var input1 = document.getElementById("myInput");
-        input1.addEventListener("keyup", function(event) {
-                if (event.keyCode === 13) {
-                        event.preventDefault();
-                        document.getElementById("myBtn").click();
-                }
-        });
 </script>

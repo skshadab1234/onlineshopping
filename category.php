@@ -339,28 +339,9 @@ if (isset($_GET['category'])) {
     <a href="" data-toggle="modal" data-target="#filter"><i class="fa fa-filter"></i> Filter</a>
     <a href="" data-toggle="modal" data-target="#filter" id="sort"><i class="fa fa-sort"></i> Sort</a>
   </div> -->
+  <?php include 'includes/essence_script.php'; ?>
+
   <?php include 'includes/scripts.php'; ?>
-  <script src="build/swiper.min.js"></script>
-
-  <script>
-    var swiper2 = new Swiper('.swiper1', {
-      slidesPerView: 1,
-      spaceBetween: -40,
-      pagination: {
-        el: '.swiper-pagination1',
-        clickable: true,
-      },
-    });
-
-    var swiper1 = new Swiper('.swiper2', {
-      slidesPerView: 1,
-      spaceBetween: 0,
-      pagination: {
-        el: '.swiper-pagination1',
-        clickable: true,
-      },
-    });
-  </script>
 
   <script>
     (function(d, s, id) {

@@ -581,6 +581,7 @@ $pdo->close();
 
 
 
+  <?php include 'includes/essence_script.php'; ?>
 
 
 	<?php include 'includes/scripts.php'; ?>

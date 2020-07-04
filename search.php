@@ -117,6 +117,7 @@
 
         <?php include 'includes/footer.php'; ?>
       </div>
+  <?php include 'includes/essence_script.php'; ?>
 
       <?php include 'includes/scripts.php'; ?>
 </body>

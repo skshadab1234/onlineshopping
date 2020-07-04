@@ -83,6 +83,8 @@ include('includes/scripts.php');
 			</section>
 		</div>
 	</div>
+	  <?php include 'includes/essence_script.php'; ?>
+
 	<script>
 		$(function() {
 			$(document).on('click', '.transact', function(e) {

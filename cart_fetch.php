@@ -6,24 +6,26 @@ $output = array('list' => '', 'count' => 0);
 
 if (isset($_SESSION['user'])) {
 	try {
-		$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE user_id=:user_id");
+		$stmt = $conn->prepare("SELECT *,  products.name AS prodname, products.photo As photo, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE user_id=:user_id");
 		$stmt->execute(['user_id' => $user['id']]);
 		foreach ($stmt as $row) {
 			$output['count']++;
 			$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
 			$productname = (strlen($row['prodname']) > 10) ? substr_replace($row['prodname'], '...', 28) : $row['prodname'];
 			$output['list'] .= "
-					<li>
+
+
 						<a href='product.php?product=" . $row['slug'] . "'>
-<div class='pull-left'>
-	<img src='" . $image . "' class='img-circle' alt='User Image' style=\"width:50px;height:50px;box-shadow: 0px 2px 0px 0px red\">
+							<div class='pull-left'>
+								<img src='" . $image . "' class='img-circle' alt='User Image'>
 							</div>
 							<h4>
-		                        <small>&times; " . $row['quantity'] . "</small>
+		                        <small style='position: relative;right: -137px;top: -215px;background: lightcoral;padding: 5px;color: #fff;border-radius: 10px;'>&times; " . $row['quantity'] . "</small>
 		                    </h4>
-		                    <p>" . $productname . "</p>
+		                    <p style='white-space: nowrap;overflow: hidden;font-size: 12px;text-overflow: ellipsis;margin-top: -10px;'>" . $productname. "</p>
+		                    <h5>&#8377; " . $row['price'] . " <span><s>&#8377; " . $row['old_price'] . " </s></span></h5>
 						</a>
-					</li>
+						<hr>
 				";
 		}
 	} catch (PDOException $e) {
@@ -44,19 +46,17 @@ if (isset($_SESSION['user'])) {
 			$product = $stmt->fetch();
 			$image = (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg';
 			$output['list'] .= "
-					<li>
 						<a href='product.php?product=" . $product['slug'] . "'>
 							<div class='pull-left'>
 								<img src='" . $image . "' class='img-circle' alt='User Image'>
 							</div>
 							<h4>
-		                        <b>" . $product['catname'] . "</b>
-		                        <small>&times; " . $row['quantity'] . "</small>
+		                        <small style='position: relative;right: -137px;top: -215px;background: lightcoral;padding: 5px;color: #fff;border-radius: 10px;'>&times; " . $row['quantity'] . "</small>
 		                    </h4>
-		                    <p style='white-space: nowrap;
-							overflow: hidden;width: 200px;text-overflow: ellipsis;'>" . $product['prodname'] . "</p>
+		                    <p style='white-space: nowrap;overflow: hidden;font-size: 12px;text-overflow: ellipsis;margin-top: -10px;'>" . $product['prodname'] . "</p>
+		                    <h5>&#8377; " . $product['price'] . " <span><s>&#8377; " . $product['old_price'] . " </s></span></h5>
 						</a>
-					</li>
+						<hr>
 				";
 		}
 	}

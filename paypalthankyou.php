@@ -75,6 +75,7 @@
     </div>
 
     <?php include 'includes/footer.php'; ?>
+  <?php include 'includes/essence_script.php'; ?>
 
     <?php include 'includes/scripts.php'; ?>
 

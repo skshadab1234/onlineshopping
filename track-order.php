@@ -89,6 +89,7 @@ $oid = intval($_GET['oid']);
       </table>
     </form>
   </div>
+  <?php include 'includes/essence_script.php'; ?>
 
 </body>
 

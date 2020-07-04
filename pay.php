@@ -13,7 +13,7 @@ try {
 
 
     $response = $api->paymentRequestCreate(array(
-        "purpose" => $product_name,
+        "purpose" => ($product_name),
         "amount" => $grand_t,
         "send_email" => true,
         "email" => $email,
@@ -22,7 +22,7 @@ try {
         "phone" => $phone,
         "send_sms" => true,
         "allow_repeated_payments" => false,
-        "redirect_url" => "http://localhost/onlineshopping/thankyou.php"
+        "redirect_url" => "http://localhost/onlineshopping-master/thankyou.php"
     ));
 
     $pay_url = $response['longurl'];

@@ -2,7 +2,6 @@
 	$conn = $pdo->open();
 
 	$output = '';
-	echo "	<h5 class=\"mens\" style=\"color:grey;font-size:16px\">Product Overview</h5>";
 
 	if (isset($_SESSION['user'])) {
 		if (isset($_SESSION['cart'])) {
@@ -25,7 +24,7 @@
 			$old_p = 0;
 			$discount = 0;
 			$disc_t = 0;
-			$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
+			$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT Join brands ON brands.id = products.brand_id WHERE user_id=:user");
 			$stmt->execute(['user' => $user['id']]);
 			foreach ($stmt as $row) {
 				$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
@@ -42,7 +41,7 @@
 				<div class='container-fluid box' style='padding:10px;border:2px solid #f5f5f6' >
 				<div class='row'>
 					<div class='col-xs-4 col-md-2 col-lg-3'>
-						<img src='" . $image . "' class=\"img-responsive\" width='150px'>
+						<img src='" . $image . "' class=\"img-responsive\" width='100px'>
 					</div>
 						<div class='col-xs-8 col-lg-9' style='text-align:left'>
 							<div>

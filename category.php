@@ -1,6 +1,5 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
-<?php  ?>
 <?php
 if (isset($_GET['category'])) {
   $slug = $_GET['category'];
@@ -30,8 +29,7 @@ if (isset($_GET['category'])) {
     include 'includes/navbar.php';
     ?>
     <div class="wrapper">
-      <!-- <?php include 'includes/sidenav.php' ?> -->
-      <div class="content-wrapper" style="background:#fff;margin:0px">
+        <div class="content-wrapper" style="background:#fff;margin:0px">
         <!-- Main content -->
         <section class="content" style="padding: 10px 0;">
           <!-- for mobile view -->
@@ -141,6 +139,7 @@ if (isset($_GET['category'])) {
 
               try {
                 $inc = 4;
+
                 $stmt = $conn->prepare("SELECT * FROM brands WHERE category = :category");
                 $stmt->execute(['category' => $catid]);
                 foreach ($stmt as $row) {

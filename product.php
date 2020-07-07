@@ -1,3 +1,4 @@
+
 <?php include 'includes/session.php'; ?>
 <?php
 $conn = $pdo->open();
@@ -12,12 +13,23 @@ try {
 } catch (PDOException $e) {
 	echo "There is some problem in connection: " . $e->getMessage();
 }
-?>
-<?php include 'includes/header.php'; ?>
-<title><?php echo $product['prodname']; ?> </title>
 
-<body class="hold-transition skin-blue layout-top-nav">
-	<script>
+
+try {
+
+	$stmt = $conn->prepare("SELECT * FROM products");
+	$stmt->execute();
+	$row = $stmt->fetch();
+} catch (PDOException $e) {
+	echo "There is some problem in connection: " . $e->getMessage();
+}
+
+
+
+?>
+
+<?php include 'includes/header.php'; ?>
+<script>
 		(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
 			if (d.getElementById(id)) return;
@@ -27,404 +39,324 @@ try {
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title><?php echo $product['prodname']; ?> </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="fashe-colorlib/images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/css/util.css">
+	<link rel="stylesheet" type="text/css" href="fashe-colorlib/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="animsition">
+			<?php include 'includes/navbar.php' ?>
 
-	<script>
-		function magnify(imgID, zoom) {
-			var img, glass, w, h, bw;
-			img = document.getElementById(imgID);
-			/*create magnifier glass:*/
-			glass = document.createElement("DIV");
-			glass.setAttribute("class", "img-magnifier-glass");
-			/*insert magnifier glass:*/
-			img.parentElement.insertBefore(glass, img);
-			/*set background properties for the magnifier glass:*/
-			glass.style.backgroundImage = "url('" + img.src + "')";
-			glass.style.backgroundRepeat = "no-repeat";
-			glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-			bw = 3;
-			w = glass.offsetWidth / 2;
-			h = glass.offsetHeight / 2;
-			/*execute a function when someone moves the magnifier glass over the image:*/
-			glass.addEventListener("mousemove", moveMagnifier);
-			img.addEventListener("mousemove", moveMagnifier);
-			/*and also for touch screens:*/
-			glass.addEventListener("touchmove", moveMagnifier);
-			img.addEventListener("touchmove", moveMagnifier);
+	<!-- Product Detail -->
+	<div class="container-fluid bgwhite p-t-135 p-b-80">
+		<div class="flex-w flex-sb">
+			<div class="w-size13 p-t-30 respon5">
+				<div class="wrap-slick3 flex-sb flex-w">
+					<div class="wrap-slick3-dots"></div>
 
-			function moveMagnifier(e) {
-				var pos, x, y;
-				/*prevent any other actions that may occur when moving over the image*/
-				e.preventDefault();
-				/*get the cursor's x and y positions:*/
-				pos = getCursorPos(e);
-				x = pos.x;
-				y = pos.y;
-				/*prevent the magnifier glass from being positioned outside the image:*/
-				if (x > img.width - (w / zoom)) {
-					x = img.width - (w / zoom);
-				}
-				if (x < w / zoom) {
-					x = w / zoom;
-				}
-				if (y > img.height - (h / zoom)) {
-					y = img.height - (h / zoom);
-				}
-				if (y < h / zoom) {
-					y = h / zoom;
-				}
-				/*set the position of the magnifier glass:*/
-				glass.style.left = (x - w) + "px";
-				glass.style.top = (y - h) + "px";
-				/*display what the magnifier glass "sees":*/
-				glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
-			}
-
-			function getCursorPos(e) {
-				var a, x = 0,
-					y = 0;
-				e = e || window.event;
-				/*get the x and y positions of the image:*/
-				a = img.getBoundingClientRect();
-				/*calculate the cursor's x and y coordinates, relative to the image:*/
-				x = e.pageX - a.left;
-				y = e.pageY - a.top;
-				/*consider any page scrolling:*/
-				x = x - window.pageXOffset;
-				y = y - window.pageYOffset;
-				return {
-					x: x,
-					y: y
-				};
-			}
-		}
-	</script>
-	<style type="text/css">
-		#myimage {
-			width: 400px;
-		}
-
-		.img-magnifier-container {
-			position: relative;
-			overflow: hidden
-		}
-
-		.img-magnifier-glass {
-			position: absolute;
-			display: none;
-			border: 3px solid #000;
-			border-radius: 10%;
-			cursor: crosshair;
-			/*Set the size of the magnifier glass:*/
-			width: 300px;
-			height: 300px;
-		}
-
-		.sk:hover .img-magnifier-glass {
-			display: block;
-			z-index: 999999999;
-		}
-
-		.content-wrapper {
-			background: #fff;
-		}
-
-		@media(max-width:767px) {
-			#code {
-				display: none
-			}
-
-			#title {
-				font-size: 16px;
-				color: #323232;
-				font-weight: lighter;
-				letter-spacing: 1px;
-			}
-
-			.img-magnifier-glass {
-				display: none;
-				border: none;
-				width: 0px;
-				border-radius: 10%;
-				cursor: none;
-			}
-
-			#details {
-				border-top: 1px solid rgb(0, 0, 0, 0.26);
-				line-height: 20px;
-			}
-
-			.s3 {
-				display: block;
-				width: max-content;
-				padding: 10px;
-			}
-
-			.s3 ul li {
-				display: inline-block;
-			}
-
-			.s3 ul li a {
-				margin-right: 21px;
-			}
-
-			.s3 ul li i {
-				color: #323232;
-				opacity: 0.5;
-			}
-
-			.s3 ul li span {
-				padding: 10px;
-				font-size: 16px;
-				color: slategray;
-				font-weight: 600;
-
-			}
-
-			#productForm {
-				display: none;
-			}
-		}
-
-		@media (max-width:340px) {
-			.s3 {
-				width: 100%;
-			}
-
-			.s3 ul li:last-child {
-				display: none;
-			}
-		}
-
-		@media(min-width: 320px) {
-			#brand {
-				width: 200px;
-			}
-
-		}
-
-		@media(max-width: 319px) {
-			#brand {
-				width: 80px;
-			}
-		}
-
-		#snackbar {
-			visibility: hidden;
-			min-width: 250px;
-			margin-left: -125px;
-			background-color: #333;
-			color: #fff;
-			text-align: center;
-			border-radius: 2px;
-			padding: 16px;
-			position: fixed;
-			z-index: 1;
-			left: 50%;
-			bottom: 60px;
-			font-size: 17px;
-		}
-
-		#snackbar.show {
-			visibility: visible;
-			-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-			animation: fadein 0.5s, fadeout 0.5s 2.5s;
-		}
-
-		@-webkit-keyframes fadein {
-			from {
-				bottom: 0;
-				opacity: 0;
-			}
-
-			to {
-				bottom: 60px;
-				opacity: 1;
-			}
-		}
-
-		@keyframes fadein {
-			from {
-				bottom: 0;
-				opacity: 0;
-			}
-
-			to {
-				bottom: 60px;
-				opacity: 1;
-			}
-		}
-
-		@-webkit-keyframes fadeout {
-			from {
-				bottom: 60px;
-				opacity: 1;
-			}
-
-			to {
-				bottom: 0;
-				opacity: 0;
-			}
-		}
-
-		@keyframes fadeout {
-			from {
-				bottom: 60px;
-				opacity: 1;
-			}
-
-			to {
-				bottom: 0;
-				opacity: 0;
-			}
-		}
-	</style>
-	<div class="desktop">
-		<?php include 'includes/navbar.php' ?>
-	</div>
-	<!-- mobile view -->
-	<div class="container-fluid1" id="mobileview" style="padding: 10px ">
-		<img src="images/arrow2.png" onclick="history.back(-1)" width="40px" id="arrow" alt="">
-
-		<div id="brand">
-			<?php echo $product['prodname']; ?>
-		</div>
-		<div class="rightsection pull-right">
-			<ul>
-				<li>
-					<a href="#"><i class="fa fa-heart-o"></i></a>
-				</li>
-				<a href="cart_view.php">
-					<img src="images/cart.png" alt="Cart" style="width: 30px;height: 30px;position: relative;top:-4px;">
-					<span class="cart_count" style="position: relative;left: -18px;top: -9px;color: red;border-radius: 50%;font-size: 14px;"></span>
-				</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-
-	<div class="wrapper">
-		<div class="content-wrapper" style="margin: 0">
-			<!-- Main content -->
-			<section class="content">
-				<div class="row">
-					<div class="col-sm-12">
-
-						<div id="snackbar">
-							<h5 class="message"></h5>
-						</div>
-						<div class="row">
-							<div class="col-sm-6 sk">
-								<div class="img-magnifier-container text-center">
-									<img id="myimage" src="<?php echo (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg'; ?>">
-								</div>
+					<div class="slick3">
+						<div class="item-slick3" data-thumb="<?php echo (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg'; ?>">
+							<div class="wrap-pic-w1">
+								<img height="100%" src="<?php echo (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
 							</div>
-							<div class="col-sm-6" id="details" style="padding: 20px">
-								<div class="s3">
-									<ul>
-										<li><a href=""><i class="fa fa-heart-o" style="font-size:20px"></i><span>Save</span></a></li>
-										<li><a href="whatsapp://send?text=http://<?php echo $product['prodname']; ?>"><i class="fa fa-share-alt" style="font-size:20px"></i><span>Share</span></a></li>
-										<li><a href="" data-toggle="modal" data-target="#similarproduct"><i class="fa fa-clone" style="font-size:20px"></i><span>Compare </span></a></li>
-									</ul>
-								</div>
-								<h4 id="code" style="font-weight: 600;color: #323232">Product Code : <span><?php echo $product['prodid']; ?></span></h4>
-								<h5 style="font-size: 14px;color: slategrey"><?php echo $product['brand']; ?></h5>
-								<h5 id="title"><?php echo $product['prodname']; ?></h5>
-								<h3 style="color: #323232;font-size:medium"><b>Rs. <?php echo number_format($product['price'], 2); ?> <small><s>MRP <?php echo number_format($product['old_price'], 2); ?></s></small><span style="color: limegreen"> <?php echo $product['discount']; ?> off</span></b></h3>
-								<a href="" data-toggle="modal" data-target="#pricedetail" style="color:dodgerblue;font-weight:bolder"> View Price Details</a>
-								<form class="form-inline" id="productForm">
-									<div class="form-group">
-										<div class="input-group col-sm-5">
-											<span class="input-group-btn">
-												<button type="button" id="minus" class="btn btn-info btn-flat btn-lg"><i class="fa fa-minus"></i></button>
-											</span>
-											<input type="text" name="quantity" id="quantity" align="center" class="form-control input-lg" value="1">
-											<span class="input-group-btn">
-												<button type="button" id="add" class="btn btn-info btn-flat btn-lg"><i class="fa fa-plus"></i>
-												</button>
-											</span>
+						</div>
+
+						<div class="item-slick3" data-thumb="<?php echo (!empty($product['photo2'])) ? 'images/allproduct/' . $product['photo2'] : 'images/noimage.jpg'; ?>">
+							<div class="wrap-pic-w1">
+								<img height="100%" src="<?php echo (!empty($product['photo2'])) ? 'images/allproduct/' . $product['photo2'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
+							</div>
+						</div>
+<!-- 
+						<div class="item-slick3" data-thumb="fashe-colorlib/images/thumb-item-03.jpg">
+							<div class="wrap-pic-w">
+								<img src="fashe-colorlib/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="w-size14 p-t-30 respon5">
+				<h4 class="product-detail-name m-text16 p-b-13">
+				<?php echo $product['prodname']; ?>			
+					</h4>
+
+				<span class="m-text17">
+					&#8377; <?php echo number_format($product['price'], 2); ?> 
+				</span>
+
+				<p class="s-text8 p-t-10">
+										<?php echo $product['description']; ?>
+				</p>
+
+				<!--  -->
+				<div class="p-t-33 p-b-60">
+					<div class="flex-m flex-w p-b-10">
+						<div class="s-text15 w-size15 t-center">
+							Size
+						</div>
+
+						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
+							<select class="selection-2" name="size">
+								<option>Choose an option</option>
+								<option>Size S</option>
+								<option>Size M</option>
+								<option>Size L</option>
+								<option>Size XL</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- <div class="flex-m flex-w">
+						<div class="s-text15 w-size15 t-center">
+							Color
+						</div>
+
+						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
+							<select class="selection-2" name="color">
+								<option>Choose an option</option>
+								<option>Gray</option>
+								<option>Red</option>
+								<option>Black</option>
+								<option>Blue</option>
+							</select>
+						</div>
+					</div> -->
+
+			<form class="form-inline" id="productForm">
+					<div class="flex-r-m flex-w p-t-10">
+						<div class="w-size16 flex-m flex-w">
+							<div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
+								<button  type="button"  class="btn-num-product-down color1 flex-c-m size7 bg8 eff2"  >
+									<i class="fs-12 fa fa-minus"  id="minus" aria-hidden="true"></i>
+								</button>
+
+								<input type="text" name="quantity" id="quantity" class="size8 m-text18 t-center num-product"  value="1">
+
+								<button   type="button" class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+									<i class="fs-12 fa fa-plus" id="add"  aria-hidden="true"></i>
+								</button>
+							</div>
 											<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
-										</div>
-										<button type="submit" onclick="myFunction3()" class="btn btn-primary btn-lg btn-flat addtocart" style="background-color: orange;border-radius: 20px;border: none;"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-									</div>
-									<br><br>
-									<div id="snackbar">
+
+							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+								<!-- Button -->
+								<button type="submit" onclick="myFunction3()" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 addtocart">
+									Add to Cart
+								</button>
+							</div>
+							<div id="snackbar">
 										<span class="message"></span>
 									</div>
-								</form>
-								<div id="delivery" style="position:relative;margin-top:30px">
-									<h4 style="font-size:14px;color: #000;font-weight: 500;letter-spacing: 1px;margin-bottom: 12px;">Delivering to</h4>
-									<form action="" method="post">
-										<input type="number" onKeyPress="if(this.value.length==6) return false;" style="width:100%;background: none;border-bottom: 1px solid dodgerblue;outline: none;position: relative;">
-										<input type="submit" id="submit1" value="Change" style="outline:none;font-size:12px;letter-spacing:1px;position: absolute;top: 33px;background:none;right: 11px;color: dodgerblue;">
-									</form>
-								</div>
-								<div class="productdetails" style="margin-top:20px">
-									<h4 style="font-size:14px;color: #000;font-weight: 500;letter-spacing: 1px;margin-bottom: 12px;">
-										Product Details
-									</h4>
-									<h5>
-										<?php echo $product['description']; ?>
-									</h5>
-								</div>
+						</div>
+					</div>
+				</div>
 
+				
+				<!--  -->
+				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
+					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Description
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+					</h5>
+
+					<div class="dropdown-content dis-none p-t-15 p-b-23">
+						<p class="s-text8">
+										<?php echo $product['description']; ?>
+						</p>
+					</div>
+				</div>
+
+				<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
+					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Additional information
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+					</h5>
+
+					<div class="dropdown-content dis-none p-t-15 p-b-23">
+						<p class="s-text8">
+							Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
+						</p>
+					</div>
+				</div>
+
+				<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
+					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
+						Reviews (0)
+						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+						<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
+					</h5>
+
+					<div class="dropdown-content dis-none p-t-15 p-b-23">
+						<p class="s-text8">
+							Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+						
+	</div>
+
+<div class="fb-comments" data-href="http://localhost/ecommerce/product.php?product=<?php echo $slug; ?>" data-numposts="10" width="100%"></div>
+					</div>
+	
+	<!-- Relate Product -->
+	<section class="relateproduct bgwhite p-t-45 p-b-138">
+		<div class="container">
+			<div class="sec-title p-b-60">
+				<h3 class="m-text5 t-center">
+					Related Products
+				</h3>
+			</div>
+
+			<!-- Slide2 -->
+			<div class="wrap-slick2">
+				<div class="slick2">
+<?php 
+foreach ($stmt as $row) {
+?>
+					<div class="item-slick2 p-l-15 p-r-15">
+						<!-- Block2 -->
+						<div class="block2">
+							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+								<img src="<?php echo (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
+
+								<div class="block2-overlay trans-0-4">
+									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+										<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+										<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+									</a>
+
+									<div class="block2-btn-addcart w-size1 trans-0-4">
+										<!-- Button -->
+										<!-- <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+											Add to Cart
+										</button> -->
+									</div>
+								</div>
+							</div>
+
+							<div class="block2-txt p-t-20">
+								<a href="product-detail.html" class="dis-block1 p-b-5">
+										<?php echo $row['name']; ?>
+								</a>
+
+								<span class="block2-price m-text6 p-r-5">
+			&#8377;	<?php echo $row['price']; ?>
+								</span>
 							</div>
 						</div>
-
-						<div class="fb-comments" data-href="http://localhost/ecommerce/product.php?product=<?php echo $slug; ?>" data-numposts="10" width="100%"></div>
 					</div>
-			</section>
+
+<?php } ?>
+					
+				
+				</div>
+			</div>
+
 		</div>
-	</div>
-	<?php $pdo->close(); ?>
-	<?php include 'includes/footer.php'; ?>
+	</section>
 
-	<div class="buynowfixedfooter">
-		<form class="form-inline" id="productForm1">
-			<input type="hidden" name="quantity" id="quantity" align="center" class="form-control input-lg" value="1">
-			<input type="hidden" value="<?php echo $product['prodid']; ?>" name="id">
-			<button type="submit" class="btn btn-primary btn-lg btn-flat addtocart" onclick="myFunction3()" style="background-color: #008cff;border-radius: 5x;border: none;width:100%;"><i class="fa fa-shopping-cart"></i> <span style="font-size: 20px;font-weight:700;letter-spacing:1px;text-transform:uppercase">&nbsp;&nbsp;Add to Cart</span></button>
-		</form>
-	</div>
 
-	</div>
 
-	<?php include 'includes/sidebar_modal.php'; ?>
+<?php include 'includes/footer.php'; ?>
 	<?php include 'includes/scripts.php'; ?>
-	<!-- modal of price details  -->
-	<div class="modal fade " id="pricedetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding: 0 !important;">
-		<div class="modal-dialog" role="document" style="width: 100%;margin: 0;padding: 0;background:#fff;position:absolute;left:0;bottom:0px;">
-			<div class="modal-content1" style="padding:10px">
-				<h3 style="margin: 0;font-size: 16px;font-weight: 700;letter-spacing:1px">Price Details</h3>
-				<ul style="margin-top:10px;">
-					<li style="display: inline-block;width: 150px;color: dimgrey">Maximum Retail Price(Incl. of all taxes)</li>
-					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['old_price'], 2); ?> </li>
-					<BR></BR>
-					<li style="display: inline-block;width: 150px;color: dimgrey">Discount</li>
-					<li style="display: inline-block;width: 150px;color: #000;font-weight:700;text-align:right" class="pull-right"><?php echo $product['discount']; ?> OFF</li>
-					<h3 style="margin-top: 10px;font-size: 16px;font-weight: 700;letter-spacing:1px">Selling Price</h3>
-					<li style="display: inline-block;width: 150px;color: dimgrey">(Incl. of all taxes)</li>
-					<li style="display: inline-block;width: 150px;font-weight:700;color: #000;text-align:right" class="pull-right">Rs. <?php echo number_format($product['price'], 2); ?> </li>
-				</ul>
-				<!-- <span style="color: #323232;padding:20px;text-align:right;"></span><span style="position:absolute;left:10px;width:200px;">Maximum Retail Price (incl. of all taxes)</span><b>&#36; <?php echo number_format($product['price'], 2); ?> <small><s>&#36; <?php echo number_format($product['old_price'], 2); ?></s></small></b> -->
-			</div>
-		</div>
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
 	</div>
 
-	<!-- modal for similar product -->
-	<div class="modal fade " id="similarproduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding: 0 !important;opacity: 0.9;">
-		<div class="modal-dialog" role="document" style="width: 100%;margin: 0;padding: 0;background:#fff;position:absolute;left:0;bottom:0px;">
-			<div class="modal-content1">
-				<h5 style="margin: 0;padding: 12px;font-size: 20px;font-weight: 700;letter-spacing:1px">Similar Products</h5>
+	<!-- Container Selection -->
+	<div id="dropDownSelect1"></div>
+	<div id="dropDownSelect2"></div>
 
-			</div>
-		</div>
-	</div>
-	<script>
-		/* Initiate Magnify Function
-with the id of the image, and the strength of the magnifier glass:*/
-		magnify("myimage", 2);
+
+
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="fashe-colorlib/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/select2/select2.min.js"></script>
+	<script type="text/javascript">
+		$(".selection-1").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect2')
+		});
 	</script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="fashe-colorlib/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/sweetalert/sweetalert.min.js"></script>
+	<!-- <script type="text/javascript">
+		$('.block2-btn-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "danger");
+			});
+		});
+
+		$('.block2-btn-addwishlist').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "danger");
+			});
+		});
+
+		$('.btn-addcart-product-detail').each(function(){
+			var nameProduct = $('.product-detail-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "danger");
+			});
+		});
+	</script>
+ -->
+<!--===============================================================================================-->
+	<script src="fashe-colorlib/js/main.js"></script>
 
 	<script>
 		function myFunction3() {
@@ -435,8 +367,9 @@ with the id of the image, and the strength of the magnifier glass:*/
 			}, 10000);
 		}
 	</script>
+		  <?php include 'includes/scripts.php'; ?>
+
 	  <?php include 'includes/essence_script.php'; ?>
 
 </body>
-
 </html>

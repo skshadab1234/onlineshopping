@@ -1,5 +1,11 @@
 <?php include 'includes/session.php'; ?>
+<?php
+if (!isset($_POST['keyword'])) {
+  header('location: index.php');
+}
+?>
 <?php include 'includes/header.php'; ?>
+  
 <title><?php echo '' . $_POST['keyword'] . ''; ?> </title>
 
 <body class="hold-transition skin-blue layout-top-nav">

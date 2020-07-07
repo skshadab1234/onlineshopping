@@ -18,7 +18,7 @@
             dots: false,
             autoplay: true,
             autoplayTimeout: 5000,
-            smartSpeed: 1000,
+            smartSpeed: 5000,
             responsive: {
                 0: {
                     items: 1
@@ -30,7 +30,7 @@
                     items: 3
                 },
                 992: {
-                    items: 4
+                    items: 5
                 }
             }
         });
@@ -112,6 +112,27 @@
         profileWrapper2.removeClass(profileOn2);
     });
 
+
+    // :: Header Cart Active Code
+    var profilebtn3 = $('#wishlist_pop');
+    var profileOverlay3 = $(".wishlist-overlay");
+    var profileWrapper3 = $(".right-side-wishlist-area");
+    var profilebtn4 = $("#wishlistrightSide");
+    var profileOverlayOn3 = "wishlist-overlay-on";
+    var profileOn3 = "wishlist-on";
+
+    profilebtn3.on('click', function () {
+        profileOverlay3.toggleClass(profileOverlayOn3);
+        profileWrapper3.toggleClass(profileOn3);
+    });
+    profileOverlay3.on('click', function () {
+        $(this).removeClass(profileOverlayOn3);
+        profileWrapper3.removeClass(profileOn3);
+    });
+    profilebtn4.on('click', function () {
+        profileOverlay3.removeClass(profileOverlayOn3);
+        profileWrapper3.removeClass(profileOn3);
+    });
 
     // :: ScrollUp Active Code
     if ($.fn.scrollUp) {

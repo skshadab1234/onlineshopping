@@ -49,6 +49,22 @@
 .single-mega.cn-col-5.banner-image{
     height: 430px;
 }
+
+.autocomplete-items{
+    background: #fff;
+    padding: 10px;
+}
+
+.autocomplete-items div{
+    padding: 5px;
+}
+
+.autocomplete-items div:hover{
+    background-color: #eee
+}
+.autocomplete-active{
+    background-color: #eee
+}
         body {
             font-family: 'Alatsi', sans-serif;
             background: #fff

@@ -87,24 +87,26 @@
         </div>
   
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
 <?php
-          $stmt1 = $conn->prepare("SELECT * FROM products LEFT JOIN brands ON brands.id = products.brand_id");
+          $stmt1 = $conn->prepare("SELECT * FROM products LEFT JOIN brands ON brands.id = products.brand_id ORDER BY RAND()");
           $stmt1->execute();
             foreach ($stmt1 as $row1) {
             $image = (!empty($row1['photo'])) ? 'images/allproduct/' . $row1['photo'] : 'images/noimage.jpg';
+            $image2 = (!empty($row1['photo2'])) ? 'images/allproduct/' . $row1['photo2'] : 'images/noimage.jpg';
            ?>
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="<?php echo $image ?>" >
+                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                                  <img src="<?php echo $image ?>" >
                                 <!-- Hover Thumb -->
-                                <img class="hover-img" src="essence/img/product-img/product-5.jpg" alt="">
-                                <img class="hover-img" src="essence/img/product-img/product-6.jpg" alt="">
+                                <img class="hover-img" src="<?php echo $image2 ?>" alt="">
+                              </a>
                                 <!-- Favourite -->
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>
@@ -113,19 +115,22 @@
                             <!-- Product Description -->
                             <div class="product-description">
                                 <span><?php echo $row1['brand_name'] ?></span>
-                                <a href="single-product-details.html">
+                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
                                     <h6><?php echo $row1['name'] ?></h6>
                                 </a>
-                                <p class="product-price">$80.00</p>
+                                <p class="product-price">&#8377; <?php echo $row1['price'] ?></p>
 
                                 <!-- Hover Content -->
                                 <div class="hover-content">
                                     <!-- Add to Cart -->
-                                    <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
-                                    </div>
+                               <!--      <div class="add-to-cart-btn">
+                                        <button data-toggle="modal" data-target="#<?php echo $row1['id'] ?>1" class="btn essence-btn">Quick view</button>
+
+                                    </div> -->
                                 </div>
                             </div>
+
+              
                         </div>
 
                       <?php } ?>  
@@ -149,11 +154,11 @@
   <div><?php include 'includes/footer.php'; ?></div>
     <!-- ##### Right Side Cart End ##### -->
 
-  <?php include 'includes/essence_script.php'; ?>
 
   <?php include 'includes/scripts.php'; ?>
 
-  
+    <?php include 'includes/essence_script.php'; ?>
+
 
   <script type="text/javascript">
     $('.moreless-button').click(function() {

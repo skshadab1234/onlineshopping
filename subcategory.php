@@ -1,4 +1,6 @@
 <?php include 'includes/session.php'; ?>
+<?php include 'includes/header.php'; ?>
+
 <?php
 if (isset($_GET['styles'])) {
   $slug = $_GET['styles'];
@@ -44,14 +46,9 @@ if (isset($subcatid)) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
+ <?php include 'includes/navbar.php'; ?>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    <?php
+  <title>  <?php
 
     if (isset($_GET['styles'])) {
       echo $subcat['name'];
@@ -60,228 +57,303 @@ if (isset($subcatid)) {
     }
     ?> </title>
 </head>
+     <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb_area bg-img" style="background-image: url(essence/img/bg-img/breadcumb.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2> <?php
 
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/navbar.php'; ?>
+    if (isset($_GET['styles'])) {
+      echo $subcat['name'];
+    } else {
+      echo $brand['brand_name'];
+    }
+    ?> </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
 
-<body>
+    <!-- ##### Shop Grid Area Start ##### -->
+    <section class="shop_grid_area section-padding-80">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-2">
+                    <div class="shop_sidebar_area">
 
-  <div class="wrapper">
-    <div class="content-wrapper" style="margin: 0">
-      <div style="background:#fff;height:100%">
-        <!-- Main content -->
-        <section class="content" style="padding:0px">
+                        <!-- ##### Single Widget ##### -->
+                        <div class="widget catagory mb-50">
+                            <!-- Widget Title -->
+                            <h6 class="widget-title mb-30">Categories</h6>
 
-          <div class="container-fluid" style="margin:40px 0px;padding:0;">
-            <div class="container-fluid" id="pr-show" style="background: #f5f5f6;padding:20px;margin:10px 0px">
+                            <!--  Catagories  -->
+                            <div class="catagories-menu">
+                                <ul id="menu-content2" class="menu-content collapse show">
+                                    <!-- Single Item -->
+                                    <li data-toggle="collapse" data-target="#clothing">
+                                        <a href="#">clothing</a>
+                                        <ul class="sub-menu collapse show" id="clothing">
+                                            <li><a href="#">All</a></li>
+                                            <li><a href="#">Bodysuits</a></li>
+                                            <li><a href="#">Dresses</a></li>
+                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
+                                            <li><a href="#">Jackets &amp; Coats</a></li>
+                                            <li><a href="#">Jeans</a></li>
+                                            <li><a href="#">Pants &amp; Leggings</a></li>
+                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
+                                            <li><a href="#">Shirts &amp; Blouses</a></li>
+                                            <li><a href="#">Shirts</a></li>
+                                            <li><a href="#">Sweaters &amp; Knits</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Single Item -->
+                                    <li data-toggle="collapse" data-target="#shoes" class="collapsed">
+                                        <a href="#">shoes</a>
+                                        <ul class="sub-menu collapse" id="shoes">
+                                            <li><a href="#">All</a></li>
+                                            <li><a href="#">Bodysuits</a></li>
+                                            <li><a href="#">Dresses</a></li>
+                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
+                                            <li><a href="#">Jackets &amp; Coats</a></li>
+                                            <li><a href="#">Jeans</a></li>
+                                            <li><a href="#">Pants &amp; Leggings</a></li>
+                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
+                                            <li><a href="#">Shirts &amp; Blouses</a></li>
+                                            <li><a href="#">Shirts</a></li>
+                                            <li><a href="#">Sweaters &amp; Knits</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Single Item -->
+                                    <li data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                        <a href="#">accessories</a>
+                                        <ul class="sub-menu collapse" id="accessories">
+                                            <li><a href="#">All</a></li>
+                                            <li><a href="#">Bodysuits</a></li>
+                                            <li><a href="#">Dresses</a></li>
+                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
+                                            <li><a href="#">Jackets &amp; Coats</a></li>
+                                            <li><a href="#">Jeans</a></li>
+                                            <li><a href="#">Pants &amp; Leggings</a></li>
+                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
+                                            <li><a href="#">Shirts &amp; Blouses</a></li>
+                                            <li><a href="#">Shirts</a></li>
+                                            <li><a href="#">Sweaters &amp; Knits</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-<?php
-              if (isset($brandid)) {
-                echo  '<ul id="breadcrumb-cat"> 
-                <li>Home</li>
-                <li><i class="fa fa-angle-right"></i></li>
-                <li>'.$brand['brand_name'].'</li>
-                </ul>
-                ';
-              }
-              elseif(isset($subcatid)){
-                echo  '<ul id="breadcrumb-cat"> 
-                <li>Home</li>
-                <li><i class="fa fa-angle-right"></i></li>
-                <li>'.$subcat['name'].'</li>
-                </ul>
-                ';
-             
-              }
-              ?>
+                        <!-- ##### Single Widget ##### -->
+                        <div class="widget price mb-50">
+                            <!-- Widget Title -->
+                            <h6 class="widget-title mb-30">Filter by</h6>
+                            <!-- Widget Title 2 -->
+                            <p class="widget-title2 mb-30">Price</p>
 
+                            <div class="widget-desc">
+                                <div class="slider-range">
+                                    <div data-min="49" data-max="360" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="49" data-value-max="360" data-label-result="Range:">
+                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                    </div>
+                                    <div class="range-price">Range: $49.00 - $360.00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ##### Single Widget ##### -->
+                        <div class="widget color mb-50">
+                            <!-- Widget Title 2 -->
+                            <p class="widget-title2 mb-30">Color</p>
+                            <div class="widget-desc">
+                                <ul class="d-flex">
+                                    <li><a href="#" class="color1"></a></li>
+                                    <li><a href="#" class="color2"></a></li>
+                                    <li><a href="#" class="color3"></a></li>
+                                    <li><a href="#" class="color4"></a></li>
+                                    <li><a href="#" class="color5"></a></li>
+                                    <li><a href="#" class="color6"></a></li>
+                                    <li><a href="#" class="color7"></a></li>
+                                    <li><a href="#" class="color8"></a></li>
+                                    <li><a href="#" class="color9"></a></li>
+                                    <li><a href="#" class="color10"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- ##### Single Widget ##### -->
+                        <div class="widget brands mb-50">
+                            <!-- Widget Title 2 -->
+                            <p class="widget-title2 mb-30">Brands</p>
+                            <div class="widget-desc">
+                                <ul>
+                                    <li><a href="#">Asos</a></li>
+                                    <li><a href="#">Mango</a></li>
+                                    <li><a href="#">River Island</a></li>
+                                    <li><a href="#">Topshop</a></li>
+                                    <li><a href="#">Zara</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-10 col-lg-10">
+                    <div class="shop_grid_product_area">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="product-topbar d-flex align-items-center justify-content-between">
+                                    <!-- Total Products -->
+                                    <div class="total-products">
+                                        <p><span>
               <?php
               if (isset($brandid)) {
-                echo  $brand['brand_name'] . " - <span style='color:gray'>" . $total_brand['prodids']."  items</span>";
+                echo  $brand['brand_name'] . " - " . $total_brand['prodids']." </span>";
               }
               elseif(isset($subcatid)){
-                echo  $subcat['name'] . " - " . $total_pro['prodids']." items";
+                echo  $subcat['name'] . " - " . $total_pro['prodids']." ";
               }
-              ?>
-            </div>
-            <?php
+              ?></span> products found</p>
+                                    </div>
+                                    <!-- Sorting -->
+                                    <div class="product-sorting d-flex">
+                                        <p>Sort by:</p>
+                                        <form action="#" method="get">
+                                            <select name="select" id="sortByselect">
+                                                <option value="value">Highest Rated</option>
+                                                <option value="value">Newest</option>
+                                                <option value="value">Price: $$ - $</option>
+                                                <option value="value">Price: $ - $$</option>
+                                            </select>
+                                            <input type="submit" class="d-none" value="">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+ <?php
             if (isset($subcatid)) {
               $conn = $pdo->open();
-              try {
-                $inc = 6;
-                $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name as prodname FROM products LEFT JOIN brands on brands.id = products.brand_id  WHERE subcategory_id = :catid ORDER BY RAND()");
+
+              $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name as prodname FROM products LEFT JOIN brands on brands.id = products.brand_id  WHERE subcategory_id = :catid ORDER BY RAND()");
                 $stmt->execute(['catid' => $subcatid]);
                 foreach ($stmt as $row) {
                   $image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
-                  $inc = ($inc == 6) ? 1 : $inc + 1;
-                  if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
+                  $image2 = (!empty($row['photo2'])) ? 'images/allproduct/' . $row['photo2'] : 'images/noimage.jpg';
             ?>
-                  <div class="col-xs-6 col-sm-4 col-md-4 col-lg-2" style='margin:0;padding:0'>
-                    <div class="card" style="overflow: hidden">
-                      <div style="width:200px;overflow:hidden;height:250px">
-                        <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\"  style='object-fit:contain;width:200px;height:100%'></a> "; ?>
-                      </div>
-                      <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;line-height:9px;padding:5px;font-family:calibri">
-                        <h5 class="text-left" style="font-weight: 700;font-size: 15px;font-family: calibri;"><?php echo "" . $row['brand_name'] . " " ?></h5>
-                        <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . "% " ?>OFF</span></h5>
-                      </div>
-                      <div class="card1" style="position: absolute;bottom: 44px;background: #fff;padding:5px">
-                        <div class="btn-group" id="q-btn">
-                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
-                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Wishlist</button>
-                        </div>
+                            <!-- Single Product -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-product-wrapper">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <a href="product.php?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
+                                        <!-- Hover Thumb -->
+                                        <img class="hover-img" src="<?= $image2 ?>" alt="">
+                                      </a>
+                                        <!-- Product Badge -->
+                                        <div class="product-badge offer-badge">
+                                            <span>-<?= $row['discount'] ?>%</span>
+                                        </div>
+                                        <!-- Favourite -->
+                                        <div class="product-favourite">
+                                            <a href="#" class="favme fa fa-heart"></a>
+                                        </div>
+                                    </div>
 
-                        <h5>Sizes : <?php echo "" . $row['size'] . "" ?></h5>
-                      </div>
-                      <!-- Modal -->
-                      <div id="<?php echo $row['prodid']; ?>1" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                            <h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:white;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>"; ?></h4>
-                            <div class="modal-body">
-                              <div class="container-fluid" style="color: #544a82">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\"></a>"; ?>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <span style="color:steelblue"><?php echo "" . $row['brand'] . ""; ?></span>
-                                    <?php echo "<br>"; ?>
-                                    <?php echo " <span class=\"p-name\"><a style=\"font-size:14px;color:white;font-weight:600\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>"; ?>
-                                    <br>
-                                    <br>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star-o" style="color: orange;font-size: 14px"></i>
-                                    <br><br>
-                                    <span class="price" style="color: white;font-size: 20px"><?php echo "₹ " . number_format($row['price'], 2) . ""; ?></span>&nbsp;
-                                    <small style="font-size: 14px;color: white"><s><?php echo "₹ " . number_format($row['old_price'], 2) . ""; ?></s></small>
-                                    <br>
-                                    <br>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <span><?= $row['brand_name'] ?></span>
+                                        <a href="product.php?product=<?= $row['slug']  ?> ">
+                                            <h6><?= $row['name'] ?></h6>
+                                        </a>
+                                        <p class="product-price"><span class="old-price">&#8377; <?= $row['old_price'] ?></span> &#8377; <?= $row['price'] ?></p>
 
-                                    <button class="btn btn-info" style="background-color: orange;border: orange"><?php echo "<a href='product.php?product=" . $row['slug'] . "' style=\"font-size:14px;color:white;font-weight:600\">See Product Details</a>"; ?></button>
-                                  </div>
+                                        <!-- Hover Content -->
+                                        <div class="hover-content">
+                                            <!-- Add to Cart -->
+                                            <div class="add-to-cart-btn">
+                                                <a href="#" class="btn essence-btn">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" id="quickview" data-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                <?php echo "
-";
-                  if ($inc == 6) echo "</div>";
-                }
-                if ($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
-                if ($inc == 6) echo "<div class='col-sm-3'></div></div>";
-              } catch (PDOException $e) {
-                echo "There is some problem in connection: " . $e->getMessage();
-              }
-
-              $pdo->close();
-            } elseif (isset($brandid)) {
+<?php } }
+        elseif (isset($brandid)) {
               $conn = $pdo->open();
 
-              try {
-                $inc = 6;
-                $stmt = $conn->prepare("SELECT *, products.id As prodid FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE brand_id = :catid");
+                $stmt = $conn->prepare("SELECT *, products.id As prodid FROM products LEFT JOIN brands on brands.id = products.brand_id WHERE brand_id = :catid ORDER BY RAND()");
                 $stmt->execute(['catid' => $brandid]);
                 foreach ($stmt as $row) {
                   $image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
-                  $inc = ($inc == 6) ? 1 : $inc + 1;
-                  if ($inc == 6) echo "<div class='row' style='margin:0;padding:0'>";
-                ?>
-                  <div class="col-xs-6 col-sm-4 col-md-4 col-lg-2" style='margin:0;padding:0'>
-                    <div class="card" style="overflow: hidden">
-                      <div style="width:200px;overflow:hidden;height:250px">
-                        <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\"  style='object-fit:contain;width:200px;height:100%'></a> "; ?>
-                      </div>
-                      <div class="card3" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:100%;position:relative;line-height:9px;padding:5px;font-family:calibri">
-                        <h5 class="text-left" style="font-weight: 700;font-size: 15px;font-family: calibri;"><?php echo "" . $row['brand_name'] . " " ?></h5>
-                        <?php echo "<a style=\"color: #323232;font-size: 12px;font-weight: 100;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>"; ?>
-                        <h5 class=" text-left" style="font-size:14px;color:orangered"><?php echo "₹ " . number_format($row['price'], 2) . "" ?>&nbsp;<span style="color: lightslategray;font-size: 12px;"><s><?php echo " ₹ " . number_format($row['old_price'], 2) . "" ?></s></span><span class="discountoffer" style="font-size:16px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color:green"><?php echo " " . $row['discount'] . "% " ?>OFF</span></h5>
-                      </div>
-                      <div class="card1" style="position: absolute;bottom: 44px;background: #fff;width: 100%;overflow: hidden;padding: 10px;">
-                        <div class="btn-group" id="q-btn">
-                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Quick View</button>
-                          <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#<?php echo $row['prodid'] ?>1">Wishlist</button>
-                        </div>
+                  $image2 = (!empty($row['photo2'])) ? 'images/allproduct/' . $row['photo2'] : 'images/noimage.jpg';
 
-                        <h5>Sizes : <?php echo "" . $row['size'] . "" ?></h5>
-                      </div>
-                      <!-- Modal -->
-                      <div id="<?php echo $row['prodid']; ?>1" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                          <!-- Modal content-->
-                          <div class="modal-content">
-                            <h4 class="modal-title"><?php echo "<span class=\"p-name\"><a style=\"font-size:12px;color:white;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>"; ?></h4>
-                            <div class="modal-body">
-                              <div class="container-fluid" style="color: #544a82">
-                                <div class="row">
-                                  <div class="col-sm-6">
-                                    <?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\"></a>"; ?>
-                                  </div>
-                                  <div class="col-sm-6">
-                                    <span style="color:steelblue"><?php echo "" . $row['brand'] . ""; ?></span>
-                                    <?php echo "<br>"; ?>
-                                    <?php echo " <span class=\"p-name\"><a style=\"font-size:14px;color:white;font-weight:600\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></span>"; ?>
-                                    <br>
-                                    <br>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star" style="color: orange;font-size: 14px"></i>
-                                    <i class="fa fa-star-o" style="color: orange;font-size: 14px"></i>
-                                    <br><br>
-                                    <span class="price" style="color: white;font-size: 20px"><?php echo "₹ " . number_format($row['price'], 2) . ""; ?></span>&nbsp;
-                                    <small style="font-size: 14px;color: white"><s><?php echo "₹ " . number_format($row['old_price'], 2) . ""; ?></s></small>
-                                    <br>
-                                    <br>
+                ?>    <!-- Single Product -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-product-wrapper">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                         <a href="product.php?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
+                                        <!-- Hover Thumb -->
+                                        <img class="hover-img" src="<?= $image2 ?>" alt="">
+                                      </a>
+                                        <!-- Product Badge -->
+                                        <div class="product-badge offer-badge">
+                                            <span>-<?= $row['discount'] ?>%</span>
+                                        </div>
+                                        <!-- Favourite -->
+                                        <div class="product-favourite">
+                                            <a href="#" class="favme fa fa-heart"></a>
+                                        </div>
+                                    </div>
 
-                                    <button class="btn btn-info" style="background-color: orange;border: orange"><?php echo "<a href='product.php?product=" . $row['slug'] . "' style=\"font-size:14px;color:white;font-weight:600\">See Product Details</a>"; ?></button>
-                                  </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <span><?= $row['brand_name'] ?></span>
+                                        <a href="single-product-details.html">
+                                            <h6><?= $row['name'] ?></h6>
+                                        </a>
+                                        <p class="product-price"><span class="old-price">&#8377; <?= $row['old_price'] ?></span> &#8377; <?= $row['price'] ?></p>
+
+                                        <!-- Hover Content -->
+                                        <div class="hover-content">
+                                            <!-- Add to Cart -->
+                                            <div class="add-to-cart-btn">
+                                                <a href="#" class="btn essence-btn">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" id="quickview" data-dismiss="modal">Close</button>
-                            </div>
-                          </div>
+                          <?php } } ?>
 
                         </div>
-                      </div>
                     </div>
-                  </div>
-            <?php echo "
-";
-                  if ($inc == 6) echo "</div>";
-                }
-                if ($inc == 6) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
-                if ($inc == 6) echo "<div class='col-sm-3'></div></div>";
-              } catch (PDOException $e) {
-                echo "There is some problem in connection: " . $e->getMessage();
-              }
-
-              $pdo->close();
-            } else {
-              echo "thanks";
-            }
-            ?>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
+                    <!-- Pagination -->
+                    <nav aria-label="navigation">
+                        <ul class="pagination mt-50 mb-70">
+                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#">21</a></li>
+                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    
   <?php include 'includes/footer.php' ?>
     <?php include 'includes/essence_script.php'; ?>
 

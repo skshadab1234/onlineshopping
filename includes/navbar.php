@@ -345,14 +345,14 @@ foreach ($stmt5 as $row5) {
             <div class="header-meta d-flex clearfix justify-content-end">
                 <!-- Search Area -->
                 <div class="search-area">
-                    <form autocomplete="off" method="post" action="search.php">
-                        <input type="text" id="myInput"  placeholder="Type for search">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <form method="POST" autocomplete="off" action="search.php">
+                        <input type="text" id="myInput" name="keyword"   placeholder="Type for search" required>
+                        <button type="submit" id="myBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#"><img src="essence/img/core-img/heart.svg" alt=""></a>
+                    <a href="#" id="wishlist_pop"><img src="essence/img/core-img/heart.svg" alt=""></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
@@ -476,7 +476,7 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
             </a>
         </div>
 
-        <div class="profile-content d-flex" style="background: #000;">
+        <div class="profile-content d-flex" style="background: #000;height: 100%">
 
             <!-- Cart Summary -->
             <div class="profile-amount-summary">
@@ -490,6 +490,85 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
  
 
 
+
+ <!-- Wishlist POP -->
+<?php 
+if(isset($_SESSION['user'])){
+    ?>
+
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="wishlist-overlay"></div>
+
+    <div class="right-side-wishlist-area">
+
+        <!-- Cart Button -->
+        <div class="wishlist-button">
+            <a href="#" id="wishlistrightSide">
+                                    <img src="essence/img/core-img/heart.svg" class="user-image" alt="User Image">
+                                        
+        </div>
+
+        <div class="wishlist-content d-flex" style="background: #000;">
+
+            <!-- Cart Summary -->
+            <div class="wishlist-amount-summary">
+                <ul>
+                    <li><a href="profile.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="profile.php")?"active":""; ?>">Profile</a></li>
+                    <li><a href="orders.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="orders.php")?"active":""; ?>">Orders</a></li>
+                    <li><a href="transaction.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="transaction.php")?"active":""; ?>">History</a></li>
+                    <li><a href="coupons.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="coupons.php")?"active":""; ?>">Coupons</a></li>
+                    <li><a href="logout.php" class="nav active1">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<?php
+}else{
+
+?>
+
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="wishlist-overlay"></div>
+
+    <div class="right-side-wishlist-area" >
+
+        <!-- Cart Button -->
+        <div class="wishlist-button">
+            <a href="#"  id="wishlistrightSide">
+                                    <img src="essence/img/core-img/heart.svg" class="user-image" alt="User Image">
+            </a>
+        </div>
+
+        <div class="wishlist-content d-flex" style="background: #000;">
+
+            <!-- Cart Summary -->
+            <div class="wishlist-amount-summary">
+                <ul>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="signup.php">Signup</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ 
+<?php } ?>
+<script type="text/javascript">
+    
+    // Get the input field
+var input = document.getElementById("myInput");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("myBtn").click();
+  }
+});
+</script>
 <script>
         function autocomplete(inp, arr) {
                 /*the autocomplete function takes two arguments,
@@ -515,7 +594,7 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
                                 /*check if the item starts with the same letters as the text field value:*/
                                 if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                                         /*create a DIV element for each matching element:*/
-                                        b = document.createElement("DIV style='background:green'");
+                                        b = document.createElement("DIV");
                                         /*make the matching letters bold:*/
                                         b.innerHTML = "<strong style='color:red;'>" + arr[i].substr(0, val.length) + "</strong>";
                                         b.innerHTML += arr[i].substr(val.length);

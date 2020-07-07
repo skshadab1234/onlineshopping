@@ -89,6 +89,7 @@ if (isset($_GET['subcategory'])) {
                   <thead>
                     <th>Name and Product id</th>
                     <th>Photo </th>
+                    <th>Photo2 </th>
                     <th>Description</th>
                     <th>Price</th>
                     <th>Old Price</th>
@@ -110,6 +111,7 @@ if (isset($_GET['subcategory'])) {
                       $stmt->execute();
                       foreach ($stmt as $row) {
                         $image = (!empty($row['photo'])) ? '../images/allproduct/' . $row['photo'] : '../images/noimage.jpg';
+                        $image2 = (!empty($row['photo2'])) ? '../images/allproduct/' . $row['photo2'] : '../images/noimage.jpg';
                         $counter = ($row['date_view'] == $now) ? $row['counter'] : 0;
                         echo "
                           <tr>
@@ -117,6 +119,10 @@ if (isset($_GET['subcategory'])) {
                             <td>
                              <a href=../images/allproduct/" . $row['photo'] . "> <img src='" . $image . "' height='30px' class='img-circle' width='30px'></a>
                               <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
+                            </td>
+                            <td>
+                             <a href=../images/allproduct/" . $row['photo2'] . "> <img src='" . $image2 . "' height='30px' class='img-circle' width='30px'></a>
+                              <span class='pull-right'><a href='#edit_photo2' class='photo2' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
                             <td><a href='#description' data-toggle='modal' class='desc' style=\"line-height:40px\" data-id='" . $row['prodid'] . "'> View</a></td>
                             <td>₹  " . number_format($row['price'], 2) . "</td>
@@ -175,6 +181,13 @@ if (isset($_GET['subcategory'])) {
       });
 
       $(document).on('click', '.photo', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+
+      $(document).on('click', '.photo2', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
         getRow(id);

@@ -66,6 +66,7 @@
 			});
 		});
 
+
 		$('#productForm1').submit(function(e) {
 			e.preventDefault();
 			var product1 = $(this).serialize();

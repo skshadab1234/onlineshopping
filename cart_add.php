@@ -7,15 +7,16 @@ $output = array('error' => false);
 
 $id = $_POST['id'];
 $quantity = $_POST['quantity'];
-
+$size = $_POST['size'];
+$color = $_POST['color'];
 if (isset($_SESSION['user'])) {
 	$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM cart WHERE user_id=:user_id AND product_id=:product_id");
 	$stmt->execute(['user_id' => $user['id'], 'product_id' => $id]);
 	$row = $stmt->fetch();
 	if ($row['numrows'] < 1) {
 		try {
-			$stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (:user_id, :product_id, :quantity)");
-			$stmt->execute(['user_id' => $user['id'], 'product_id' => $id, 'quantity' => $quantity]);
+			$stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity, size, color) VALUES (:user_id, :product_id, :quantity, :size, :color)");
+			$stmt->execute(['user_id' => $user['id'], 'product_id' => $id, 'quantity' => $quantity, 'size' => $size, 'color' => $color]);
 			$output['message'] = 'Item added to cart <a href="cart_view.php">View Cart</a>';
 		} catch (PDOException $e) {
 			$output['error'] = true;

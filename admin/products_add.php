@@ -13,8 +13,6 @@ if (isset($_POST['add'])) {
 	$brand = $_POST['brand'];
 	$size = $_POST['size'];
 	$description = $_POST['description'];
-	$filename = $_FILES['photo']['name'];
-
 	$conn = $pdo->open();
 
 	$stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM products WHERE slug=:slug");
@@ -24,17 +22,9 @@ if (isset($_POST['add'])) {
 	if ($row['numrows'] > 0) {
 		$_SESSION['error'] = 'Product already exist';
 	} else {
-		if (!empty($filename)) {
-			$ext = pathinfo($filename, PATHINFO_EXTENSION);
-			$new_filename = $row['slug'] . '_' . time() . '.' . $ext;
-			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/allproduct/' . $new_filename);
-		} else {
-			$new_filename = '';
-		}
-
 		try {
-			$stmt = $conn->prepare("INSERT INTO products (subcategory_id, name, description, slug, price, old_price, photo, color, brand_id,size,discount) VALUES (:category, :name, :description, :slug, :price, :old_price, :photo, :color, :brand, :size, :discount)");
-			$stmt->execute(['category' => $category, 'name' => $name, 'description' => $description, 'slug' => $slug, 'price' => $price,  'old_price' => $oldprice, 'color' => $color, 'brand' => $brand, 'size' => $size, 'discount' => $discount, 'photo' => $new_filename]);
+			$stmt = $conn->prepare("INSERT INTO products (subcategory_id, name, description, slug, price, old_price, color, brand_id,size,discount) VALUES (:category, :name, :description, :slug, :price, :old_price, :color, :brand, :size, :discount)");
+			$stmt->execute(['category' => $category, 'name' => $name, 'description' => $description, 'slug' => $slug, 'price' => $price,  'old_price' => $oldprice, 'color' => $color, 'brand' => $brand, 'size' => $size, 'discount' => $discount]);
 			$_SESSION['success'] = 'Product added successfully';
 		} catch (PDOException $e) {
 			$_SESSION['error'] = $e->getMessage();

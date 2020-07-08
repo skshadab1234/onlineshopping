@@ -83,10 +83,10 @@ if (!isset($_GET['user'])) {
                       $stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user_id");
                       $stmt->execute(['user_id' => $user['id']]);
                       foreach ($stmt as $row) {
-                        $image = (!empty($row['photo']) ? '../images/' . $row['photo'] . '' : '../images/noimage.jpg');
+                        $image = (!empty($row['photo']) ? '../images/allproduct/' . $row['photo'] . '' : '../images/noimage.jpg');
                         echo "
                           <tr>
-                          <td><a href=\"../images/" . $row['photo'] . "\"><img src=" . $image . " class='img-circle' width='40px' height='40px'></a>
+                          <td><a href=\"../images/allproduct/" . $row['photo'] . "\"><img src=" . $image . " class='img-circle' width='40px' height='40px'></a>
                             <td>" . $row['name'] . "</td>
                             <td>" . $row['quantity'] . "</td>
                             <td>

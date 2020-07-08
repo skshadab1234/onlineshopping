@@ -44,7 +44,7 @@
               <input type="file" id="photo" name="photo">
             </div>
           </div>
-          <hr>
+            <hr>
           <div class="form-group">
             <label for="curr_password" class="col-sm-3 control-label">Current Password:</label>
 

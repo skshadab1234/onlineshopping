@@ -90,6 +90,9 @@ if (isset($_GET['subcategory'])) {
                     <th>Name and Product id</th>
                     <th>Photo </th>
                     <th>Photo2 </th>
+                    <th>Photo3 </th>
+                    <th>Photo4 </th>
+                    <th>Photo5 </th>
                     <th>Description</th>
                     <th>Price</th>
                     <th>Old Price</th>
@@ -112,6 +115,10 @@ if (isset($_GET['subcategory'])) {
                       foreach ($stmt as $row) {
                         $image = (!empty($row['photo'])) ? '../images/allproduct/' . $row['photo'] : '../images/noimage.jpg';
                         $image2 = (!empty($row['photo2'])) ? '../images/allproduct/' . $row['photo2'] : '../images/noimage.jpg';
+                        $image3 = (!empty($row['photo3'])) ? '../images/allproduct/' . $row['photo3'] : '../images/noimage.jpg';
+                        $image4 = (!empty($row['photo4'])) ? '../images/allproduct/' . $row['photo4'] : '../images/noimage.jpg';
+                        $image5 = (!empty($row['photo5'])) ? '../images/allproduct/' . $row['photo5'] : '../images/noimage.jpg';
+
                         $counter = ($row['date_view'] == $now) ? $row['counter'] : 0;
                         echo "
                           <tr>
@@ -123,6 +130,18 @@ if (isset($_GET['subcategory'])) {
                             <td>
                              <a href=../images/allproduct/" . $row['photo2'] . "> <img src='" . $image2 . "' height='30px' class='img-circle' width='30px'></a>
                               <span class='pull-right'><a href='#edit_photo2' class='photo2' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
+                            </td>
+                            <td>
+                            <a href=../images/allproduct/" . $row['photo3'] . "> <img src='" . $image3 . "' height='30px' class='img-circle' width='30px'></a>
+                              <span class='pull-right'><a href='#edit_photo3' class='photo3' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
+                            </td>
+                            <td>
+                            <a href=../images/allproduct/" . $row['photo4'] . "> <img src='" . $image4 . "' height='30px' class='img-circle' width='30px'></a>
+                              <span class='pull-right'><a href='#edit_photo4' class='photo4' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
+                            </td>
+                            <td>
+                            <a href=../images/allproduct/" . $row['photo5'] . "> <img src='" . $image5 . "' height='30px' class='img-circle' width='30px'></a>
+                              <span class='pull-right'><a href='#edit_photo5' class='photo5' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
                             <td><a href='#description' data-toggle='modal' class='desc' style=\"line-height:40px\" data-id='" . $row['prodid'] . "'> View</a></td>
                             <td>₹  " . number_format($row['price'], 2) . "</td>
@@ -192,6 +211,26 @@ if (isset($_GET['subcategory'])) {
         var id = $(this).data('id');
         getRow(id);
       });
+
+         $(document).on('click', '.photo3', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+
+   $(document).on('click', '.photo4', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
+   $(document).on('click', '.photo5', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        getRow(id);
+      });
+
 
       $(document).on('click', '.desc', function(e) {
         e.preventDefault();

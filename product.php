@@ -7,9 +7,10 @@ $slug = $_GET['product'];
 
 try {
 
-	$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname, products.id AS prodid FROM products LEFT JOIN category ON category.id=products.category_id WHERE slug = :slug");
+	$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname, products.id AS prodid FROM products LEFT JOIN category ON category.id=products.category_id LEFT JOIN brands ON brands.id = products.brand_id WHERE slug = :slug");
 	$stmt->execute(['slug' => $slug]);
 	$product = $stmt->fetch();
+	$white =($product['color'] == "White") ? 'border:1px solid #000':'';
 } catch (PDOException $e) {
 	echo "There is some problem in connection: " . $e->getMessage();
 }
@@ -23,11 +24,7 @@ try {
 } catch (PDOException $e) {
 	echo "There is some problem in connection: " . $e->getMessage();
 }
-
-
-
 ?>
-
 <?php include 'includes/header.php'; ?>
 <script>
 		(function(d, s, id) {
@@ -77,6 +74,15 @@ try {
 
 	<!-- Product Detail -->
 	<div class="container-fluid bgwhite p-t-135 p-b-80">
+	<section>
+	<nav>
+		<ol class="cd-breadcrumb custom-separator">
+			<li><a href="#0">Home</a></li>
+			<li class="current"><em><?php echo $product['prodname'] ?></em></li>
+		</ol>
+	</nav>
+</section>
+
 		<div class="flex-w flex-sb">
 			<div class="w-size13 p-t-30 respon5">
 				<div class="wrap-slick3 flex-sb flex-w">
@@ -94,6 +100,42 @@ try {
 								<img height="100%" src="<?php echo (!empty($product['photo2'])) ? 'images/allproduct/' . $product['photo2'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
 							</div>
 						</div>
+
+						<?php 
+							if (!empty($product['photo3'])) {
+								?>
+						<div class="item-slick3" data-thumb="<?php echo (!empty($product['photo3'])) ? 'images/allproduct/' . $product['photo3'] : 'images/noimage.jpg'; ?>">
+							<div class="wrap-pic-w1">
+								<img height="100%" src="<?php echo (!empty($product['photo3'])) ? 'images/allproduct/' . $product['photo3'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
+							</div>
+						</div>
+								<?php
+							}
+						?>
+
+							<?php 
+							if (!empty($product['photo4'])) {
+								?>
+						<div class="item-slick3" data-thumb="<?php echo (!empty($product['photo4'])) ? 'images/allproduct/' . $product['photo4'] : 'images/noimage.jpg'; ?>">
+							<div class="wrap-pic-w1">
+								<img height="100%" src="<?php echo (!empty($product['photo4'])) ? 'images/allproduct/' . $product['photo4'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
+							</div>
+						</div>
+								<?php
+							}
+						?>
+
+							<?php 
+							if (!empty($product['photo5'])) {
+								?>
+						<div class="item-slick3" data-thumb="<?php echo (!empty($product['photo5'])) ? 'images/allproduct/' . $product['photo5'] : 'images/noimage.jpg'; ?>">
+							<div class="wrap-pic-w1">
+								<img height="100%" src="<?php echo (!empty($product['photo5'])) ? 'images/allproduct/' . $product['photo5'] : 'images/noimage.jpg'; ?>" alt="IMG-PRODUCT">
+							</div>
+						</div>
+								<?php
+							}
+						?>
 <!-- 
 						<div class="item-slick3" data-thumb="fashe-colorlib/images/thumb-item-03.jpg">
 							<div class="wrap-pic-w">
@@ -105,19 +147,20 @@ try {
 			</div>
 
 			<div class="w-size14 p-t-30 respon5">
+					<p class="s-text8 p-t-10" style="font-weight: 700;font-size: 20px">
+						<?php echo $product['brand_name']; ?>
+				</p>
 				<h4 class="product-detail-name m-text16 p-b-13">
 				<?php echo $product['prodname']; ?>			
 					</h4>
 
-				<span class="m-text17">
+				<span class="m-text17" style="color:red">
 					&#8377; <?php echo number_format($product['price'], 2); ?> 
 				</span>
 
-				<p class="s-text8 p-t-10">
-										<?php echo $product['description']; ?>
-				</p>
-
-				<!--  -->
+				
+			<form class="form-inline" id="productForm">
+					<!--  -->
 				<div class="p-t-33 p-b-60">
 					<div class="flex-m flex-w p-b-10">
 						<div class="s-text15 w-size15 t-center">
@@ -127,31 +170,26 @@ try {
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 							<select class="selection-2" name="size">
 								<option>Choose an option</option>
-								<option>Size S</option>
-								<option>Size M</option>
-								<option>Size L</option>
-								<option>Size XL</option>
+								<?php 
+								$size = array($product['size']);
+								?>
+								<option><?php echo $size ?></option>
 							</select>
 						</div>
 					</div>
 
-					<!-- <div class="flex-m flex-w">
+					<div class="flex-m flex-w" style="position: relative;">
 						<div class="s-text15 w-size15 t-center">
 							Color
 						</div>
-
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 							<select class="selection-2" name="color">
 								<option>Choose an option</option>
-								<option>Gray</option>
-								<option>Red</option>
-								<option>Black</option>
-								<option>Blue</option>
+								<option><?= $product['color'] ?></option>
 							</select>
-						</div>
-					</div> -->
+						</div>	
+					</div>
 
-			<form class="form-inline" id="productForm">
 					<div class="flex-r-m flex-w p-t-10">
 						<div class="w-size16 flex-m flex-w">
 							<div class="flex-w bo5 of-hidden m-r-22 m-t-10 m-b-10">
@@ -288,10 +326,7 @@ foreach ($stmt as $row) {
 
 		</div>
 	</section>
-
-
-
-<?php include 'includes/footer.php'; ?>
+	<?php include 'includes/footer.php'; ?>
 	<?php include 'includes/scripts.php'; ?>
 
 	<!-- Back to top -->

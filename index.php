@@ -140,7 +140,82 @@
             </div>
     </section>
    
+  
 
+<!-- Filtering buttons -->
+<div class="button-area filters">
+  <label class="button">
+    <input type="checkbox" value="group1" />Group 1
+  </label>
+  <label class="button">
+    <input type="checkbox" value="group2" />Group 2
+  </label>
+  <label class="button">
+    <input type="checkbox" value="group3" />Group 3
+  </label>
+  <label class="button">
+    <input type="checkbox" value="group4" />Group 4
+  </label>
+</div>
+<div id="mnsry_container">
+    <?php
+          $stmt2 = $conn->prepare("SELECT * FROM brands ORDER BY RAND()");
+          $stmt2->execute();
+            foreach ($stmt2 as $row2) {
+                      $image = (!empty($row2['brand_image']) ? 'images/brand/' . $row2['brand_image'] . '' : 'images/noimage.jpg');
+           ?>
+<!-- Masonry contents -->
+  <div class="item group1">
+    <h1><?= $row2['brand_name'] ?></h1>
+    <img src="<?= $image ?>" >
+  </div>
+
+<?php } ?>
+ <!--  <div class="item group2">
+    <h1>Group 2</h1>
+    <img src="https://unsplash.it/600/400?image=1" />
+  </div>
+  <div class="item group3">
+    <h1>Group 3</h1>
+    <img src="https://unsplash.it/600/400?image=2" />
+  </div>
+  <div class="item group2">
+    <h1>Group 2</h1>
+    <img src="https://unsplash.it/600/400?image=3" />
+  </div>
+  <div class="item group1 group4">
+    <h1>Group 1 & 4</h1>
+    <img src="https://unsplash.it/600/400?image=4" />
+  </div>
+  <div class="item group2 group4">
+    <h1>Group 2 & 4</h1>
+    <img src="https://unsplash.it/600/400?image=5" />
+  </div>
+  <div class="item group3 group4">
+    <h1>Group 3 & 4</h1>
+    <img src="https://unsplash.it/600/400?image=6" />
+  </div>
+  <div class="item group2 group3">
+    <h1>Group 2 & 3</h1>
+    <img src="https://unsplash.it/600/400?image=7" />
+  </div>
+  <div class="item group3">
+    <h1>Group 3</h1>
+    <img src="https://unsplash.it/600/400?image=18" />
+  </div>
+  <div class="item group4">
+    <h1>Group 4</h1>
+    <img src="https://unsplash.it/600/400?image=9" />
+  </div>
+  <div class="item group1">
+    <h1>Group 1</h1>
+    <img src="https://unsplash.it/600/400?image=10" />
+  </div>
+  <div class="item group2">
+    <h1>Group 2</h1>
+    <img src="https://unsplash.it/600/400?image=11" />
+  </div> -->
+</div>
     <!-- if you want to display modal on page load  -->
     <!-- <div id="myModal" class="modal" style="background-image: linear-gradient(254deg, #5909b3, #7f0dff);">
               <div class="modal-dialog" style="width: 100%;margin: 0;padding: 0">
@@ -170,7 +245,38 @@
       }
     });
   </script>
+  <script type="text/javascript">
+      
+// REMEMBER TO PUT THIS INSIDE 
+// $(document).ready(function() 
+// FILTER
+    // A little fixed Multiple Filter Masonry here
+    // https://github.com/digistate/resouces/blob/master/multipleFilterMasonry.js
+    var 
+      mContainer = $("#mnsry_container"),
+        filterButton = $(".button");
+        params = {
+                itemSelector: ".item",
+                filtersGroupSelector:".filters"
+        };
+
+    $(window).load(function() { 
   
+      // Do mansonry with filtering 
+      mContainer.multipleFilterMasonry(params);
+      
+      // Show articles with fadein
+      mContainer.find(".item").animate({
+        "opacity":1
+        }, 1200);
+
+      // Change the filtering button(label) status 
+      filterButton.find("input").change(function(){
+        $(this).parent().toggleClass("active");
+      });
+      
+    });
+  </script>
           <script>
             setTimeout(function() {
 
@@ -185,7 +291,8 @@
             $('#myModal').delay(4000).fadeOut(6000);
           </script> -->
           <!-- jQuery (Necessary for All JavaScript Plugins) -->
-   
+   <script type="text/javascript" src="https://cdn.rawgit.com/desandro/masonry/master/dist/masonry.pkgd.min.js"></script>
+   <script type="text/javascript" src="https://cdn.rawgit.com/digistate/resouces/master/multipleFilterMasonry.js"></script>
 </body>
 
 </html>

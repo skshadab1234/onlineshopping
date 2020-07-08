@@ -65,8 +65,8 @@
                     $conn = $pdo->open();
 
                     try {
-                      $stmt = $conn->prepare("SELECT * FROM users where status=:status and type=0");
-                      $stmt->execute(['status' => 1]);
+                      $stmt = $conn->prepare("SELECT * FROM users where type=0");
+                      $stmt->execute();
                       foreach ($stmt as $row) {
                         $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
                         $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';

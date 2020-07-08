@@ -46,6 +46,87 @@
             background: #323232;
             color: white;
         }
+        #loading
+{
+ text-align:center; 
+ background: url('images/visa.gif') no-repeat center; 
+ height: 150px;
+}
+ .button-area .button {
+     display: inline-block;
+     padding: 10px;
+     margin: 30px 5px;
+     background-color: rgba(255, 255, 255, 0);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border: 2px solid rgba(241, 96, 34, 1);
+}
+ .button-area .button:hover {
+     background-color: rgba(241, 96, 34, 1);
+}
+ .button-area .button.active {
+     background-color: #f16022;
+}
+ .button-area input[type=checkbox] {
+     display: none;
+}
+ #mnsry_container {
+     position: relative;
+}
+ #mnsry_container:hover img {
+     opacity: 0.28;
+}
+ #mnsry_container .item {
+     width: 33.3%;
+     min-height: 200px;
+     overflow: hidden;
+     cursor: pointer;
+     opacity: 0;
+}
+ #mnsry_container .item h1 {
+   position: absolute;
+    top: 46%;
+    left: 105px;
+    width: 50%;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    transition: all 1.2s;
+    z-index: 1;
+    text-align: center;
+}
+ #mnsry_container .item img {
+     display: block;
+     width: 100%;
+     height: 300px;
+     opacity: 0.25;
+     transition: all 0.8s;
+}
+ #mnsry_container .item:hover h1 {
+     transform: translate3d(0, 18px, 0) scale(1.2, 0.4);
+     opacity: 0;
+}
+ #mnsry_container .item:hover img {
+     opacity: 1;
+     transform: scale(1.04);
+}
+ #loading_msg {
+     position: fixed;
+     top: 48%;
+     width: 100%;
+     z-index: -1;
+}
+ @media (max-width: 860px) {
+     #mnsry_container .item {
+         width: 50%;
+         min-height: 150px;
+    }
+}
+ @media (max-width: 667px) {
+     #mnsry_container .item {
+         width: 100%;
+         min-height: 220px;
+    }
+}
+ 
 .single-mega.cn-col-5.banner-image{
     height: 430px;
 }

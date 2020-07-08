@@ -390,8 +390,7 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
                 </div>
             </div>
 
-        </div>
-    </header>
+        
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Right Side Cart Area ##### -->
@@ -488,7 +487,8 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
         </div>
     </div>
  
-
+</div>
+    </header>
 
 
  <!-- Wishlist POP -->

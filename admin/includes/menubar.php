@@ -23,6 +23,7 @@
       <li><a href="users.php"><i class="fa fa-users"></i> <span>Customers</span></a></li>
       <li><a href="warehouse.php"><i class="fa fa-home"></i> <span>Warehouse</span></a></li>
       <li><a href="category.php"><i class="fa fa-list-alt"></i> <span>Category </span></a></li>
+      <li><a href="color_master.php"><i class="fa fa-list-alt"></i> <span>Color </span></a></li>
       <li><a href="subcategory.php"><i class="fa fa-sticky-note-o"></i> <span>Sub Category</a></span></li>
       <li><a href="brands.php"><i class="fa fa-handshake-o"></i> <span>Brands</a></span></li>
       <li class="treeview">

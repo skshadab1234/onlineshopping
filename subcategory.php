@@ -82,7 +82,7 @@ if (isset($subcatid)) {
     <section class="shop_grid_area section-padding-80">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-2">
+                <div class="col-12 col-sm-4 col-md-4 col-lg-2">
                     <div class="shop_sidebar_area">
 
                         <!-- ##### Single Widget ##### -->
@@ -95,7 +95,7 @@ if (isset($subcatid)) {
                                 <ul id="menu-content2" class="menu-content collapse show">
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#clothing">
-                                        <a href="#">clothing</a>
+                                          <a href="#">clothing</a>
                                         <ul class="sub-menu collapse show" id="clothing">
                                             <li><a href="#">All</a></li>
                                             <li><a href="#">Bodysuits</a></li>
@@ -193,11 +193,13 @@ if (isset($subcatid)) {
                             <p class="widget-title2 mb-30">Brands</p>
                             <div class="widget-desc">
                                 <ul>
-                                    <li><a href="#">Asos</a></li>
-                                    <li><a href="#">Mango</a></li>
-                                    <li><a href="#">River Island</a></li>
-                                    <li><a href="#">Topshop</a></li>
-                                    <li><a href="#">Zara</a></li>
+                                    <?php 
+                                    $stmt2=$conn->prepare("SELECT *  FROM brands");
+                                    $stmt2->execute();
+                                    foreach ($stmt2 as $row3) {
+                                    ?>
+                                    <li><a href="subcategory.php?brand=<?= $row3['brand_name']  ?>"><?= $row3['brand_name']?></a></li>
+                                   <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -250,7 +252,7 @@ if (isset($subcatid)) {
                   $image2 = (!empty($row['photo2'])) ? 'images/allproduct/' . $row['photo2'] : 'images/noimage.jpg';
             ?>
                             <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
@@ -297,7 +299,7 @@ if (isset($subcatid)) {
                   $image2 = (!empty($row['photo2'])) ? 'images/allproduct/' . $row['photo2'] : 'images/noimage.jpg';
 
                 ?>    <!-- Single Product -->
-                            <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">

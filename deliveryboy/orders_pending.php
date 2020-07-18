@@ -40,10 +40,10 @@
 
                                         try {
 
-                                            $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id  where sales.user_id=:id");
-                                            $stmt->execute(['id' => $deliveryboy['id']]);
+                                            $stmt = $conn->prepare("SELECT *, sales.id AS salesid FROM sales LEFT JOIN users ON users.id=sales.user_id WHERE sales.user_id= :id");
+                                            $stmt->execute(['id' =>$deliveryboy['id']]);
                                             foreach ($stmt as $row2) {
-                                                $stmt = $conn->prepare("SELECT *, assigndelivery.product_name AS productid FROM assigndelivery LEFT JOIN products ON products.id = assigndelivery.product_name LEFT JOIN warehouse ON warehouse.id = assigndelivery.pickup LEFT JOIN details ON details.id = assigndelivery.ship_address LEFT JOIN users ON users.id =assigndelivery.assign_to WHERE users.id =:assign_to");
+                                                $stmt = $conn->prepare("SELECT *, assigndelivery.product_name AS productid FROM assigndelivery LEFT JOIN products ON products.id = assigndelivery.product_name LEFT JOIN warehouse ON warehouse.id = assigndelivery.pickup LEFT JOIN details ON details.id = assigndelivery.ship_address LEFT JOIN users ON users.id =assigndelivery.assign_to");
                                                 $stmt->execute(['assign_to' => $deliveryboy['id']]);
                                                 foreach ($stmt as $row) {
                                                     $status = ($row['status']  == 1) ? '<span class="label label-success">Processed</span>' : '<span class="label label-danger">Not yet Processed</span>';

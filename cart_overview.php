@@ -48,8 +48,8 @@
                     <li><span>Total:</span> <span>₹ " . number_format($grand_t) . "</span></li>
                 </ul>
                 <div class=\"checkout-btn mt-100\">
-                    <a href=\"payment.php\" class=\"btn essence-btn\">check out</a>
-                    <a href=\"cart_view.php\" style='padding: 10px;font-size: 16px;'>Edit Cart</a>
+                    <a href=\"payment.php\" class=\"buttons\" style='padding: 10px;text-transform: uppercase;font-size: 15px;background: orange;color: #fff;font-weight: 700;letter-spacing: 1px;box-shadow: 6px 6px 41px -8px #313131;'>check out</a>
+                    <a href=\"cart_view.php\" class=\"buttons\" style='padding: 10px;text-transform: uppercase;font-size: 15px;background: green;color: #fff;font-weight: 700;letter-spacing: 1px;box-shadow: 6px 6px 41px -8px #313131;border-radius: 10px;margin-left:24px'>Edit Cart</a>
                 </div>
 				";
 			}

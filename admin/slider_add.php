@@ -11,13 +11,6 @@ if (isset($_POST['add'])) {
 
     $conn = $pdo->open();
 
-    $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM slider WHERE slider_name=:slider_name");
-    $stmt->execute(['slider_name' => $name]);
-    $row = $stmt->fetch();
-
-    if ($row['numrows'] > 0) {
-        $_SESSION['error'] = $name.' Slider already exist';
-    } else {
         if (!empty($filename)) {
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             $new_filename = $code . '.' . $ext;
@@ -32,7 +25,6 @@ if (isset($_POST['add'])) {
         } catch (PDOException $e) {
             $_SESSION['error'] = $e->getMessage();
         }
-    }
     $pdo->close();
 }
     elseif(isset($_POST['addcat'])){

@@ -8,64 +8,63 @@
         <h4 class="modal-title"><b>Add New User</b></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="POST" action="users_add.php" enctype="multipart/form-data">
+        <div class="form-horizontal">
           <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
 
             <div class="col-sm-9">
-              <input type="email" class="form-control" id="email" name="email" required>
+              <input type="email" class="form-control" id="email_shadab" name="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
 
             <div class="col-sm-9">
-              <input type="password" class="form-control" id="password" name="password" required>
+              <input type="password" class="form-control" id="password_shadab" name="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="firstname" class="col-sm-3 control-label">Firstname</label>
 
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="firstname" name="firstname" required>
+              <input type="text" class="form-control" id="firstname_shadab" name="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="lastname" class="col-sm-3 control-label">Lastname</label>
 
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="lastname" name="lastname" required>
+              <input type="text" class="form-control" id="lastname_shadab" name="" required>
             </div>
           </div>
           <div class="form-group">
             <label for="address" class="col-sm-3 control-label">Address</label>
 
             <div class="col-sm-9">
-              <textarea class="form-control" id="address" name="address" style="background: none;border-bottom: 2px solid white;border-top: none;border-left: none;border-right: none;color: white"></textarea>
+              <textarea class="form-control" id="address_shadab" name="" style="background: none;border-bottom: 2px solid white;border-top: none;border-left: none;border-right: none;color: white"></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="contact" class="col-sm-3 control-label">Contact Info</label>
 
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="contact" name="contact">
+              <input type="text" class="form-control" id="contact_shadab" name="">
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="photo" class="col-sm-3 control-label">Photo</label>
 
             <div class="col-sm-9">
               <input type="file" id="photo" name="photo">
             </div>
-          </div>
+          </div> -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-        <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
-        </form>
+    <input type="button" name="save" class="btn btn-primary" value="Save to database" id="butsave"  data-dismiss="modal">
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Edit -->

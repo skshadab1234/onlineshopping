@@ -11,19 +11,21 @@ if (isset($_SESSION['user'])) {
 		foreach ($stmt as $row) {
 			$output['count']++;
 			$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
-			$productname = (strlen($row['prodname']) > 10) ? substr_replace($row['prodname'], '...', 28) : $row['prodname'];
+			$productname = (strlen($row['prodname']) > 3) ? substr_replace($row['prodname'], '...', 15) : $row['prodname'];
 			$output['list'] .= "
 
 
-						<a href='product.php?product=" . $row['slug'] . "'>
-							<div class='pull-left'>
-								<img src='" . $image . "' class='img-circle' alt='User Image'>
+						<a href='product.php?product=" . $row['slug'] . "' >
+							<div class='pull-left container-fluid' style='padding:0'>
+							<img src='" . $image . "' alt='User Image'>
 							</div>
 							<h4>
 		                        <small style='position: relative;right: -137px;top: -215px;background: lightcoral;padding: 5px;color: #fff;border-radius: 10px;'>&times; " . $row['quantity'] . "</small>
 		                    </h4>
-		                    <p style='white-space: nowrap;overflow: hidden;font-size: 12px;text-overflow: ellipsis;margin-top: -10px;'>" . $productname. "</p>
+							<div class='container-fluid' >
+		                    <p style='margin-top: -10px;'>" . $productname. "</p>
 		                    <h5>&#8377; " . $row['price'] . " <span><s>&#8377; " . $row['old_price'] . " </s></span></h5>
+							</div>
 						</a>
 						<hr>
 				";
@@ -46,8 +48,8 @@ if (isset($_SESSION['user'])) {
 			$product = $stmt->fetch();
 			$image = (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg';
 			$output['list'] .= "
-						<a href='product.php?product=" . $product['slug'] . "'>
-							<div class='pull-left'>
+						<a href='product.php?product=" . $product['slug'] . "' style='width: 116px;'>
+							<div class='pull-left container'>
 								<img src='" . $image . "' class='img-circle' alt='User Image'>
 							</div>
 							<h4>

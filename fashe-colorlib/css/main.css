@@ -1359,7 +1359,7 @@ li.sale-noti > a {
 
 .item-slick1 {
   height: 570px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -1445,8 +1445,8 @@ li.sale-noti > a {
   }
 
   .item-slick1 {
-    height: 470px;
-  }
+height: 167px;
+    background-size: contain;  }
 }
 
 @media (max-width: 576px) {

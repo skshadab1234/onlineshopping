@@ -102,53 +102,77 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
             </a><?php } ?>
 
                                 <div class="megamenu">
-                       <ul class="single-mega cn-col-5">
+                       <ul class="single-mega cn-col-5" style="position: relative;">
                                 <li class="title">Clothing</li>
                                 <?php 
                                         foreach ($stmt7 as $row7) {
+                                             $msg= '';
+                                      if (strtotime($row7['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row7['sub_catslug']) ?>"><?= $row7['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row7['sub_catslug']) ?>"><?= $row7['name']." ".$msg ?></a></li>
                                    <?php } ?>
                         </ul>
 
-                         <ul class="single-mega cn-col-5">
+                         <ul class="single-mega cn-col-5" style="position: relative;">
                                 <li class="title">Shoes</li>
                                 <?php 
                                         foreach ($stmt8 as $row8) {
+                                                 $msg= '';
+                                      if (strtotime($row8['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row8['sub_catslug']) ?>"><?= $row8['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row8['sub_catslug']) ?>"><?= $row8['name']." ".$msg  ?></a></li>
                                    <?php } ?>
 
                                     <li class="title">Eyewear</li>
                                 <?php 
                                         foreach ($stmt9 as $row9) {
+                                                $msg= '';
+                                      if (strtotime($row9['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row9['sub_catslug']) ?>"><?= $row9['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row9['sub_catslug']) ?>"><?= $row9['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                         </ul>
 
 
-                         <ul class="single-mega cn-col-5">
+                         <ul class="single-mega cn-col-5" style="position:relative">
                                 <li class="title">Jewllery</li>
                                 <?php 
                                         foreach ($stmt11 as $row11) {
+                                                $msg= '';
+                                      if (strtotime($row11['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row11['sub_catslug']) ?>"><?= $row11['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row11['sub_catslug']) ?>"><?= $row11['name']." ".$msg ?></a></li>
                                    <?php } ?>   
 
                                    <li class="title">Watches</li>
                                 <?php 
                                         foreach ($stmt10 as $row10) {
+                                                $msg= '';
+                                      if (strtotime($row10['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row10['sub_catslug']) ?>"><?= $row10['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row10['sub_catslug']) ?>"><?= $row10['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                                        <li class="title">HANDBAGS & CLUTCHES</li>
                                 <?php 
                                         foreach ($stmt12 as $row12) {
+                                                $msg= '';
+                                      if (strtotime($row12['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row12['sub_catslug']) ?>"><?= $row12['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row12['sub_catslug']) ?>"><?= $row12['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
 
@@ -156,11 +180,15 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                         </ul>
                                     <?php 
                                         foreach ($stmt13 as $row13) {
+                                                $msg= '';
+                                      if (strtotime($row13['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                         $image = (!empty($row13['subcat_photo'])) ? 'images/subcategory/' . $row13['subcat_photo'] : 'images/noimage.jpg';
 
                                  ?>
                                     <div class="single-mega cn-col-5 banner-image">
-                                        <a href="shop.php?shop=<?= str_replace("&", "and", $row13['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <a href="subcategory.php?styles=<?= str_replace("&", "and", $row13['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
                                         <div class="container">
                                                 <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row13['name'] ?></h5>
                                                 <h5 class="title text-center">Explore Store</h5>
@@ -188,58 +216,82 @@ foreach ($stmt4 as $row4) {
             </a><?php } ?>
 
                                  <div class="megamenu">
-                       <ul class="single-mega cn-col-5">
+                       <ul class="single-mega cn-col-5" style="position:relative">
                                 <li class="title">Clothing</li>
                                 <?php 
                                    foreach ($stmt14 as $row14) {
+                                        $msg= '';
+                                      if (strtotime($row14['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row14['sub_catslug']) ?>"><?= $row14['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row14['sub_catslug']) ?>"><?= $row14['name']." ".$msg ?></a></li>
                                    <?php } ?>
                         </ul>
 
-                         <ul class="single-mega cn-col-5">
+                         <ul class="single-mega cn-col-5" style="position:relative">
                                 <li class="title">Shoes</li>
                                 <?php 
                                         foreach ($stmt15 as $row15) {
+                                                $msg= '';
+                                      if (strtotime($row15['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row15['sub_catslug']) ?>"><?= $row15['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row15['sub_catslug']) ?>"><?= $row15['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                                     <li class="title">Eyewear</li>
                                 <?php 
                                         foreach ($stmt16 as $row16) {
+                                                $msg= '';
+                                      if (strtotime($row16['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row16['sub_catslug']) ?>"><?= $row16['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row16['sub_catslug']) ?>"><?= $row16['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                         </ul>
 
 
-                         <ul class="single-mega cn-col-5">
+                         <ul class="single-mega cn-col-5" style="position:relative">
                                 <li class="title">Jewllery</li>
                                 <?php 
                                         foreach ($stmt17 as $row17) {
+                                                $msg= '';
+                                      if (strtotime($row17['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row17['sub_catslug']) ?>"><?= $row17['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row17['sub_catslug']) ?>"><?= $row17['name']." ".$msg ?></a></li>
                                    <?php } ?>   
 
                                    <li class="title">Watches</li>
                                 <?php 
                                         foreach ($stmt18 as $row18) {
+                                                $msg= '';
+                                      if (strtotime($row18['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row18['sub_catslug']) ?>"><?= $row18['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row18['sub_catslug']) ?>"><?= $row18['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
-                                <li><a href="shop.php?shop=Wallets">Wallets</a></li>
+                                <li><a href="subcategory.php?styles=Wallets">Wallets</a></li>
                                
                         </ul>
                                     <?php 
                                         foreach ($stmt19 as $row19) {
+                                                $msg= '';
+                                      if (strtotime($row19['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                         $image = (!empty($row19['subcat_photo'])) ? 'images/subcategory/' . $row19['subcat_photo'] : 'images/noimage.jpg';
 
                                  ?>
                                     <div class="single-mega cn-col-5 banner-image">
-                                        <a href="shop.php?shop=<?= str_replace("&", "and", $row19['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <a href="subcategory.php?styles=<?= str_replace("&", "and", $row19['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
                                         <div class="container">
                                                 <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row19['name'] ?></h5>
                                                 <h5 class="title text-center">Explore Store</h5>
@@ -266,50 +318,70 @@ foreach ($stmt5 as $row5) {
 
 
                                  <div class="megamenu">
-                       <ul class="single-mega cn-col-5">
+                       <ul class="single-mega cn-col-5" style="position:relative">
                                  <li class="title">Girls</li>
                                 <?php 
                                    foreach ($stmt20 as $row20) {
+                                        $msg= '';
+                                      if (strtotime($row20['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row20['sub_catslug']) ?>"><?= $row20['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row20['sub_catslug']) ?>"><?= $row20['name']." ".$msg ?></a></li>
                                    <?php } ?>
                         </ul>
 
-                         <ul class="single-mega cn-col-5">
+                         <ul class="single-mega cn-col-5" style="position:relative">
                                 <li class="title">Boys</li>
                                 <?php 
                                         foreach ($stmt21 as $row21) {
+                                                $msg= '';
+                                      if (strtotime($row21['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row21['sub_catslug']) ?>"><?= $row21['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row21['sub_catslug']) ?>"><?= $row21['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                         </ul>
 
 
-                         <ul class="single-mega cn-col-5">
+                         <ul class="single-mega cn-col-5" style="position:relative">
                                 <li class="title">Kids</li>
                                 <?php 
                                         foreach ($stmt22 as $row22) {
+                                                $msg= '';
+                                      if (strtotime($row22['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row22['sub_catslug']) ?>"><?= $row22['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row22['sub_catslug']) ?>"><?= $row22['name']." ".$msg ?></a></li>
                                    <?php } ?>   
 
                                    <li class="title">Baby</li>
                                 <?php 
                                         foreach ($stmt23 as $row23) {
+                                                $msg= '';
+                                      if (strtotime($row23['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                  ?>
-                                <li><a href="shop.php?shop=<?= str_replace("&", "and", $row23['sub_catslug']) ?>"><?= $row23['name'] ?></a></li>
+                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row23['sub_catslug']) ?>"><?= $row23['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                                
                         </ul>
                                     <?php 
                                         foreach ($stmt24 as $row24) {
+                                                $msg= '';
+                                      if (strtotime($row24['added_on']) > (time() - (60*60*24*2))) {
+                                        $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
+                                      }
                                         $image = (!empty($row24['subcat_photo'])) ? 'images/subcategory/' . $row24['subcat_photo'] : 'images/noimage.jpg';
 
                                  ?>
                                     <div class="single-mega cn-col-5 banner-image">
-                                        <a href="shop.php?shop=<?= str_replace("&", "and", $row24['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <a href="subcategory.php?styles=<?= str_replace("&", "and", $row24['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
                                         <div class="container-fluid">
                                                 <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row24['name'] ?></h5>
                                                 <h5 class="title text-center">Explore Store</h5>
@@ -352,13 +424,13 @@ foreach ($stmt5 as $row5) {
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#" id="wishlist_pop"><img src="essence/img/core-img/heart.svg" alt=""></a>
+                    <a href="#" id="wishlist_pop"><img src="essence/img/core-img/heart.svg" alt=""> <span class="wishlist_count"></span></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
                      <?php
                     if (isset($_SESSION['user'])) {
-                            $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
+                            $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/noimage.jpg';
                             echo '
                             <a href="#" title="'.$user['firstname'].' ' .$user['lastname'].'" id="profilecart">
                                     <img src="' . $image . '" class="user-image" alt="User Image">
@@ -382,7 +454,7 @@ foreach ($stmt5 as $row5) {
 
                 <!-- Cart Area -->
                 <div class="cart-area" id="essenceCartBtn">
-                     <a href="#" id="cart">
+                     <a href="#">
                                 <i class="fa fa-shopping-bag"></i>
                                 <span class="label cart_count" style="font-size: 15px;color: #fff;
 background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right: 10px;"></span>
@@ -408,7 +480,7 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
             <!-- Cart List Area -->
             <div class="cart-list">
                 <!-- Single Cart Item -->
-                <div class="single-cart-item" id="cart_menu" style="padding: 10px;">
+                <div class="single-cart-item" id="cart_menu" >
                         <!-- <img src="essence/img/product-img/product-1.jpg" class="cart-thumb" alt="">
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
@@ -439,12 +511,14 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
 
         <!-- Cart Button -->
         <div class="profile-button">
-            <a href="#" id="profilerightSide"><?php
-                            $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/profile.jpg';
-                            echo '
-                                    <img src="' . $image . '" class="user-image" alt="User Image">
-                                        ';
-                           ?> </a>
+            <a href="#" id="profilerightSide">
+              <?php
+                  $image = (!empty($user['photo'])) ? 'images/' . $user['photo'] : 'images/noimage.jpg';
+                  echo '
+                          <img src="' . $image . '" class="user-image" alt="User Image">
+                              ';
+                 ?> 
+               </a>
         </div>
 
         <div class="profile-content d-flex" style="background: #000;">
@@ -452,11 +526,11 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
             <!-- Cart Summary -->
             <div class="profile-amount-summary">
                 <ul>
-                    <li><a href="profile.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="profile.php")?"active":""; ?>">Profile</a></li>
-                    <li><a href="orders.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="orders.php")?"active":""; ?>">Orders</a></li>
-                    <li><a href="transaction.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="transaction.php")?"active":""; ?>">History</a></li>
-                    <li><a href="coupons.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="coupons.php")?"active":""; ?>">Coupons</a></li>
-                    <li><a href="logout.php" class="nav active1">Logout</a></li>
+                    <li><a href="profile.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="profile.php")?"active":""; ?>">Profile</a></li>
+                    <li><a href="orders.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="orders.php")?"active":""; ?>">Orders</a></li>
+                    <li><a href="transaction.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="transaction.php")?"active":""; ?>">History</a></li>
+                    <li><a href="coupons.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="coupons.php")?"active":""; ?>">Coupons</a></li>
+                    <li><a href="logout.php" class="auth nav active1">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -471,7 +545,7 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
         <!-- Cart Button -->
         <div class="profile-button1">
             <a href="#"  id="profilerightSide1">
-                                    <img src="essence/img/core-img/bag.svg" class="user-image" alt="User Image">
+                <img src="essence/img/core-img/user.svg" class="user-image" alt="User Image">
             </a>
         </div>
 
@@ -480,8 +554,8 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
             <!-- Cart Summary -->
             <div class="profile-amount-summary">
                 <ul>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="signup.php">Signup</a></li>
+                    <li><a href="login.php" class="auth ">Login</a></li>
+                    <li><a href="signup.php" class="auth">Signup</a></li>
                 </ul>
             </div>
         </div>
@@ -496,32 +570,41 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
 if(isset($_SESSION['user'])){
     ?>
 
-    <!-- ##### Right Side Cart Area ##### -->
-    <div class="wishlist-overlay"></div>
+  <!-- ##### Right Side Cart Area ##### -->
+    <div class="wishlist-bg-overlay"></div>
 
     <div class="right-side-wishlist-area">
 
         <!-- Cart Button -->
         <div class="wishlist-button">
-            <a href="#" id="wishlistrightSide">
-                                    <img src="essence/img/core-img/heart.svg" class="user-image" alt="User Image">
-                                        
+            <a href="#" id="wishlistrightSide"><img src="essence/img/core-img/heart.svg" alt=""> <span class="wishlist_count"> </span></a>
         </div>
 
-        <div class="wishlist-content d-flex" style="background: #000;">
+        <div class="wishlist-content d-flex">
+
+            <!-- Cart List Area -->
+            <div class="wishlist-list">
+                <!-- Single Cart Item -->
+                <div class="single-wishlist-item" id="wishlist_menu" style="padding: 10px;">
+                        <!-- <img src="essence/img/product-img/product-1.jpg" class="cart-thumb" alt="">
+                        <div class="cart-item-desc">
+                          <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                            <span class="badge">Mango</span>
+                            <h6>Button Through Strap Mini Dress</h6>
+                            <p class="size">Size: S</p>
+                            <p class="color">Color: Red</p>
+                            <p class="price">$45.00</p>
+                        </div> -->
+                </div>
+            </div>
 
             <!-- Cart Summary -->
             <div class="wishlist-amount-summary">
-                <ul>
-                    <li><a href="profile.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="profile.php")?"active":""; ?>">Profile</a></li>
-                    <li><a href="orders.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="orders.php")?"active":""; ?>">Orders</a></li>
-                    <li><a href="transaction.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="transaction.php")?"active":""; ?>">History</a></li>
-                    <li><a href="coupons.php" class="nav <?= (basename($_SERVER['PHP_SELF'])=="coupons.php")?"active":""; ?>">Coupons</a></li>
-                    <li><a href="logout.php" class="nav active1">Logout</a></li>
-                </ul>
+                <div id="overview21"></div>
             </div>
         </div>
     </div>
+ 
 
 <?php
 }else{
@@ -529,7 +612,7 @@ if(isset($_SESSION['user'])){
 ?>
 
     <!-- ##### Right Side Cart Area ##### -->
-    <div class="wishlist-overlay"></div>
+    <div class="wishlist-bg-overlay"></div>
 
     <div class="right-side-wishlist-area" >
 
@@ -543,7 +626,7 @@ if(isset($_SESSION['user'])){
         <div class="wishlist-content d-flex" style="background: #000;">
 
             <!-- Cart Summary -->
-            <div class="wishlist-amount-summary">
+            <div class="wishlist-amount-summary1">
                 <ul>
                     <li><a href="login.php">Login</a></li>
                     <li><a href="signup.php">Signup</a></li>
@@ -553,6 +636,9 @@ if(isset($_SESSION['user'])){
     </div>
  
 <?php } ?>
+
+
+
 <script type="text/javascript">
     
     // Get the input field

@@ -22,9 +22,10 @@ if (isset($_POST['add'])) {
 	if ($row['numrows'] > 0) {
 		$_SESSION['error'] = 'Product already exist';
 	} else {
+								$date = date('Y-m-d');
 		try {
-			$stmt = $conn->prepare("INSERT INTO products (subcategory_id, name, description, slug, price, old_price, color, brand_id,size,discount) VALUES (:category, :name, :description, :slug, :price, :old_price, :color, :brand, :size, :discount)");
-			$stmt->execute(['category' => $category, 'name' => $name, 'description' => $description, 'slug' => $slug, 'price' => $price,  'old_price' => $oldprice, 'color' => $color, 'brand' => $brand, 'size' => $size, 'discount' => $discount]);
+			$stmt = $conn->prepare("INSERT INTO products (subcategory_id, name, description, slug, price, old_price, color, brand_id,size,discount,date_view) VALUES (:category, :name, :description, :slug, :price, :old_price, :color, :brand, :size, :discount, :date_view)");
+			$stmt->execute(['category' => $category, 'name' => $name, 'description' => $description, 'slug' => $slug, 'price' => $price,  'old_price' => $oldprice, 'color' => $color, 'brand' => $brand, 'size' => $size, 'discount' => $discount, 'date_view'=>$date]);
 			$_SESSION['success'] = 'Product added successfully';
 		} catch (PDOException $e) {
 			$_SESSION['error'] = $e->getMessage();

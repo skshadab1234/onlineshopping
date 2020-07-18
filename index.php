@@ -6,7 +6,6 @@
   <style>
     .container-fluid {
       margin-bottom: 10px;
-      width: 99%;
       background: #fff;
     }
 
@@ -20,60 +19,59 @@
 
 <body class="layout-top-nav">
   <?php include 'includes/navbar.php'; ?>
+
   <div class="wrapper">
     <div class="content-wrapper">
+
       <section class="content">
-        <div class="swiper-container swiper1" id="category_landing_page" style="margin-top:10px;">
-          <div class="swiper-wrapper">
-            <?php
-            $stmt = $conn->prepare("SELECT * FROM category");
-            $stmt->execute();
-            foreach ($stmt as $row) {
-              $image = (!empty($row['photo'])) ? 'images/category/' . $row['photo'] : 'images/noimage.jpg';
-              echo "
-              <div class='swiper-slide'><a href='category.php?category=" . $row['cat_slug'] . "'><img src='" . $image . "' class='img-rounded'  width='150px' style='background:pink;'></a></div>
-              ";
-            }
-            ?>
-          </div>
-        </div>
-        <!-- Slider 1 -->
-        <div class="slider" id="slider1">
-          <!-- Slides -->
-          <?php
-          $stmt = $conn->prepare("SELECT * FROM slider LEFT JOIN category  On category.id = slider.slider_name LEFT JOIN subcategory on subcategory.id = slider.slider_name where slider_type=0 ");
+        <section class="slide1" style="margin-top: 10px">
+    <div class="wrap-slick1">
+      <div class="slick1">
+         <?php
+          $stmt = $conn->prepare("SELECT * FROM slider LEFT JOIN category  On category.id = slider.slider_name LEFT JOIN subcategory on subcategory.id = slider.slider_name where slider_type=0");
           $stmt->execute();
           foreach ($stmt as $row) {
             $image = (!empty($row['slider_photo'])) ? 'images/sliders/' . $row['slider_photo'] : 'images/noimage.jpg';
-            echo "
-            <div>
-                <a href='subcategory.php?styles=".$row['sub_catslug']."'><img src='" . $image . "' style='background:pink'></a>
-                </div>
-                ";
-          }
-
-          ?>
-
-          <!-- The Arrows -->
-          <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
-              <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
-            </svg></i>
-          <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
-              <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path>
-            </svg></i>
+            ?>
+      <a href="subcategory.php?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>">
+          <div class="item-slick1 item1-slick1" style="background-image: url(<?= $image ?>);">
+          <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+            <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+            
+            </div>
+          </div>
         </div>
-        <!-- Main content -->
-          <?php
-          if (isset($_SESSION['error'])) {
-            echo "
-    <div class='alert alert-danger'>
-    " . $_SESSION['error'] . "
-    </div>
-    ";
-            unset($_SESSION['error']);
-          }
-          ?>
+      </a>
 
+       <?php } ?>
+
+      </div>
+    </div>
+  </section>
+
+ 
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Shop BestSelling Brands</h2>
+
+                    </div>
+                </div>
+     <?php
+            $conn = $pdo->open(); 
+              $stmt = $conn->prepare("SELECT * FROM brands WHERE status=1");
+              $stmt->execute();
+              foreach ($stmt as $row) {
+                $image = (!empty($row['brand_image'])) ? 'images/brand/' . $row['brand_image'] : 'images/noimage.jpg';
+            ?>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-2">
+                  <?php echo "<a href=\"subcategory.php?brand=".str_replace("&", "and", $row['brand_name'])."\"><img src='" . $image . "' class=\"img-fluid\" id=\"brandimage\" ></a> "; ?>
+                </div>
+<?php }
+            ?>
+</div>
+</div>
     <!-- ##### New Arrivals Area Start ##### -->
     <section class="new_arrivals_area section-padding-80 clearfix">
         <div class="container">
@@ -81,6 +79,20 @@
                 <div class="col-12">
                     <div class="section-heading text-center">
                         <h2>Popular Products</h2>
+                        <?php
+      if (isset($_SESSION['error'])) {
+        echo "
+            <p>" . $_SESSION['error'] . "</p> 
+        ";
+        unset($_SESSION['error']);
+      }
+      if (isset($_SESSION['success'])) {
+        echo "
+            <p>" . $_SESSION['success'] . "</p> 
+        ";
+        unset($_SESSION['success']);
+      }
+      ?>
                     </div>
                 </div>
             </div>
@@ -92,12 +104,22 @@
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
 <?php
-          $stmt1 = $conn->prepare("SELECT * FROM products LEFT JOIN brands ON brands.id = products.brand_id ORDER BY RAND()");
+          $stmt1 = $conn->prepare("SELECT *, products.id AS prodid FROM products LEFT JOIN brands ON brands.id = products.brand_id LEFT JOIN wishlist ON products.id=wishlist.product_id");
           $stmt1->execute();
             foreach ($stmt1 as $row1) {
             $image = (!empty($row1['photo'])) ? 'images/allproduct/' . $row1['photo'] : 'images/noimage.jpg';
             $image2 = (!empty($row1['photo2'])) ? 'images/allproduct/' . $row1['photo2'] : 'images/noimage.jpg';
+            $active='';
+          $msg= '<div class="product-badge offer-badge">
+                      <span>-'.$row1['discount'].'%</span>
+                    </div>';
+          if (strtotime($row1['date_view']) > (time() - (60*60*24*1))) {
+            $msg = '<div class="product-badge new-badge">
+                      <span>New</span>
+                    </div>';
+          }
            ?>
+
                         <!-- Single Product -->
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
@@ -107,10 +129,14 @@
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="<?php echo $image2 ?>" alt="">
                               </a>
+                                  <?= $msg ?>
                                 <!-- Favourite -->
-                                <div class="product-favourite">
-                                    <a href="#" class="favme fa fa-heart"></a>
-                                </div>
+                                        <div  class="product-favourite">
+                                          <input type="hidden"  value="<?php echo $row1['prodid']; ?>" id="favoriate" name="id">
+                                              <button onclick="add_fav()">
+                                                <span class="favme fa fa-heart <?php echo $active ?>"></span>
+                                              </button>
+                                        </div>
                             </div>
                             <!-- Product Description -->
                             <div class="product-description">
@@ -124,13 +150,12 @@
                                 <div class="hover-content">
                                     <!-- Add to Cart -->
                                <!--      <div class="add-to-cart-btn">
-                                        <button data-toggle="modal" data-target="#<?php echo $row1['id'] ?>1" class="btn essence-btn">Quick view</button>
+                                        <button data-toggle="modal" data-ta rget="#<?php echo $row1['id'] ?>1" class="btn essence-btn">Quick view</button>
 
                                     </div> -->
                                 </div>
                             </div>
 
-              
                         </div>
 
                       <?php } ?>  
@@ -138,146 +163,14 @@
                     </div>
                   </div>
             </div>
-    </section>
-   
-  
+</section>
 
-<!-- Filtering buttons -->
-<div class="button-area filters">
-  <label class="button">
-    <input type="checkbox" value="group1" />Group 1
-  </label>
-  <label class="button">
-    <input type="checkbox" value="group2" />Group 2
-  </label>
-  <label class="button">
-    <input type="checkbox" value="group3" />Group 3
-  </label>
-  <label class="button">
-    <input type="checkbox" value="group4" />Group 4
-  </label>
-</div>
-<div id="mnsry_container">
-    <?php
-          $stmt2 = $conn->prepare("SELECT * FROM brands ORDER BY RAND()");
-          $stmt2->execute();
-            foreach ($stmt2 as $row2) {
-                      $image = (!empty($row2['brand_image']) ? 'images/brand/' . $row2['brand_image'] . '' : 'images/noimage.jpg');
-           ?>
-<!-- Masonry contents -->
-  <div class="item group1">
-    <h1><?= $row2['brand_name'] ?></h1>
-    <img src="<?= $image ?>" >
-  </div>
-
-<?php } ?>
- <!--  <div class="item group2">
-    <h1>Group 2</h1>
-    <img src="https://unsplash.it/600/400?image=1" />
-  </div>
-  <div class="item group3">
-    <h1>Group 3</h1>
-    <img src="https://unsplash.it/600/400?image=2" />
-  </div>
-  <div class="item group2">
-    <h1>Group 2</h1>
-    <img src="https://unsplash.it/600/400?image=3" />
-  </div>
-  <div class="item group1 group4">
-    <h1>Group 1 & 4</h1>
-    <img src="https://unsplash.it/600/400?image=4" />
-  </div>
-  <div class="item group2 group4">
-    <h1>Group 2 & 4</h1>
-    <img src="https://unsplash.it/600/400?image=5" />
-  </div>
-  <div class="item group3 group4">
-    <h1>Group 3 & 4</h1>
-    <img src="https://unsplash.it/600/400?image=6" />
-  </div>
-  <div class="item group2 group3">
-    <h1>Group 2 & 3</h1>
-    <img src="https://unsplash.it/600/400?image=7" />
-  </div>
-  <div class="item group3">
-    <h1>Group 3</h1>
-    <img src="https://unsplash.it/600/400?image=18" />
-  </div>
-  <div class="item group4">
-    <h1>Group 4</h1>
-    <img src="https://unsplash.it/600/400?image=9" />
-  </div>
-  <div class="item group1">
-    <h1>Group 1</h1>
-    <img src="https://unsplash.it/600/400?image=10" />
-  </div>
-  <div class="item group2">
-    <h1>Group 2</h1>
-    <img src="https://unsplash.it/600/400?image=11" />
-  </div> -->
-</div>
-    <!-- if you want to display modal on page load  -->
-    <!-- <div id="myModal" class="modal" style="background-image: linear-gradient(254deg, #5909b3, #7f0dff);">
-              <div class="modal-dialog" style="width: 100%;margin: 0;padding: 0">
-                <div class="modal-content1">
-                  <h5 class="mens" style="margin:250px 450px">Welcome to ECOMM</h5>
-                </div>
-              </div>
-            </div> -->
-    <!-- //end of modal display -->
-  </div>
+</div>  
   <div><?php include 'includes/footer.php'; ?></div>
-    <!-- ##### Right Side Cart End ##### -->
-
-
-  <?php include 'includes/scripts.php'; ?>
-
     <?php include 'includes/essence_script.php'; ?>
-
-
-  <script type="text/javascript">
-    $('.moreless-button').click(function() {
-      $('.moretext').slideToggle();
-      if ($('.moreless-button').text() == "VIEW LESS") {
-        $(this).text("VIEW MORE")
-      } else {
-        $(this).text("VIEW LESS")
-      }
-    });
-  </script>
-  <script type="text/javascript">
-      
-// REMEMBER TO PUT THIS INSIDE 
-// $(document).ready(function() 
-// FILTER
-    // A little fixed Multiple Filter Masonry here
-    // https://github.com/digistate/resouces/blob/master/multipleFilterMasonry.js
-    var 
-      mContainer = $("#mnsry_container"),
-        filterButton = $(".button");
-        params = {
-                itemSelector: ".item",
-                filtersGroupSelector:".filters"
-        };
-
-    $(window).load(function() { 
-  
-      // Do mansonry with filtering 
-      mContainer.multipleFilterMasonry(params);
-      
-      // Show articles with fadein
-      mContainer.find(".item").animate({
-        "opacity":1
-        }, 1200);
-
-      // Change the filtering button(label) status 
-      filterButton.find("input").change(function(){
-        $(this).parent().toggleClass("active");
-      });
-      
-    });
-  </script>
-          <script>
+ 	 <?php include 'includes/scripts.php'; ?>
+ 
+         <!--  <script>
             setTimeout(function() {
 
               $('#myModal').modal('show');
@@ -289,10 +182,7 @@
             }, 5000);
 
             $('#myModal').delay(4000).fadeOut(6000);
-          </script> -->
-          <!-- jQuery (Necessary for All JavaScript Plugins) -->
-   <script type="text/javascript" src="https://cdn.rawgit.com/desandro/masonry/master/dist/masonry.pkgd.min.js"></script>
-   <script type="text/javascript" src="https://cdn.rawgit.com/digistate/resouces/master/multipleFilterMasonry.js"></script>
+          </script> --> -->
 </body>
 
 </html>

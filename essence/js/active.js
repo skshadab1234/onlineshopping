@@ -115,10 +115,10 @@
 
     // :: Header Cart Active Code
     var profilebtn3 = $('#wishlist_pop');
-    var profileOverlay3 = $(".wishlist-overlay");
+    var profileOverlay3 = $(".wishlist-bg-overlay");
     var profileWrapper3 = $(".right-side-wishlist-area");
     var profilebtn4 = $("#wishlistrightSide");
-    var profileOverlayOn3 = "wishlist-overlay-on";
+    var profileOverlayOn3 = "wishlist-bg-overlay-on";
     var profileOn3 = "wishlist-on";
 
     profilebtn3.on('click', function () {

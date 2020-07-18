@@ -14,7 +14,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
- <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- Paypal Express -->
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     
@@ -23,6 +23,35 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="essence/css/core-style.css">
     <link rel="stylesheet" href="essence/style.css">
+
+    <!--===============================================================================================-->
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/animate/animate.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/slick/slick.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/vendor/lightbox2/css/lightbox.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/css/util.css">
+    <link rel="stylesheet" type="text/css" href="fashe-colorlib/css/main.css">
 
     <!-- Custom CSS -->
     <style type="text/css">
@@ -46,30 +75,7 @@
             background: #323232;
             color: white;
         }
-        #loading
-{
- text-align:center; 
- background: url('images/visa.gif') no-repeat center; 
- height: 150px;
-}
- .button-area .button {
-     display: inline-block;
-     padding: 10px;
-     margin: 30px 5px;
-     background-color: rgba(255, 255, 255, 0);
-     cursor: pointer;
-     transition: all 0.3s ease;
-     border: 2px solid rgba(241, 96, 34, 1);
-}
- .button-area .button:hover {
-     background-color: rgba(241, 96, 34, 1);
-}
- .button-area .button.active {
-     background-color: #f16022;
-}
- .button-area input[type=checkbox] {
-     display: none;
-}
+
  #mnsry_container {
      position: relative;
 }
@@ -146,11 +152,22 @@
 .autocomplete-active{
     background-color: #eee
 }
+    
         body {
             font-family: 'Alatsi', sans-serif;
-            background: #fff
+            background: #fff;
+             animation: fadeInAnimation ease 3s; 
+            animation-iteration-count: 1; 
+            animation-fill-mode: forwards; 
         }
-
+@keyframes fadeInAnimation { 
+            0% { 
+                opacity: 0; 
+            } 
+            100% { 
+                opacity: 1; 
+            } 
+        } 
         .buynowfixedfooter {
             position: fixed;
             left: 0;
@@ -1664,7 +1681,7 @@
 </head>
 
 <body>
-
+<!-- 
  
 <script>
     // Set the date we're counting down to
@@ -1698,7 +1715,7 @@
         }
     }, 1000);
 </script>
-
+ -->
 <!-- slider javascript  -->
 
 <!-- <script>

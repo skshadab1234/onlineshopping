@@ -1,274 +1,166 @@
+<?php include 'includes/session.php '; ?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Signup</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="icon" href="essence/img/core-img/favicon.ico">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="Form/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="Form/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/vendor/select2/select2.min.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="Form/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/css/util.css">
+  <link rel="stylesheet" type="text/css" href="Form/css/main.css">
+<!--===============================================================================================-->
 </head>
-<style type="text/css">
-  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
-  #login-page {
-    width: 460px;
-    padding: 1% 0 0;
-    background: #fff;
-    /* fallback for old browsers */
-    margin: 40px auto;
-    color: #c2c2c2;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 20px;
-  }
-
-  .form {
-    position: relative;
-    z-index: 1;
-    max-width: 480px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    color: #000;
-    text-align: center;
-  }
-
-  .form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: none;
-    border: none;
-    border-bottom: 1px solid #000;
-    color: #000;
-    padding: 20px 4px;
-    box-sizing: border-box;
-    font-size: 18px;
-  }
-
-  .form button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    margin-top: 50px;
-    width: 200px;
-    padding: 10px;
-    border: 1px solid #000;
-    color: #fff;
-    border-radius: 2px;
-    background: #000;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
-  }
-
-  .form .message {
-    color: #000;
-    font-size: 14px;
-  }
-
-  .form .message a {
-    color: steelblue;
-    text-decoration: none;
-  }
-
-  .form .register-form {
-    display: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .container:before,
-  .container:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-
-  .container .info {
-    margin: 50px auto;
-    text-align: center;
-  }
-
-  .container .info h1 {
-    margin: 0 0 15px;
-    padding: 0;
-    font-size: 36px;
-    font-weight: 300;
-    color: #1a1a1a;
-  }
-
-  .container .info span {
-    color: #4d4d4d;
-    font-size: 12px;
-  }
-
-  .container .info span a {
-    color: #000000;
-    text-decoration: none;
-  }
-
-  .container .info span .fa {
-    color: #EF3B3A;
-  }
-
-  body {
-    background: #3a7bd5;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3a6073, #3a7bd5);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    /* Full height */
-    height: 100%;
-    overflow: hidden;
-    /* Center and scale the image nicely */
-    font-family: "Roboto", sans-serif;
-  }
-
-  @media(max-width:500px) {
-    #login-page {
-      width: 100%;
-    }
-
-    body {
-      padding: 10px;
-    }
-
-  }
-
-  .buttonInside {
-    position: relative;
-    margin-bottom: 10px;
-  }
-
-  input {
-    height: 25px;
-    width: 100%;
-    padding-left: 10px;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-  }
-
-
-  #showPassword {
-    position: absolute;
-    right: 0px;
-    top: 4px;
-    border: none;
-    border-radius: 100%;
-    outline: none;
-    text-align: center;
-    font-weight: bold;
-    padding: 2px;
-  }
-
-  #showPassword1 {
-    position: absolute;
-    right: 0px;
-    top: 4px;
-    border: none;
-    border-radius: 100%;
-    outline: none;
-    text-align: center;
-    font-weight: bold;
-    padding: 2px;
-  }
-
-  #showPassword1:hover {
-    cursor: pointer;
-  }
-</style>
-<?php include 'includes/session.php'; ?>
-<?php
-if (isset($_SESSION['user'])) {
-  header('location: cart_view.php');
-}
-
-if (isset($_SESSION['captcha'])) {
-  $now = time();
-  if ($now >= $_SESSION['captcha']) {
-    unset($_SESSION['captcha']);
-  }
-}
-?>
-
-<?php include 'includes/header.php'; ?>
-
 <body>
-  <div class="register-box" id="login-page">
-    <h4 style="color: #000;font-size: 25px;padding-top: 50px;text-transform: uppercase;letter-spacing: 1px;font-weight:bolder;margin: auto;">Create Account</h4>
-    <?php
-    if (isset($_SESSION['error'])) {
-      echo " 
-          <div class='callout callout-danger text-center'>
-            <p>" . $_SESSION['error'] . "</p> 
-          </div>
-        ";
-      unset($_SESSION['error']);
-    }
 
-    if (isset($_SESSION['success'])) {
-      echo "
-          <div class='callout callout-success text-center'>
-            <p>" . $_SESSION['success'] . "</p> 
+  
+  <div class="limiter">
+    <div class="container-login100" style="background-image: url('Form/images/bg-01.jpg');">
+      <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+        <form class="login100-form validate-form flex-sb flex-w" action="register.php" method="POST">
+          <span class="login100-form-title p-b-53">
+            Sign up With
+          </span>
+
+          <a href="#" class="btn-face m-b-20">
+            <i class="fa fa-facebook-official"></i>
+            Facebook
+          </a>
+
+          <a href="#" class="btn-google m-b-20">
+            <img src="Form/images/icons/icon-google.png" alt="GOOGLE">
+            Google
+          </a>
+         
+         <div class="col-6">
+            <div class="p-t-31 p-b-9">
+            <span class="txt1">
+              Firstname
+            </span>
           </div>
-        ";
-      unset($_SESSION['success']);
-    }
-    ?>
-    <div class="form">
-      <form action="register.php" method="POST">
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" name="firstname" placeholder="Firstname" value="<?php echo (isset($_SESSION['firstname'])) ? $_SESSION['firstname'] : '' ?>" required>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" name="lastname" placeholder="Lastname" value="<?php echo (isset($_SESSION['lastname'])) ? $_SESSION['lastname'] : '' ?>" required>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control unicase-form-control text-input" onBlur="userAvailability()" name="email" placeholder="Email" id="email" value="<?php echo (isset($_SESSION['email'])) ? $_SESSION['email'] : '' ?>" required>
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+
+          <div class="wrap-input100 validate-input" data-validate = "Firstname is required">
+            <input class="input100" type="text" name="firstname" >
+            <span class="focus-input100"></span>
+          </div>
+         </div>
+          
+          <div class="col-6">
+          <div class="p-t-31 p-b-9">
+            <span class="txt1">
+              Lastname
+            </span>
+          <!--   <a href="#" class="txt2 bo1 m-l-5">
+              Forgot?
+            </a> -->
+          </div>
+          <div class="wrap-input100">
+            <input class="input100" type="text" name="lastname" >
+            <span class="focus-input100"></span>
+          </div>
+
+          </div>
+
+           <div class="col-12 col-lg-12">
+            <div class="p-t-31 p-b-9">
+            <span class="txt1">
+              Email
+            </span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate = "Email is required">
+            <input class="input100" type="email" name="email" onBlur="userAvailability()" id="email">
+            <span class="focus-input100"></span>
           <span id="user-availability-status1" style="font-size:12px;"></span>
-        </div>
 
-        <div class="buttonInside">
-          <input placeholder="Password" name="password" placeholder="Password" type="password" required>
-          <span id="showPassword"><i class="fa fa-eye" onclick="myFunction(this)" aria-hidden="true"></i></span>
-        </div>
-
-        <div class="buttonInside">
-          <input placeholder="Retype Password" name="repassword" placeholder="Retype Password" type="password" required>
-          <span id="showPassword1"><i class="fa fa-eye" onclick="myFunction(this)" aria-hidden="true"></i></span>
-        </div>
-
-        <div class="container text-center" style="padding:10px">
-          <?php
-          if (!isset($_SESSION['captcha'])) {
-            echo '
-                      <di class="form-group" style="width:100%;">
-                        <div class="g-recaptcha" data-sitekey="6LevO1IUAAAAAFX5PpmtEoCxwae-I8cCQrbhTfM6"></div>
-                      </di>
-                    ';
-          }
-          ?>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="submit" class="btn btn-success" name="signup"><i class="fa fa-pencil"></i> Sign Up</button>
           </div>
-        </div>
-      </form>
-      <br>
-      <p class="message">I have Registered <a href="login.php">Login Now</a></p>
-      <p class="message"> <a href="index.php"><i class="fa fa-home"></i> Skip Register</a></p>
+         </div>
+          
+          <div class="col-6">
+          <div class="p-t-31 p-b-9">
+            <span class="txt1">
+              Password
+            </span>
+          <!--   <a href="#" class="txt2 bo1 m-l-5">
+              Forgot?
+            </a> -->
+          </div>
+
+          <div class="wrap-input100">
+            <input class="input100" type="password" name="password" >
+            <span class="focus-input100"></span>
+          </div>
+
+          </div>
+
+           <div class="col-6">
+          <div class="p-t-31 p-b-9">
+            <span class="txt1">
+              Confirm Password
+            </span>
+          <!--   <a href="#" class="txt2 bo1 m-l-5">
+              Forgot?
+            </a> -->
+          </div>
+
+          <div class="wrap-input100">
+            <input class="input100" type="password" name="repassword" >
+            <span class="focus-input100"></span>
+          </div>
+
+          </div>
+          <div class="container-login100-form-btn m-t-17">
+            <button type="submit" class="login100-form-btn" name="signup">
+              Sign up
+            </button>
+          </div>
+   <?php
+      if (isset($_SESSION['error'])) {
+        echo "
+          <div class='container' style='text-align: center;padding: 10px;'>
+            <p  style='font-size: 17px;color:red'>" . $_SESSION['error'] . "</p> 
+          </div>
+        ";
+        unset($_SESSION['error']);
+      }
+      if (isset($_SESSION['success'])) {
+        echo "
+          <div class='container' style='text-align: center;padding: 10px;'>
+            <p style='font-size:16px;color: green;'>" . $_SESSION['success'] . "</p> 
+          </div>
+        ";
+        unset($_SESSION['success']);
+      }
+      ?>
+          <div class="w-full text-center p-t-55">
+            <span class="txt2">
+             Already a member?
+            </span>
+
+            <a href="login.php" class="txt2 bo1">
+              Login
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
-  <?php include 'includes/scripts.php' ?>
-  <script>
+<script>
     function userAvailability() {
       jQuery.ajax({
         url: "check_availability.php",
@@ -281,33 +173,27 @@ if (isset($_SESSION['captcha'])) {
       });
     }
   </script>
+  <?php include 'includes/scripts.php'; ?>
 
-  <script>
-    function myFunction(x) {
-      x.classList.toggle("fa-eye-slash");
-    }
-  </script>
-  <script>
-    // preview and hide password
-    $("#showPassword").click(function() {
-      var foo = $(this).prev().attr("type");
-      if (foo == "password") {
-        $(this).prev().attr("type", "text");
-      } else {
-        $(this).prev().attr("type", "password");
-      }
-    });
+  <div id="dropDownSelect1"></div>
+  
+<!--===============================================================================================-->
+  <script src="Form/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/bootstrap/js/popper.js"></script>
+  <script src="Form/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/daterangepicker/moment.min.js"></script>
+  <script src="Form/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/js/main.js"></script>
 
-    // preview and hide repassword
-    $("#showPassword1").click(function() {
-      var foo = $(this).prev().attr("type");
-      if (foo == "password") {
-        $(this).prev().attr("type", "text");
-      } else {
-        $(this).prev().attr("type", "password");
-      }
-    });
-  </script>
 </body>
-
 </html>
+  

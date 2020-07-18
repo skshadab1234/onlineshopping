@@ -5,250 +5,137 @@ if (isset($_SESSION['user'])) {
 }
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="icon" href="essence/img/core-img/favicon.ico">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="Form/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="Form/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/vendor/select2/select2.min.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="Form/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="Form/css/util.css">
+  <link rel="stylesheet" type="text/css" href="Form/css/main.css">
+<!--===============================================================================================-->
 </head>
-<?php include 'includes/header.php'; ?>
-
 <body>
 
-  <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  
+  <div class="limiter">
+    <div class="container-login100" style="background-image: url('Form/images/bg-01.jpg');">
+      <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+        <form class="login100-form validate-form flex-sb flex-w" action="verify.php" method="POST">
+          <span class="login100-form-title p-b-53">
+            Sign In With
+          </span>
 
-    body {
-      overflow: hidden
-    }
+          <a href="#" class="btn-face m-b-20">
+            <i class="fa fa-facebook-official"></i>
+            Facebook
+          </a>
 
-    .login-page {
-      width: 360px;
-      padding: 0 0;
-      margin: 10px auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 9px 18px rgba(0, 0, 0, 0.1),
-        0 1px 12px rgba(0, 0, 0, 0.2);
-    }
+          <a href="#" class="btn-google m-b-20">
+            <img src="Form/images/icons/icon-google.png" alt="GOOGLE">
+            Google
+          </a>
+         
+          <div class="p-t-31 p-b-9">
+            <span class="txt1">
+              Email
+            </span>
+          </div>
 
-    .login-form {
+          <div class="wrap-input100 validate-input" data-validate = "Email is required">
+            <input class="input100" type="email" name="email" >
+            <span class="focus-input100"></span>
+          </div>
+          
+          <div class="p-t-13 p-b-9">
+            <span class="txt1">
+              Password
+            </span>
 
-      padding: 10px;
-      margin: 10px auto;
+            <a href="#" class="txt2 bo1 m-l-5">
+              Forgot?
+            </a>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate = "Password is required">
+            <input class="input100" type="password" name="password" >
+            <span class="focus-input100"></span>
+          </div>
 
-    }
-
-    .form {
-      position: relative;
-      z-index: 1;
-      max-width: 360px;
-      margin: 0 auto 100px;
-      padding: 45px;
-      text-align: center;
-    }
-
-    .form input {
-      font-family: "Roboto", sans-serif;
-      outline: 0;
-      width: 100%;
-      background: none;
-      border-bottom: 1px solid #000;
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      color: #000;
-      margin: 0 0 15px;
-      padding: 15px;
-      box-sizing: border-box;
-      font-size: 14px;
-    }
-
-    .form button {
-      font-family: "Roboto", sans-serif;
-      text-transform: uppercase;
-      outline: 0;
-      background: none;
-      border: 1px solid red;
-      margin: 20px auto;
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #000;
-      background: #000;
-      color: #fff;
-      font-size: 14px;
-      -webkit-transition: all 0.3 ease;
-      transition: all 0.3 ease;
-      cursor: pointer;
-      line-height: 40px;
-    }
-
-    .form .message {
-      margin: 15px 0 0;
-      color: #000;
-      font-weight: bolder;
-      font-size: 14px;
-    }
-
-    .form .message a {
-      color: steelblue;
-      text-decoration: none;
-    }
-
-    .form .register-form {
-      display: none;
-    }
-
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    .container:before,
-    .container:after {
-      content: "";
-      display: block;
-      clear: both;
-    }
-
-    .container .info {
-      margin: 50px auto;
-      text-align: center;
-    }
-
-    .container .info h1 {
-      margin: 0 0 15px;
-      padding: 0;
-      font-size: 36px;
-      font-weight: 300;
-      color: #1a1a1a;
-    }
-
-    .container .info span {
-      color: #4d4d4d;
-      font-size: 12px;
-    }
-
-    .container .info span a {
-      color: #000000;
-      text-decoration: none;
-    }
-
-    .container .info span .fa {
-      color: #EF3B3A;
-    }
-
-    body {
-      background: #3a7bd5;
-      /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);
-      /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #3a6073, #3a7bd5);
-      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-      /* Full height */
-      height: 80%;
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-size: cover;
-      font-family: "Roboto", sans-serif;
-    }
-
-    @media(max-width:500px) {
-      .login-page {
-        width: 100%;
-      }
-    }
-
-
-    .buttonInside {
-      position: relative;
-      margin-bottom: 10px;
-    }
-
-    input {
-      height: 25px;
-      width: 100%;
-      padding-left: 10px;
-      border-radius: 4px;
-      border: none;
-      outline: none;
-    }
-
-
-    #showPassword2 {
-      position: absolute;
-      right: 0px;
-      top: 4px;
-      border: none;
-      border-radius: 100%;
-      outline: none;
-      text-align: center;
-      font-weight: bold;
-      padding: 2px;
-    }
-  </style>
-
-  <body>
-
-    <div class="login-box">
-      <?php
+          <div class="container-login100-form-btn m-t-17">
+            <button type="submit" class="login100-form-btn" name="login">
+              Sign In
+            </button>
+          </div>
+   <?php
       if (isset($_SESSION['error'])) {
         echo "
-          <div class='callout callout-danger text-center'>
-            <p>" . $_SESSION['error'] . "</p> 
+          <div class='container' style='text-align: center;padding: 10px;'>
+            <p  style='font-size: 17px;color:red'>" . $_SESSION['error'] . "</p> 
           </div>
         ";
         unset($_SESSION['error']);
       }
       if (isset($_SESSION['success'])) {
         echo "
-          <div class='callout callout-success text-center'>
-            <p>" . $_SESSION['success'] . "</p> 
+          <div class='container' style='text-align: center;padding: 10px;'>
+            <p style='font-size:16px;color: red;'>" . $_SESSION['success'] . "</p> 
           </div>
         ";
         unset($_SESSION['success']);
       }
       ?>
-      <div class="login-page">
-        <div class="form">
-          <h4 style="color: #000;font-size: 30px;padding: 7px 10px;text-transform: uppercase;letter-spacing: 2px;font-weight: 700;margin: 0px 10px;">Login</h4>
-          <form class="login-form" action="verify.php" method="POST">
-            <div class="form-group has-feedback" data-validate="Username is required">
-              <input type="email" class="form-control" name="email" placeholder="Email *" required>
-              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="buttonInside">
-              <input placeholder="Enter Password" name="password" placeholder="Password" type="password" required>
-              <span id="showPassword2"><i class="fa fa-eye" onclick="myFunction(this)" aria-hidden="true"></i></span>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <button type="submit" name="login"><i class="fa fa-sign-in"></i> Sign In</button>
-              </div>
-            </div>
-            <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
-            <p class="message"><a href="password_forgot.php">Forgot password</a></p>
-            <p class="message"><a href="index.php"> SKIP Login</a></p>
-          </form>
-        </div>
+          <div class="w-full text-center p-t-55">
+            <span class="txt2">
+              Not a member?
+            </span>
+
+            <a href="signup.php" class="txt2 bo1">
+              Sign up now
+            </a>
+          </div>
+        </form>
       </div>
-      <?php include 'includes/scripts.php' ?>
+    </div>
+  </div>
+  
 
-      <script>
-        function myFunction(x) {
-          x.classList.toggle("fa-eye-slash");
-        }
-      </script>
+  <div id="dropDownSelect1"></div>
+  
+<!--===============================================================================================-->
+  <script src="Form/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/bootstrap/js/popper.js"></script>
+  <script src="Form/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/daterangepicker/moment.min.js"></script>
+  <script src="Form/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script src="Form/js/main.js"></script>
 
-      <script>
-        // preview and hide password
-        $("#showPassword2").click(function() {
-          var foo1 = $(this).prev().attr("type");
-          if (foo1 == "password") {
-            $(this).prev().attr("type", "text");
-          } else {
-            $(this).prev().attr("type", "password");
-          }
-        });
-      </script>
-  </body>
+</body>
+</html>
+  

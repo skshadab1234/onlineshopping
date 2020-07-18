@@ -20,6 +20,7 @@
       <li><a href="deliveryboy.php"><i class="fa fa-users"></i> <span>Delivery Boy</span></a></li>
       <li class="header">MANAGE</li>
       <li><a href="slider.php"><i class="fa fa-users"></i> <span>Manage Slider</span></a></li>
+            <li><a href="newsletter.php"><i class="fa fa-users"></i> <span>Newsletter</span></a></li>
       <li><a href="users.php"><i class="fa fa-users"></i> <span>Customers</span></a></li>
       <li><a href="warehouse.php"><i class="fa fa-home"></i> <span>Warehouse</span></a></li>
       <li><a href="category.php"><i class="fa fa-list-alt"></i> <span>Category </span></a></li>

@@ -22,6 +22,7 @@
 
       <!-- Main content -->
       <section class="content">
+        <span id="success"></span>
         <?php
         if (isset($_SESSION['error'])) {
           echo "
@@ -45,13 +46,13 @@
         }
         ?>
         <div class="row">
-          <div class="col-xs-12 col-lg-6">
+          <div class="col-xs-12 col-lg-12">
             <div class="box table-responsive text-nowrap">
               <div class="box-header">
                 <h4><i class="fa fa-check-circle" style="color: green;font-size:20px"></i><b> VERIFIED<b></h4>
               </div>
               <div class="box-body">
-                <table id="example1" class="table table-bordered">
+                <table class="table table-bordered">
                   <thead>
                     <th>Photo</th>
                     <th>Email</th>
@@ -60,50 +61,15 @@
                     <th>Date Added</th>
                     <th>Tools</th>
                   </thead>
-                  <tbody>
-                    <?php
-                    $conn = $pdo->open();
-
-                    try {
-                      $stmt = $conn->prepare("SELECT * FROM users where type=0");
-                      $stmt->execute();
-                      foreach ($stmt as $row) {
-                        $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
-                        $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
-                        $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="' . $row['id'] . '"><i class="fa fa-check-square-o"></i></a></span>' : '';
-                        echo "
-                          <tr>
-                            <td>
-                              <img src='" . $image . "' height='30px' class='img-circle' width='30px'>
-                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i></a></span>
-                            </td>
-                            <td>" . $row['email'] . "</td>
-                            <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
-                            <td>
-                              " . $status . "
-                              " . $active . "
-                            </td>
-                            <td>" . date('M d, Y', strtotime($row['created_on'])) . "</td>
-                            <td>
-                              <a href='cart.php?user=" . $row['id'] . "' style='color:white' ><button class='btn btn-success btn-flat btn-sm' id='quickview'><i class='fa fa-search'></i> Cart</button></a>
-                              <button class='btn btn-success btn-sm edit btn-flat'  id='quickview' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
-                            </td>
-                          </tr>
-                        ";
-                      }
-                    } catch (PDOException $e) {
-                      echo $e->getMessage();
-                    }
-
-                    $pdo->close();
-                    ?>
+                  <tbody id="table">
+                    
+                      
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-          <div class="col-xs-12 col-lg-6">
+  <!--         <div class="col-xs-12 col-lg-6">
             <div class="box table-responsive text-nowrap">
               <div class="box-header">
                 <h4><i class="fa fa-times-circle" style="color: red;font-size:20px"></i><b> NOT VERIFIED<b></h4>
@@ -152,17 +118,17 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
       </section>
 
     </div>
     <?php include 'includes/footer.php'; ?>
     <?php include 'includes/users_modal.php'; ?>
+  <?php include 'includes/scripts.php'; ?>
 
   </div>
   <!-- ./wrapper -->
   <a href=" #addnew" id="a-plus" data-toggle="modal"><i class="fa fa-plus"></i></a>
-  <?php include 'includes/scripts.php'; ?>
   <script>
     $(function() {
 
@@ -215,6 +181,52 @@
       });
     }
   </script>
+  <script>
+   view_user();
+
+    function view_user(){
+  $.ajax({
+    url: "View_user.php",
+    type: "POST",
+    dataType: 'json',
+    success: function(data){
+      $('#table').html(data.mylist); 
+    }
+  });
+  }
+</script>
+<script>
+  $('#butsave').on('click', function() {
+    var email_shadab = $('#email_shadab').val();
+    var password_shadab = $('#password_shadab').val();
+    var firstname_shadab = $('#firstname_shadab').val();
+    var lastname_shadab = $('#lastname_shadab').val();
+    var address_shadab = $('#address_shadab').val();
+    var contact_shadab = $('#contact_shadab').val();
+    if(email_shadab!="" && password_shadab!="" && firstname_shadab!="" && lastname_shadab!=""){
+      $.ajax({
+        url: "users_add.php",
+        type: "POST",
+        data: {
+          email_shadab: email_shadab,
+          password_shadab: password_shadab,
+          firstname_shadab: firstname_shadab,
+          lastname_shadab: lastname_shadab,
+          address_shadab: address_shadab,
+          contact_shadab: contact_shadab        
+        },
+        cache: false,
+        success: function(dataResult){
+            view_user();          
+        }
+      });
+    }
+    else{
+      alert('Please fill all the field !');
+    }
+  });
+</script>
+
 </body>
 
 </html>

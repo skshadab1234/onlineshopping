@@ -1,4 +1,4 @@
-<?php include 'includes/session.php'; ?>
+	<?php include 'includes/session.php'; ?>
 <?php
 $link = mysqli_connect("localhost", "root", "");
 mysqli_select_db($link, "ecomm");
@@ -31,17 +31,6 @@ mysqli_select_db($link, "ecomm");
 	<div class="desktop">
 		<?php include 'includes/navbar.php' ?>
 	</div>
-	<!-- mobile view -->
-	<div class="container-fluid1" id="mobileview" style="padding:10px">
-		<img src="images/arrow2.png" onclick="history.back(-1)" alt="">
-
-		<div id="brand" style="font-size: 18px">
-			SHOPPING BAG
-		</div>
-		<div class="rightsection pull-right" style="top:0">
-			<h5 style="padding:10px">STEP 1/3</h5>
-		</div>
-	</div>
 
 	<div class="wrapper">
 
@@ -49,7 +38,7 @@ mysqli_select_db($link, "ecomm");
 
 			<div class="container" style="padding:0">
 
-				<div class="content" style="margin-top: 40px">
+				<div class="content" style="margin-top: 80px">
 
 					<div class="row">
 						<!-- Main content -->
@@ -81,71 +70,103 @@ mysqli_select_db($link, "ecomm");
 							</div>
 						</div>
 					</div>
-					<div>
-						<?php
-						$conn = $pdo->open();
-							echo "<h5><b>You may also like:</b></h5>";
-							try {
-								$inc = 4;
-								$stmt = $conn->prepare("SELECT * FROM products LEFT JOIN brands on brands.id = products.brand_id ORDER BY RAND() Limit 12");
-								$stmt->execute();
-								foreach ($stmt as $row) {
-									$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
-									$inc = ($inc == 4) ? 1 : $inc + 1;
-									if ($inc == 4) echo "<div class='row' style='margin:0;padding:0'>";
-						?>
-									<div id="d-like" class=" col-md-4 col-lg-3">
-										<div class='swiper-slide' style='width:250px;height:250px;;margin-bottom:100px;'>
-											<?php echo "<a href='product.php?product=" . $row['slug'] . "'><img src= $image style='width:250px;height:250px;object-fit:contain'></a> "; ?>
-											<h5><b><?= $row['brand_name'] ?></b></h5>
-											<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'><?= '<a href=product.php?product=' . $row['slug'] . ' style=\'color:#000\'>' . $row['name'] . ' ' ?></a></h5>
-											<h5 style="color: orange">₹<?= number_format($row['price']) ?> <small><s> ₹<?= $row['old_price'] ?></s></small></h5>
-										</div>
-									</div>
-							<?php echo "";
-									if ($inc == 6) echo "</div>";
-								}
-								if ($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
-								if ($inc == 4) echo "<div class='col-sm-3'></div></div>";
-							} catch (PDOException $e) {
-								echo "There is some problem in connection: " . $e->getMessage();
-							}
-
-							$pdo->close();
-							?>
-							<div class="swiper-container swiper1" id="slider-m-view" style="padding-top: 10px;background:#fff;">
-								<div class="swiper-wrapper">
-								<?php
-								$conn = $pdo->open();
-								try {
-									$stmt = $conn->prepare("SELECT * FROM products LEFT JOIN brands on brands.id = products.brand_id ORDER BY RAND() Limit 12");
-									$stmt->execute();
-									foreach ($stmt as $row) {
-										$image = (!empty($row['photo'])) ? 'images/allproduct/' . $row['photo'] : 'images/noimage.jpg';
-										echo "
-					<div class='swiper-slide' style='width:250px;height:100%;overflow:hidden;'>
-					<a href='product.php?product=" . $row['slug'] . "' ><img src= $image style='width:200px;height:250px;object-fit:contain;overflow:hidden'></a>
-				<div class='container-fluid' style='color:#000'>
-				<h5><b>" . $row['brand_name'] . "</b></h5>
-					<h5 style='overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;'>" . $row['name'] . "</h5>
-					<h5 style='color: orange'>₹ " . number_format($row['price']) . " <small><s> ₹ " . $row['old_price'] . " </s></small></h5>
-				</div>
-					</div>
-					";
-									}
-								} catch (PDOException $e) {
-									echo "There is some problem in connection: " . $e->getMessage();
-							}
-
-							$pdo->close();
-								?>
-								</div>
-							</div>
-					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+
+<!-- ##### New Arrivals Area Start ##### -->
+    <section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Popular Products</h2>
+                        <?php
+      if (isset($_SESSION['error'])) {
+        echo "
+            <p>" . $_SESSION['error'] . "</p> 
+        ";
+        unset($_SESSION['error']);
+      }
+      if (isset($_SESSION['success'])) {
+        echo "
+            <p>" . $_SESSION['success'] . "</p> 
+        ";
+        unset($_SESSION['success']);
+      }
+      ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+
+        <div class="containe-fluidr">
+            <div class="row">
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+<?php
+          $stmt1 = $conn->prepare("SELECT *, products.id AS prodid FROM products LEFT JOIN brands ON brands.id = products.brand_id LEFT JOIN wishlist ON products.id=wishlist.product_id");
+          $stmt1->execute();
+            foreach ($stmt1 as $row1) {
+            $image = (!empty($row1['photo'])) ? 'images/allproduct/' . $row1['photo'] : 'images/noimage.jpg';
+            $image2 = (!empty($row1['photo2'])) ? 'images/allproduct/' . $row1['photo2'] : 'images/noimage.jpg';
+            $active='';
+          $msg= '<div class="product-badge offer-badge">
+                      <span>-'.$row1['discount'].'%</span>
+                    </div>';
+          if (strtotime($row1['date_view']) > (time() - (60*60*24*2))) {
+            $msg = '<div class="product-badge new-badge">
+                      <span>New</span>
+                    </div>';
+          }
+           ?>
+
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                                  <img src="<?php echo $image ?>" >
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="<?php echo $image2 ?>" alt="">
+                              </a>
+                                  <?= $msg ?>
+                                <!-- Favourite -->
+                                        <div  class="product-favourite">
+                                          <input type="hidden"  value="<?php echo $row1['prodid']; ?>" id="favoriate" name="id">
+                                              <button onclick="add_fav()">
+                                                <span class="favme fa fa-heart <?php echo $active ?>"></span>
+                                              </button>
+                                        </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span><?php echo $row1['brand_name'] ?></span>
+                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                                    <h6><?php echo $row1['name'] ?></h6>
+                                </a>
+                                <p class="product-price">&#8377; <?php echo $row1['price'] ?></p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                               <!--      <div class="add-to-cart-btn">
+                                        <button data-toggle="modal" data-ta rget="#<?php echo $row1['id'] ?>1" class="btn essence-btn">Quick view</button>
+
+                                    </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                      <?php } ?>  
+                      </div>
+                    </div>
+                  </div>
+            </div>
+</section>
+
+
 	<?php include 'includes/pay_foot.php' ?>
 
 	<div class="buynowfixedfooter" style="padding:10px;height:70px;">

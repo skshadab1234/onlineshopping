@@ -14,6 +14,20 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- CK Editor -->
 <script src="bower_components/ckeditor/ckeditor.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/bootstrap/js/popper.js"></script>
+	<script type="text/javascript" src="fashe-colorlib/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/select2/select2.min.js"></script>
+	
+	<script type="text/javascript" src="fashe-colorlib/vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="fashe-colorlib/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="fashe-colorlib/vendor/sweetalert/sweetalert.min.js"></script>
 
 <script>
 	$(function() {
@@ -220,6 +234,7 @@
 				success: function(response) {
 					$('#tbody').html(response);
 					getCart();
+					getovercart();
 
 				}
 			});
@@ -234,6 +249,7 @@
 				success: function(response) {
 					$('#tbody1').html(response);
 					getCart();
+							getovercart();
 				}
 			});
 		}
@@ -245,8 +261,8 @@
 				dataType: 'json',
 				success: function(response) {
 					$('#overview').html(response);
-					getCart();
-					getDetails();
+							getDetails();
+							getCart();
 				}
 			});
 		}
@@ -262,4 +278,71 @@
 				}
 			});
 		}
+
+
+		function add_new(){
+			var emailid = $("#email").val();
+
+			if (emailid == '') {
+				document.getElementById("message").innerHTML = "Please Fill The Form";
+
+			}
+			else{
+			$.ajax({
+				url: 'newsletter.php',
+				type: 'POST',
+				data: { emailid:emailid },
+				success: function(response){
+					$('#message').html(response);
+					$("#email").val('');
+				}
+			});
+		}
+	}
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		getFav();
+	});
+
+	function add_fav(){
+      var id = $("#favoriate").val();
+      $.ajax({
+        url: "wishlist_add.php",
+        type: "post",
+        data: {id:id},
+        success: function(data,status){
+          getFav();
+        }
+      });
+    }
+
+ 
+
+
+function getFav() {
+		$.ajax({
+			type: 'POST',
+			url: 'wishlist_fetch.php',
+			dataType: 'json',
+			success: function(response) {
+				$('#wishlist_menu').html(response.list);
+				$('.wishlist_count').html(response.count);
+
+			}
+		});
+	}
+
+	  function remove_fav(){
+      var id = $("#rem_favoriate").val();
+        $.ajax({
+        url: "wishlist_delete.php",
+        type: "post",
+        data: {id:id},
+        success: function(data,status){
+          getFav();
+        }
+      });
+      
+    }
 </script>

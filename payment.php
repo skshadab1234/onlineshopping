@@ -700,7 +700,7 @@ form button:focus:after {
 </div>
 </div>
 <div class=\"col-sm-12\">
-<button type=\"submit\" name=\"submit\"  style=\"align-items:center;margin-top:40px\"  class=\"btn-success\">Paynow  ₹ " . number_format($grand_t, 2) . "</button>
+<button type=\"submit\" name=\"submit\">Paynow  ₹ " . number_format($grand_t, 2) . "</button>
 </div>
 </div>
 ";

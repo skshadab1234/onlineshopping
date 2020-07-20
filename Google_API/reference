@@ -1,0 +1,36 @@
+
+https://console.developers.google.com
+
+Google+ API
+
+In this tutorial you will learn how to:
+
+     1) Design login page using Bootstrap Design
+     2) add "Login With Google" button to the login page
+     3)  create Client ID and Client Secret Code
+     4) get permission for Google Account
+     5) generate Google OAuth 2.0 Code
+     6) generate Access Token
+     7) display Google Account Data inside your website
+
+​ This tutorial will cover everything that you need to understand in order to add Google Login button to your login page. 
+
+https://github.com/googleapis/google-api-php-client/releases
+
+
+
+Errors : 
+
+
+Possiblity of error comes : 
+	
+
+	Error Will be like Fatal error: Uncaught exception 'cURL_Exception' with message 'cURL resource: Resource id #10; cURL error: SSL certificate problem: unable to get local issuer certificate (cURL error code 60). See http://curl.haxx.se/libcurl/c/libcurl... for an explanation of error codes.' in Here is the Link of root certificate bundle: https://curl.haxx.se/ca/cacert.pem Copy this certificate bundle on your disk. And use this on php.ini curl.cainfo = "path_to_cert\cacert.pem" 
+	
+	
+C:\wamp64\bin\php\php5.6.16\extras\ssl\cacert.pem
+
+
+http://localhost/GoogleLogin/g-callback.php 
+
+	

@@ -47,9 +47,9 @@
 							<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
 								</p>
 							<span style=\"font-weight:bold;color:#000;\">₹ " . number_format($subtotal, 2) . "</span>
 							<span style=\"font-size:12px;color:grey\"><s>₹ " . number_format($old_p, 2) . "</s></span>

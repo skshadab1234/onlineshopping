@@ -14,7 +14,7 @@
         <img src="images/upi.png" style="width:60px;height:40px" alt="">
 
         <h5 style="position: relative;top:10px" class="pull-right">
-            Need Help? <a href="knowus/help.php">Contact us</a> 
+            Need Help? <a href="knowus/help">Contact us</a> 
         </h5>
     </div>
 

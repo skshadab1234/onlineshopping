@@ -1,6 +1,5 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
-
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
@@ -50,6 +49,7 @@
             <div class="box table-responsive text-nowrap">
               <div class="box-header">
                 <h4><i class="fa fa-check-circle" style="color: green;font-size:20px"></i><b> VERIFIED<b></h4>
+                  <span id="message"></span>
               </div>
               <div class="box-body">
                 <table class="table table-bordered">
@@ -90,7 +90,7 @@
                       $stmt = $conn->prepare("SELECT * FROM users WHERE status=:status");
                       $stmt->execute(['status' => 0]);
                       foreach ($stmt as $row) {
-                        $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/profile.jpg';
+                        $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/noimage.jpg';
                         $status = ($row['status']) ? '<span class="label label-success">active</span>' : '<span class="label label-danger">not verified</span>';
                         $active = (!$row['status']) ? '<span class="pull-right"><a href="#activate" class="status" data-toggle="modal" data-id="' . $row['id'] . '"><i class="fa fa-check-square-o"></i></a></span>' : '';
                         echo "
@@ -194,6 +194,10 @@
     }
   });
   }
+
+  setInterval(function() {
+    view_user();
+  }, 2000);
 </script>
 <script>
   $('#butsave').on('click', function() {
@@ -226,7 +230,6 @@
     }
   });
 </script>
-
 </body>
 
 </html>

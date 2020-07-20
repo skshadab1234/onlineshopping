@@ -19,4 +19,4 @@
 	
 
 	$pdo->close();
-header("Location: index.php");
+header("Location: index");

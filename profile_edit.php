@@ -47,4 +47,4 @@ if (isset($_POST['edit'])) {
 
 $pdo->close();
 
-header('location: profile.php');
+header('location: profile');

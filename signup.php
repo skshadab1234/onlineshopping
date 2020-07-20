@@ -33,7 +33,7 @@
   <div class="limiter">
     <div class="container-login100" style="background-image: url('Form/images/bg-01.jpg');">
       <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-        <form class="login100-form validate-form flex-sb flex-w" action="register.php" method="POST">
+        <form class="login100-form validate-form flex-sb flex-w" action="register" method="POST">
           <span class="login100-form-title p-b-53">
             Sign up With
           </span>
@@ -152,7 +152,7 @@
              Already a member?
             </span>
 
-            <a href="login.php" class="txt2 bo1">
+            <a href="login" class="txt2 bo1">
               Login
             </a>
           </div>

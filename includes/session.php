@@ -3,11 +3,11 @@
 	session_start();
 
 	if(isset($_SESSION['deliveryboy'])){
-		header('location: deliveryboy/home.php');
+		header('location: deliveryboy/home');
 	}
 
 	if(isset($_SESSION['admin'])){
-		header('location: admin/home.php');
+		header('location: admin/home');
 	}
 
 

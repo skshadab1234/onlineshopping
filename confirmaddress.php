@@ -23,4 +23,4 @@ try {
 	echo "There is some problem in connection: " . $e->getMessage();
 }
 
-header("location:payment.php");
+header("location:payment");

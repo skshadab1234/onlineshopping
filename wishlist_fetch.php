@@ -13,7 +13,7 @@
 				$productname = (strlen($row['prodname']) > 3) ? substr_replace($row['prodname'], '...', 18) : $row['prodname'];
 				$output['list'] .= "
 							<div class='maindiv'>
-								<a href='product.php?product=" . $row['slug'] . "' >
+								<a href='product?product=" . $row['slug'] . "' >
 								<div>
 								<img src='" . $image . "' alt='User Image'>
 								</div>

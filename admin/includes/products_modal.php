@@ -61,8 +61,10 @@
             <label for="color" class="col-sm-1 control-label">Color</label>
 
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="color" name="color">
-            </div>
+				<select class="form-control select2" style="width: 100%;" id="color" name="color" required>
+                <option value="" selected>- Select -</option>
+              </select>    
+             </div>
             <label for="brand" class="col-sm-1 control-label">Brand</label>
 
             <div class="col-sm-5">

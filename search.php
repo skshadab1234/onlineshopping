@@ -1,7 +1,7 @@
 <?php include 'includes/session.php'; ?>
 <?php
 if (!isset($_POST['keyword'])) {
-  header('location: index.php');
+  header('location: index');
 }
 ?>
 <?php include 'includes/header.php'; ?>
@@ -45,7 +45,7 @@ if (!isset($_POST['keyword'])) {
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <a href="product.php?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
+                                        <a href="product?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
                                         <!-- Hover Thumb -->
                                         <img class="hover-img" src="<?= $image2 ?>" alt="">
                                       </a>
@@ -61,7 +61,7 @@ if (!isset($_POST['keyword'])) {
 
                                     <!-- Product Description -->
                                     <div class="product-description">
-                                        <a href="product.php?product=<?= $row['slug']  ?> ">
+                                        <a href="product?product=<?= $row['slug']  ?> ">
                                             <h6><?= $row['name'] ?></h6>
                                         </a>
                                         <p class="product-price"><span class="old-price">&#8377; <?= $row['old_price'] ?></span> &#8377; <?= $row['price'] ?></p>

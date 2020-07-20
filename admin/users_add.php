@@ -3,7 +3,7 @@
 						$conn = $pdo->open();
 
 						$output = array('error' => false);
-							$email_shadab=$_POST['email_shadab'];
+						$email_shadab=$_POST['email_shadab'];
 						$password_shadab=$_POST['password_shadab'];
 						$firstname_shadab=$_POST['firstname_shadab'];
 						$lastname_shadab=$_POST['lastname_shadab'];
@@ -40,7 +40,6 @@
 						} else {
 							$output['message'] = 'Fill up user form first';
 						}
-
 						$pdo->close();
 						echo json_encode($output);
 						?>

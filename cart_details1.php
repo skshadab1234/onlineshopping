@@ -39,9 +39,9 @@ if (isset($_SESSION['user'])) {
 							<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product?product=" . $row['slug'] . "'>" . $row['brand'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
 								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($subtotal * 71.50, 2) . " /- Only</span>
 								</p>
 							</div>
@@ -70,7 +70,7 @@ if (isset($_SESSION['user'])) {
 		if ($total == 0) {
 			$output .= "	
 				<div style='margin: 50% auto;'>
-				<a href='index.php'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
+				<a href='index'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
 			</div>";
 		}
 
@@ -99,9 +99,9 @@ if (isset($_SESSION['user'])) {
 							<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product?product=" . $product['slug'] . "'>" . $product['brand'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
 								<h5>Quantity : " . $row['quantity'] . "</h5>
 								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($product['price'] * 71.50, 2) . " /- Only</span>
 								</p>

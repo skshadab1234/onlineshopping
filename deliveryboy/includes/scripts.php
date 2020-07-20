@@ -72,3 +72,17 @@
     CKEDITOR.replace('editor2')
   });
 </script>
+<script type="text/javascript">
+  function updatedeliverystatus(){
+    $.ajax({
+      url: "update_delivery_online.php",
+      success: function(){
+
+      }
+    });
+  }
+
+setInterval(function() {
+    updatedeliverystatus();
+  }, 5000);
+</script>

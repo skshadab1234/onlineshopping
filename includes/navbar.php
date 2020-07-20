@@ -74,7 +74,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                <a class="nav-brand" href="index.php"><img src="essence/img/core-img/logo.png" alt=""></a>
+                <a class="nav-brand" href="index"><img src="essence/img/core-img/logo.png" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -96,7 +96,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
             <div class="classynav" style="display:-webkit-inline-box"> 
              <ul>
                             <li>
-            <a href="category.php?category=<?= $row3['cat_slug']?>">
+            <a href="category?category=<?= $row3['cat_slug']?>">
           <img src="<?= $image ?>"  width="30px" height="30px">
           <span style="font-size:12px"><?= $row3['cat_slug'] ?></span>
             </a><?php } ?>
@@ -111,7 +111,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row7['sub_catslug']) ?>"><?= $row7['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row7['sub_catslug']) ?>"><?= $row7['name']." ".$msg ?></a></li>
                                    <?php } ?>
                         </ul>
 
@@ -124,7 +124,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row8['sub_catslug']) ?>"><?= $row8['name']." ".$msg  ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row8['sub_catslug']) ?>"><?= $row8['name']." ".$msg  ?></a></li>
                                    <?php } ?>
 
                                     <li class="title">Eyewear</li>
@@ -135,7 +135,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row9['sub_catslug']) ?>"><?= $row9['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row9['sub_catslug']) ?>"><?= $row9['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                         </ul>
@@ -150,7 +150,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row11['sub_catslug']) ?>"><?= $row11['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row11['sub_catslug']) ?>"><?= $row11['name']." ".$msg ?></a></li>
                                    <?php } ?>   
 
                                    <li class="title">Watches</li>
@@ -161,7 +161,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row10['sub_catslug']) ?>"><?= $row10['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row10['sub_catslug']) ?>"><?= $row10['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                                        <li class="title">HANDBAGS & CLUTCHES</li>
@@ -172,7 +172,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row12['sub_catslug']) ?>"><?= $row12['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row12['sub_catslug']) ?>"><?= $row12['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
 
@@ -188,7 +188,7 @@ $image = (!empty($row3['photo'])) ? 'images/category/' . $row3['photo'] : 'image
 
                                  ?>
                                     <div class="single-mega cn-col-5 banner-image">
-                                        <a href="subcategory.php?styles=<?= str_replace("&", "and", $row13['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <a href="subcategory?styles=<?= str_replace("&", "and", $row13['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
                                         <div class="container">
                                                 <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row13['name'] ?></h5>
                                                 <h5 class="title text-center">Explore Store</h5>
@@ -210,7 +210,7 @@ foreach ($stmt4 as $row4) {
             <div class="classynav" style="display:-webkit-inline-box"> 
              <ul>
                             <li>
-            <a href="category.php?category=<?= $row4['cat_slug']?>">
+            <a href="category?category=<?= $row4['cat_slug']?>">
           <img src="<?= $image ?>"  width="30px" height="30px">
           <span style="font-size:12px"><?= $row4['cat_slug'] ?></span>
             </a><?php } ?>
@@ -225,7 +225,7 @@ foreach ($stmt4 as $row4) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row14['sub_catslug']) ?>"><?= $row14['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row14['sub_catslug']) ?>"><?= $row14['name']." ".$msg ?></a></li>
                                    <?php } ?>
                         </ul>
 
@@ -238,7 +238,7 @@ foreach ($stmt4 as $row4) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row15['sub_catslug']) ?>"><?= $row15['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row15['sub_catslug']) ?>"><?= $row15['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                                     <li class="title">Eyewear</li>
@@ -249,7 +249,7 @@ foreach ($stmt4 as $row4) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row16['sub_catslug']) ?>"><?= $row16['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row16['sub_catslug']) ?>"><?= $row16['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                         </ul>
@@ -264,7 +264,7 @@ foreach ($stmt4 as $row4) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row17['sub_catslug']) ?>"><?= $row17['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row17['sub_catslug']) ?>"><?= $row17['name']." ".$msg ?></a></li>
                                    <?php } ?>   
 
                                    <li class="title">Watches</li>
@@ -275,10 +275,10 @@ foreach ($stmt4 as $row4) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row18['sub_catslug']) ?>"><?= $row18['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row18['sub_catslug']) ?>"><?= $row18['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
-                                <li><a href="subcategory.php?styles=Wallets">Wallets</a></li>
+                                <li><a href="subcategory?styles=Wallets">Wallets</a></li>
                                
                         </ul>
                                     <?php 
@@ -291,7 +291,7 @@ foreach ($stmt4 as $row4) {
 
                                  ?>
                                     <div class="single-mega cn-col-5 banner-image">
-                                        <a href="subcategory.php?styles=<?= str_replace("&", "and", $row19['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <a href="subcategory?styles=<?= str_replace("&", "and", $row19['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
                                         <div class="container">
                                                 <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row19['name'] ?></h5>
                                                 <h5 class="title text-center">Explore Store</h5>
@@ -311,7 +311,7 @@ foreach ($stmt5 as $row5) {
             <div class="classynav" style="display:-webkit-inline-box"> 
              <ul>
                             <li>
-            <a href="category.php?category=<?= $row5['cat_slug']?>">
+            <a href="category?category=<?= $row5['cat_slug']?>">
           <img src="<?= $image ?>"  width="30px" height="30px">
           <span style="font-size:12px"><?= $row5['cat_slug'] ?></span>
             </a><?php } ?>
@@ -327,7 +327,7 @@ foreach ($stmt5 as $row5) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row20['sub_catslug']) ?>"><?= $row20['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row20['sub_catslug']) ?>"><?= $row20['name']." ".$msg ?></a></li>
                                    <?php } ?>
                         </ul>
 
@@ -340,7 +340,7 @@ foreach ($stmt5 as $row5) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row21['sub_catslug']) ?>"><?= $row21['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row21['sub_catslug']) ?>"><?= $row21['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                         </ul>
@@ -355,7 +355,7 @@ foreach ($stmt5 as $row5) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row22['sub_catslug']) ?>"><?= $row22['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row22['sub_catslug']) ?>"><?= $row22['name']." ".$msg ?></a></li>
                                    <?php } ?>   
 
                                    <li class="title">Baby</li>
@@ -366,7 +366,7 @@ foreach ($stmt5 as $row5) {
                                         $msg = '<span style="padding: 4px;background: green;color: #fff;border-radius: 3px;font-size: 10px;position: absolute;letter-spacing: 1px;right: 24px;max-height: 19px;line-height: 12px;">New</span>';
                                       }
                                  ?>
-                                <li><a href="subcategory.php?styles=<?= str_replace("&", "and", $row23['sub_catslug']) ?>"><?= $row23['name']." ".$msg ?></a></li>
+                                <li><a href="subcategory?styles=<?= str_replace("&", "and", $row23['sub_catslug']) ?>"><?= $row23['name']." ".$msg ?></a></li>
                                    <?php } ?>
 
                                
@@ -381,7 +381,7 @@ foreach ($stmt5 as $row5) {
 
                                  ?>
                                     <div class="single-mega cn-col-5 banner-image">
-                                        <a href="subcategory.php?styles=<?= str_replace("&", "and", $row24['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
+                                        <a href="subcategory?styles=<?= str_replace("&", "and", $row24['sub_catslug']) ?>"><img src="<?= $image ?>" alt="">
                                         <div class="container-fluid">
                                                 <h5  style="text-align: center;font-size: 20px;margin: 5px"><?= $row24['name'] ?></h5>
                                                 <h5 class="title text-center">Explore Store</h5>
@@ -417,7 +417,7 @@ foreach ($stmt5 as $row5) {
             <div class="header-meta d-flex clearfix justify-content-end">
                 <!-- Search Area -->
                 <div class="search-area">
-                <form method="POST" autocomplete="off" action="search.php">
+                <form method="POST" autocomplete="off" action="search">
                         <input type="text" id="myInput" name="keyword"   placeholder="Type for search" required>
                         <button type="submit" id="myBtn"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
@@ -526,11 +526,11 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
             <!-- Cart Summary -->
             <div class="profile-amount-summary">
                 <ul>
-                    <li><a href="profile.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="profile.php")?"active":""; ?>">Profile</a></li>
-                    <li><a href="orders.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="orders.php")?"active":""; ?>">Orders</a></li>
-                    <li><a href="transaction.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="transaction.php")?"active":""; ?>">History</a></li>
-                    <li><a href="coupons.php" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="coupons.php")?"active":""; ?>">Coupons</a></li>
-                    <li><a href="logout.php" class="auth nav active1">Logout</a></li>
+                    <li><a href="profile" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="profile")?"active":""; ?>">Profile</a></li>
+                    <li><a href="orders" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="orders")?"active":""; ?>">Orders</a></li>
+                    <li><a href="transaction" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="transaction")?"active":""; ?>">History</a></li>
+                    <li><a href="coupons" class="auth nav <?= (basename($_SERVER['PHP_SELF'])=="coupons")?"active":""; ?>">Coupons</a></li>
+                    <li><a href="logout" class="auth nav active1">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -554,8 +554,8 @@ background: lightsalmon;border-radius: 70px; position: absolute;top: 10px;right:
             <!-- Cart Summary -->
             <div class="profile-amount-summary">
                 <ul>
-                    <li><a href="login.php" class="auth ">Login</a></li>
-                    <li><a href="signup.php" class="auth">Signup</a></li>
+                    <li><a href="login" class="auth ">Login</a></li>
+                    <li><a href="signup" class="auth">Signup</a></li>
                 </ul>
             </div>
         </div>
@@ -628,8 +628,8 @@ if(isset($_SESSION['user'])){
             <!-- Cart Summary -->
             <div class="wishlist-amount-summary1">
                 <ul>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="signup.php">Signup</a></li>
+                    <li><a href="login">Login</a></li>
+                    <li><a href="signup">Signup</a></li>
                 </ul>
             </div>
         </div>

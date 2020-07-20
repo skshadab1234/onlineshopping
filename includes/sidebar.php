@@ -12,8 +12,8 @@
 				$stmt = $conn->prepare("SELECT * FROM products WHERE date_view=:now ORDER BY counter DESC LIMIT 10");
 				$stmt->execute(['now' => $now]);
 				foreach ($stmt as $row) {
-					echo "<a  class=\"brand1\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand'] . "</a>";
-					echo "<li><a  class=\"view\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a></li>";
+					echo "<a  class=\"brand1\" href='product?product=" . $row['slug'] . "'>" . $row['brand'] . "</a>";
+					echo "<li><a  class=\"view\" href='product?product=" . $row['slug'] . "'>" . $row['name'] . "</a></li>";
 				}
 
 				$pdo->close();

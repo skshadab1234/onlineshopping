@@ -198,7 +198,7 @@ if (isset($subcatid)) {
                                     $stmt2->execute();
                                     foreach ($stmt2 as $row3) {
                                     ?>
-                                    <li><a href="subcategory.php?brand=<?= $row3['brand_name']  ?>"><?= $row3['brand_name']?></a></li>
+                                    <li><a href="subcategory?brand=<?= $row3['brand_name']  ?>"><?= $row3['brand_name']?></a></li>
                                    <?php } ?>
                                 </ul>
                             </div>
@@ -256,7 +256,7 @@ if (isset($subcatid)) {
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                        <a href="product.php?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
+                                        <a href="product?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
                                         <!-- Hover Thumb -->
                                         <img class="hover-img" src="<?= $image2 ?>" alt="">
                                       </a>
@@ -273,7 +273,7 @@ if (isset($subcatid)) {
                                     <!-- Product Description -->
                                     <div class="product-description">
                                         <span><?= $row['brand_name'] ?></span>
-                                        <a href="product.php?product=<?= $row['slug']  ?> ">
+                                        <a href="product?product=<?= $row['slug']  ?> ">
                                             <h6><?= $row['name'] ?></h6>
                                         </a>
                                         <p class="product-price"><span class="old-price">&#8377; <?= $row['old_price'] ?></span> &#8377; <?= $row['price'] ?></p>
@@ -303,7 +303,7 @@ if (isset($subcatid)) {
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                         <a href="product.php?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
+                                         <a href="product?product=<?= $row['slug']  ?> "><img src="<?= $image ?>" alt="">
                                         <!-- Hover Thumb -->
                                         <img class="hover-img" src="<?= $image2 ?>" alt="">
                                       </a>

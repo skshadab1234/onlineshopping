@@ -75,3 +75,17 @@
     CKEDITOR.replace('editor2')
   });
 </script>
+<script type="text/javascript">
+  function updateadminstatus(){
+    $.ajax({
+      url: "update_admin_online.php",
+      success: function(){
+
+      }
+    });
+  }
+
+setInterval(function() {
+    updateadminstatus();
+  }, 1000);
+</script>

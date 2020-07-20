@@ -58,7 +58,7 @@
         }
         ?>
         <div class="container" style="padding: 10px" id="modal-adding">
-          <a href="#addnew" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span>On Landing Page</span></button></a>
+          <a href="#addnew" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span>Add New Category</span></button></a>
           <a href="#addbanner" data-toggle="modal"> <button class="btn btn-success btn-sm btn-flat "><i class="fa fa-plus"></i> <span> Add Banner</span></button></a>
           <a href="#addoffer" data-toggle="modal"><button class="btn btn-success btn-sm btn-flat"><i class="fa fa-plus"></i> <span> Add Offer</span></button></a>
         </div>

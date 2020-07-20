@@ -15,7 +15,7 @@ if (isset($_SESSION['user'])) {
 			$output['list'] .= "
 
 
-						<a href='product.php?product=" . $row['slug'] . "' >
+						<a href='product?product=" . $row['slug'] . "' >
 							<div class='pull-left container-fluid' style='padding:0'>
 							<img src='" . $image . "' alt='User Image'>
 							</div>
@@ -48,7 +48,7 @@ if (isset($_SESSION['user'])) {
 			$product = $stmt->fetch();
 			$image = (!empty($product['photo'])) ? 'images/allproduct/' . $product['photo'] : 'images/noimage.jpg';
 			$output['list'] .= "
-						<a href='product.php?product=" . $product['slug'] . "' style='width: 116px;'>
+						<a href='product?product=" . $product['slug'] . "' style='width: 116px;'>
 							<div class='pull-left container'>
 								<img src='" . $image . "' class='img-circle' alt='User Image'>
 							</div>

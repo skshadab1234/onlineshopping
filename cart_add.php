@@ -17,14 +17,14 @@ if (isset($_SESSION['user'])) {
 		try {
 			$stmt = $conn->prepare("INSERT INTO cart (user_id, product_id, quantity, size, color) VALUES (:user_id, :product_id, :quantity, :size, :color)");
 			$stmt->execute(['user_id' => $user['id'], 'product_id' => $id, 'quantity' => $quantity, 'size' => $size, 'color' => $color]);
-			$output['message'] = 'Item added to cart <a href="cart_view.php">View Cart</a>';
+			$output['message'] = 'Item added to cart <a href="cart_view">View Cart</a>';
 		} catch (PDOException $e) {
 			$output['error'] = true;
 			$output['message'] = $e->getMessage();
 		}
 	} else {
 		$output['error'] = true;
-		$output['message'] = 'Product already in cart <a href="cart_view.php" style="color:steelblue">View Cart</a>';
+		$output['message'] = 'Product already in cart <a href="cart_view" style="color:steelblue">View Cart</a>';
 	}
 } else {
 	if (!isset($_SESSION['cart'])) {
@@ -39,13 +39,13 @@ if (isset($_SESSION['user'])) {
 
 	if (in_array($id, $exist)) {
 		$output['error'] = true;
-		$output['message'] = 'Product already in cart <a href="login.php" style="color:steelblue">Login</a>';
+		$output['message'] = 'Product already in cart <a href="login" style="color:steelblue">Login</a>';
 	} else {
 		$data['productid'] = $id;
 		$data['quantity'] = $quantity;
 
 		if (array_push($_SESSION['cart'], $data)) {
-			$output['message'] = 'Item added to cart <a href="login.php" style="color:steelblue">Login</a>';
+			$output['message'] = 'Item added to cart <a href="login" style="color:steelblue">Login</a>';
 		} else {
 			$output['error'] = true;
 			$output['message'] = 'Cannot add item to cart';

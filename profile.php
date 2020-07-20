@@ -2,7 +2,7 @@
 //error_reporting(0);
 include('includes/session.php');
 if (strlen($_SESSION['user']) == 0) {
-	header('location:index.php');
+	header('location:index');
 } else {
 	$conn = $pdo->open();
 	// code for billing address updation
@@ -461,7 +461,7 @@ $pdo->close();
 												<div class="row">
 													<div class="col-md-12">
 
-														<form class="contact-form outer-top-xs" method="POST" action="orders_details.php">
+														<form class="contact-form outer-top-xs" method="POST" action="orders_details">
 															<div class="input-block">
 																<label class="info-title" for="exampleOrderId1">Order ID</label>
 																<input type="text" class="form-control unicase-form-control text-input" name="orderid" id="exampleOrderId1" required="">
@@ -497,7 +497,7 @@ $pdo->close();
 					<div class="container-fluid" style="background: #fff;margin-top:10px;width:100%;border-bottom:1px solid #eee">
 						<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-first-order" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
 						<div class="col-sm-10 col-md-10 col-xs-10">
-							<a href="orders.php">
+							<a href="orders">
 								<div class="container-fluid" style="position:relative;left:-49px;">
 									<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">orders</h5>
 									<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">check your order status</h5>
@@ -510,7 +510,7 @@ $pdo->close();
 			<div class="container-fluid" style="background: #fff;width:100%;border-bottom:1px solid #eee">
 				<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-bookmark-o" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
 				<div class="col-sm-10 col-md-10 col-xs-10">
-					<a href="wishlist.php">
+					<a href="wishlist">
 						<div class="container-fluid" style="position:relative;left:-49px;">
 							<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Collections & Wishlist</h5>
 							<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">All your curated product collections</h5>
@@ -523,7 +523,7 @@ $pdo->close();
 		<div class="container-fluid" style="background: #fff;margin-top:10px;width:100%;border-bottom:1px solid #eee">
 			<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-history" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
 			<div class="col-sm-10 col-md-10 col-xs-10">
-				<a href="transaction_history.php">
+				<a href="transaction_history">
 					<div class="container-fluid" style="position:relative;left:-49px;">
 						<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Transaction History</h5>
 						<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">check your transaction Status</h5>
@@ -535,7 +535,7 @@ $pdo->close();
 	<div class="container-fluid" style="background: #fff;width:100%;border-bottom:1px solid #eee">
 		<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-map-marker" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
 		<div class="col-sm-10 col-md-10 col-xs-10">
-			<a href="addressconfirm.php">
+			<a href="addressconfirm">
 				<div class="container-fluid" style="position:relative;left:-49px;">
 					<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Addresses</h5>
 					<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">Save addresses for a hassle-free checkout</h5>
@@ -548,7 +548,7 @@ $pdo->close();
 	<div class="container-fluid" style="background: #fff;width:100%;border-bottom:1px solid #eee">
 		<div class="col-sm-2 col-md-2 col-xs-2"><i class="fa fa-gift" style="position:absolute;top:18px;left:2px;font-size:19px"></i></div>
 		<div class="col-sm-10 col-md-10 col-xs-10">
-			<a href="coupons.php">
+			<a href="coupons">
 				<div class="container-fluid" style="position:relative;left:-49px;">
 					<h5 style="font-size:15px;text-transform:capitalize;letter-spacing:1px;font-weight:600;color:#010101">Coupons</h5>
 					<h5 style="position:relative;top:-5px;font-size:12px;color:#94969F">Manage coupons for additional disounts</h5>
@@ -571,7 +571,7 @@ $pdo->close();
 	</div>
 	</section>
 	<div class="container-fluid" style="padding: 20px;">
-		<a href="logout.php"><button class="form-control btn btn-danger" style="padding: 20px;line-height:6px;font-size:17px;text-transform:uppercase">Logout</button></a>
+		<a href="logout"><button class="form-control btn btn-danger" style="padding: 20px;line-height:6px;font-size:17px;text-transform:uppercase">Logout</button></a>
 	</div>
 	</div>
 	<?php include 'includes/footer.php'; ?>

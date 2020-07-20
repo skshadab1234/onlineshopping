@@ -246,7 +246,7 @@ if (isset($_SESSION['user'])) {
 						
 	</div>
 
-<div class="fb-comments" data-href="http://localhost/ecommerce/product.php?product=<?php echo $slug; ?>" data-numposts="10" width="100%"></div>
+<div class="fb-comments" data-href="http://localhost/ecommerce/product?product=<?php echo $slug; ?>" data-numposts="10" width="100%"></div>
 					</div>
 	
 	<!-- Relate Product -->

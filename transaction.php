@@ -23,8 +23,8 @@ foreach ($stmt as $row) {
     $delivery1 = $order1 + $delivery;
     $output['list'] .= "
 <tr class='prepend_items'>
-<td ><a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\" width='100px'  class=\"img-rounded\" style=\"border-radius:10px;box-shadow: 0px 8px 60px -10px rgba(13, 128, 39, 0.6);\"></a> </td>
-<td ><a href='product.php?product=" . $row['slug'] . "' style=\"color:white\">" . $row['name'] . "</a> </td>
+<td ><a href='product?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img\" width='100px'  class=\"img-rounded\" style=\"border-radius:10px;box-shadow: 0px 8px 60px -10px rgba(13, 128, 39, 0.6);\"></a> </td>
+<td ><a href='product?product=" . $row['slug'] . "' style=\"color:white\">" . $row['name'] . "</a> </td>
 <td >" . $row['quantity'] . "</td>
 <td >
 <h5 style=\"font-weight:700\">Product Price: ₹ " . number_format($row['price'], 2) . " * " . $row['quantity'] . " = ₹ " . number_format($subtotal, 2) . "</span> <br>

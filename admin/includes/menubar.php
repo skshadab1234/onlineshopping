@@ -14,19 +14,19 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">REPORTS</li>
-      <li><a href="home.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-      <li><a href="sales.php"><i class="fa fa-money"></i> <span>Sales</span></a></li>
+      <li><a href="home"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li><a href="sales"><i class="fa fa-money"></i> <span>Sales</span></a></li>
       <li class="header">Manage Delivery Boy</li>
-      <li><a href="deliveryboy.php"><i class="fa fa-users"></i> <span>Delivery Boy</span></a></li>
+      <li><a href="deliveryboy"><i class="fa fa-users"></i> <span>Delivery Boy</span></a></li>
       <li class="header">MANAGE</li>
-      <li><a href="slider.php"><i class="fa fa-users"></i> <span>Manage Slider</span></a></li>
-            <li><a href="newsletter.php"><i class="fa fa-users"></i> <span>Newsletter</span></a></li>
-      <li><a href="users.php"><i class="fa fa-users"></i> <span>Customers</span></a></li>
-      <li><a href="warehouse.php"><i class="fa fa-home"></i> <span>Warehouse</span></a></li>
-      <li><a href="category.php"><i class="fa fa-list-alt"></i> <span>Category </span></a></li>
-      <li><a href="color_master.php"><i class="fa fa-list-alt"></i> <span>Color </span></a></li>
-      <li><a href="subcategory.php"><i class="fa fa-sticky-note-o"></i> <span>Sub Category</a></span></li>
-      <li><a href="brands.php"><i class="fa fa-handshake-o"></i> <span>Brands</a></span></li>
+      <li><a href="slider"><i class="fa fa-users"></i> <span>Manage Slider</span></a></li>
+            <li><a href="newsletter"><i class="fa fa-users"></i> <span>Newsletter</span></a></li>
+      <li><a href="users"><i class="fa fa-users"></i> <span>Customers</span></a></li>
+      <li><a href="warehouse"><i class="fa fa-home"></i> <span>Warehouse</span></a></li>
+      <li><a href="category"><i class="fa fa-list-alt"></i> <span>Category </span></a></li>
+      <li><a href="color_master"><i class="fa fa-list-alt"></i> <span>Color </span></a></li>
+      <li><a href="subcategory"><i class="fa fa-sticky-note-o"></i> <span>Sub Category</a></span></li>
+      <li><a href="brands"><i class="fa fa-handshake-o"></i> <span>Brands</a></span></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-barcode"></i>
@@ -36,7 +36,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="products.php"><i class="fa fa-circle-o"></i> Product List</a></li>
+          <li><a href="products"><i class="fa fa-circle-o"></i> Product List</a></li>
 
         </ul>
       </li>

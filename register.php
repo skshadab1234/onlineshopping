@@ -20,7 +20,7 @@ if (isset($_POST['signup'])) {
 
   if ($password != $repassword) {
     $_SESSION['error'] = 'Passwords did not match';
-    header('location: signup.php');
+    header('location: signup');
   } else {
     $conn = $pdo->open();
 
@@ -29,7 +29,7 @@ if (isset($_POST['signup'])) {
     $row = $stmt->fetch();
     if ($row['numrows'] > 0) {
       $_SESSION['error'] = 'Email already taken';
-      header('location: signup.php');
+      header('location: signup');
     } else {
       $now = date('Y-m-d');
       $password = password_hash($password, PASSWORD_DEFAULT);
@@ -511,7 +511,7 @@ if (isset($_POST['signup'])) {
                               <tbody>
                                 <tr align=\"center\">
                                   <td align=\"center\" valign=\"middle\" style=\"border-collapse:collapse;\">
-                                    <a class=\"buttonText\" href=\"http://localhost/onlineshopping-master/activate.php?code=" . $code . "&user=" . $userid . "\" target=\"_blank\" style=\"color: #4A90E2;text-decoration: none;font-weight: normal;display: block;border: 2px solid #585858;padding: 10px 80px;font-family: Arial;\">Verify</a>
+                                    <a class=\"buttonText\" href=\"http://localhost/onlineshopping/activate?code=" . $code . "&user=" . $userid . "\" target=\"_blank\" style=\"color: #4A90E2;text-decoration: none;font-weight: normal;display: block;border: 2px solid #585858;padding: 10px 80px;font-family: Arial;\">Verify</a>
                                   </td>
                                 </tr>
                               </tbody>
@@ -539,7 +539,7 @@ if (isset($_POST['signup'])) {
                             <br>
                             <div style=\"text-align: center; color: #c9c9c9;\">
                               <p>Questions? Get your answers here:&nbsp;
-                                <a href=\"knowus/help.php\" style=\"color:#4a90e2;font-weight:normal;text-decoration:underline; font-size: 12px;\">Help Center</a>.</p>
+                                <a href=\"knowus/help\" style=\"color:#4a90e2;font-weight:normal;text-decoration:underline; font-size: 12px;\">Help Center</a>.</p>
                             </div>
                             <br>
                           </td>

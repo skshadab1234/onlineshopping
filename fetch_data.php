@@ -1,6 +1,6 @@
 <?php
 
-//fetch_data.php
+//fetch_data
 
 include 'includes/session.php';
 if(isset($_POST["action"]))
@@ -28,7 +28,7 @@ if(isset($_POST["action"]))
                                 <div class="single-product-wrapper">
                                     <!-- Product Image -->
                                     <div class="product-img">
-                                         <a href="product.php?product='.$row['slug'].'"><img src="'.$image.'" alt="">
+                                         <a href="product?product='.$row['slug'].'"><img src="'.$image.'" alt="">
                                         <!-- Hover Thumb -->
                                         <img class="hover-img" src="'.$image2.'" alt="">
                                       </a>

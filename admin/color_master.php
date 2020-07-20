@@ -69,7 +69,9 @@
                                                 $white =($row['color_name'] == "#fff") ? 'border:1px solid #000':'';
                                                 echo "
                           <tr>
-                          <td style='position: relative;top: 0;left: 0;'><span style='position: absolute;width: 30px;height: 30px;background: ".$row['color_name'].";border-radius: 80px;".$white.";box-shadow: 4px 5px 16px ".$row['color_name']."'></span></td>
+                          <td style='position: relative;top: 0;left: 0;'><span style='position: absolute;width: 30px;height: 30px;background: ".$row['color_name'].";border-radius: 80px;".$white.";box-shadow: 4px 5px 16px ".$row['HEX']."'></span>
+                            <h5 style='position: absolute;right: 10px;font-size: 18px;line-height: 9px;'>".$row['color_name']."</h5>
+                          </td>
                             <td>
                               " . $status . "
                               " . $active . "

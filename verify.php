@@ -41,4 +41,4 @@ if (isset($_POST['login'])) {
 
 $pdo->close();
 
-header('location: login.php');
+header('location: login');

@@ -2,11 +2,11 @@
 include 'includes/session.php';
 
 if (!isset($_GET['code']) or !isset($_GET['user'])) {
-	header('location: index.php');
+	header('location: index');
 	exit();
 }
 
-$path = 'password_reset.php?code=' . $_GET['code'] . '&user=' . $_GET['user'];
+$path = 'password_reset?code=' . $_GET['code'] . '&user=' . $_GET['user'];
 
 if (isset($_POST['reset'])) {
 	$password = $_POST['password'];
@@ -30,7 +30,7 @@ if (isset($_POST['reset'])) {
 				$stmt->execute(['password' => $password, 'id' => $row['id']]);
 
 				$_SESSION['success'] = 'Password successfully reset';
-				header('location: login.php');
+				header('location: login');
 			} catch (PDOException $e) {
 				$_SESSION['error'] = $e->getMessage();
 				header('location: ' . $path);

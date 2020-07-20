@@ -61,7 +61,7 @@ mysqli_select_db($link, "ecomm");
 						<div class="col-sm-12 col-xs-12 col-lg-8 col-md-8" style="margin-top:20px;padding:0">
 							<div id="tbody">
 							</div>
-							<a href="wishlist.php" style="color:#000;font-size:14px;text-transform:uppercase;font-weight:lighter">
+							<a href="wishlist" style="color:#000;font-size:14px;text-transform:uppercase;font-weight:lighter">
 								<div class="container-fluid" style="position:relative;border: 1px solid #f6f6f6;padding:20px;background:#fff;margin:10px 0;"><i class='fa fa-bookmark-o' style="font-size: 16px"></i> <span style="padding-left:8px;font-size:14px ">Add More From Wishlist</span><i class="fa fa-angle-right" style="position: absolute;right:10px;top:15px"></i></div>
 							</a>
 						</div>
@@ -125,7 +125,7 @@ mysqli_select_db($link, "ecomm");
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                              <a href="product?product=<?php echo $row1['slug'] ?> ">
                                   <img src="<?php echo $image ?>" >
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="<?php echo $image2 ?>" alt="">
@@ -142,7 +142,7 @@ mysqli_select_db($link, "ecomm");
                             <!-- Product Description -->
                             <div class="product-description">
                                 <span><?php echo $row1['brand_name'] ?></span>
-                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                              <a href="product?product=<?php echo $row1['slug'] ?> ">
                                     <h6><?php echo $row1['name'] ?></h6>
                                 </a>
                                 <p class="product-price">&#8377; <?php echo $row1['price'] ?></p>
@@ -173,11 +173,11 @@ mysqli_select_db($link, "ecomm");
 		<?php
 		if (isset($_SESSION['user'])) {
 			echo '
-		<a href="payment.php"><button type="button" class="btn btn-secondary button-base-button form-control">Place Order</button></a>
+		<a href="payment"><button type="button" class="btn btn-secondary button-base-button form-control">Place Order</button></a>
 		';
 		} else {
 			echo '
-		<a href="login.php"><button type="button" class="btn btn-secondary button-base-button form-control" style=\'background:steelblue\'>Login</button></a>
+		<a href="login"><button type="button" class="btn btn-secondary button-base-button form-control" style=\'background:steelblue\'>Login</button></a>
 		';
 		}
 		?>

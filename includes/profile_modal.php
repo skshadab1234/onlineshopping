@@ -71,7 +71,7 @@
         <h4 class="modal-title" style="color: white"><b>Update Account</b></h4>
       </div>
       <div class="modal-body" style="color: white">
-        <form class="form-horizontal" method="POST" action="profile_edit.php" enctype="multipart/form-data">
+        <form class="form-horizontal" method="POST" action="profile_edit" enctype="multipart/form-data">
           <div class="form-group">
             <label for="firstname" class="col-sm-3 control-label">Firstname</label>
 

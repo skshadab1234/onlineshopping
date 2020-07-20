@@ -35,10 +35,10 @@ if (isset($_SESSION['user'])) {
 	<div class=\"row\">
 	<div class=\"col-sm-12\" >
 	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\">
-	<a href='product.php?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>    
+	<a href='product?product=" . $row['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>    
 	</div>	
 	<div class=\"col-sm-7 col-xs-7 col-md-7 col-lg-7\">
-	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand'] . "</a></span><br><a style=\"font-size:12px;color:black;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a><br><span style=\"font-weight:bold;color:grey\">&#36; " . number_format($row['price'], 2) . " /- Only</span></p>
+	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product?product=" . $row['slug'] . "'>" . $row['brand'] . "</a></span><br><a style=\"font-size:12px;color:black;\" href='product?product=" . $row['slug'] . "'>" . $row['name'] . "</a><br><span style=\"font-weight:bold;color:grey\">&#36; " . number_format($row['price'], 2) . " /- Only</span></p>
 	<div class='input-group' >
 	<span class='input-group-btn' >
 	<button type='button' id='minus' class='btn  btn-flat minus' data-id='" . $row['cartid'] . "'><i class='fa fa-minus'></i></button>
@@ -66,7 +66,7 @@ if (isset($_SESSION['user'])) {
 	";
 		}
 		$output .= "
-<a href=\"wishlist.php\">
+<a href=\"wishlist\">
 	<div style=\"margin:20px\" class=\"container\">
 	<h5 style=\"font-size:20px;color:black;font-weight:500;margin-left:20px\"><span><i class=\"fa fa-bookmark-o\"></i>&nbsp;&nbsp;&nbsp;Add More From Wishlist</span></h5>
 	</div>
@@ -93,11 +93,11 @@ if (isset($_SESSION['user'])) {
 	<div class=\"row\">
 	<div>
 	<div class=\"col-sm-2 col-xs-2 col-md-2 col-lg-2\" >	
-    <a href='product.php?product=" . $product['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>   	
+    <a href='product?product=" . $product['slug'] . "'><img src='" . $image . "' class=\"img-responsive\" width='250px' height='250px' class=\"thumbnail\"></a>   	
 	</div>
 	<div class=\"col-sm-7 col-xs-7 col-md-7 col-lg-7\">
-	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand'] . "</a></span><br>
-	<a style=\"font-size:12px;color:black;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a><br><span style=\"font-weight:bold;color:grey\">&#36; " . number_format($product['price'], 2) . " /- Only</span> <span style=\"font-size:14px\"><s> &#36; " . number_format($product['old price'], 2) . "</s></sapn></p>
+	<p><span style=\"font-weight:bold;\"><a style=\"font-size:12px;color:grey;\" href='product?product=" . $product['slug'] . "'>" . $product['brand'] . "</a></span><br>
+	<a style=\"font-size:12px;color:black;\" href='product?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a><br><span style=\"font-weight:bold;color:grey\">&#36; " . number_format($product['price'], 2) . " /- Only</span> <span style=\"font-size:14px\"><s> &#36; " . number_format($product['old price'], 2) . "</s></sapn></p>
 	<div class='input-group'>
 	<span class='input-group-btn'>
 	<button type='button' id='minus' class='btn btn-default btn-flat minus' data-id='" . $row['productid'] . "'><i class='fa fa-minus'></i></button>

@@ -12,7 +12,7 @@
           <div class="form-group">
             <label for="name" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="name" name="color" required>
+              <input type="color" class="form-control" id="name" name="color" required>
             </div>
           </div>
       </div>

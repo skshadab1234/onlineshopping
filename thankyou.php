@@ -1,7 +1,7 @@
 <?php include 'includes/session.php'; ?>
 <?php
 if (!isset($_SESSION['user'])) {
-	header('location: index.php');
+	header('location: index');
 }
 ?>
 
@@ -87,8 +87,8 @@ if (!isset($_SESSION['user'])) {
 
 <div class="container-fluid">
 <ul style="display: flex">
-<li style="padding: 20px"><a href="index.php" style="font-size:22px;color:#000;">Continue Shopping</a></li>
-<li style="padding: 20px"><a href="orders.php" style="font-size:22px;color:#000;">My Orders</a></li>
+<li style="padding: 20px"><a href="index" style="font-size:22px;color:#000;">Continue Shopping</a></li>
+<li style="padding: 20px"><a href="orders" style="font-size:22px;color:#000;">My Orders</a></li>
 </ul>
 </div>
 	</div>

@@ -72,7 +72,7 @@
 				</table>
 				</div>
 				</div>
-				<a href=\"payment.php\">
+				<a href=\"payment\">
 				<button type=\"button\" id='place_o' class=\"form-control button-base-button\">Place Order</button>
 				</a>
 				</div>
@@ -85,7 +85,7 @@
 	} else {
 		$output .= "
 <div class=\"container\" id='checkout' style=\"margin:100px 100px\">
-<a href=\"login.php\"><button class=\"btn btn-flat btn-primary\">Sign up to checkout</button>
+<a href=\"login\"><button class=\"btn btn-flat btn-primary\">Sign up to checkout</button>
 </a>
 </div>
 ";

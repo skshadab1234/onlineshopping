@@ -78,13 +78,13 @@ $pdo->close();
                                             $stmt = $conn->prepare("SELECT * FROM newsletter");
                                             $stmt->execute();
                                             foreach ($stmt as $row) {
+                                    $status = ($row['status'] == 1) ? ' <span title="verified" style="color:green"><i class="fa fa-check-circle" style=></i> </span>' : '';
                                                 echo "
 <tr>
 <td>" . $row['id'] . "</td>
-<td>" . $row['email_id'] . "</td>
+<td>" . $row['email_id'] . " ".$status."</td>
 <td>
-<button class='btn btn-success btn-sm edit btn-flat'  id='quickview' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+     <button class='btn btn-danger btn-sm delete btn-flat'  data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
 </td>
 
 ";
@@ -106,11 +106,9 @@ $pdo->close();
 
         </div>
         <?php include 'includes/footer.php'; ?>
-        <?php include 'includes/warehouse_modal.php'; ?>
+        <?php include 'includes/newsletter_modal.php'; ?>
 
     </div>
-    <!-- ./wrapper -->
-    <a href="#adddelivery" data-toggle="modal" id="a-plus" data-id="<?php echo $row['id']; ?>"><i class="fa fa-plus"></i> </a>
 
     <?php include 'includes/scripts.php'; ?>
     <script>
@@ -123,34 +121,58 @@ $pdo->close();
                 getRow(id);
             });
 
-            $(document).on('click', '.delete', function(e) {
-                e.preventDefault();
-                $('#delete').modal('show');
-                var id = $(this).data('id');
-                getRow(id);
-            });
+            // $(document).on('click', '.delete', function(e) {
+            //     e.preventDefault();
+            //     $('#delete').modal('show');
+            //     var id = $(this).data('id');
+            //     getRow(id);
+            // });
 
         });
 
         function getRow(id) {
             $.ajax({
                 type: 'POST',
-                url: 'warehouse_row.php',
+                url: 'newsletter_row.php',
                 data: {
                     id: id
                 },
                 dataType: 'json',
                 success: function(response) {
-                    $('.warehouseid').val(response.id);
-                    $('#edit_name').val(response.warehouse_name);
-                    $('#edit_city').val(response.city);
-                    $('#edit_state').val(response.state);
-                    $('#edit_pincode').val(response.pincode);
-                    $('.warehousename').html(response.warehouse_name);
+                    $('.newsletterid').val(response.id);
+                    $('.newslettername').html(response.email_id);
 
                 }
             });
         }
+
+        $(document).ready(function() {
+    $.ajax({
+        url: "View_ajax.php",
+        type: "POST",
+        cache: false,
+        success: function(dataResult){
+            $('#table').html(dataResult); 
+        }
+    });
+    $(document).on("click", ".delete", function() { 
+        var $ele = $(this).parent().parent();
+        $.ajax({
+            url: "newsletter_delete.php",
+            type: "POST",
+            cache: false,
+            data:{
+                id: $(this).attr("data-id")
+            },
+            success: function(dataResult){
+                var dataResult = JSON.parse(dataResult);
+                if(dataResult.statusCode==200){
+                    $ele.fadeOut().remove();
+                }
+            }
+        });
+    });
+});
     </script>
 </body>
 

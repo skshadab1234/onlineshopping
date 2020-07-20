@@ -345,4 +345,20 @@ function getFav() {
       });
       
     }
+
+</script>
+
+ <script type="text/javascript">
+  function updateuserstatus(){
+    $.ajax({
+      url: "update_user_oline.php",
+      success: function(){
+
+      }
+    });
+  }
+
+setInterval(function() {
+    updateuserstatus();
+  }, 5000);
 </script>

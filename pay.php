@@ -22,7 +22,7 @@ try {
         "phone" => $phone,
         "send_sms" => true,
         "allow_repeated_payments" => false,
-        "redirect_url" => "http://localhost/onlineshopping-master/thankyou.php"
+        "redirect_url" => "http://localhost/onlineshopping-master/thankyou"
     ));
 
     $pay_url = $response['longurl'];

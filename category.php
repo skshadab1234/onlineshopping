@@ -41,7 +41,7 @@ if (isset($_GET['category'])) {
           foreach ($stmt as $row) {
             $image = (!empty($row['slider_photo'])) ? 'images/sliders/' . $row['slider_photo'] : 'images/noimage.jpg';
             ?>
-         <a href="subcategory.php?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>">
+         <a href="subcategory?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>">
           <div class="item-slick1 item1-slick1" style="background-image: url(<?= $image ?>);">
           <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
             <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -74,7 +74,7 @@ if (isset($_GET['category'])) {
 
             <div class="block1-wrapbtn w-size2">
               <!-- Button -->
-              <a href="subcategory.php?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+              <a href="subcategory?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
                 <?= $row['name'] ?>
               </a>
             </div>

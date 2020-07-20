@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-lg-6">
                                 <div class="container3">
-                                    <a href="index.php" class="btn">
+                                    <a href="index" class="btn">
                                         <svg width="277" height="62">
                                             <defs>
                                                 <linearGradient id="grad1">

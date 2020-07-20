@@ -3,7 +3,7 @@ include 'includes/session.php';
 ?>
 <?php
 if (!isset($_SESSION['user'])) {
-  header('location: index.php');
+  header('location: index');
 }
 include 'includes/header.php';
 ?>
@@ -652,7 +652,7 @@ form button:focus:after {
         </div>
       </div>
     </header>
-<form action="pay.php" class="contact-form" id="myForm" method="POST" >
+<form action="pay" class="contact-form" id="myForm" method="POST" >
       <div class="form-content">
         <?php
                         $output = '';
@@ -877,9 +877,9 @@ form button:focus:after {
 
          
   </div>
-    <?php include 'includes/essence_script.php'; ?>
 
   <?php include 'includes/scripts.php'; ?>
+    <?php include 'includes/essence_script.php'; ?>
   <?php include 'includes/sidebar_modal.php'; ?>
 
   <?php include 'includes/pay_foot.php'; ?>

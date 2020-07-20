@@ -2,7 +2,7 @@
 //error_reporting(0);
 include('includes/session.php');
 if (strlen($_SESSION['user']) == 0) {
-	header('location:index.php');
+	header('location:index');
 }
 include('includes/header.php');
 include('includes/scripts.php');

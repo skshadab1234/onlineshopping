@@ -27,7 +27,7 @@ if (isset($_POST['reset'])) {
 					<p>Your Account:</p>
 					<p>Email: " . $email . "</p>
 					<p>Please click the link below to reset your password.</p>
-					<a href='http://localhost/ecommerce/password_reset.php?code=" . $code . "&user=" . $row['id'] . "'>Reset Password</a>
+					<a href='http://localhost/onlineshopping-masters/password_reset?code=" . $code . "&user=" . $row['id'] . "'>Reset Password</a>
 				";
 
 			//Load phpmailer
@@ -40,7 +40,7 @@ if (isset($_POST['reset'])) {
 				$mail->Host = 'smtp.gmail.com';
 				$mail->SMTPAuth = true;
 				$mail->Username = 'ks615044@gmail.com';
-				$mail->Password = '********';
+				$mail->Password = '1@adsenseaccount1';
 				$mail->SMTPOptions = array(
 					'ssl' => array(
 						'verify_peer' => false,
@@ -78,4 +78,4 @@ if (isset($_POST['reset'])) {
 	$_SESSION['error'] = 'Input email associated with account';
 }
 
-header('location: password_forgot.php');
+header('location: password_forgot');

@@ -1,4 +1,5 @@
-﻿<?php include 'includes/session.php'; ?>
+﻿
+<?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
  
 <head>
@@ -33,7 +34,7 @@
           foreach ($stmt as $row) {
             $image = (!empty($row['slider_photo'])) ? 'images/sliders/' . $row['slider_photo'] : 'images/noimage.jpg';
             ?>
-      <a href="subcategory.php?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>">
+      <a href="subcategory?styles=<?= str_replace("&", "and", $row['sub_catslug']) ?>">
           <div class="item-slick1 item1-slick1" style="background-image: url(<?= $image ?>);">
           <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
             <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -66,20 +67,14 @@
                 $image = (!empty($row['brand_image'])) ? 'images/brand/' . $row['brand_image'] : 'images/noimage.jpg';
             ?>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-2">
-                  <?php echo "<a href=\"subcategory.php?brand=".str_replace("&", "and", $row['brand_name'])."\"><img src='" . $image . "' class=\"img-fluid\" id=\"brandimage\" ></a> "; ?>
+                  <?php echo "<a href=\"subcategory?brand=".str_replace("&", "and", $row['brand_name'])."\"><img src='" . $image . "' class=\"img-fluid\" id=\"brandimage\" ></a> "; ?>
                 </div>
 <?php }
             ?>
 </div>
 </div>
-    <!-- ##### New Arrivals Area Start ##### -->
-    <section class="new_arrivals_area section-padding-80 clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading text-center">
-                        <h2>Popular Products</h2>
-                        <?php
+
+          <?php
       if (isset($_SESSION['error'])) {
         echo "
             <p>" . $_SESSION['error'] . "</p> 
@@ -93,7 +88,15 @@
         unset($_SESSION['success']);
       }
       ?>
-                    </div>
+
+    <!-- ##### New Arrivals Area Start ##### -->
+    <section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Popular Products</h2>
+                       </div>
                 </div>
             </div>
         </div>
@@ -124,7 +127,7 @@
                         <div class="single-product-wrapper">
                             <!-- Product Image -->
                             <div class="product-img">
-                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                              <a href="product?product=<?php echo $row1['slug'] ?> ">
                                   <img src="<?php echo $image ?>" >
                                 <!-- Hover Thumb -->
                                 <img class="hover-img" src="<?php echo $image2 ?>" alt="">
@@ -141,7 +144,7 @@
                             <!-- Product Description -->
                             <div class="product-description">
                                 <span><?php echo $row1['brand_name'] ?></span>
-                              <a href="product.php?product=<?php echo $row1['slug'] ?> ">
+                              <a href="product?product=<?php echo $row1['slug'] ?> ">
                                     <h6><?php echo $row1['name'] ?></h6>
                                 </a>
                                 <p class="product-price">&#8377; <?php echo $row1['price'] ?></p>
@@ -167,9 +170,10 @@
 
 </div>  
   <div><?php include 'includes/footer.php'; ?></div>
+   
+  <?php include 'includes/scripts.php'; ?>
     <?php include 'includes/essence_script.php'; ?>
- 	 <?php include 'includes/scripts.php'; ?>
- 
+
          <!--  <script>
             setTimeout(function() {
 

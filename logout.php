@@ -1,5 +1,7 @@
 <?php
 session_start();
-session_destroy();
-
-header('location: index.php');
+unset($_SESSION['user']);
+unset($_SESSION['admin']);
+unset($_SESSION['deliveryboy']);
+header("Location:index");
+?>

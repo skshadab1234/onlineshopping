@@ -310,6 +310,17 @@ if (isset($_GET['subcategory'])) {
           $('#edit_brand').append(response);
         }
       });
+
+
+      $.ajax({
+        type: 'POST',
+        url: 'color_fetch.php',
+        dataType: 'json',
+        success: function(response) {
+          $('#color').append(response);
+          $('#edit_color').append(response);
+        }
+      });
     }
   </script>
 </body>

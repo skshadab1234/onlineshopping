@@ -34,4 +34,4 @@ if (isset($_GET['pay'])) {
 	$pdo->close();
 }
 
-header('location: paypalthankyou.php');
+header('location: paypalthankyou');

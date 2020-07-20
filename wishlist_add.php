@@ -14,15 +14,15 @@ if (isset($_SESSION['user'])) {
 		try {
 			$stmt = $conn->prepare("INSERT INTO wishlist (user_id, product_id) VALUES (:user_id, :product_id)");
 			$stmt->execute(['user_id' => $user['id'], 'product_id' => $id]);
-			$output['message'] = 'Item added to wishlist <a href="cart_view.php">View Cart</a>';
+			$output['message'] = 'Item added to wishlist <a href="cart_view">View Cart</a>';
 		} catch (PDOException $e) {
 			$output['message'] = $e->getMessage();
 		}
 	} else {
-		$output['message'] = 'Product already in wishlist <a href="cart_view.php" style="color:steelblue">View Cart</a>';
+		$output['message'] = 'Product already in wishlist <a href="cart_view" style="color:steelblue">View Cart</a>';
 	}
 } else {
-		$output['message'] = '<a href=/"login.php/">Login</p>';
+		$output['message'] = '<a href=/"login/">Login</p>';
 }
 
 $pdo->close();

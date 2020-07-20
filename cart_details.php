@@ -40,9 +40,9 @@ if (isset($_SESSION['user'])) {
 							<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
 								</p>
 								<a href = '' data-toggle='modal' data-target='#quantity'>Qty : ".$row['quantity']."</a>
 							</div>
@@ -75,7 +75,7 @@ if (isset($_SESSION['user'])) {
 		if ($total == 0) {
 			$output .= "	
 				<div style='width:100%;margin: 20% auto;text-align:center;'>
-				<a href='index.php'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
+				<a href='index'><button style='padding: 10px;border-radius: 2px;background: none;border: 1px solid deeppink;color: deeppink;letter-spacing: 1px;'><i class='fa fa-cart-plus'></i><span style='padding: 10px;font-size: 16px;line-height: 37px;font-weight: 700;'>Start Shopping</span></button></a>
 			</div>";
 		}
 
@@ -105,9 +105,9 @@ if (isset($_SESSION['user'])) {
 						<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand_name'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product?product=" . $product['slug'] . "'>" . $product['brand_name'] . "</a>
 								</span>
-								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
+								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 100%;overflow: hidden;display: block;\" href='product?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
 								</p>
 								<a href = '' data-toggle='modal' data-target='#quantity'>Qty : " . $row['quantity'] . "</a>
 							</div>

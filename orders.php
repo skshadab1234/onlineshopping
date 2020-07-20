@@ -1,7 +1,7 @@
 <?php
 include('includes/session.php');
 if (strlen($_SESSION['user']) == 0) {
-	header('location:index.php');
+	header('location:index');
 }
 ?>
 <?php include 'includes/header.php'; ?>

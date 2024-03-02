@@ -29,7 +29,7 @@ mysqli_select_db($link, "ecomm");
     <?php include 'includes/sidenav.php' ?>
     <div class="content-wrapper">
       <section class="content">
-        <div class="swiper-container swiper1" style="margin-top:10px">
+        <div class="swiper-container swiper1" id="category_landing_page" style="margin-top:10px">
           <div class="swiper-wrapper">
             <?php
             $stmt = $conn->prepare("SELECT * FROM category");
@@ -40,22 +40,26 @@ mysqli_select_db($link, "ecomm");
               <div class='swiper-slide'><a href='category.php?category=" . $row['cat_slug'] . "'><img src='" . $image . "' class='img-rounded'  width='150px' style='background:pink;'></a></div>
               ";
             }
-
             ?>
           </div>
         </div>
         <!-- Slider 1 -->
         <div class="slider" id="slider1">
           <!-- Slides -->
-          <div>
-            <?php echo '<a href="subcategory.php?subcategory=Western%20Wear"><img src="images/banner/men2.jpg" alt="slider"></a>' ?>
-          </div>
-          <div>
-            <a href=""><img src="images/banner/adidas.jpg" alt="slider"></a>
-          </div>
-          <div>
-            <a href=""><img src="images/banner/women2.jpg" alt="slider"></a>
-          </div>
+          <?php
+          $stmt = $conn->prepare("SELECT * FROM category_offer");
+          $stmt->execute();
+          foreach ($stmt as $row) {
+            $image = (!empty($row['offer_photo'])) ? 'images/category_offer/' . $row['offer_photo'] : 'images/noimage.jpg';
+            echo "
+            <div>
+                <img src='" . $image . "' style='background:pink'>
+                </div>
+                ";
+          }
+
+          ?>
+
           <!-- The Arrows -->
           <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100">
               <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
@@ -82,7 +86,7 @@ mysqli_select_db($link, "ecomm");
             $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = :name");
             $stmt->execute(['name' => "men"]);
             foreach ($stmt as $row) {
-              $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+              $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
               echo "
                 <img src='" . $image . "' style='background:pink'>
                 ";
@@ -99,7 +103,7 @@ mysqli_select_db($link, "ecomm");
               $stmt = $conn->prepare("SELECT * FROM subcategory where type=:type");
               $stmt->execute(['type' => "men"]);
               foreach ($stmt as $row) {
-                $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+                $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
                 $inc = ($inc == 4) ? 1 : $inc + 1;
                 if ($inc == 4) echo "<div class='row' style='margin:0'>";
                 echo "
@@ -127,7 +131,7 @@ mysqli_select_db($link, "ecomm");
             $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = :name");
             $stmt->execute(['name' => "women"]);
             foreach ($stmt as $row) {
-              $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+              $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
               echo "
                 <img src='" . $image . "' style='background:pink'>
                 ";
@@ -144,7 +148,7 @@ mysqli_select_db($link, "ecomm");
               $stmt = $conn->prepare("SELECT * FROM subcategory where type=:type");
               $stmt->execute(['type' => "women"]);
               foreach ($stmt as $row) {
-                $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+                $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
                 $inc = ($inc == 4) ? 1 : $inc + 1;
                 if ($inc == 4) echo "<div class='row' style='margin:0'>";
                 echo "
@@ -175,7 +179,7 @@ mysqli_select_db($link, "ecomm");
               $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = 'brands'");
               $stmt->execute(['name' => $_GET['category']]);
               foreach ($stmt as $row) {
-                $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+                $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
                 echo "
                 <img src='" . $image . "' style='background:pink'>
                 ";
@@ -188,7 +192,7 @@ mysqli_select_db($link, "ecomm");
             $conn = $pdo->open();
             try {
               $inc = 6;
-              $stmt = $conn->prepare("SELECT * FROM brands limit 12");
+              $stmt = $conn->prepare("SELECT * FROM brands limit 20");
               $stmt->execute();
               foreach ($stmt as $row) {
                 $image = (!empty($row['brand_image'])) ? 'images/brand/' . $row['brand_image'] : 'images/noimage.jpg';
@@ -213,6 +217,22 @@ mysqli_select_db($link, "ecomm");
 
           </div>
 
+        </div>
+
+
+        <div class="swiper-container swiper2" id="category_landing_page" style="padding: 10px;background:#f5f5f6;">
+          <div class="swiper-wrapper">
+            <?php
+
+            $stmt = $conn->prepare("SELECT * FROM category_offer");
+            $stmt->execute();
+            foreach ($stmt as $row) {
+              $image = (!empty($row['offer_photo'])) ? 'images/category_offer/' . $row['offer_photo'] : 'images/noimage.jpg';
+              echo "
+  <div class='swiper-slide'><a href='" . $row['offer_url'] . "'><img src='" . $image . "' class='img-rounded'  width='320px' height='200px' style='background:pink'></a></div>";
+            }
+            ?>
+          </div>
         </div>
         <div class="container-fluid">
           <h2 class="mens" align="center">Monthly Top Sellers</h2>
@@ -353,8 +373,8 @@ mysqli_select_db($link, "ecomm");
     });
 
     var swiper1 = new Swiper('.swiper2', {
-      slidesPerView: 2,
-      spaceBetween: 40,
+      slidesPerView: 1,
+      spaceBetween: -40,
       pagination: {
         el: '.swiper-pagination1',
         clickable: true,

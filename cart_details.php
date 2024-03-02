@@ -23,7 +23,7 @@ if (isset($_SESSION['user'])) {
 
 	try {
 		$total = 0;
-		$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE user_id=:user");
+		$stmt = $conn->prepare("SELECT *, cart.id AS cartid FROM cart  LEFT JOIN products ON products.id=cart.product_id LEFT JOIN brands on brands.id = products.brand_id WHERE user_id=:user");
 		$stmt->execute(['user' => $user['id']]);
 		foreach ($stmt as $row) {
 			$image = (!empty($row['photo'])) ? 'images/' . $row['photo'] : 'images/noimage.jpg';
@@ -39,10 +39,10 @@ if (isset($_SESSION['user'])) {
 							<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $row['slug'] . "'>" . $row['brand_name'] . "</a>
 								</span>
 								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $row['slug'] . "'>" . $row['name'] . "</a>
-								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($subtotal * 71.50, 2) . " /- Only</span>
+								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($subtotal, 2) . " /- Only</span>
 								</p>
 							</div>
 					</div>
@@ -61,7 +61,7 @@ if (isset($_SESSION['user'])) {
 				</div>
 	";
 		}
-		if ($total * 71.50 >= 10000) {
+		if ($total  >= 10000) {
 			$output .= "
 				<h5>Free Delivery</h5>				
 				";
@@ -76,7 +76,7 @@ if (isset($_SESSION['user'])) {
 
 
 		$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total, 2) . "</h5>";
 	} catch (PDOException $e) {
 		$output .= $e->getMessage();
 	}
@@ -84,7 +84,7 @@ if (isset($_SESSION['user'])) {
 	if (count($_SESSION['cart']) != 0) {
 		$total = 0;
 		foreach ($_SESSION['cart'] as $row) {
-			$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
+			$stmt = $conn->prepare("SELECT *, products.name AS prodname, products.photo As photo, category.name AS catname FROM products LEFT JOIN brands on brands.id = products.brand_id LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
 			$stmt->execute(['id' => $row['productid']]);
 			$product = $stmt->fetch();
 			$image = (!empty($product['photo'])) ? 'images/' . $product['photo'] : 'images/noimage.jpg';
@@ -99,11 +99,11 @@ if (isset($_SESSION['user'])) {
 							<div>
 								<p>
 								<span style=\"font-weight:bold;\">
-								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand'] . "</a>
+								<a style=\"font-size:12px;color:grey;\" href='product.php?product=" . $product['slug'] . "'>" . $product['brand_name'] . "</a>
 								</span>
 								<a style=\"font-size:12px;text-overflow: ellipsis;color:#000;white-space: nowrap;width: 229px;overflow: hidden;display: block;\" href='product.php?product=" . $product['slug'] . "'>" . $product['prodname'] . "</a>
 								<h5>Quantity : " . $row['quantity'] . "</h5>
-								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($product['price'] * 71.50, 2) . " /- Only</span>
+								<span style=\"font-weight:bold;color:grey\">₹ " . number_format($product['price'], 2) . " /- Only</span>
 								</p>
 							</div>
 					</div>
@@ -121,7 +121,7 @@ if (isset($_SESSION['user'])) {
 		</div>";
 		}
 		$output .= "
-			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total * 71.50, 2) . "</h5>";
+			<h5 style='padding: 10px;color: #0f0f0f;font-size: 2vh;text-align: right;background: aliceblue;border: 1px solid snow;box-shadow: 5px -2px 23px -16px;'>Bag Total : ₹ " . number_format($total, 2) . "</h5>";
 	} else {
 		$output .= "
 	<div class=\"container-fluid\" align=\"center\"><img src=\"images/cartempty.png\" class=\"img-responsive\" width='550px' height='500px'>

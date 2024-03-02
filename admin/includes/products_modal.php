@@ -35,14 +35,15 @@
               <input type="text" class="form-control" id="name" name="name" required>
             </div>
 
-            <label for="category" class="col-sm-1 control-label">Category</label>
+            <label for="category" class="col-sm-1 control-label">Style</label>
 
             <div class="col-sm-5">
-              <select class="form-control select2" style="width: 100%;" id="category" name="category" required>
+              <select class="form-control select2" style="width: 100%;" id="subcategory" name="category" required>
                 <option value="" selected>- Select -</option>
               </select>
             </div>
           </div>
+
           <div class="form-group">
             <label for="price" class="col-sm-1 control-label">Price</label>
 
@@ -65,7 +66,9 @@
             <label for="brand" class="col-sm-1 control-label">Brand</label>
 
             <div class="col-sm-5">
-              <input type="text" class="form-control" id="brand" name="brand">
+              <select class="form-control select2" style="width: 100%;" id="brand" name="brand" required>
+                <option value="" selected>- Select -</option>
+              </select>
             </div>
           </div>
           <div class="form-group">
@@ -82,7 +85,6 @@
               <input type="file" id="photo" name="photo">
             </div>
           </div>
-
           <div class="form-group">
             <label for="size" class="col-sm-1 control-label">Size</label>
 

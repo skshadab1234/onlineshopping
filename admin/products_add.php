@@ -33,7 +33,7 @@ if (isset($_POST['add'])) {
 		}
 
 		try {
-			$stmt = $conn->prepare("INSERT INTO products (category_id, name, description, slug, price, old_price, photo, color, brand,size,discount) VALUES (:category, :name, :description, :slug, :price, :old_price, :photo, :color, :brand, :size, :discount)");
+			$stmt = $conn->prepare("INSERT INTO products (subcategory_id, name, description, slug, price, old_price, photo, color, brand_id,size,discount) VALUES (:category, :name, :description, :slug, :price, :old_price, :photo, :color, :brand, :size, :discount)");
 			$stmt->execute(['category' => $category, 'name' => $name, 'description' => $description, 'slug' => $slug, 'price' => $price,  'old_price' => $oldprice, 'color' => $color, 'brand' => $brand, 'size' => $size, 'discount' => $discount, 'photo' => $new_filename]);
 			$_SESSION['success'] = 'Product added successfully';
 		} catch (PDOException $e) {

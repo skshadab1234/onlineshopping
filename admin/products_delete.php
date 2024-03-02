@@ -16,6 +16,20 @@ if (isset($_POST['delete'])) {
 	}
 
 	$pdo->close();
+} elseif (isset($_POST['delete_all'])) {
+
+	$conn = $pdo->open();
+
+	try {
+		$stmt = $conn->prepare("DELETE FROM products");
+		$stmt->execute();
+
+		$_SESSION['success'] = 'All Products deleted successfully';
+	} catch (PDOException $e) {
+		$_SESSION['error'] = $e->getMessage();
+	}
+
+	$pdo->close();
 } else {
 	$_SESSION['error'] = 'Select product to delete first';
 }

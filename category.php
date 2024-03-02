@@ -77,7 +77,7 @@ if (isset($_GET['category'])) {
               $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = :name");
               $stmt->execute(['name' => $_GET['category']]);
               foreach ($stmt as $row) {
-                $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+                $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
                 echo "
                 <img src='" . $image . "' style='background:pink'>
                 ";
@@ -96,7 +96,7 @@ if (isset($_GET['category'])) {
                 $stmt = $conn->prepare("SELECT * FROM subcategory WHERE type = :type");
                 $stmt->execute(['type' => $_GET['category']]);
                 foreach ($stmt as $row) {
-                  $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+                  $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
                   $inc = ($inc == 4) ? 1 : $inc + 1;
                   if ($inc == 4) echo "<div class='row' style='margin:0'>";
                   echo "
@@ -125,7 +125,7 @@ if (isset($_GET['category'])) {
               $stmt = $conn->prepare("SELECT * FROM subcategory WHERE name = 'brands'");
               $stmt->execute(['name' => $_GET['category']]);
               foreach ($stmt as $row) {
-                $image = (!empty($row['photo'])) ? 'images/subcategory/' . $row['photo'] : 'images/noimage.jpg';
+                $image = (!empty($row['subcat_photo'])) ? 'images/subcategory/' . $row['subcat_photo'] : 'images/noimage.jpg';
                 echo "
                 <img src='" . $image . "' style='background:pink'>
                 ";
@@ -179,39 +179,38 @@ if (isset($_GET['category'])) {
       ?>
       <!-- Main content -->
       <section class="content" style="padding: 0;">
-        <?php
+        <div class="container-fluid" style="margin:100px 0;padding:0">
+          <?php
 
-        $conn = $pdo->open();
+          $conn = $pdo->open();
 
-        try {
-          $inc = 4;
-          $stmt = $conn->prepare("SELECT * FROM category");
-          $stmt->execute();
-          foreach ($stmt as $row) {
-            $image = (!empty($row['photo'])) ? 'images/category/' . $row['photo'] : 'images/noimage.jpg';
-            $inc = ($inc == 4) ? 1 : $inc + 1;
-            if ($inc == 4) echo "<div class='row'>";
-            echo "
-<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-4 container-fluid text-center\" >
-  <div style='background:lightpink;padding:10px;margin:10px;border-radius:5px;box-shadow:0px 5px 9px -3px'> <a href='category.php?category=" . $row['cat_slug'] . "' ><img src='" . $image . "'   class='img-circle' width='100px' height='100px'>
-<h5 style='position:relative;top:13px;color:#010101;font-family:calibri;font-size:20px;'>" . $row['name'] . "</h5>
-  </a>
- </div>    
+          try {
+            $inc = 4;
+            $stmt = $conn->prepare("SELECT * FROM category");
+            $stmt->execute();
+            foreach ($stmt as $row) {
+              $image = (!empty($row['photo'])) ? 'images/category/' . $row['photo'] : 'images/noimage.jpg';
+              $inc = ($inc == 4) ? 1 : $inc + 1;
+              if ($inc == 4) echo "<div class='row' style='margin:0'>";
+              echo "
+<div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-2\" >
+<div class='container-fluid' style='padding:0;margin:0;overflow:hidden'>
+<a href='category.php?category=" . $row['cat_slug'] . "' ><img src='" . $image . "' width='200px;'></a>
+</div>  
 </div>
 ";
-
-            if ($inc == 4) echo "</div>";
+              if ($inc == 4) echo "</div>";
+            }
+            if ($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
+            if ($inc == 4) echo "<div class='col-sm-3'></div></div>";
+          } catch (PDOException $e) {
+            echo "There is some problem in connection: " . $e->getMessage();
           }
-          if ($inc == 4) echo "<div class='col-sm-3'></div><div class='col-sm-3'></div></div>";
-          if ($inc == 4) echo "<div class='col-sm-3'></div></div>";
-        } catch (PDOException $e) {
-          echo "There is some problem in connection: " . $e->getMessage();
-        }
 
-        $pdo->close();
-        ?>
-    </div>
-    </section>
+          $pdo->close();
+          ?>
+        </div>
+      </section>
     </div>
     </div>
   <?php

@@ -6,7 +6,7 @@ if (isset($_POST['id'])) {
 
 	$conn = $pdo->open();
 
-	$stmt = $conn->prepare("SELECT *, products.id AS prodid, products.name AS prodname, products.discount AS proddiscount, products.color AS prodcolor, products.brand AS prodbrand, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=:id");
+	$stmt = $conn->prepare("SELECT *, products.id AS prodid, products.name AS prodname, products.discount AS proddiscount, products.color AS prodcolor, products.brand_id AS prodbrand, subcategory.name AS catname, brands.brand_name AS brandname FROM products LEFT JOIN subcategory ON subcategory.id=products.subcategory_id LEFT JOIN brands ON brands.id=products.brand_id WHERE products.id=:id");
 	$stmt->execute(['id' => $id]);
 	$row = $stmt->fetch();
 

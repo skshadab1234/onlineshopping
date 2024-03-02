@@ -61,9 +61,9 @@
             </div>
             ';
         }
-      } elseif ($_GET['subcategory']) {
+      } elseif ($_GET['styles']) {
         $stmt2 = $conn->prepare("SELECT * FROM subcategory where type= :type");
-        $stmt2->execute(['type' => $_GET['subcategory']]);
+        $stmt2->execute(['type' => $_GET['styles']]);
         foreach ($stmt2 as $row2) {
           $image1 = (!empty($row2['photo'])) ? 'images/subcategory/' . $row2['photo'] : '../images/noimage.jpg';
           echo '

@@ -8,7 +8,7 @@ if (isset($_POST['edit'])) {
 
 
     try {
-        $stmt = $conn->prepare("UPDATE subcategory SET name=:name, type=:type WHERE id=:id");
+        $stmt = $conn->prepare("UPDATE subcategory SET name=:name, sub_catslug=:sub_catslug, type=:type WHERE id=:id");
         $stmt->execute(['name' => $name, 'sub_catslug' => $name, 'type' => $type, 'id' => $id]);
         $_SESSION['success'] = 'SubCategory updated successfully';
     } catch (PDOException $e) {

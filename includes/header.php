@@ -1163,7 +1163,7 @@
                 display: none;
             }
 
-            #dealofweek {
+            #category_landing_page {
                 display: none;
             }
 

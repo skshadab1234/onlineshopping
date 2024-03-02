@@ -1,9 +1,9 @@
 <?php include 'includes/session.php'; ?>
 <?php
 $where = '';
-if (isset($_GET['category'])) {
-  $catid = $_GET['category'];
-  $where = 'WHERE category_id =' . $catid;
+if (isset($_GET['subcategory'])) {
+  $catid = $_GET['subcategory'];
+  $where = 'WHERE subcategory_id =' . $catid;
 }
 
 ?>
@@ -57,6 +57,7 @@ if (isset($_GET['category'])) {
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header with-border">
+                <a href="#delete_all" data-toggle="modal">Delete ALL</a>
                 <div class="pull-right">
                   <form class="form-inline">
                     <div class="form-group" style="color: white">
@@ -66,7 +67,7 @@ if (isset($_GET['category'])) {
                         <?php
                         $conn = $pdo->open();
 
-                        $stmt = $conn->prepare("SELECT * FROM category");
+                        $stmt = $conn->prepare("SELECT * FROM subcategory");
                         $stmt->execute();
 
                         foreach ($stmt as $crow) {
@@ -93,6 +94,7 @@ if (isset($_GET['category'])) {
                     <th>Old Price</th>
                     <th>Discount</th>
                     <th>Color</th>
+                    <th>Style</th>
                     <th>Brand</th>
                     <th>Size</th>
                     <th>Views Today</th>
@@ -104,29 +106,30 @@ if (isset($_GET['category'])) {
 
                     try {
                       $now = date('Y-m-d');
-                      $stmt = $conn->prepare("SELECT * FROM products $where");
+                      $stmt = $conn->prepare("SELECT *, products.id As prodid, products.name As prodname FROM products left join brands on brands.id = products.brand_id left join subcategory on subcategory.id = products.subcategory_id $where");
                       $stmt->execute();
                       foreach ($stmt as $row) {
                         $image = (!empty($row['photo'])) ? '../images/' . $row['photo'] : '../images/noimage.jpg';
                         $counter = ($row['date_view'] == $now) ? $row['counter'] : 0;
                         echo "
                           <tr>
-                            <td style=\"white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:30px \">" . $row['name'] . " - " . $row['id'] . "</td>
+                            <td style=\"white-space: nowrap; overflow: hidden;text-overflow: ellipsis;width:30px \">" . $row['prodname'] . " - " . $row['prodid'] . "</td>
                             <td>
-                              <img src='" . $image . "' height='30px' class='img-circle' width='30px'>
-                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i></a></span>
+                             <a href=../images/" . $row['photo'] . "> <img src='" . $image . "' height='30px' class='img-circle' width='30px'></a>
+                              <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i></a></span>
                             </td>
-                            <td><a href='#description' data-toggle='modal' class='desc' style=\"line-height:40px\" data-id='" . $row['id'] . "'> View</a></td>
+                            <td><a href='#description' data-toggle='modal' class='desc' style=\"line-height:40px\" data-id='" . $row['prodid'] . "'> View</a></td>
                             <td>₹  " . number_format($row['price'], 2) . "</td>
                             <td><s>₹  " . number_format($row['old_price'], 2) . "</s></td>
                             <td>" . $row['discount'] . "</td>  
                             <td>" . $row['color'] . "</td>
-                            <td>" . $row['brand'] . "</td>
+                            <td>" . $row['sub_catslug'] . "</td>
+                            <td>" . $row['brand_name'] . "</td>
                             <td>" . $row['size'] . "</td>
                             <td>" . $counter . "</td>
                             <td>
-                              <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
-                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-trash'></i> Delete</button>
+                              <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['prodid'] . "'><i class='fa fa-edit'></i> Edit</button>
+                              <button class='btn btn-danger btn-sm delete btn-flat' data-id='" . $row['prodid'] . "'><i class='fa fa-trash'></i> Delete</button>
                             </td>
                           </tr>
                         ";
@@ -188,7 +191,7 @@ if (isset($_GET['category'])) {
         if (val == 0) {
           window.location = 'products.php';
         } else {
-          window.location = 'products.php?category=' + val;
+          window.location = 'products.php?subcategory=' + val;
         }
       });
 
@@ -220,7 +223,8 @@ if (isset($_GET['category'])) {
           $('.name').html(response.prodname);
           $('.prodid').val(response.prodid);
           $('#edit_name').val(response.prodname);
-          $('#catselected').val(response.category_id).html(response.catname);
+          $('#catselected').val(response.subcategory_id).html(response.catname);
+          $('#brandselected').val(response.brand_id).html(response.brandname);
           $('#edit_price').val(response.price);
           $('#old_price').val(response.old_price);
           $('#edit_discount').val(response.proddiscount);
@@ -241,6 +245,26 @@ if (isset($_GET['category'])) {
         success: function(response) {
           $('#category').append(response);
           $('#edit_category').append(response);
+        }
+      });
+
+      $.ajax({
+        type: 'POST',
+        url: 'subcategory_fetch.php',
+        dataType: 'json',
+        success: function(response) {
+          $('#subcategory').append(response);
+          $('#edit_subcategory').append(response);
+        }
+      });
+
+      $.ajax({
+        type: 'POST',
+        url: 'brand_fetch.php',
+        dataType: 'json',
+        success: function(response) {
+          $('#brand').append(response);
+          $('#edit_brand').append(response);
         }
       });
     }

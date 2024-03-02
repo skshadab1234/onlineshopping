@@ -6,7 +6,7 @@ if (isset($_POST['edit'])) {
 	$id = $_POST['id'];
 	$name = $_POST['name'];
 	$slug = slugify($name);
-	$category = $_POST['category'];
+	$subcategory = $_POST['subcategory'];
 	$price = $_POST['price'];
 	$oldprice = $_POST['old_price'];
 	$discount = $_POST['discount'];
@@ -18,8 +18,8 @@ if (isset($_POST['edit'])) {
 	$conn = $pdo->open();
 
 	try {
-		$stmt = $conn->prepare("UPDATE products SET name=:name, slug=:slug, category_id=:category, price=:price,  old_price=:old_price, discount=:discount, color=:color, brand=:brand, size=:size, description=:description WHERE id=:id");
-		$stmt->execute(['name' => $name, 'slug' => $slug, 'category' => $category, 'price' => $price, 'old_price' => $oldprice, 'discount' => $discount, 'color' => $color, 'brand' => $brand, 'size' => $size, 'description' => $description, 'id' => $id]);
+		$stmt = $conn->prepare("UPDATE products SET name=:name, slug=:slug, subcategory_id=:subcategory, price=:price,  old_price=:old_price, discount=:discount, color=:color, brand_id=:brand, size=:size, description=:description WHERE id=:id");
+		$stmt->execute(['name' => $name, 'slug' => $slug, 'subcategory' => $subcategory, 'price' => $price, 'old_price' => $oldprice, 'discount' => $discount, 'color' => $color, 'brand' => $brand, 'size' => $size, 'description' => $description, 'id' => $id]);
 		$_SESSION['success'] = 'Product updated successfully';
 	} catch (PDOException $e) {
 		$_SESSION['error'] = $e->getMessage();
